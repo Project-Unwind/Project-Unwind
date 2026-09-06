@@ -205,12 +205,12 @@ export async function loginUser({
     );
   }
 
-  if (!user.password_hash) {
-    throw new AppError(
-      "Password hash is missing for this account",
-      500
-    );
-  }
+if (!user.password_hash) {
+  throw new AppError(
+    "This account uses Google sign-in. Please continue with Google or set a password using Forgot Password.",
+    400
+  );
+}
 
   const passwordIsValid =
     await verifyPassword(
