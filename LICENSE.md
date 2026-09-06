@@ -40,7 +40,7 @@ You may:
 
 Without prior written permission from the Unwind project owners, you may **not**:
 
-- ❌ Use the Software or a Substantial Portion of it for commercial purposes
+- ❌ Use the Software or a Substantial Portion of it for Commercial Purposes
 - ❌ Sell, sublicense, lease, rent, or otherwise monetize the Software
 - ❌ Redistribute the Software or a Substantial Portion of its source code
 - ❌ Publish a modified or substantially similar version of the Software as your own project
@@ -62,13 +62,46 @@ For the purposes of this license, a **"Substantial Portion"** means any of the f
 
 Trivial, generic, or functionally necessary code (e.g., standard boilerplate, common configuration patterns, or code required to interoperate with a third-party library) is not considered a Substantial Portion on its own.
 
+### 2.2 Definition of "Commercial Purposes"
+
+For the purposes of this license, **"Commercial Purposes"** means any use of the Software that is intended for, or results in, direct or indirect commercial advantage or monetary compensation, including but not limited to:
+
+- Selling, licensing, or sublicensing the Software or access to it;
+- Using the Software to operate a product or service for which users are charged, or which generates revenue through subscriptions, transaction fees, or paid tiers;
+- Using the Software to generate advertising revenue, sponsorship revenue, or referral/affiliate income;
+- Using the Software internally within a for-profit organization in a way that supports that organization's revenue-generating operations (as opposed to isolated personal learning by an individual employee);
+- Using the Software, or a Substantial Portion of it, as part of a paid consulting, freelance, or contracting engagement delivered to a client.
+
+The following are **not**, on their own, considered Commercial Purposes:
+
+- Running the Software locally to learn from it, without offering it to others;
+- Including a link to, or a brief non-commercial mention of, the Software in a personal portfolio, resume, or educational writeup;
+- Academic research or coursework that does not generate revenue.
+
+If you are uncertain whether your intended use qualifies as a Commercial Purpose, contact the project owners using the method described in Section 3 before proceeding.
+
 ---
 
-## 3. Personal and Educational Use
+## 3. Requesting Permission
+
+Any use of the Software that requires prior written permission under this license — including commercial use, redistribution, branding use, or incorporation into another product — must be requested in advance.
+
+To request permission, contact the project owners at:
+
+> 📧 **[insert contact email, e.g., licensing@projectunwind.example]**
+> 🌐 Or open a discussion in the [Project Unwind GitHub organization](https://github.com/Project-Unwind)
+
+Requests should describe the intended use, scope, and duration. Permission, if granted, will only be considered valid if provided **in writing** (including email) by an authorized representative of the project. Verbal agreements, assumptions based on inaction, or permissions implied from silence are not valid under this license.
+
+*(Placeholder — the project owners should insert an actual monitored contact email before publishing this license.)*
+
+---
+
+## 4. Personal and Educational Use
 
 The Software may be used for personal and educational purposes **provided that**:
 
-1. The Software is not commercially exploited.
+1. The Software is not used for Commercial Purposes.
 2. Copyright and license notices are retained.
 3. The Unwind name and branding are not represented as belonging to another project.
 4. The Software is not redistributed as an independent product.
@@ -76,19 +109,19 @@ The Software may be used for personal and educational purposes **provided that**
 
 ---
 
-## 4. Contributions
+## 5. Contributions
 
 By submitting any code, documentation, design, fix, or other material to this repository (including via pull request, issue, or patch), you represent and agree that:
 
 1. You have the necessary rights to submit that material, and it does not infringe any third party's rights;
 2. You grant the Unwind project owners a perpetual, worldwide, royalty-free, non-exclusive license to use, modify, distribute, and incorporate your contribution into the Software under the terms of this license, or under another license explicitly designated by the project owners;
-3. Your contribution is provided "as is," without warranty of any kind, consistent with Section 7 of this license.
+3. Your contribution is provided "as is," without warranty of any kind, consistent with Section 8 of this license.
 
 Contributors retain copyright ownership of their individual contributions, subject to the license granted above. The project owners may, at their discretion, require contributors to sign a separate Contributor License Agreement (CLA) or Developer Certificate of Origin (DCO) for larger or ongoing contributions.
 
 ---
 
-## 5. Third-Party Components
+## 6. Third-Party Components
 
 The Software may include or depend upon third-party libraries, frameworks, APIs, services, fonts, icons, images, or other resources.
 
@@ -110,7 +143,7 @@ Users are responsible for reviewing and complying with the licenses and terms ap
 
 ---
 
-## 6. Branding and Trademarks
+## 7. Branding and Trademarks
 
 The **Unwind** name, logo, visual identity, interface design, graphics, icons, illustrations, and other branding elements are claimed as proprietary branding and/or trademarks of the project owners, whether or not formally registered in any jurisdiction, unless explicitly stated otherwise.
 
@@ -118,7 +151,7 @@ Nothing in this license grants permission to use these materials to imply endors
 
 ---
 
-## 7. No Warranty
+## 8. No Warranty
 
 The Software is provided **"AS IS"** and **"AS AVAILABLE"**, without warranties of any kind, whether express or implied.
 
@@ -132,7 +165,7 @@ The project owners do not guarantee that the Software will be free from errors, 
 
 ---
 
-## 8. Limitation of Liability
+## 9. Limitation of Liability
 
 To the maximum extent permitted by applicable law, the project owners shall not be liable for any direct, indirect, incidental, special, consequential, or other damages arising from or related to:
 
@@ -148,7 +181,32 @@ This limitation applies regardless of the legal theory of liability (contract, t
 
 ---
 
-## 9. Mental Wellness Disclaimer
+## 10. Indemnification
+
+You agree to indemnify, defend, and hold harmless the Unwind project owners, its contributors, and its maintainers from and against any claims, liabilities, damages, losses, costs, or expenses (including reasonable legal fees) arising out of or related to:
+
+- Your use or misuse of the Software;
+- Your violation of any term of this license;
+- Your violation of any applicable law or the rights of any third party in connection with your use, modification, or distribution of the Software;
+- Any content, data, or material you submit, generate, or make available through a modified or redistributed version of the Software.
+
+This obligation applies specifically to consequences arising from **your** actions and does not extend to claims arising solely from the Software as provided by the project owners, without modification or misuse by you.
+
+---
+
+## 11. Age Requirements
+
+The Software deals with mental-wellness-related concepts, code, and content. By accessing, viewing, running, or modifying the Software under this license, you represent that you are:
+
+- At least **18 years of age**, or
+- At least the age of majority in your jurisdiction, or
+- Accessing the Software with the involvement and consent of a parent or legal guardian.
+
+This clause governs access to the **source code and repository** under this license. It does not replace or override any separate age requirements, parental consent mechanisms, or safeguarding provisions that may apply to the **live, hosted Unwind product** — those are governed separately by [TERMS.md](./TERMS.md) and [PRIVACY.md](./PRIVACY.md).
+
+---
+
+## 12. Mental Wellness Disclaimer
 
 > ⚠️ Unwind is a software project intended to support personal reflection, wellness, journaling, habit building, mood awareness, and related activities.
 >
@@ -160,7 +218,7 @@ This limitation applies regardless of the legal theory of liability (contract, t
 
 ---
 
-## 10. Termination
+## 13. Termination
 
 This license and the rights granted under it automatically terminate if you breach any of its terms.
 
@@ -168,11 +226,11 @@ Where a breach is capable of being remedied, the project owners will make reason
 
 Upon termination, you must cease all use, distribution, and other activities that are no longer permitted under this license, and destroy or remove any copies of the Software in your possession that exceed the scope of permitted use.
 
-Sections concerning intellectual property, restrictions, disclaimers, limitation of liability, governing law, and other provisions that by their nature should survive termination shall remain in effect.
+Sections concerning intellectual property, restrictions, disclaimers, limitation of liability, indemnification, governing law, and other provisions that by their nature should survive termination shall remain in effect.
 
 ---
 
-## 11. Governing Law and Disputes
+## 14. Governing Law and Disputes
 
 This license shall be governed by and construed in accordance with the laws of **[Jurisdiction to be specified by the project owners — e.g., the laws of India]**, without regard to its conflict-of-law provisions.
 
@@ -182,13 +240,13 @@ Any dispute arising out of or relating to this license shall first be attempted 
 
 ---
 
-## 12. Severability
+## 15. Severability
 
 If any provision of this license is held to be invalid, illegal, or unenforceable by a court or tribunal of competent jurisdiction, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions of this license shall continue in full force and effect.
 
 ---
 
-## 13. Copyright
+## 16. Copyright
 
 All rights not expressly granted by this license are reserved.
 
@@ -212,7 +270,7 @@ Nothing in this license shall be interpreted as transferring ownership of the So
 | Personal use | ✅ Yes |
 | Educational use | ✅ Yes |
 | Modify for personal/educational use | ✅ Yes |
-| Commercial use | ❌ No |
+| Commercial use | ❌ No (see §2.2) |
 | Sell the Software | ❌ No |
 | Redistribute the Software | ❌ No |
 | Create a competing product from a substantial portion | ❌ No |
@@ -220,7 +278,8 @@ Nothing in this license shall be interpreted as transferring ownership of the So
 | Claim the Software as your own | ❌ No |
 | Use as a commercial hosted service | ❌ No |
 | Use Software/content to train AI models | ❌ No |
-| Contributions | ✅ Subject to project terms (Section 4) |
+| Contributions | ✅ Subject to project terms (§5) |
+| Requesting permission for restricted uses | ✅ Via contact method in §3 |
 
 </div>
 
