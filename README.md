@@ -445,7 +445,7 @@ Unwind combines automated checks with structured human testing:
 
 | 🧪 Testers | 🧑‍💻 Technical | 🙋 Non-technical | ⭐ Rated 4–5 / 5 |
 |:---:|:---:|:---:|:---:|
-| **36** | 11 | 25 | **~90–95%** |
+| **59** | 14 | 45 | **~90–95%** |
 
 </div>
 
@@ -549,17 +549,7 @@ Read [CONTRIBUTING.md](./CONTRIBUTING.md) before submitting a contribution. By p
 | Document | Purpose |
 |---|---|
 | [SECURITY.md](./SECURITY.md) | Security policy and responsible disclosure |
-| [CONTRIBUTING.md](./CONTRIBUTING.md) | Contribution workflow and standards |
 | [LICENSE.md](./LICENSE.md) | Project license |
-| [PRIVACY.md](./PRIVACY.md) | Privacy principles and data practices |
-| [TERMS.md](./TERMS.md) | Terms of use |
-| [DEPLOYMENT.md](./DEPLOYMENT.md) | Deployment and rollback guidance |
-| [TESTING.md](./TESTING.md) | Test strategy and reported results |
-| [API.md](./API.md) | API endpoints and contracts |
-| [DATABASE.md](./DATABASE.md) | Database design and relationships |
-| [CHANGELOG.md](./CHANGELOG.md) | Version history and notable changes |
-| [ROADMAP.md](./ROADMAP.md) | Planned improvements |
-| [RELEASE_NOTES.md](./RELEASE_NOTES.md) | Release-specific notes |
 
 <br/>
 
