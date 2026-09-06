@@ -79,22 +79,22 @@ The interface uses a calm, nature-inspired visual language — deep forest green
 <div align="center">
 
 **Landing Page**
-![Unwind landing page](docs/screenshots/landing-page.png)
+![Unwind landing page](docs/screenshots/landing-page.jpeg)
 
 **Wellness Dashboard**
-![Unwind wellness dashboard](docs/screenshots/dashboard.png)
+![Unwind wellness dashboard](docs/screenshots/dashboard.jpeg)
 
 **DASS-21 Assessment**
-![Unwind DASS-21 assessment](docs/screenshots/dass-assessment.png)
+![Unwind DASS-21 assessment](docs/screenshots/dass-assessment.jpeg)
 
 **Private Journal**
-![Unwind private journal](docs/screenshots/journal.png)
+![Unwind private journal](docs/screenshots/journal.jpeg)
 
 **Community**
-![Unwind community](docs/screenshots/community.png)
+![Unwind community](docs/screenshots/community.jpeg)
 
 **Admin & Analytics**
-![Unwind admin analytics](docs/screenshots/admin-dashboard.png)
+![Unwind admin analytics](docs/screenshots/admin-dashboard.jpeg)
 
 </div>
 
