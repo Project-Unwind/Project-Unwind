@@ -9,10 +9,10 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "check": "node --check src/server.js",
-    "test": "node --test",
-    "test:watch": "node --test --watch",
-    "test:coverage": "node --test --experimental-test-coverage",
-    "test:ci": "node --test"
+   "test": "node --import ./test-support/setup-env.js --test",
+"test:watch": "node --import ./test-support/setup-env.js --test --watch",
+"test:coverage": "node --import ./test-support/setup-env.js --test --experimental-test-coverage",
+"test:ci": "node --import ./test-support/setup-env.js --test"
   },
   "keywords": [
     "unwind",
