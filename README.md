@@ -74,8 +74,6 @@ The interface uses a calm, nature-inspired visual language — deep forest green
 
 ## 🖼️ Screenshots
 
-> Add screenshots to `docs/screenshots/` using the filenames below — GitHub will display them automatically.
-
 <div align="center">
 
 **Landing Page**
