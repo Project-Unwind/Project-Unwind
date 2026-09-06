@@ -1,24 +1,33 @@
 {
   "name": "unwind-backend",
   "version": "1.0.0",
-  "description": "UNWIND Mental Wellness Backend API",
+  "private": true,
+  "description": "Backend API for the UNWIND mental wellness and self-care platform",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
-  "dev": "nodemon src/server.js",
-  "start": "node src/server.js",
-  "test": "node --test",
-  "test:coverage": "node --test --experimental-test-coverage"
-},
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "check": "node --check src/server.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "test:coverage": "node --test --experimental-test-coverage",
+    "test:ci": "node --test"
+  },
   "keywords": [
     "unwind",
+    "mental-wellness",
     "mental-health",
+    "self-care",
     "node",
     "express",
     "postgresql"
   ],
-  "author": "",
+  "author": "Atharva Padwal",
   "license": "ISC",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "dependencies": {
     "@getbrevo/brevo": "^6.0.2",
     "@google/genai": "^2.15.0",
@@ -48,6 +57,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
   }
 }
