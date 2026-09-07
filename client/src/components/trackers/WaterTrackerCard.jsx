@@ -273,7 +273,7 @@ function WaterTrackerCard({
   </>
 )}
 
-          Undo last
+          
         </button>
       </div>
 
