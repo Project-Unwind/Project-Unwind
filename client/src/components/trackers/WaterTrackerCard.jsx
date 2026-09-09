@@ -269,8 +269,8 @@ function WaterTrackerCard({
 ) : (
   <>
     <Undo2 size={15} />
-    Undo Previous
-      </>
+    Undo last
+  </>
 )}
 
           
