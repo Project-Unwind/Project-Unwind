@@ -1776,7 +1776,7 @@ export function startNotificationScheduler() {
     .unref?.();
 
   console.log(
-    "✅ Daily tracker notification scheduler started."
+    "Daily tracker notification scheduler started."
   );
 }
 

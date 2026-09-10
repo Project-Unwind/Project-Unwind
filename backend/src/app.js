@@ -141,7 +141,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/health", (req, res) => {
   console.log(
-    `[HEALTH CHECK] Ping received at ${new Date().toISOString()}`
+    `[HEALTH CHECK] Ping sucessfully received at ${new Date().toISOString()}`
   );
 
   res.status(200).json({
