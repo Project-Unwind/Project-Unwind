@@ -79,7 +79,7 @@ async function startServer() {
       PORT,
       () => {
         console.log(
-          `UNWIND backend running on port ${PORT}`
+          `UNWIND backend running successfully on port ${PORT}`
         );
 
         console.log(

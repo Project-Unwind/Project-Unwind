@@ -29,7 +29,7 @@ export default function registerSocketHandlers(io) {
 
   io.on(SOCKET_EVENTS.CONNECTION, (socket) => {
     console.log(
-      `Socket connected: ${socket.id} | User: ${socket.user.user_id}`
+      `Socket successfully connected: ${socket.id} | User: ${socket.user.user_id}`
     );
     /*
 |--------------------------------------------------------------------------
