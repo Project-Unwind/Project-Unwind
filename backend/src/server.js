@@ -7,10 +7,7 @@ import app from "./app.js";
 import pool from "./config/database.js";
 import initializeSocket from "./config/socket.js";
 
-import {
-  startNotificationScheduler,
-  stopNotificationScheduler
-} from "./services/notification/notificationScheduler.service.js";
+
 
 const PORT =
   Number(
@@ -52,22 +49,7 @@ async function startServer() {
         httpServer
       );
 
-    /*
-    |--------------------------------------------------------------------------
-    | Daily Tracker + Habit Notifications
-    |--------------------------------------------------------------------------
-    |
-    | Sleep  = 09:00
-    | Energy = 10:00
-    | Water  = 13:00
-    | Mood   = 22:00
-    |
-    | Habit = user's selected reminder time.
-    |
-    |--------------------------------------------------------------------------
-    */
-
-    startNotificationScheduler();
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -154,13 +136,7 @@ async function shutdownServer(
   );
 
   try {
-    /*
-    |--------------------------------------------------------------------------
-    | Stop notification scheduler
-    |--------------------------------------------------------------------------
-    */
-
-    stopNotificationScheduler();
+   
 
     /*
     |--------------------------------------------------------------------------

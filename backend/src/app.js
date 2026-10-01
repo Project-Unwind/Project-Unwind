@@ -12,6 +12,8 @@ import adminCommunityModerationRoutes
   from "./routes/admin/adminCommunityModeration.routes.js";
 import adminUserRoutes
   from "./routes/admin/adminUser.routes.js";
+  import notificationCronRoutes
+  from "./routes/internal/notificationCron.routes.js";
 import adminModerationRoutes
   from "./routes/admin/adminModeration.routes.js";
 import profileRoutes from "./routes/profile.routes.js";
@@ -151,6 +153,16 @@ app.get("/api/health", (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+/*
+|--------------------------------------------------------------------------
+| Internal Scheduled Jobs
+|--------------------------------------------------------------------------
+*/
+
+app.use(
+  "/api/internal/notifications",
+  notificationCronRoutes
+);
 
 app.use(
   "/api/notifications",
