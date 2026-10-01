@@ -14,8 +14,7 @@ import {
 const DEFAULT_TIMEZONE =
   "Asia/Kolkata";
 
-const POLL_INTERVAL_MS =
-  30 * 1000;
+
 
 const DUE_WINDOW_MINUTES =
   10;
@@ -58,9 +57,6 @@ const DAILY_TRACKER_SCHEDULE = {
   mood:
     "22:00"
 };
-
-let schedulerTimer =
-  null;
 
 let schedulerRunning =
   false;
@@ -1722,85 +1718,4 @@ export function requestImmediateNotificationCheck() {
   );
 }
 
-/*
-|--------------------------------------------------------------------------
-| Start Scheduler
-|--------------------------------------------------------------------------
-*/
 
-export function startNotificationScheduler() {
-  if (
-    schedulerTimer
-  ) {
-    return;
-  }
-
-  /*
-   * Check once immediately when
-   * the backend starts.
-   */
-
-  runSchedulerTick()
-    .catch(
-      error => {
-        console.error(
-          "Initial notification scheduler check failed:",
-          error?.message ||
-            error
-        );
-      }
-    );
-
-  /*
-   * Then every 30 seconds.
-   */
-
-  schedulerTimer =
-    setInterval(
-      () => {
-        runSchedulerTick()
-          .catch(
-            error => {
-              console.error(
-                "Scheduled notification check failed:",
-                error?.message ||
-                  error
-              );
-            }
-          );
-      },
-      POLL_INTERVAL_MS
-    );
-
-  schedulerTimer
-    .unref?.();
-
-  console.log(
-    "Daily tracker notification scheduler started."
-  );
-}
-
-/*
-|--------------------------------------------------------------------------
-| Stop Scheduler
-|--------------------------------------------------------------------------
-*/
-
-export function stopNotificationScheduler() {
-  if (
-    !schedulerTimer
-  ) {
-    return;
-  }
-
-  clearInterval(
-    schedulerTimer
-  );
-
-  schedulerTimer =
-    null;
-
-  console.log(
-    "Daily tracker notification scheduler stopped."
-  );
-}
