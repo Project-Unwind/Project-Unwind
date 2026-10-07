@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /verify-email
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /auth/
+Disallow: /notifications
+
 Sitemap: https://project-unwind-mu.vercel.app/sitemap.xml
