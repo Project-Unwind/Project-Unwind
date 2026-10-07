@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://project-unwind-mu.vercel.app/</loc>
   </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/info/about</loc>
+  </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/info/values</loc>
+  </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/info/careers</loc>
+  </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/info/contact</loc>
+  </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/info/guidelines</loc>
+  </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/info/safety</loc>
+  </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/terms</loc>
+  </url>
+
+  <url>
+    <loc>https://project-unwind-mu.vercel.app/privacy</loc>
+  </url>
+
 </urlset>
