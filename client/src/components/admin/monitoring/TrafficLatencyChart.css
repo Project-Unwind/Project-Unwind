@@ -1,0 +1,221 @@
+
+/* =====================================================
+   UNWIND PULSE — TRAFFIC & LATENCY CHART
+   ===================================================== */
+
+.pulse-traffic-panel {
+  background: #172824;
+  border: 1px solid #304640;
+  border-radius: 16px;
+  padding: 22px;
+  width: 100%;
+  min-width: 0;
+  color: #e9f5ef;
+}
+
+/* HEADER */
+
+.pulse-traffic-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.pulse-traffic-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 7px;
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: #f0faf5;
+}
+
+.pulse-traffic-header h2 svg {
+  color: #48d7a3;
+}
+
+.pulse-traffic-header p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #9bb6aa;
+}
+
+/* LEGEND */
+
+.pulse-traffic-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.pulse-traffic-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.75rem;
+  color: #b9d1c5;
+  white-space: nowrap;
+}
+
+.pulse-traffic-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.pulse-legend-requests {
+  background: #36d8a0;
+}
+
+.pulse-legend-latency {
+  background: #69aaff;
+}
+
+/* CHART */
+
+.pulse-chart-container {
+  width: 100%;
+  position: relative;
+  min-width: 0;
+}
+
+.pulse-chart-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: #a9c2b7;
+}
+
+.pulse-chart-container svg path {
+  transition: opacity 0.2s ease;
+}
+
+/* TOOLTIP */
+
+.pulse-chart-tooltip {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  min-width: 155px;
+  padding: 12px 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  background: rgba(9, 26, 22, 0.96);
+  border: 1px solid #365b4e;
+  border-radius: 10px;
+
+  color: #c6e7d7;
+  font-size: 0.75rem;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.pulse-chart-tooltip strong {
+  color: #ffffff;
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+/* EMPTY STATE */
+
+.pulse-chart-empty {
+  min-height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #8faea0;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* FOOTER */
+
+.pulse-chart-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+
+  font-size: 0.7rem;
+  color: #8faea0;
+}
+
+/* LIGHT MODE */
+
+[data-theme="light"] .pulse-traffic-panel,
+.light .pulse-traffic-panel {
+  background: #ffffff;
+  border-color: #dce7e1;
+  color: #203d33;
+}
+
+[data-theme="light"] .pulse-traffic-header h2,
+.light .pulse-traffic-header h2 {
+  color: #17382d;
+}
+
+[data-theme="light"] .pulse-traffic-header p,
+[data-theme="light"] .pulse-traffic-legend span,
+[data-theme="light"] .pulse-chart-footer,
+.light .pulse-traffic-header p,
+.light .pulse-traffic-legend span,
+.light .pulse-chart-footer {
+  color: #667f74;
+}
+
+[data-theme="light"] .pulse-chart-container svg,
+.light .pulse-chart-container svg {
+  color: #627c70;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .pulse-traffic-panel {
+    padding: 16px;
+  }
+
+  .pulse-traffic-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pulse-traffic-legend {
+    gap: 12px;
+  }
+
+  .pulse-chart-tooltip {
+    min-width: 135px;
+    padding: 9px 11px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pulse-traffic-panel {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .pulse-traffic-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .pulse-chart-footer {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

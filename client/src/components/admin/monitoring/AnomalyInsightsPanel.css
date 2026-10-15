@@ -1,0 +1,502 @@
+
+/* =====================================================
+   UNWIND PULSE — ANOMALY INSIGHTS PANEL
+   ===================================================== */
+
+.pulse-anomaly-panel {
+  background: #172824;
+  border: 1px solid #304640;
+  border-radius: 16px;
+  padding: 22px;
+  width: 100%;
+  min-width: 0;
+  color: #e9f5ef;
+}
+
+/* HEADER */
+
+.pulse-anomaly-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.pulse-anomaly-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 7px;
+  color: #f0faf5;
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.pulse-anomaly-header h2 svg {
+  color: #48d7a3;
+}
+
+.pulse-anomaly-header p {
+  margin: 0;
+  color: #9bb6aa;
+  font-size: 0.78rem;
+}
+
+.pulse-anomaly-summary {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pulse-anomaly-critical-count,
+.pulse-anomaly-warning-count {
+  padding: 7px 11px;
+  border-radius: 8px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.pulse-anomaly-critical-count {
+  background: rgba(241, 111, 121, 0.12);
+  border: 1px solid rgba(241, 111, 121, 0.3);
+  color: #ff969e;
+}
+
+.pulse-anomaly-warning-count {
+  background: rgba(242, 186, 101, 0.1);
+  border: 1px solid rgba(242, 186, 101, 0.3);
+  color: #f2c889;
+}
+
+/* ANOMALY LIST */
+
+.pulse-anomaly-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.pulse-anomaly-card {
+  border: 1px solid #385047;
+  border-radius: 12px;
+  padding: 17px;
+  background: #1a2e27;
+  transition: border-color 0.2s ease;
+}
+
+.pulse-anomaly-card:hover {
+  border-color: #56796a;
+}
+
+.pulse-anomaly-critical {
+  border-left: 3px solid #f16f79;
+}
+
+.pulse-anomaly-warning {
+  border-left: 3px solid #f2ba65;
+}
+
+.pulse-anomaly-card-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.pulse-anomaly-icon {
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.pulse-anomaly-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.pulse-anomaly-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.pulse-anomaly-title-row h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 650;
+  color: #f0faf5;
+}
+
+.pulse-anomaly-card-content > p {
+  margin: 0 0 10px;
+  color: #adc5b9;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.pulse-anomaly-endpoint {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-family: Consolas, monospace;
+  font-size: 0.74rem;
+  color: #8ce2b8;
+}
+
+/* SEVERITY LABELS */
+
+.pulse-anomaly-severity {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.pulse-severity-critical {
+  background: rgba(241, 111, 121, 0.13);
+  color: #ff969e;
+}
+
+.pulse-severity-warning {
+  background: rgba(242, 186, 101, 0.13);
+  color: #f2c889;
+}
+
+/* EXPANDABLE INVESTIGATION */
+
+.pulse-anomaly-expand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 15px;
+  padding: 7px 0;
+  background: transparent;
+  border: none;
+  color: #8ce2b8;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pulse-anomaly-expand:hover {
+  color: #c1ffe0;
+}
+
+.pulse-anomaly-expand:focus-visible,
+.pulse-anomaly-show-all:focus-visible {
+  outline: 2px solid #69d7aa;
+  outline-offset: 4px;
+}
+
+.pulse-anomaly-investigation {
+  margin-top: 14px;
+  padding-top: 17px;
+  border-top: 1px solid #365247;
+}
+
+.pulse-anomaly-measurements {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.pulse-anomaly-measurements > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 13px;
+  background: #10251e;
+  border: 1px solid #314d3f;
+  border-radius: 9px;
+}
+
+.pulse-anomaly-measurements span {
+  color: #9dbbad;
+  font-size: 0.72rem;
+}
+
+.pulse-anomaly-measurements strong {
+  color: #f0faf5;
+  font-size: 1.08rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* INVESTIGATION RECOMMENDATION */
+
+.pulse-anomaly-recommendation {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px;
+  background: rgba(72, 215, 163, 0.06);
+  border: 1px solid #365b48;
+  border-radius: 10px;
+}
+
+.pulse-anomaly-recommendation > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #7dddaf;
+}
+
+.pulse-anomaly-recommendation strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #e9f5ef;
+  font-size: 0.8rem;
+}
+
+.pulse-anomaly-recommendation p {
+  margin: 0;
+  color: #adc5b9;
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.pulse-anomaly-caution {
+  margin: 12px 0 0;
+  color: #95b2a3;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+/* SHOW ALL BUTTON */
+
+.pulse-anomaly-show-all {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background: #20382f;
+  border: 1px solid #365649;
+  border-radius: 9px;
+  color: #9fe8c3;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.pulse-anomaly-show-all:hover {
+  background: #2b4c3d;
+}
+
+/* EMPTY STATE */
+
+.pulse-anomaly-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 190px;
+  padding: 24px;
+  text-align: center;
+  background: rgba(72, 215, 163, 0.035);
+  border: 1px dashed #365649;
+  border-radius: 12px;
+}
+
+.pulse-anomaly-empty svg {
+  color: #62d8a4;
+  margin-bottom: 12px;
+}
+
+.pulse-anomaly-empty h3 {
+  margin: 0 0 8px;
+  color: #e9f5ef;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.pulse-anomaly-empty p {
+  max-width: 420px;
+  margin: 0;
+  color: #9bb6aa;
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+
+/* FOOTER */
+
+.pulse-anomaly-footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #304640;
+  color: #91aa9e;
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.pulse-anomaly-footer svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* LIGHT MODE */
+
+[data-theme="light"] .pulse-anomaly-panel,
+.light .pulse-anomaly-panel {
+  background: #ffffff;
+  border-color: #dce7e1;
+  color: #203d33;
+}
+
+[data-theme="light"] .pulse-anomaly-header h2,
+[data-theme="light"] .pulse-anomaly-title-row h3,
+[data-theme="light"] .pulse-anomaly-empty h3,
+.light .pulse-anomaly-header h2,
+.light .pulse-anomaly-title-row h3,
+.light .pulse-anomaly-empty h3 {
+  color: #17382d;
+}
+
+[data-theme="light"] .pulse-anomaly-header p,
+[data-theme="light"] .pulse-anomaly-card-content > p,
+[data-theme="light"] .pulse-anomaly-empty p,
+[data-theme="light"] .pulse-anomaly-footer,
+[data-theme="light"] .pulse-anomaly-caution,
+.light .pulse-anomaly-header p,
+.light .pulse-anomaly-card-content > p,
+.light .pulse-anomaly-empty p,
+.light .pulse-anomaly-footer,
+.light .pulse-anomaly-caution {
+  color: #667f74;
+}
+
+[data-theme="light"] .pulse-anomaly-card,
+.light .pulse-anomaly-card {
+  background: #f7faf8;
+  border-top-color: #dce7e1;
+  border-right-color: #dce7e1;
+  border-bottom-color: #dce7e1;
+}
+
+[data-theme="light"] .pulse-anomaly-measurements > div,
+.light .pulse-anomaly-measurements > div {
+  background: #ffffff;
+  border-color: #dce7e1;
+}
+
+[data-theme="light"] .pulse-anomaly-measurements strong,
+[data-theme="light"] .pulse-anomaly-recommendation strong,
+.light .pulse-anomaly-measurements strong,
+.light .pulse-anomaly-recommendation strong {
+  color: #17382d;
+}
+
+[data-theme="light"] .pulse-anomaly-measurements span,
+[data-theme="light"] .pulse-anomaly-recommendation p,
+.light .pulse-anomaly-measurements span,
+.light .pulse-anomaly-recommendation p {
+  color: #667f74;
+}
+
+[data-theme="light"] .pulse-anomaly-recommendation,
+.light .pulse-anomaly-recommendation {
+  background: #edf8f1;
+  border-color: #cde7d6;
+}
+
+[data-theme="light"] .pulse-anomaly-endpoint,
+[data-theme="light"] .pulse-anomaly-expand,
+.light .pulse-anomaly-endpoint,
+.light .pulse-anomaly-expand {
+  color: #217a58;
+}
+
+[data-theme="light"] .pulse-anomaly-show-all,
+.light .pulse-anomaly-show-all {
+  background: #edf7f0;
+  border-color: #cde7d6;
+  color: #217a58;
+}
+
+[data-theme="light"] .pulse-anomaly-empty,
+.light .pulse-anomaly-empty {
+  background: #f7fbf8;
+  border-color: #cde7d6;
+}
+
+[data-theme="light"] .pulse-anomaly-critical-count,
+[data-theme="light"] .pulse-severity-critical,
+.light .pulse-anomaly-critical-count,
+.light .pulse-severity-critical {
+  color: #ae3544;
+}
+
+[data-theme="light"] .pulse-anomaly-warning-count,
+[data-theme="light"] .pulse-severity-warning,
+.light .pulse-anomaly-warning-count,
+.light .pulse-severity-warning {
+  color: #956015;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .pulse-anomaly-panel {
+    padding: 17px;
+  }
+
+  .pulse-anomaly-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pulse-anomaly-card {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pulse-anomaly-card-main {
+    gap: 10px;
+  }
+
+  .pulse-anomaly-icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  .pulse-anomaly-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .pulse-anomaly-measurements {
+    grid-template-columns: 1fr;
+  }
+
+  .pulse-anomaly-summary {
+    width: 100%;
+  }
+
+  .pulse-anomaly-panel {
+    padding: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-anomaly-card,
+  .pulse-anomaly-show-all {
+    transition: none;
+  }
+}

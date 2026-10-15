@@ -1,0 +1,453 @@
+
+/* =====================================================
+   UNWIND PULSE — SERVICE HEALTH NETWORK
+   ===================================================== */
+
+.pulse-network-panel {
+  background: #172824;
+  border: 1px solid #304640;
+  border-radius: 16px;
+  padding: 22px;
+  width: 100%;
+  min-width: 0;
+  color: #e9f5ef;
+}
+
+/* HEADER */
+
+.pulse-network-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.pulse-network-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 7px;
+  color: #f0faf5;
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.pulse-network-header h2 svg {
+  color: #48d7a3;
+}
+
+.pulse-network-header p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #9bb6aa;
+}
+
+.pulse-network-window {
+  padding: 7px 11px;
+  background: rgba(72, 215, 163, 0.08);
+  border: 1px solid #36584b;
+  border-radius: 8px;
+  font-size: 0.73rem;
+  color: #aadac5;
+}
+
+/* NETWORK CONTENT */
+
+.pulse-network-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  min-width: 0;
+}
+
+.pulse-network-visual {
+  flex: 1;
+  min-width: 0;
+}
+
+.pulse-network-visual > svg {
+  display: block;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+  color: #c2dbcf;
+}
+
+/* SERVICE SELECTION BUTTONS */
+
+.pulse-network-node-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 16px;
+}
+
+.pulse-network-node-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 10px 12px;
+  min-width: 0;
+
+  background: #20382f;
+  border: 1px solid #365649;
+  border-radius: 9px;
+
+  color: #c2dbcf;
+  font-size: 0.75rem;
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.pulse-network-node-button:hover {
+  background: #284c3d;
+  border-color: #4c9776;
+  transform: translateY(-1px);
+}
+
+.pulse-network-node-button.is-selected {
+  background: #24543f;
+  border-color: #59d5a0;
+  color: #ffffff;
+}
+
+.pulse-network-node-button:focus-visible,
+.pulse-service-close:focus-visible {
+  outline: 2px solid #6ae2b0;
+  outline-offset: 3px;
+}
+
+.pulse-network-health-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* SERVICE DETAILS */
+
+.pulse-service-details {
+  flex: 0 0 290px;
+  min-width: 0;
+  padding: 18px;
+  background: #10231d;
+  border: 1px solid #35594b;
+  border-radius: 12px;
+  animation: pulse-details-enter 0.2s ease;
+}
+
+@keyframes pulse-details-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pulse-service-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #304640;
+}
+
+.pulse-service-details-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.pulse-service-details-title > svg {
+  color: #69d7aa;
+  margin-top: 2px;
+}
+
+.pulse-service-details-title h3 {
+  margin: 0 0 5px;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.pulse-service-details-title span {
+  text-transform: capitalize;
+  font-size: 0.75rem;
+}
+
+.pulse-service-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  background: transparent;
+  border: 1px solid #355347;
+  border-radius: 8px;
+  color: #bfd8ca;
+  cursor: pointer;
+}
+
+/* DETAIL METRICS */
+
+.pulse-service-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.pulse-service-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  padding: 12px;
+  background: #1a3329;
+  border: 1px solid #2d493d;
+  border-radius: 9px;
+}
+
+.pulse-service-stats span {
+  color: #9dbbad;
+  font-size: 0.7rem;
+}
+
+.pulse-service-stats strong {
+  color: #f0faf5;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ENDPOINT LIST */
+
+.pulse-service-endpoints {
+  margin-top: 20px;
+}
+
+.pulse-service-endpoints h4 {
+  margin: 0 0 12px;
+  color: #e4f4eb;
+  font-size: 0.85rem;
+}
+
+.pulse-service-endpoints > p {
+  color: #9bb6aa;
+  font-size: 0.78rem;
+}
+
+.pulse-service-endpoint {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  padding: 11px 0;
+  border-bottom: 1px solid #2d493d;
+}
+
+.pulse-service-endpoint:last-child {
+  border-bottom: none;
+}
+
+.pulse-service-endpoint code {
+  color: #85dfb4;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.pulse-service-endpoint span {
+  color: #9bb6aa;
+  font-size: 0.7rem;
+}
+
+/* HEALTH LEGEND */
+
+.pulse-network-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  padding-top: 18px;
+  margin-top: 18px;
+  border-top: 1px solid #304640;
+}
+
+.pulse-network-footer span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #b5cfc1;
+  font-size: 0.72rem;
+  text-transform: capitalize;
+}
+
+.pulse-network-footer i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.pulse-network-disclaimer {
+  margin: 16px 0 0;
+  color: #8faea0;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* LIGHT MODE */
+
+[data-theme="light"] .pulse-network-panel,
+.light .pulse-network-panel {
+  background: #ffffff;
+  border-color: #dce7e1;
+  color: #203d33;
+}
+
+[data-theme="light"] .pulse-network-header h2,
+.light .pulse-network-header h2 {
+  color: #17382d;
+}
+
+[data-theme="light"] .pulse-network-header p,
+[data-theme="light"] .pulse-network-disclaimer,
+[data-theme="light"] .pulse-network-footer span,
+.light .pulse-network-header p,
+.light .pulse-network-disclaimer,
+.light .pulse-network-footer span {
+  color: #667f74;
+}
+
+[data-theme="light"] .pulse-network-visual > svg,
+.light .pulse-network-visual > svg {
+  color: #486b5c;
+}
+
+[data-theme="light"] .pulse-network-node-button,
+.light .pulse-network-node-button {
+  background: #f3f8f5;
+  color: #244a39;
+  border-color: #d4e5da;
+}
+
+[data-theme="light"] .pulse-network-node-button:hover,
+.light .pulse-network-node-button:hover {
+  background: #e6f3ea;
+}
+
+[data-theme="light"] .pulse-network-node-button.is-selected,
+.light .pulse-network-node-button.is-selected {
+  background: #d6f1df;
+  border-color: #42a879;
+}
+
+[data-theme="light"] .pulse-service-details,
+.light .pulse-service-details {
+  background: #f7faf8;
+  border-color: #d4e5da;
+}
+
+[data-theme="light"] .pulse-service-details-title h3,
+[data-theme="light"] .pulse-service-stats strong,
+[data-theme="light"] .pulse-service-endpoints h4,
+.light .pulse-service-details-title h3,
+.light .pulse-service-stats strong,
+.light .pulse-service-endpoints h4 {
+  color: #17382d;
+}
+
+[data-theme="light"] .pulse-service-stats > div,
+.light .pulse-service-stats > div {
+  background: #ffffff;
+  border-color: #dce7e1;
+}
+
+[data-theme="light"] .pulse-service-stats span,
+[data-theme="light"] .pulse-service-endpoint span,
+.light .pulse-service-stats span,
+.light .pulse-service-endpoint span {
+  color: #667f74;
+}
+
+[data-theme="light"] .pulse-service-endpoint code,
+.light .pulse-service-endpoint code {
+  color: #217a58;
+}
+
+[data-theme="light"] .pulse-service-close,
+.light .pulse-service-close {
+  color: #244a39;
+  border-color: #d4e5da;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+  .pulse-network-content {
+    flex-direction: column;
+  }
+
+  .pulse-network-visual,
+  .pulse-service-details {
+    width: 100%;
+  }
+
+  .pulse-service-details {
+    flex: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .pulse-network-panel {
+    padding: 16px;
+  }
+
+  .pulse-network-node-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pulse-network-node-button {
+    padding: 9px;
+    font-size: 0.7rem;
+  }
+
+  .pulse-network-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .pulse-service-details {
+    padding: 14px;
+  }
+
+  .pulse-network-footer {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-service-details,
+  .pulse-network-node-button {
+    animation: none;
+    transition: none;
+  }
+}
