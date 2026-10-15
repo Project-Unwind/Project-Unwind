@@ -36,9 +36,11 @@ function currentMinute() {
   return Math.floor(Date.now() / 60000);
 }
 
+
 function createStats() {
   return {
     requests: 0,
+    abortedRequests: 0,
     totalDurationMs: 0,
     maxDurationMs: 0,
     statusCodes: {
@@ -82,18 +84,30 @@ function sanitizePath(rawPath) {
   }).join("/");
 }
 
-function addStats(stats, statusCode, durationMs) {
+
+function addStats(
+  stats,
+  statusCode,
+  durationMs,
+  aborted = false
+) {
   stats.requests++;
+
   stats.totalDurationMs += durationMs;
+
   stats.maxDurationMs = Math.max(
     stats.maxDurationMs,
     durationMs
   );
 
-  const group = `${Math.floor(statusCode / 100)}xx`;
+  if (aborted) {
+    stats.abortedRequests++;
+  } else {
+    const group = `${Math.floor(statusCode / 100)}xx`;
 
-  if (Object.hasOwn(stats.statusCodes, group)) {
-    stats.statusCodes[group]++;
+    if (Object.hasOwn(stats.statusCodes, group)) {
+      stats.statusCodes[group]++;
+    }
   }
 
   const index = LATENCY_BUCKETS.findIndex(
@@ -103,8 +117,11 @@ function addStats(stats, statusCode, durationMs) {
   stats.latencyBuckets[index]++;
 }
 
+
+
 function mergeStats(target, source) {
   target.requests += source.requests;
+  target.abortedRequests += source.abortedRequests;
   target.totalDurationMs += source.totalDurationMs;
 
   target.maxDurationMs = Math.max(
@@ -142,45 +159,110 @@ function percentile(stats, percent) {
   return null;
 }
 
+
 function summarize(stats) {
+  // Calculate average request duration
   const average = stats.requests
     ? stats.totalDurationMs / stats.requests
     : 0;
 
+  // Calculate server error rate (HTTP 5xx)
+  const serverErrorRate = stats.requests
+    ? (
+        stats.statusCodes["5xx"] /
+        stats.requests
+      ) * 100
+    : 0;
+
+  // Calculate aborted request rate
+  const abortedRate = stats.requests
+    ? (
+        stats.abortedRequests /
+        stats.requests
+      ) * 100
+    : 0;
+
   return {
     requests: stats.requests,
-    averageLatencyMs: Number(average.toFixed(2)),
+
+    // Aborted request metrics
+    abortedRequests: stats.abortedRequests,
+    abortedRatePercent: Number(
+      abortedRate.toFixed(2)
+    ),
+
+    // Response latency metrics
+    averageLatencyMs: Number(
+      average.toFixed(2)
+    ),
+
     p50LatencyMs: percentile(stats, 0.50),
     p95LatencyMs: percentile(stats, 0.95),
     p99LatencyMs: percentile(stats, 0.99),
+
     maxLatencyMs: Number(
       stats.maxDurationMs.toFixed(2)
     ),
-    errorRatePercent: stats.requests
-      ? Number((
-          stats.statusCodes["5xx"] /
-          stats.requests * 100
-        ).toFixed(2))
-      : 0,
-    statusCodes: { ...stats.statusCodes }
+
+    // HTTP server error rate
+    errorRatePercent: Number(
+      serverErrorRate.toFixed(2)
+    ),
+
+    // HTTP response distribution
+    statusCodes: {
+      ...stats.statusCodes
+    }
   };
 }
+
 
 export function requestStarted() {
   activeRequests++;
 }
 
+
+/**
+ * Reset in-memory API metrics for isolated tests.
+ *
+ * Intended for automated testing only.
+ * Never expose this through an HTTP endpoint.
+ */
+export function resetApiMetricsForTesting() {
+  if (process.env.NODE_ENV !== "test") {
+    throw new Error(
+      "Metrics reset is only permitted in test mode"
+    );
+  }
+
+  if (activeRequests !== 0) {
+    throw new Error(
+      "Cannot reset metrics while requests are active"
+    );
+  }
+
+  minutes.clear();
+}
+
+
+
 export function requestFinished(
   method,
   rawPath,
   statusCode,
-  durationMs
+  durationMs,
+  aborted = false
 ) {
+  // 1. Decrease active request counter
   activeRequests = Math.max(0, activeRequests - 1);
 
+  // 2. Get current monitoring minute
   const minute = currentMinute();
+
+  // 3. Remove expired monitoring data
   cleanup();
 
+  // 4. Initialize minute record if missing
   if (!minutes.has(minute)) {
     minutes.set(minute, {
       overall: createStats(),
@@ -190,25 +272,41 @@ export function requestFinished(
 
   const record = minutes.get(minute);
 
-  addStats(record.overall, statusCode, durationMs);
+  // 5. Update overall API statistics
+  addStats(
+    record.overall,
+    statusCode,
+    durationMs,
+    aborted
+  );
 
+  // 6. Sanitize endpoint path
   const endpoint = `${method} ${sanitizePath(rawPath)}`;
 
-  const key = record.endpoints.has(endpoint) ||
+  // 7. Apply endpoint storage limit
+  const key =
+    record.endpoints.has(endpoint) ||
     record.endpoints.size < MAX_ENDPOINTS_PER_MINUTE
       ? endpoint
       : "OTHER";
 
-  if (!record.endpoints.has(key)) {
-    record.endpoints.set(key, createStats());
+  // 8. Get or initialize endpoint statistics
+  let endpointStats = record.endpoints.get(key);
+
+  if (!endpointStats) {
+    endpointStats = createStats();
+    record.endpoints.set(key, endpointStats);
   }
 
+  // 9. Update endpoint-level statistics
   addStats(
-    record.endpoints.get(key),
+    endpointStats,
     statusCode,
-    durationMs
+    durationMs,
+    aborted
   );
 }
+
 
 export function getApiMetrics() {
   cleanup();
@@ -229,43 +327,60 @@ export function getApiMetrics() {
     if (record) {
       mergeStats(overall, record.overall);
 
-      for (const [endpoint, stats] of record.endpoints) {
-        if (!endpointTotals.has(endpoint)) {
-          endpointTotals.set(endpoint, createStats());
+      for (const [endpoint, stats] of record.endpoints.entries()) {
+        let accumulated = endpointTotals.get(endpoint);
+
+        if (!accumulated) {
+          accumulated = createStats();
+          endpointTotals.set(endpoint, accumulated);
         }
 
-        mergeStats(endpointTotals.get(endpoint), stats);
+        mergeStats(accumulated, stats);
       }
     }
 
-    const stats = record
+    const minuteStats = record
       ? record.overall
       : createStats();
 
     trends.push({
-      timestamp: new Date(minute * 60000).toISOString(),
-      requests: stats.requests,
-      averageLatencyMs: summarize(stats).averageLatencyMs,
-      serverErrors: stats.statusCodes["5xx"]
+      timestamp: new Date(
+        minute * 60000
+      ).toISOString(),
+
+      requests: minuteStats.requests,
+
+      abortedRequests: minuteStats.abortedRequests,
+
+      averageLatencyMs:
+        summarize(minuteStats).averageLatencyMs,
+
+      serverErrors: minuteStats.statusCodes["5xx"]
     });
   }
 
-  const endpoints = [...endpointTotals.entries()]
-    .map(([endpoint, stats]) => ({
+  const endpoints = Array.from(
+    endpointTotals.entries(),
+    ([endpoint, stats]) => ({
       endpoint,
       ...summarize(stats)
-    }))
-    .sort((a, b) => b.requests - a.requests);
+    })
+  ).sort((a, b) => b.requests - a.requests);
 
   return {
     windowMinutes: WINDOW_MINUTES,
     generatedAt: new Date().toISOString(),
     activeRequests,
+
     requestsPerMinute: Number(
       (overall.requests / WINDOW_MINUTES).toFixed(2)
     ),
+
     ...summarize(overall),
+
     endpoints,
     trends
   };
 }
+
+
