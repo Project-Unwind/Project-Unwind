@@ -6,6 +6,7 @@ import {
 
 import {
   LayoutDashboard,
+  Activity,
   BarChart3,
   Users,
   Flag,
@@ -44,6 +45,11 @@ const NAV_ITEMS = [
     label: "Analytics",
     icon: BarChart3
   },
+  {
+  to: "/admin/monitoring",
+  label: "API Monitoring",
+  icon: Activity
+},
   {
     to: "/admin/users",
     label: "Users",
