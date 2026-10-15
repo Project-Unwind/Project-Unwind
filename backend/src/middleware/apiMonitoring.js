@@ -21,45 +21,46 @@ import {
  * - Query parameters
  */
 
+
 export function apiMonitoring(req, res, next) {
-  // Record high-resolution request start time
+  // Record high-resolution start time
   const startTime = process.hrtime.bigint();
 
-  // Increase active request counter
   requestStarted();
 
-  // Prevent recording the same request twice
+  // Prevent duplicate recording
   let completed = false;
 
-  function finish() {
+  function finish(aborted = false) {
     if (completed) return;
 
     completed = true;
 
-    // Calculate elapsed time in milliseconds
     const durationMs =
       Number(process.hrtime.bigint() - startTime) /
       1_000_000;
 
-    // Send performance data to metrics service
     requestFinished(
       req.method,
       req.originalUrl,
       res.statusCode,
-      durationMs
+      durationMs,
+      aborted
     );
   }
 
-  // Called when response completes normally
-  res.once("finish", finish);
+  // Response completed successfully or with an HTTP error
+  res.once("finish", () => {
+    finish(false);
+  });
 
-  // Called when connection closes unexpectedly
+  // Response connection closed before completion
   res.once("close", () => {
     if (!res.writableFinished) {
-      finish();
+      finish(true);
     }
   });
 
-  // Continue to next Express middleware
   next();
 }
+
