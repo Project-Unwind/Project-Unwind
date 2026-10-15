@@ -28,6 +28,14 @@ import dashboardRoutes
   from "./routes/admin/adminDashboard.routes.js";
   import adminAnalyticsRoutes
   from "./routes/admin/adminAnalytics.routes.js";
+  
+import adminMonitoringRoutes
+  from "./routes/admin/adminMonitoring.routes.js";
+
+import {
+  apiMonitoring
+} from "./middleware/apiMonitoring.js";
+
 import trackerRoutes from "./routes/trackers/index.js";
 import chatRoomRoutes from "./routes/chatRoom.routes.js";
 import chatMessageRoutes from "./routes/chatMessage.routes.js";
@@ -66,12 +74,36 @@ dotenv.config();
 const app = express();
 
 
+
 app.set("trust proxy", 1);
+
+/*
+|--------------------------------------------------------------------------
+| API Performance Monitoring
+|--------------------------------------------------------------------------
+|
+| Collects:
+| - HTTP request counts
+| - Response latency
+| - HTTP status codes
+| - Active requests
+| - Endpoint performance
+|
+| Resource usage:
+| - No database writes
+| - No external API calls
+| - Lightweight in-memory tracking
+|
+*/
+
+app.use(apiMonitoring);
+
 /*
 |--------------------------------------------------------------------------
 | Security Middleware
 |--------------------------------------------------------------------------
 */
+
 
 app.use(helmet());
 
@@ -372,6 +404,19 @@ app.use(
   "/api/admin/analytics",
   adminAnalyticsRoutes
 );
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin API Monitoring Routes
+|--------------------------------------------------------------------------
+*/
+
+app.use(
+  "/api/admin/monitoring",
+  adminMonitoringRoutes
+);
+
 /*
 |--------------------------------------------------------------------------
 | 404 Handler
