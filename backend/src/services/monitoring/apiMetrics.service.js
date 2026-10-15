@@ -85,6 +85,47 @@ function sanitizePath(rawPath) {
 }
 
 
+/**
+ * Sanitize a developer-defined Express route template.
+ *
+ * Static route segments are preserved.
+ * Dynamic parameters and wildcard patterns are masked.
+ *
+ * Never call this function with a raw client URL.
+ */
+function sanitizeRouteTemplate(routePath) {
+  if (typeof routePath !== "string") {
+    return "/";
+  }
+
+  const segments = routePath
+    .split("/")
+    .filter(Boolean)
+    .slice(0, 8);
+
+  if (!segments.length) {
+    return "/";
+  }
+
+  return "/" + segments.map(segment => {
+    // Express dynamic parameters, including optional
+    // parameters and parameter regex constraints.
+    if (segment.startsWith(":")) {
+      return ":param";
+    }
+
+    // Preserve only simple, developer-defined literals.
+    if (/^[a-zA-Z0-9_-]+$/.test(segment)) {
+      return segment.toLowerCase();
+    }
+
+    // Mask wildcards and unsupported route syntax.
+    return ":param";
+  }).join("/");
+}
+
+
+
 function addStats(
   stats,
   statusCode,
@@ -167,12 +208,21 @@ function summarize(stats) {
     : 0;
 
   // Calculate server error rate (HTTP 5xx)
-  const serverErrorRate = stats.requests
+  
+  // Completed HTTP responses exclude aborted requests.
+  const completedResponses = Math.max(
+    0,
+    stats.requests - stats.abortedRequests
+  );
+
+  // Calculate HTTP 5xx rate using completed responses.
+  const serverErrorRate = completedResponses
     ? (
         stats.statusCodes["5xx"] /
-        stats.requests
+        completedResponses
       ) * 100
     : 0;
+
 
   // Calculate aborted request rate
   const abortedRate = stats.requests
@@ -246,13 +296,17 @@ export function resetApiMetricsForTesting() {
 
 
 
+
 export function requestFinished(
   method,
   rawPath,
   statusCode,
   durationMs,
-  aborted = false
-) {
+  aborted = false,
+  routeTemplate = null,
+  routeBaseUrl = ""
+)
+{
   // 1. Decrease active request counter
   activeRequests = Math.max(0, activeRequests - 1);
 
@@ -281,7 +335,24 @@ export function requestFinished(
   );
 
   // 6. Sanitize endpoint path
-  const endpoint = `${method} ${sanitizePath(rawPath)}`;
+  
+  // A matched route template comes from Express itself.
+  // A router's baseUrl can contain actual client values,
+  // so sanitize it using the conservative allowlist.
+  const monitoredPath =
+    typeof routeTemplate === "string"
+      ? (
+          sanitizePath(routeBaseUrl) === "/"
+            ? sanitizeRouteTemplate(routeTemplate)
+            : (
+                sanitizePath(routeBaseUrl) +
+                sanitizeRouteTemplate(routeTemplate)
+              ).replace(/\/+/g, "/")
+        )
+      : sanitizePath(rawPath);
+
+  const endpoint = `${method} ${monitoredPath}`;
+
 
   // 7. Apply endpoint storage limit
   const key =

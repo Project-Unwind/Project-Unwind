@@ -7,28 +7,43 @@ import {
 /**
  * API Performance Monitoring Middleware
  *
- * Tracks:
- * - Incoming HTTP requests
- * - Request processing duration
- * - HTTP response status codes
- * - Concurrent active requests
+ * Records:
+ * - HTTP request counts
+ * - Request duration
+ * - HTTP status distribution
+ * - Active requests
+ * - Aborted requests
  *
- * Does not store:
- * - Request bodies
- * - Authentication tokens
- * - User information
- * - Journal entries
- * - Query parameters
+ * Privacy:
+ * - Never stores request bodies
+ * - Never stores authorization headers
+ * - Never stores query parameters
+ * - Uses normalized route templates where possible
  */
 
+function getMonitoringPath(req) {
+  const routePath = req.route?.path;
+
+  // Use the matched Express route when available.
+  if (typeof routePath === "string") {
+    const baseUrl = req.baseUrl || "";
+
+    const fullPath = `${baseUrl}/${routePath}`
+      .replace(/\/+/g, "/");
+
+    return fullPath;
+  }
+
+  // Fallback for unmatched requests and unsupported
+  // route patterns. The metrics service sanitizes this.
+  return req.originalUrl || req.path || "/";
+}
 
 export function apiMonitoring(req, res, next) {
-  // Record high-resolution start time
   const startTime = process.hrtime.bigint();
 
   requestStarted();
 
-  // Prevent duplicate recording
   let completed = false;
 
   function finish(aborted = false) {
@@ -40,21 +55,25 @@ export function apiMonitoring(req, res, next) {
       Number(process.hrtime.bigint() - startTime) /
       1_000_000;
 
-    requestFinished(
-      req.method,
-      req.originalUrl,
-      res.statusCode,
-      durationMs,
-      aborted
-    );
+    
+requestFinished(
+  req.method,
+  req.originalUrl || req.path || "/",
+  res.statusCode,
+  durationMs,
+  aborted,
+  typeof req.route?.path === "string"
+    ? req.route.path
+    : null,
+  req.baseUrl || ""
+);
+
   }
 
-  // Response completed successfully or with an HTTP error
   res.once("finish", () => {
     finish(false);
   });
 
-  // Response connection closed before completion
   res.once("close", () => {
     if (!res.writableFinished) {
       finish(true);
@@ -63,4 +82,3 @@ export function apiMonitoring(req, res, next) {
 
   next();
 }
-
