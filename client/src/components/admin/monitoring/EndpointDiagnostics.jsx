@@ -66,7 +66,7 @@ function escapeCSV(value) {
 
   // Strip null bytes and nonprinting controls,
   // while preserving ordinary visible text.
-  
+
 text = Array.from(text, char => {
   const code = char.charCodeAt(0);
 
