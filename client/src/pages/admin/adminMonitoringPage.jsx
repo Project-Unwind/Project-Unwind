@@ -26,7 +26,7 @@ import HttpStatusChart
 import TrafficLatencyChart
   from "../../components/admin/monitoring/TrafficLatencyChart";
 
-import "./AdminMonitoringPage.css";
+import "./adminMonitoringPage.css";
 
 const formatNumber = (value) =>
   Number(value ?? 0).toLocaleString("en-IN");
