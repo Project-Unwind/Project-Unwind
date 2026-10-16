@@ -288,10 +288,21 @@ export function escapeCSV(value) {
   let text = String(value ?? "");
 
   // Remove control characters, including newlines.
-  text = text.replace(
-    /[\u0000-\u001f\u007f-\u009f]/g,
-    " "
-  );
+ 
+// Remove control characters, including newlines.
+text = Array.from(text, char => {
+  const code = char.charCodeAt(0);
+
+  if (
+    code <= 31 ||
+    (code >= 127 && code <= 159)
+  ) {
+    return " ";
+  }
+
+  return char;
+}).join("");
+
 
   // Reduce spreadsheet formula-injection risk.
   if (/^\s*[=+\-@]/.test(text)) {
