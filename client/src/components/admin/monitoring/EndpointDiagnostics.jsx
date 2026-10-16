@@ -66,10 +66,20 @@ function escapeCSV(value) {
 
   // Strip null bytes and nonprinting controls,
   // while preserving ordinary visible text.
-  text = text.replace(
-    /[\u0000-\u001f\u007f-\u009f]/g,
-    " "
-  );
+  
+text = Array.from(text, char => {
+  const code = char.charCodeAt(0);
+
+  if (
+    code <= 31 ||
+    (code >= 127 && code <= 159)
+  ) {
+    return " ";
+  }
+
+  return char;
+}).join("");
+
 
   // A leading formula character can execute
   // when imported by some spreadsheet programs.
