@@ -271,6 +271,14 @@ const AdminAnalyticsPage =
       "./pages/admin/AdminAnalyticsPage"
     )
   );
+  
+const AdminMonitoringPage =
+  lazy(() =>
+    import(
+      "./pages/admin/adminMonitoringPage.jsx"
+    )
+  );
+
 
 const AdminUsersPage =
   lazy(() =>
@@ -824,6 +832,14 @@ function App() {
     <AdminAnalyticsPage />
   }
 />
+
+<Route
+  path="monitoring"
+  element={
+    <AdminMonitoringPage />
+  }
+/>
+
       <Route
         path="users"
         element={

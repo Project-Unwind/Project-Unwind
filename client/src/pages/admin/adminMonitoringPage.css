@@ -1,0 +1,341 @@
+
+/* =========================================================
+   UNWIND — ADMIN API MONITORING
+   ========================================================= */
+
+.admin-monitoring-page {
+  --monitor-bg: var(--bg-primary, #f6f8f7);
+  --monitor-surface: var(--card-bg, #ffffff);
+  --monitor-text: var(--text-primary, #18362f);
+  --monitor-muted: var(--text-secondary, #64748b);
+  --monitor-border: var(--border-color, #e2e8e5);
+  --monitor-accent: #287a63;
+
+  color: var(--monitor-text);
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+}
+
+/* HEADER */
+
+.monitoring-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.monitoring-header h1 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: var(--monitor-text);
+}
+
+.monitoring-header p {
+  margin: 0;
+  color: var(--monitor-muted);
+  font-size: 0.9rem;
+}
+
+.monitoring-refresh-button {
+  border: 1px solid var(--monitor-border);
+  background: var(--monitor-surface);
+  color: var(--monitor-text);
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.monitoring-refresh-button:hover:not(:disabled) {
+  background: var(--monitor-bg);
+  transform: translateY(-1px);
+}
+
+.monitoring-refresh-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* WINDOW INFORMATION */
+
+.monitoring-window-label {
+  font-size: 0.8rem;
+  color: var(--monitor-muted);
+  margin: 0 0 20px;
+}
+
+/* METRIC CARDS */
+
+.monitoring-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.monitoring-metric-card {
+  background: var(--monitor-surface);
+  border: 1px solid var(--monitor-border);
+  border-radius: 14px;
+  padding: 20px;
+  min-width: 0;
+  transition: box-shadow 0.2s;
+}
+
+.monitoring-metric-card:hover {
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+}
+
+.monitoring-metric-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--monitor-muted);
+  margin: 0 0 12px;
+}
+
+.monitoring-metric-value {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  color: var(--monitor-text);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.monitoring-metric-description {
+  color: var(--monitor-muted);
+  font-size: 0.73rem;
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+
+/* CONTENT SECTIONS */
+
+.monitoring-section {
+  background: var(--monitor-surface);
+  border: 1px solid var(--monitor-border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
+  min-width: 0;
+}
+
+.monitoring-section h2 {
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--monitor-text);
+  margin: 0 0 20px;
+}
+
+.monitoring-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.monitoring-status-grid .monitoring-metric-card {
+  padding: 16px;
+  box-shadow: none;
+}
+
+/* ENDPOINT TABLE */
+
+.monitoring-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.monitoring-table {
+  width: 100%;
+  min-width: 740px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.monitoring-table th,
+.monitoring-table td {
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--monitor-border);
+  vertical-align: middle;
+}
+
+.monitoring-table th {
+  color: var(--monitor-muted);
+  font-size: 0.75rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.monitoring-table td {
+  color: var(--monitor-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.monitoring-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.monitoring-table tbody tr:hover {
+  background: var(--monitor-bg);
+}
+
+.monitoring-table code {
+  font-family: Consolas, monospace;
+  font-size: 0.79rem;
+  overflow-wrap: anywhere;
+  color: var(--monitor-accent);
+}
+
+/* ERRORS & NOTES */
+
+.monitoring-error {
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e7a7a7;
+  border-radius: 10px;
+  background: #fff1f1;
+  color: #a32c2c;
+  font-size: 0.875rem;
+}
+
+.monitoring-note {
+  font-size: 0.8rem;
+  color: var(--monitor-muted);
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+/* DARK MODE */
+
+[data-theme="dark"] .admin-monitoring-page,
+.dark .admin-monitoring-page {
+  --monitor-bg: #101b19;
+  --monitor-surface: #1b2926;
+  --monitor-text: #e7f0eb;
+  --monitor-muted: #a3b5ae;
+  --monitor-border: #344640;
+  --monitor-accent: #8ed5b8;
+}
+
+[data-theme="dark"] .monitoring-error,
+.dark .monitoring-error {
+  background: #3a2225;
+  border-color: #915358;
+  color: #ffb4b4;
+}
+
+/* RESPONSIVENESS */
+
+@media (max-width: 1100px) {
+  .monitoring-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-monitoring-page {
+    padding: 16px 12px;
+  }
+
+  .monitoring-header {
+    align-items: flex-start;
+  }
+
+  .monitoring-metrics-grid,
+  .monitoring-status-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .monitoring-metric-card {
+    padding: 14px;
+  }
+
+  .monitoring-section {
+    padding: 16px 12px;
+  }
+
+  .monitoring-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .monitoring-metrics-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+/* =====================================================
+   UNWIND PULSE — TRAFFIC CHART INTEGRATION
+   ===================================================== */
+
+.monitoring-traffic-section {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 24px;
+}
+
+.monitoring-traffic-section > .pulse-traffic-panel {
+  width: 100%;
+}
+
+.monitoring-status-chart-section {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 24px;
+}
+
+
+/* UNWIND PULSE — SERVICE NETWORK INTEGRATION */
+
+.monitoring-network-section {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 24px;
+}
+
+.monitoring-network-section > .pulse-network-panel {
+  width: 100%;
+}
+
+
+
+/* =====================================================
+   UNWIND PULSE — ANOMALY INSIGHTS INTEGRATION
+   ===================================================== */
+
+.monitoring-anomaly-section {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 24px;
+}
+
+.monitoring-anomaly-section > .pulse-anomaly-panel {
+  width: 100%;
+}
+
+/* =====================================================
+   UNWIND PULSE — ENDPOINT DIAGNOSTICS INTEGRATION
+   ===================================================== */
+
+.monitoring-diagnostics-section {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 24px;
+}
+
+.monitoring-diagnostics-section > .pulse-diagnostics-panel {
+  width: 100%;
+}

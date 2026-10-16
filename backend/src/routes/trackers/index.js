@@ -1,4 +1,9 @@
+
 import { Router } from "express";
+
+import {
+  monitoredNestedRouter
+} from "../../middleware/apiMonitoring.js";
 
 import energyTrackerRoutes from "./energyTracker.routes.js";
 import habitLogRoutes from "./habitLog.routes.js";
@@ -17,64 +22,59 @@ const router = Router();
 | Tracker Module
 |--------------------------------------------------------------------------
 |
-| Base URL:
-| /api/trackers
+| Base URL: /api/trackers
 |
-| Child Routes:
-| /mood
-| /sleep
-| /habits
-| /energy
-| /water
-| /settings
-| /metadata
-| /reminders
+| Preserve trusted nested templates and mask
+| dynamic values such as :habitId.
 |
 */
 
 router.use(
   "/metadata",
-  trackerMetadataRoutes
+  ...monitoredNestedRouter("/metadata", trackerMetadataRoutes)
 );
 
 router.use(
   "/settings",
-  trackerSettingsRoutes
+  ...monitoredNestedRouter("/settings", trackerSettingsRoutes)
 );
 
 router.use(
   "/reminders",
-  trackerReminderRoutes
+  ...monitoredNestedRouter("/reminders", trackerReminderRoutes)
 );
 
 router.use(
   "/mood",
-  moodTrackerRoutes
+  ...monitoredNestedRouter("/mood", moodTrackerRoutes)
 );
 
 router.use(
   "/sleep",
-  sleepTrackerRoutes
+  ...monitoredNestedRouter("/sleep", sleepTrackerRoutes)
 );
 
 router.use(
   "/habits",
-  habitTrackerRoutes
+  ...monitoredNestedRouter("/habits", habitTrackerRoutes)
 );
 
 router.use(
   "/habits/:habitId/logs",
-  habitLogRoutes
+  ...monitoredNestedRouter(
+    "/habits/:habitId/logs",
+    habitLogRoutes
+  )
 );
 
 router.use(
   "/energy",
-  energyTrackerRoutes
+  ...monitoredNestedRouter("/energy", energyTrackerRoutes)
 );
 
 router.use(
   "/water",
-  waterTrackerRoutes
+  ...monitoredNestedRouter("/water", waterTrackerRoutes)
 );
 
 export default router;
