@@ -35,12 +35,14 @@ const router = express.Router();
 |
 */
 
+
 router.use(
+  adminReadLimiter,
   authenticate,
   requireAdmin,
-  requireAdminAccess,
-  adminReadLimiter
+  requireAdminAccess
 );
+
 
 /*
 |--------------------------------------------------------------------------
