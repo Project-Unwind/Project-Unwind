@@ -63,6 +63,7 @@ function cleanup() {
   }
 }
 
+
 function sanitizePath(rawPath) {
   const pathname = String(rawPath || "/")
     .split("?")[0]
@@ -73,16 +74,84 @@ function sanitizePath(rawPath) {
     .filter(Boolean)
     .slice(0, 8);
 
-  if (!segments.length) return "/";
+  if (!segments.length) {
+    return "/";
+  }
 
-  return "/" + segments.map(segment => {
-    const normalized = segment.toLowerCase();
+  return "/" + segments.map((segment, index) => {
+    // Preserve the application root.
+    if (index === 0 && segment.toLowerCase() === "api") {
+      return "api";
+    }
 
-    return SAFE_SEGMENTS.has(normalized)
-      ? normalized
-      : ":param";
+    // Mask other segments because raw URLs
+    // cannot distinguish static paths from IDs.
+    return ":param";
   }).join("/");
 }
+
+
+
+
+/**
+ * Trusted static router prefixes registered in app.js.
+ *
+ * Dynamic user-controlled parameters must not be added
+ * to this list.
+ */
+const TRUSTED_ROUTER_BASES = new Set([
+  "/api/internal/notifications",
+  "/api/notifications",
+  "/api/auth",
+  "/api/password",
+  "/api/profile",
+  "/api/account",
+  "/api/chatbot",
+  "/api/admin",
+  "/api/community",
+  "/api/community/posts",
+  "/api/community/chat",
+  "/api/community/private-rooms",
+  "/api/community/direct-conversations",
+  "/api/community/direct-messages",
+  "/api/community/reports",
+  "/api/dass",
+  "/api/journal",
+  "/api/trackers",
+  "/api/testimonials",
+  "/api/public",
+  "/api/dashboard",
+  "/api/admin/access",
+  "/api/admin/dashboard",
+  "/api/admin/reports",
+  "/api/admin/moderation",
+  "/api/admin/users",
+  "/api/admin/testimonials",
+  "/api/admin/community",
+  "/api/admin/audit-logs",
+  "/api/admin/moderation-decisions",
+  "/api/admin/analytics",
+  "/api/admin/monitoring"
+]);
+
+
+/**
+ * This argument now represents an explicitly registered
+ * trusted router mount, not req.baseUrl.
+ *
+ * Unknown or absent mounts are not trusted.
+ */
+function sanitizeRouterBaseUrl(baseUrl) {
+  const pathname = String(baseUrl || "")
+    .toLowerCase();
+
+  if (!TRUSTED_ROUTER_BASES.has(pathname)) {
+    return "/";
+  }
+
+  return pathname;
+}
+
 
 
 /**
@@ -208,7 +277,7 @@ function summarize(stats) {
     : 0;
 
   // Calculate server error rate (HTTP 5xx)
-  
+
   // Completed HTTP responses exclude aborted requests.
   const completedResponses = Math.max(
     0,
@@ -297,6 +366,7 @@ export function resetApiMetricsForTesting() {
 
 
 
+
 export function requestFinished(
   method,
   rawPath,
@@ -304,7 +374,8 @@ export function requestFinished(
   durationMs,
   aborted = false,
   routeTemplate = null,
-  routeBaseUrl = ""
+  routeBaseUrl = "",
+  nestedRouteTemplates = []
 )
 {
   // 1. Decrease active request counter
@@ -335,31 +406,59 @@ export function requestFinished(
   );
 
   // 6. Sanitize endpoint path
-  
+
   // A matched route template comes from Express itself.
   // A router's baseUrl can contain actual client values,
   // so sanitize it using the conservative allowlist.
-  const monitoredPath =
-    typeof routeTemplate === "string"
-      ? (
-          sanitizePath(routeBaseUrl) === "/"
-            ? sanitizeRouteTemplate(routeTemplate)
-            : (
-                sanitizePath(routeBaseUrl) +
-                sanitizeRouteTemplate(routeTemplate)
-              ).replace(/\/+/g, "/")
+
+
+
+const trustedBase = sanitizeRouterBaseUrl(
+  routeBaseUrl
+);
+
+const trustedNestedPaths =
+  Array.isArray(nestedRouteTemplates)
+    ? nestedRouteTemplates
+        .filter(path =>
+          typeof path === "string"
         )
-      : sanitizePath(rawPath);
+        .map(sanitizeRouteTemplate)
+    : [];
+
+const monitoredPath =
+  typeof routeTemplate === "string" &&
+  trustedBase !== "/"
+    ? (
+        [
+          trustedBase,
+          ...trustedNestedPaths,
+          sanitizeRouteTemplate(routeTemplate)
+        ]
+          .join("/")
+          .replace(/\/+/g, "/")
+          .replace(/\/$/, "") || "/"
+      )
+    : sanitizePath(rawPath);
+
+
+
 
   const endpoint = `${method} ${monitoredPath}`;
 
 
   // 7. Apply endpoint storage limit
-  const key =
-    record.endpoints.has(endpoint) ||
-    record.endpoints.size < MAX_ENDPOINTS_PER_MINUTE
-      ? endpoint
-      : "OTHER";
+
+const key =
+  record.endpoints.has(endpoint) ||
+  (
+    record.endpoints.size <
+      MAX_ENDPOINTS_PER_MINUTE - 1 &&
+    !record.endpoints.has("OTHER")
+  )
+    ? endpoint
+    : "OTHER";
+
 
   // 8. Get or initialize endpoint statistics
   let endpointStats = record.endpoints.get(key);
