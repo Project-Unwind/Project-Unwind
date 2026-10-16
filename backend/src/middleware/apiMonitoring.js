@@ -18,26 +18,9 @@ import {
  * - Never stores request bodies
  * - Never stores authorization headers
  * - Never stores query parameters
- * - Uses normalized route templates where possible
+ * - Passes route information to the metrics service
+ *   for normalization and sanitization
  */
-
-function getMonitoringPath(req) {
-  const routePath = req.route?.path;
-
-  // Use the matched Express route when available.
-  if (typeof routePath === "string") {
-    const baseUrl = req.baseUrl || "";
-
-    const fullPath = `${baseUrl}/${routePath}`
-      .replace(/\/+/g, "/");
-
-    return fullPath;
-  }
-
-  // Fallback for unmatched requests and unsupported
-  // route patterns. The metrics service sanitizes this.
-  return req.originalUrl || req.path || "/";
-}
 
 export function apiMonitoring(req, res, next) {
   const startTime = process.hrtime.bigint();
@@ -55,19 +38,18 @@ export function apiMonitoring(req, res, next) {
       Number(process.hrtime.bigint() - startTime) /
       1_000_000;
 
-    
-requestFinished(
-  req.method,
-  req.originalUrl || req.path || "/",
-  res.statusCode,
-  durationMs,
-  aborted,
-  typeof req.route?.path === "string"
-    ? req.route.path
-    : null,
-  req.baseUrl || ""
-);
-
+    requestFinished(
+      req.method,
+      req.originalUrl || req.path || "/",
+      res.statusCode,
+      durationMs,
+      aborted,
+      typeof req.route?.path === "string"
+        ? req.route.path
+        : null,
+            req.monitoringTrustedBase || "",
+req.monitoringNestedPaths || []
+    );
   }
 
   res.once("finish", () => {
@@ -81,4 +63,72 @@ requestFinished(
   });
 
   next();
+}
+
+/**
+ * Registers a static router mount with an explicit
+ * developer-defined monitoring prefix.
+ *
+ * The mountPath must be a static path declared by
+ * the application, never a value from req.originalUrl.
+ */
+export function monitoredRouter(mountPath, router) {
+  if (
+    typeof mountPath !== "string" ||
+    !/^\/[a-zA-Z0-9/_-]+$/.test(mountPath) ||
+    mountPath.includes("//")
+  ) {
+    throw new Error(
+      "Monitoring router mount must be a static path"
+    );
+  }
+
+  return [
+    (req, res, next) => {
+      req.monitoringTrustedBase = mountPath;
+      next();
+    },
+    router
+  ];
+}
+
+
+/**
+ * Record a developer-defined nested Express mount.
+ *
+ * Example:
+ * /habits/:habitId/logs
+ *
+ * Only templates written in source code are accepted.
+ * Do not pass req.path, req.baseUrl, or user input.
+ */
+export function monitoredNestedRouter(
+  mountTemplate,
+  router
+) {
+  const segment = "(?:[a-zA-Z0-9_-]+|:[a-zA-Z][a-zA-Z0-9_]*)";
+  const validTemplate = new RegExp(
+    `^/${segment}(?:/${segment})*$`
+  );
+
+  if (
+    typeof mountTemplate !== "string" ||
+    !validTemplate.test(mountTemplate)
+  ) {
+    throw new Error(
+      "Invalid nested monitoring route template"
+    );
+  }
+
+  return [
+    (req, res, next) => {
+      req.monitoringNestedPaths = [
+        ...(req.monitoringNestedPaths || []),
+        mountTemplate
+      ];
+
+      next();
+    },
+    router
+  ];
 }
