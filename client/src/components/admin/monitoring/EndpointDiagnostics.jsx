@@ -11,19 +11,20 @@ import {
   AlertTriangle
 } from "lucide-react";
 
+import {
+  prepareEndpoint,
+  compareEndpoints,
+  createDiagnosticsCSV,
+  formatLatency,
+  validNumber
+} from "../../../utils/monitoring/endpointDiagnostics";
+
 import "./EndpointDiagnostics.css";
 
 /* =====================================================
    CONFIGURATION
    ===================================================== */
 
-const MIN_REQUESTS = 5;
-
-const THRESHOLDS = {
-  serverErrorRate: 3,
-  abortedRate: 3,
-  averageLatencyMs: 1000
-};
 
 const SORT_COLUMNS = [
   ["requests", "Requests"],
@@ -37,30 +38,6 @@ const SORT_COLUMNS = [
    NUMERIC HELPERS
    ===================================================== */
 
-function validNumber(value) {
-  if (
-    value === null ||
-    value === undefined ||
-    value === ""
-  ) {
-    return null;
-  }
-
-  const number = Number(value);
-
-  return Number.isFinite(number) && number >= 0
-    ? number
-    : null;
-}
-
-function validCount(value) {
-  const number = validNumber(value);
-
-  return number !== null &&
-    Number.isSafeInteger(number)
-    ? number
-    : null;
-}
 
 function formatNumber(value) {
   const number = validNumber(value);
@@ -78,206 +55,7 @@ function formatPercent(value) {
     : `${number.toFixed(2)}%`;
 }
 
-function formatLatency(value, requests = 0) {
-  // A null histogram percentile with recorded
-  // requests means the value exceeded 10,000 ms.
-  if (value === null && requests > 0) {
-    return "> 10,000 ms";
-  }
 
-  const number = validNumber(value);
-
-  return number === null
-    ? "N/A"
-    : `${number.toFixed(2)} ms`;
-}
-
-/* =====================================================
-   ENDPOINT METRIC NORMALIZATION
-   ===================================================== */
-
-function getMethod(endpoint) {
-  return String(endpoint?.endpoint || "")
-    .trim()
-    .split(/\s+/)[0]
-    .toUpperCase();
-}
-
-function calculateEndpointMetrics(endpoint) {
-  const requests = validCount(endpoint.requests);
-
-  const abortedRequests = validCount(
-    endpoint.abortedRequests
-  );
-
-  const validAborts =
-    requests !== null &&
-    abortedRequests !== null &&
-    abortedRequests <= requests;
-
-  const completedResponses = validAborts
-    ? requests - abortedRequests
-    : null;
-
-  const serverErrors = validCount(
-    endpoint.statusCodes?.["5xx"]
-  );
-
-  const validServerErrors =
-    completedResponses !== null &&
-    serverErrors !== null &&
-    serverErrors <= completedResponses;
-
-  const errorRatePercent =
-    validServerErrors && completedResponses > 0
-      ? (serverErrors / completedResponses) * 100
-      : null;
-
-  const abortedRatePercent = validAborts && requests > 0
-    ? (abortedRequests / requests) * 100
-    : null;
-
-  return {
-    requests,
-    abortedRequests,
-    completedResponses,
-    serverErrors,
-    errorRatePercent,
-    abortedRatePercent,
-    averageLatencyMs: validNumber(
-      endpoint.averageLatencyMs
-    ),
-    p50LatencyMs: endpoint.p50LatencyMs,
-    p95LatencyMs: endpoint.p95LatencyMs,
-    p99LatencyMs: endpoint.p99LatencyMs,
-    maxLatencyMs: validNumber(
-      endpoint.maxLatencyMs
-    )
-  };
-}
-
-/* =====================================================
-   ENDPOINT STATUS CLASSIFICATION
-   ===================================================== */
-
-function getEndpointStatus(endpoint, stats) {
-  if (getMethod(endpoint) === "OPTIONS") {
-    return "preflight";
-  }
-
-  if (
-    stats.requests === null ||
-    stats.requests < MIN_REQUESTS
-  ) {
-    return "insufficient";
-  }
-
-  // Consistent with anomaly detection:
-  // HTTP error rates require enough completed responses.
-  if (
-    stats.completedResponses >= MIN_REQUESTS &&
-    stats.errorRatePercent !== null &&
-    stats.errorRatePercent >=
-      THRESHOLDS.serverErrorRate
-  ) {
-    return "errors";
-  }
-
-  if (
-    stats.abortedRatePercent !== null &&
-    stats.abortedRatePercent >= THRESHOLDS.abortedRate
-  ) {
-    return "aborted";
-  }
-
-  if (
-    stats.averageLatencyMs !== null &&
-    stats.averageLatencyMs >=
-      THRESHOLDS.averageLatencyMs
-  ) {
-    return "slow";
-  }
-
-  // Don't label an endpoint healthy unless all
-  // relevant metric values are available.
-  if (
-    stats.completedResponses === null ||
-    stats.completedResponses < MIN_REQUESTS ||
-    stats.errorRatePercent === null ||
-    stats.abortedRatePercent === null ||
-    stats.averageLatencyMs === null
-  ) {
-    return "insufficient";
-  }
-
-  return "healthy";
-}
-
-/* =====================================================
-   SORTING
-   ===================================================== */
-
-function getSortValue(item, key) {
-  if (key === "requests") {
-    return item.stats.requests;
-  }
-
-  if (key === "abortedRequests") {
-    return item.stats.abortedRequests;
-  }
-
-  if (key === "averageLatencyMs") {
-    return item.stats.averageLatencyMs;
-  }
-
-  if (key === "errorRatePercent") {
-    return item.stats.errorRatePercent;
-  }
-
-  if (key === "p95LatencyMs") {
-    // A null P95 with recorded requests indicates
-    // the highest histogram bucket (> 10,000 ms).
-    if (
-      item.endpoint.p95LatencyMs === null &&
-      item.stats.requests > 0
-    ) {
-      return Infinity;
-    }
-
-    return validNumber(
-      item.endpoint.p95LatencyMs
-    );
-  }
-
-  return null;
-}
-
-function compareEndpoints(a, b, key, direction) {
-  const aValue = getSortValue(a, key);
-  const bValue = getSortValue(b, key);
-
-  // Missing values always appear last.
-  if (aValue === null && bValue === null) {
-    return a.endpoint.endpoint.localeCompare(
-      b.endpoint.endpoint
-    );
-  }
-
-  if (aValue === null) return 1;
-  if (bValue === null) return -1;
-
-  const difference = direction === "asc"
-    ? aValue - bValue
-    : bValue - aValue;
-
-  if (difference !== 0) {
-    return difference;
-  }
-
-  return a.endpoint.endpoint.localeCompare(
-    b.endpoint.endpoint
-  );
-}
 
 /* =====================================================
    CSV EXPORT SECURITY
@@ -373,10 +151,11 @@ function createCSV(items) {
     .join("\r\n");
 }
 
+
 function exportCSV(items) {
   if (!items.length) return;
 
-  const csv = createCSV(items);
+  const csv = createDiagnosticsCSV(items);
 
   const blob = new Blob(
     ["\uFEFF", csv],
@@ -397,11 +176,11 @@ function exportCSV(items) {
   anchor.click();
   anchor.remove();
 
-  // Release the object URL after download initiation.
   window.setTimeout(() => {
     URL.revokeObjectURL(url);
   }, 1000);
 }
+
 
 /* =====================================================
    ENDPOINT DETAILS ROW
@@ -593,32 +372,21 @@ export default function EndpointDiagnostics({
 
   const [expanded, setExpanded] = useState(null);
 
-  const normalizedEndpoints = useMemo(() => {
-    if (!Array.isArray(endpoints)) {
-      return [];
-    }
 
-    return endpoints
-      .filter(endpoint =>
-        endpoint &&
-        typeof endpoint === "object" &&
-        typeof endpoint.endpoint === "string"
-      )
-      .map(endpoint => {
-        const stats = calculateEndpointMetrics(
-          endpoint
-        );
+const normalizedEndpoints = useMemo(() => {
+  if (!Array.isArray(endpoints)) {
+    return [];
+  }
 
-        return {
-          endpoint,
-          stats,
-          status: getEndpointStatus(
-            endpoint,
-            stats
-          )
-        };
-      });
-  }, [endpoints]);
+  return endpoints
+    .filter(endpoint =>
+      endpoint &&
+      typeof endpoint === "object" &&
+      typeof endpoint.endpoint === "string"
+    )
+    .map(prepareEndpoint);
+}, [endpoints]);
+
 
   const processedEndpoints = useMemo(() => {
     const query = search.trim().toLowerCase();
