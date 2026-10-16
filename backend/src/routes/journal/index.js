@@ -1,4 +1,9 @@
+
 import { Router } from "express";
+
+import {
+  monitoredNestedRouter
+} from "../../middleware/apiMonitoring.js";
 
 import journalEntryRoutes from "./journalEntry.routes.js";
 import journalAttachmentRoutes from "./journalAttachment.routes.js";
@@ -9,48 +14,46 @@ import journalSearchRoutes from "./journalSearch.routes.js";
 import journalPdfExportRoutes from "./journalPdfExport.routes.js";
 import journalMetadataRoutes from "./journalMetadata.routes.js";
 
-
-
 const router = Router();
 
 router.use(
   "/metadata",
-  journalMetadataRoutes
+  ...monitoredNestedRouter("/metadata", journalMetadataRoutes)
 );
 
 router.use(
   "/entries",
-  journalEntryRoutes
+  ...monitoredNestedRouter("/entries", journalEntryRoutes)
 );
 
 router.use(
   "/attachments",
-  journalAttachmentRoutes
+  ...monitoredNestedRouter("/attachments", journalAttachmentRoutes)
 );
 
 router.use(
   "/prompts",
-  journalPromptRoutes
+  ...monitoredNestedRouter("/prompts", journalPromptRoutes)
 );
 
 router.use(
   "/voice",
-  journalVoiceRoutes
+  ...monitoredNestedRouter("/voice", journalVoiceRoutes)
 );
 
 router.use(
   "/security",
-  journalSecurityRoutes
+  ...monitoredNestedRouter("/security", journalSecurityRoutes)
 );
 
 router.use(
   "/search",
-  journalSearchRoutes
+  ...monitoredNestedRouter("/search", journalSearchRoutes)
 );
 
 router.use(
   "/export",
-  journalPdfExportRoutes
+  ...monitoredNestedRouter("/export", journalPdfExportRoutes)
 );
 
 export default router;
