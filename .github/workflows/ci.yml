@@ -48,7 +48,7 @@ jobs:
           find src test -type f -name "*.js" -print0 |
           xargs -0 -n1 node --check
 
-      
+
       - name: Run backend security tests
         run: npm test
         env:
