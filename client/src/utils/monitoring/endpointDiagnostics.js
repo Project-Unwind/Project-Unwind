@@ -288,7 +288,7 @@ export function escapeCSV(value) {
   let text = String(value ?? "");
 
   // Remove control characters, including newlines.
- 
+
 // Remove control characters, including newlines.
 text = Array.from(text, char => {
   const code = char.charCodeAt(0);
