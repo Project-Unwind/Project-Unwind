@@ -5,7 +5,8 @@ import http from "node:http";
 import express from "express";
 
 import {
-  apiMonitoring
+  apiMonitoring,
+  monitoredRouter
 } from "../../src/middleware/apiMonitoring.js";
 
 import {
@@ -23,46 +24,95 @@ const app = express();
 
 app.use(apiMonitoring);
 
-app.get("/test/success", (req, res) => {
-  res.status(200).json({ success: true });
+/*
+ * Journal Test Router
+ *
+ * Uses the same monitoredRouter() mechanism
+ * as the production Express application.
+ */
+
+const journalTestRouter = express.Router();
+
+journalTestRouter.get("/test/success", (req, res) => {
+  res.status(200).json({
+    success: true
+  });
 });
 
-app.get("/test/notfound", (req, res) => {
-  res.status(404).json({ error: "Not found" });
+journalTestRouter.get("/test/notfound", (req, res) => {
+  res.status(404).json({
+    error: "Not found"
+  });
 });
 
-app.get("/test/error", (req, res) => {
-  res.status(500).json({ error: "Test error" });
+journalTestRouter.get("/test/error", (req, res) => {
+  res.status(500).json({
+    error: "Test error"
+  });
 });
 
-app.get("/api/journal/:id", (req, res) => {
-  res.status(200).json({ success: true });
-});
-
-app.get("/test/slow", (req, res) => {
+journalTestRouter.get("/test/slow", (req, res) => {
   setTimeout(() => {
     if (!res.destroyed) {
-      res.status(200).json({ success: true });
+      res.status(200).json({
+        success: true
+      });
     }
   }, 1000);
 });
 
-app.get("/test/concurrent", (req, res) => {
+journalTestRouter.get("/test/concurrent", (req, res) => {
   setTimeout(() => {
     if (!res.destroyed) {
-      res.status(200).json({ success: true });
+      res.status(200).json({
+        success: true
+      });
     }
   }, 50);
 });
 
-// Used to test distinct static route identification.
-app.get("/api/admin/settings", (req, res) => {
-  res.status(200).json({ success: true });
+journalTestRouter.get("/:id", (req, res) => {
+  res.status(200).json({
+    success: true
+  });
 });
 
-app.get("/api/admin/overview", (req, res) => {
-  res.status(200).json({ success: true });
+app.use(
+  "/api/journal",
+  ...monitoredRouter(
+    "/api/journal",
+    journalTestRouter
+  )
+);
+
+/*
+ * Admin Test Router
+ *
+ * Verifies that different static routes
+ * retain their individual monitoring labels.
+ */
+
+const adminTestRouter = express.Router();
+
+adminTestRouter.get("/settings", (req, res) => {
+  res.status(200).json({
+    success: true
+  });
 });
+
+adminTestRouter.get("/overview", (req, res) => {
+  res.status(200).json({
+    success: true
+  });
+});
+
+app.use(
+  "/api/admin/monitoring",
+  ...monitoredRouter(
+    "/api/admin/monitoring",
+    adminTestRouter
+  )
+);
 
 /* =====================================================
    TEST HELPERS
@@ -84,8 +134,11 @@ async function startServer() {
 async function stopServer(server) {
   await new Promise((resolve, reject) => {
     server.close(error => {
-      if (error) reject(error);
-      else resolve();
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
     });
   });
 }
@@ -134,7 +187,9 @@ function findEndpoint(metrics, route) {
 }
 
 function wait(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
 }
 
 /* =====================================================
@@ -146,102 +201,129 @@ beforeEach(() => {
 });
 
 /* =====================================================
-   TEST 1 — REGRESSION
+   TEST 1 — API MONITORING REGRESSION
    ===================================================== */
 
-test("API monitoring regression tests", async () => {
-  const { server, port } = await startServer();
+test(
+  "API monitoring regression tests",
+  async () => {
+    const { server, port } = await startServer();
 
-  try {
-    assert.equal(
-      await sendRequest(port, "/test/success"),
-      200
-    );
+    try {
+      assert.equal(
+        await sendRequest(
+          port,
+          "/api/journal/test/success"
+        ),
+        200
+      );
 
-    assert.equal(
-      await sendRequest(port, "/test/notfound"),
-      404
-    );
+      assert.equal(
+        await sendRequest(
+          port,
+          "/api/journal/test/notfound"
+        ),
+        404
+      );
 
-    assert.equal(
-      await sendRequest(port, "/test/error"),
-      500
-    );
+      assert.equal(
+        await sendRequest(
+          port,
+          "/api/journal/test/error"
+        ),
+        500
+      );
 
-    assert.equal(
-      await sendRequest(port, "/test/slow", true),
-      "ABORTED"
-    );
+      assert.equal(
+        await sendRequest(
+          port,
+          "/api/journal/test/slow",
+          true
+        ),
+        "ABORTED"
+      );
 
-    await wait(50);
+      await wait(50);
 
-    const metrics = getApiMetrics();
+      const metrics = getApiMetrics();
 
-    assert.equal(metrics.requests, 4);
-    assert.equal(metrics.statusCodes["2xx"], 1);
-    assert.equal(metrics.statusCodes["4xx"], 1);
-    assert.equal(metrics.statusCodes["5xx"], 1);
-    assert.equal(metrics.abortedRequests, 1);
-    assert.equal(metrics.activeRequests, 0);
+      assert.equal(metrics.requests, 4);
 
-    // Static route names must remain distinguishable.
-    const successEndpoint = findEndpoint(
-      metrics,
-      "GET /test/success"
-    );
+      assert.equal(
+        metrics.statusCodes["2xx"],
+        1
+      );
 
-    const notFoundEndpoint = findEndpoint(
-      metrics,
-      "GET /test/notfound"
-    );
+      assert.equal(
+        metrics.statusCodes["4xx"],
+        1
+      );
 
-    const errorEndpoint = findEndpoint(
-      metrics,
-      "GET /test/error"
-    );
+      assert.equal(
+        metrics.statusCodes["5xx"],
+        1
+      );
 
-    const slowEndpoint = findEndpoint(
-      metrics,
-      "GET /test/slow"
-    );
+      assert.equal(metrics.abortedRequests, 1);
+      assert.equal(metrics.activeRequests, 0);
 
-    assert.ok(successEndpoint);
-    assert.ok(notFoundEndpoint);
-    assert.ok(errorEndpoint);
-    assert.ok(slowEndpoint);
+      const successEndpoint = findEndpoint(
+        metrics,
+        "GET /api/journal/test/success"
+      );
 
-    assert.equal(successEndpoint.requests, 1);
-    assert.equal(notFoundEndpoint.requests, 1);
-    assert.equal(errorEndpoint.requests, 1);
-    assert.equal(slowEndpoint.requests, 1);
+      const notFoundEndpoint = findEndpoint(
+        metrics,
+        "GET /api/journal/test/notfound"
+      );
 
-    assert.equal(
-      slowEndpoint.abortedRequests,
-      1
-    );
+      const errorEndpoint = findEndpoint(
+        metrics,
+        "GET /api/journal/test/error"
+      );
 
-    // The one aborted request is excluded from
-    // the denominator for HTTP 5xx response rate.
-    assert.equal(
-      metrics.errorRatePercent,
-      33.33
-    );
+      const slowEndpoint = findEndpoint(
+        metrics,
+        "GET /api/journal/test/slow"
+      );
 
-    console.log("\nREGRESSION RESULTS");
-    console.log({
-      requests: metrics.requests,
-      statusCodes: metrics.statusCodes,
-      abortedRequests: metrics.abortedRequests,
-      errorRatePercent: metrics.errorRatePercent,
-      endpoints: metrics.endpoints.map(
-        item => item.endpoint
-      )
-    });
+      assert.ok(successEndpoint);
+      assert.ok(notFoundEndpoint);
+      assert.ok(errorEndpoint);
+      assert.ok(slowEndpoint);
 
-  } finally {
-    await stopServer(server);
+      assert.equal(successEndpoint.requests, 1);
+      assert.equal(notFoundEndpoint.requests, 1);
+      assert.equal(errorEndpoint.requests, 1);
+      assert.equal(slowEndpoint.requests, 1);
+
+      assert.equal(
+        slowEndpoint.abortedRequests,
+        1
+      );
+
+      // 1 server error / 3 completed responses.
+      assert.equal(
+        metrics.errorRatePercent,
+        33.33
+      );
+
+      console.log("\nREGRESSION RESULTS");
+
+      console.log({
+        requests: metrics.requests,
+        statusCodes: metrics.statusCodes,
+        abortedRequests: metrics.abortedRequests,
+        errorRatePercent: metrics.errorRatePercent,
+        endpoints: metrics.endpoints.map(
+          item => item.endpoint
+        )
+      });
+    } finally {
+      await stopServer(server);
+    }
   }
-});
+);
 
 /* =====================================================
    TEST 2 — EXACTLY ONCE RECORDING
@@ -255,7 +337,7 @@ test(
     try {
       const status = await sendRequest(
         port,
-        "/test/success"
+        "/api/journal/test/success"
       );
 
       assert.equal(status, 200);
@@ -269,12 +351,11 @@ test(
 
       const endpoint = findEndpoint(
         metrics,
-        "GET /test/success"
+        "GET /api/journal/test/success"
       );
 
       assert.ok(endpoint);
       assert.equal(endpoint.requests, 1);
-
     } finally {
       await stopServer(server);
     }
@@ -297,7 +378,7 @@ test(
 
       const status = await sendRequest(
         port,
-        "/test/slow"
+        "/api/journal/test/slow"
       );
 
       assert.equal(status, 200);
@@ -305,12 +386,17 @@ test(
       const metrics = getApiMetrics();
 
       assert.equal(metrics.requests, 1);
-      assert.equal(metrics.statusCodes["2xx"], 1);
+
+      assert.equal(
+        metrics.statusCodes["2xx"],
+        1
+      );
+
       assert.equal(metrics.abortedRequests, 0);
 
       const endpoint = findEndpoint(
         metrics,
-        "GET /test/slow"
+        "GET /api/journal/test/slow"
       );
 
       assert.ok(
@@ -332,14 +418,14 @@ test(
 
       assert.ok(
         endpoint.p95LatencyMs !== null &&
-        endpoint.p95LatencyMs >= 1000,
+          endpoint.p95LatencyMs >= 1000,
         "P95 must reflect the slow request"
       );
 
       assert.ok(
         Math.abs(
           endpoint.averageLatencyMs -
-          endpoint.maxLatencyMs
+            endpoint.maxLatencyMs
         ) < 1,
         "Single-request average and maximum should match"
       );
@@ -347,6 +433,7 @@ test(
       assert.equal(metrics.activeRequests, 0);
 
       console.log("\nLATENCY TEST RESULTS");
+
       console.log({
         requests: endpoint.requests,
         averageLatencyMs: endpoint.averageLatencyMs,
@@ -354,7 +441,6 @@ test(
         maxLatencyMs: endpoint.maxLatencyMs,
         abortedRequests: endpoint.abortedRequests
       });
-
     } finally {
       await stopServer(server);
     }
@@ -362,7 +448,7 @@ test(
 );
 
 /* =====================================================
-   TEST 4 — PRIVACY
+   TEST 4 — SENSITIVE URL PRIVACY
    ===================================================== */
 
 test(
@@ -413,7 +499,6 @@ test(
         "\nPRIVACY CHECK PASSED:",
         endpoint.endpoint
       );
-
     } finally {
       await stopServer(server);
     }
@@ -421,7 +506,7 @@ test(
 );
 
 /* =====================================================
-   TEST 5 — CONCURRENCY
+   TEST 5 — CONCURRENT REQUESTS
    ===================================================== */
 
 test(
@@ -435,10 +520,11 @@ test(
       const responses = await Promise.all(
         Array.from(
           { length: CONCURRENT_REQUESTS },
-          () => sendRequest(
-            port,
-            "/test/concurrent"
-          )
+          () =>
+            sendRequest(
+              port,
+              "/api/journal/test/concurrent"
+            )
         )
       );
 
@@ -456,7 +542,7 @@ test(
 
       const endpoint = findEndpoint(
         metrics,
-        "GET /test/concurrent"
+        "GET /api/journal/test/concurrent"
       );
 
       assert.ok(
@@ -479,17 +565,11 @@ test(
         CONCURRENT_REQUESTS
       );
 
-      assert.equal(
-        metrics.abortedRequests,
-        0
-      );
-
-      assert.equal(
-        metrics.activeRequests,
-        0
-      );
+      assert.equal(metrics.abortedRequests, 0);
+      assert.equal(metrics.activeRequests, 0);
 
       console.log("\nCONCURRENCY TEST RESULTS");
+
       console.log({
         concurrentRequests: CONCURRENT_REQUESTS,
         successfulResponses: responses.length,
@@ -497,7 +577,6 @@ test(
         endpointRequestsRecorded: endpoint.requests,
         activeRequests: metrics.activeRequests
       });
-
     } finally {
       await stopServer(server);
     }
@@ -517,7 +596,7 @@ test(
       assert.equal(
         await sendRequest(
           port,
-          "/api/admin/settings"
+          "/api/admin/monitoring/settings"
         ),
         200
       );
@@ -525,7 +604,7 @@ test(
       assert.equal(
         await sendRequest(
           port,
-          "/api/admin/overview"
+          "/api/admin/monitoring/overview"
         ),
         200
       );
@@ -534,12 +613,12 @@ test(
 
       const settingsEndpoint = findEndpoint(
         metrics,
-        "GET /api/admin/settings"
+        "GET /api/admin/monitoring/settings"
       );
 
       const overviewEndpoint = findEndpoint(
         metrics,
-        "GET /api/admin/overview"
+        "GET /api/admin/monitoring/overview"
       );
 
       assert.ok(
@@ -556,13 +635,15 @@ test(
       assert.equal(overviewEndpoint.requests, 1);
       assert.equal(metrics.requests, 2);
 
-      console.log("\nSTATIC ROUTE SEPARATION PASSED");
+      console.log(
+        "\nSTATIC ROUTE SEPARATION PASSED"
+      );
+
       console.log(
         metrics.endpoints.map(
           item => item.endpoint
         )
       );
-
     } finally {
       await stopServer(server);
     }
@@ -576,12 +657,12 @@ test(
 test(
   "HTTP 5xx rate excludes aborted requests",
   () => {
-    // One successful completed HTTP response.
+    // One successful HTTP response.
     requestStarted();
 
     requestFinished(
       "GET",
-      "/test/success",
+      "/api/journal/test/success",
       200,
       20,
       false
@@ -592,7 +673,7 @@ test(
 
     requestFinished(
       "GET",
-      "/test/error",
+      "/api/journal/test/error",
       500,
       30,
       false
@@ -603,7 +684,7 @@ test(
 
     requestFinished(
       "GET",
-      "/test/slow",
+      "/api/journal/test/slow",
       200,
       100,
       true
@@ -612,11 +693,7 @@ test(
     const metrics = getApiMetrics();
 
     assert.equal(metrics.requests, 3);
-
-    assert.equal(
-      metrics.abortedRequests,
-      1
-    );
+    assert.equal(metrics.abortedRequests, 1);
 
     assert.equal(
       metrics.statusCodes["2xx"],
@@ -642,6 +719,7 @@ test(
     assert.equal(metrics.activeRequests, 0);
 
     console.log("\nERROR RATE TEST RESULTS");
+
     console.log({
       totalRequests: metrics.requests,
       completedResponses:
