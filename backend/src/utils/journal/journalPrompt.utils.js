@@ -127,28 +127,16 @@ export function normalizePromptText(
     .trim();
 }
 
-export function sanitizePromptText(
-  promptText
-) {
-  const normalized =
-    normalizePromptText(
-      promptText
-    );
+export function sanitizePromptText(promptText) {
+  const normalized = normalizePromptText(promptText);
 
-  return normalized
-    .replace(
-      /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
-      ""
-    )
-    .replace(
-      /<[^>]+>/g,
-      ""
-    )
-    .replace(
-      /javascript:/gi,
-      ""
-    )
-    .trim();
+  // Journal prompts are plain text, not HTML.
+  // Reject markup instead of attempting regex-based HTML sanitization.
+  if (/<|>/.test(normalized)) {
+    return "";
+  }
+
+  return normalized;
 }
 
 export function normalizePromptCategory(
