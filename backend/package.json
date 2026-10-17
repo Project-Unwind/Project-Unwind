@@ -6,11 +6,11 @@
   "type": "module",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
+    "dev": "node --watch src/server.js",
     "start": "node src/server.js",
     "check": "node --check src/server.js",
-    "test": "node --test",
-"test:coverage": "node --test --experimental-test-coverage"
+    "test": "cross-env NODE_ENV=test node --test",
+    "test:coverage": "cross-env NODE_ENV=test node --test --experimental-test-coverage"
   },
   "keywords": [
     "unwind",
@@ -55,6 +55,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "cross-env": "^7.0.3"
   }
 }
