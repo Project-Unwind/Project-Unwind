@@ -6,7 +6,9 @@ import {
 import {
   PostHogProvider
 } from "@posthog/react";
-
+import "./styles/themes/halloween.css";
+import "./styles/themes/HalloweenDashboard.css";
+import "./styles/themes/HalloweenMessages.css";
 import App from "./App";
 
 import {
