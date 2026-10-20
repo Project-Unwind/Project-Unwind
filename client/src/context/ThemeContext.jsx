@@ -24,6 +24,24 @@ function getInitialTheme() {
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(getInitialTheme);
+  const [halloweenMode, setHalloweenMode] = useState(() => {
+  return localStorage.getItem("unwind_halloween") === "true";
+});
+
+useEffect(() => {
+  const root = document.documentElement;
+
+  if (halloweenMode) {
+    root.setAttribute("data-season", "halloween");
+  } else {
+    root.removeAttribute("data-season");
+  }
+
+  return () => {
+    root.removeAttribute("data-season");
+  };
+}, [halloweenMode]);
+
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -36,16 +54,24 @@ export function ThemeProvider({ children }) {
       currentTheme === "light" ? "dark" : "light"
     );
   };
+  useEffect(() => {
+  localStorage.setItem(
+    "unwind_halloween",
+    String(halloweenMode)
+  );
+}, [halloweenMode]);
 
   const value = useMemo(
-    () => ({
-      theme,
-      setTheme,
-      toggleTheme,
-      isDark: theme === "dark"
-    }),
-    [theme]
-  );
+  () => ({
+    theme,
+    setTheme,
+    toggleTheme,
+    isDark: theme === "dark",
+    halloweenMode,
+    setHalloweenMode
+  }),
+  [theme, halloweenMode]
+);
 
   return (
     <ThemeContext.Provider value={value}>
