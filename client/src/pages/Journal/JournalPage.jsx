@@ -7,7 +7,7 @@ import {
 
 import JournalAlert
   from "../../components/journal/JournalAlert";
-
+import "../../styles/themes/HalloweenJournal.css";
 
 import JournalBook
   from "../../components/journal/JournalBook";
