@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import HalloweenBat from "../halloween/HalloweenBat";
 import {
   ArrowRight,
   Check,
@@ -140,7 +141,7 @@ const {
       ? "/dashboard"
       : "/register"
   }
-  className="landing-button landing-button--light landing-button--large"
+  className="landing-button landing-button--light landing-button--large halloween-bat-button"
   aria-disabled={initializing}
   onClick={(event) => {
     if (initializing) {
@@ -155,6 +156,7 @@ const {
       : "Begin your journey"}
 
   <ArrowRight size={18} />
+  <HalloweenBat />
 </Link>
             </motion.div>
 
