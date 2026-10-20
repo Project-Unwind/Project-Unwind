@@ -42,6 +42,7 @@ import DassHistory
 
   import ButtonLoader
   from "../../components/common/AppStates/ButtonLoader";
+  import "../../styles/themes/HalloweenDass.css";
 
 import "./Dass.css";
 
