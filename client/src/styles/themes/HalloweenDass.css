@@ -1,0 +1,547 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN DASS-21
+   Venomous Pumpkin Pop
+   ========================================== */
+
+html[data-season="halloween"] .dass-page {
+  --dass-hw-bg: #100D2B;
+  --dass-hw-card: #211035;
+  --dass-hw-card-alt: #301742;
+  --dass-hw-green: #5AFF00;
+  --dass-hw-orange: #FF6600;
+  --dass-hw-text: #F5F0FF;
+  --dass-hw-muted: #C8BBD7;
+  --dass-hw-border: rgba(255,102,0,.28);
+
+  color: var(--dass-hw-text);
+}
+
+/* SHARED LABELS AND BUTTONS */
+
+html[data-season="halloween"] .dass-eyebrow {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"] .dass-primary-button {
+  background: #FF6600;
+  color: #100D2B;
+  border-color: #FF6600;
+  box-shadow: 0 8px 25px rgba(255,102,0,.15);
+}
+
+html[data-season="halloween"]
+.dass-primary-button:not(:disabled):hover {
+  background: #FF8533;
+}
+
+html[data-season="halloween"]
+:is(
+  .dass-secondary-button,
+  .dass-back-button,
+  .dass-exit-button
+) {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+}
+
+html[data-season="halloween"]
+:is(
+  .dass-secondary-button,
+  .dass-back-button,
+  .dass-exit-button
+):not(:disabled):hover {
+  background: #4D0D6F;
+  border-color: #5AFF00;
+}
+
+/* INTRODUCTION PAGE */
+
+html[data-season="halloween"] .dass-landing {
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(255,102,0,.12),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #4D0D6F,
+      #251039 60%,
+      #100D2B
+    );
+
+  border: 1px solid rgba(255,102,0,.35);
+  color: #F5F0FF;
+  box-shadow: 0 20px 55px rgba(0,0,0,.28);
+}
+
+html[data-season="halloween"]
+.dass-landing__content h1 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-landing__description {
+  color: #E6D9EF;
+}
+
+html[data-season="halloween"]
+.dass-landing__privacy {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.dass-landing__privacy svg {
+  color: #5AFF00;
+}
+
+/* INTRODUCTION VISUAL */
+
+html[data-season="halloween"]
+.dass-landing__visual {
+  background: rgba(16,13,43,.25);
+}
+
+html[data-season="halloween"]
+.dass-visual-card {
+  background: #211035;
+  border-color: rgba(255,102,0,.28);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-visual-card__icon {
+  background: #301742;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-visual-card > h2 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-domain-list > div,
+html[data-season="halloween"]
+.dass-time-card {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.24);
+}
+
+html[data-season="halloween"]
+.dass-domain-list > div > span {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+:is(.dass-domain-list small, .dass-time-card small) {
+  color: #C8BBD7;
+}
+
+/* INSTRUCTIONS */
+
+html[data-season="halloween"]
+.dass-instructions__card {
+  background: linear-gradient(145deg, #27143D, #1B102E);
+  border-color: rgba(255,102,0,.3);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-instructions__card > header > span {
+  background: #301742;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-instructions__card > header h1 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-instructions__card > header p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.dass-instruction-grid article,
+html[data-season="halloween"]
+.dass-response-guide article {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.25);
+}
+
+html[data-season="halloween"]
+.dass-instruction-grid article > svg,
+html[data-season="halloween"]
+.dass-response-guide article > span {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+:is(.dass-instruction-grid p, .dass-response-guide p) {
+  color: #C8BBD7;
+}
+
+/* CONSENT AND DISCLAIMER */
+
+html[data-season="halloween"] .dass-consent {
+  background: #211035;
+  border-color: rgba(255,102,0,.3);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-consent__box {
+  background: #100D2B;
+  border-color: rgba(255,102,0,.45);
+}
+
+html[data-season="halloween"]
+.dass-consent input:checked + .dass-consent__box {
+  background: #5AFF00;
+  border-color: #5AFF00;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.dass-disclaimer {
+  background: rgba(255,149,58,.08);
+  color: #F2D8AF;
+  border-color: rgba(255,149,58,.35);
+}
+
+/* ASSESSMENT PROGRESS */
+
+html[data-season="halloween"] .dass-progress-card {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.28);
+}
+
+html[data-season="halloween"]
+.dass-progress-card__header strong {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-progress-track {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.dass-progress-track > span {
+  background: linear-gradient(90deg, #FF6600, #5AFF00);
+}
+
+html[data-season="halloween"]
+.dass-question-dot {
+  background: #4B3759;
+}
+
+html[data-season="halloween"]
+.dass-question-dot--visited {
+  background: #86649A;
+}
+
+html[data-season="halloween"]
+.dass-question-dot--answered {
+  background: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-question-dot--current {
+  background: #FF6600;
+}
+
+/* QUESTION CARD */
+
+html[data-season="halloween"] .dass-question-card {
+  background: linear-gradient(145deg, #27143D, #1B102E);
+  border-color: rgba(255,102,0,.3);
+  color: #F5F0FF;
+  box-shadow: 0 15px 40px rgba(0,0,0,.18);
+}
+
+html[data-season="halloween"]
+.dass-question-card > header span {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-question-card > header small {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.dass-question-card > h2 {
+  color: #F5F0FF;
+}
+
+/* ANSWER OPTIONS */
+
+html[data-season="halloween"] .dass-answer-option {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.27);
+}
+
+html[data-season="halloween"]
+.dass-answer-option:not(:disabled):hover {
+  background: #301742;
+  border-color: #FF6600;
+  box-shadow: 0 8px 22px rgba(255,102,0,.08);
+}
+
+html[data-season="halloween"]
+.dass-answer-option--active {
+  background: rgba(90,255,0,.09);
+  border-color: #5AFF00;
+  box-shadow: 0 0 0 2px rgba(90,255,0,.12);
+}
+
+html[data-season="halloween"]
+.dass-answer-option__number {
+  background: #301742;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-answer-option--active
+.dass-answer-option__number {
+  background: #5AFF00;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.dass-answer-option__label {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-answer-option--active
+.dass-answer-option__check {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"] .dass-save-status {
+  color: #C8BBD7;
+}
+
+/* RESULTS */
+
+html[data-season="halloween"]
+.dass-results__hero {
+  background: linear-gradient(135deg, #4D0D6F, #211035);
+  border-color: rgba(255,102,0,.35);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-results__hero > span {
+  background: #301742;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-results__hero :is(h1, p) {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"] .dass-result-card {
+  background: #211035;
+  border-color: rgba(255,102,0,.28);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-result-card > header > span {
+  background: #301742;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-result-card h2 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-result-card__score {
+  background: #301742;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-result-card > p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.dass-results__guidance {
+  background: #211035;
+  border-color: rgba(255,102,0,.28);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dass-results__guidance > span {
+  background: #301742;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dass-results__guidance p {
+  color: #C8BBD7;
+}
+
+/* SEVERITY — PRESERVE CLINICAL DISTINCTIONS */
+
+html[data-season="halloween"]
+:is(.dass-severity--normal, .dass-history-severity--normal) {
+  color: #B9FF8A;
+  background: rgba(90,255,0,.11);
+}
+
+html[data-season="halloween"]
+:is(.dass-severity--mild, .dass-history-severity--mild) {
+  color: #FFE09A;
+  background: rgba(235,180,66,.15);
+}
+
+html[data-season="halloween"]
+:is(.dass-severity--moderate, .dass-history-severity--moderate) {
+  color: #FFB179;
+  background: rgba(255,134,56,.15);
+}
+
+html[data-season="halloween"]
+:is(
+  .dass-severity--severe,
+  .dass-severity--extremely-severe,
+  .dass-history-severity--severe,
+  .dass-history-severity--extremely-severe
+) {
+  color: #FFACB5;
+  background: rgba(215,74,93,.2);
+}
+
+/* HISTORY */
+
+html[data-season="halloween"] .dass-history {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+:is(
+  .dass-history-card,
+  .dass-history__summary,
+  .dass-history-details,
+  .dass-history__empty,
+  .dass-history__error,
+  .dass-history-details-loader
+) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.28);
+}
+
+html[data-season="halloween"]
+.dass-history-card:hover {
+  border-color: #FF6600;
+}
+
+html[data-season="halloween"]
+:is(
+  .dass-history-card__scores,
+  .dass-history-score,
+  .dass-history-details__scores,
+  .dass-history-details__response-summary,
+  .dass-history-responses,
+  .dass-history-response
+) {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.2);
+}
+
+html[data-season="halloween"]
+:is(
+  .dass-history-card__date,
+  .dass-history-score__top,
+  .dass-history-details__top p,
+  .dass-history-response > span
+) {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+:is(
+  .dass-history-card__view,
+  .dass-history-card__download,
+  .dass-history-details__close
+) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+}
+
+html[data-season="halloween"]
+.dass-history-card__view:hover {
+  border-color: #5AFF00;
+  color: #5AFF00;
+}
+
+/* CONFIRMATION DIALOG */
+
+html[data-season="halloween"]
+.dass-dialog__backdrop {
+  background: rgba(7,4,19,.8);
+}
+
+html[data-season="halloween"]
+.dass-dialog__card {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.35);
+}
+
+html[data-season="halloween"]
+.dass-dialog__card > span {
+  background: #301742;
+  color: #FF953A;
+}
+
+html[data-season="halloween"]
+.dass-dialog__card p {
+  color: #C8BBD7;
+}
+
+/* ALERTS — RETAIN WARNING COLORS */
+
+html[data-season="halloween"] .dass-alert,
+html[data-season="halloween"] .dass-pdf-error {
+  background: rgba(184,75,75,.13);
+  color: #FFB7B7;
+  border-color: rgba(255,120,120,.35);
+}
+
+/* FOCUS AND ACCESSIBILITY */
+
+html[data-season="halloween"]
+.dass-page :is(button, input, a):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+/* No extra motion for assessments */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"] .dass-page button {
+    transition: none;
+  }
+}
