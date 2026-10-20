@@ -5,6 +5,7 @@ import {
   Sun,
   X
 } from "lucide-react";
+import HauntedMansionIcon from "../halloween/HauntedMansionIcon";
 
 import {
   useState
@@ -26,9 +27,11 @@ function LandingSettings() {
   ] = useState(false);
 
   const {
-    theme,
-    setTheme
-  } = useTheme();
+  theme,
+  setTheme,
+  halloweenMode,
+  setHalloweenMode
+} = useTheme();
 
   return (
     <div className="landing-settings">
@@ -128,11 +131,10 @@ function LandingSettings() {
                       ? "landing-theme-option landing-theme-option--active"
                       : "landing-theme-option"
                   }
-                  onClick={() =>
-                    setTheme(
-                      "light"
-                    )
-                  }
+                  onClick={() => {
+  setTheme("light");
+  setHalloweenMode(false);
+}}
                 >
                   <span className="landing-theme-option__icon">
                     <Sun
@@ -150,8 +152,7 @@ function LandingSettings() {
                     </small>
                   </div>
 
-                  {theme ===
-                    "light" && (
+                  {theme === "light" && !halloweenMode && (
                     <Check
                       size={17}
                     />
@@ -165,11 +166,10 @@ function LandingSettings() {
                       ? "landing-theme-option landing-theme-option--active"
                       : "landing-theme-option"
                   }
-                  onClick={() =>
-                    setTheme(
-                      "dark"
-                    )
-                  }
+                  onClick={() => {
+  setTheme("dark");
+  setHalloweenMode(false);
+}}
                 >
                   <span className="landing-theme-option__icon">
                     <Moon
@@ -187,13 +187,32 @@ function LandingSettings() {
                     </small>
                   </div>
 
-                  {theme ===
-                    "dark" && (
+                  {theme === "dark" && !halloweenMode && (
                     <Check
                       size={17}
                     />
                   )}
                 </button>
+                <button
+  type="button"
+  className={
+    halloweenMode
+      ? "landing-theme-option landing-theme-option--active"
+      : "landing-theme-option"
+  }
+  onClick={() => setHalloweenMode(true)}
+>
+  <span className="landing-theme-option__icon">
+    <HauntedMansionIcon size={28} />
+  </span>
+
+  <div>
+    <strong>Halloween 🎃</strong>
+    <small>Enter the haunted mansion</small>
+  </div>
+
+  {halloweenMode && <Check size={17} />}
+</button>
               </div>
             </motion.aside>
           </>

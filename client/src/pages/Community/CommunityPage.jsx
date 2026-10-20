@@ -49,6 +49,7 @@ import AppEmptyState
 import ButtonLoader
   from "../../components/common/AppStates/ButtonLoader";
 import "./Community.css";
+import "../../styles/themes/HalloweenCommunity.css";
 
 function getPostId(post) {
   return (

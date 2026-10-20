@@ -1,0 +1,400 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN GLOBAL UI STATES
+   Loaders / Skeletons / Empty / Error /
+   Success / Progress / Auth Loader
+   ========================================== */
+
+/* SHARED DESIGN TOKENS */
+
+:root[data-season="halloween"] {
+  --app-state-surface: #211035;
+  --app-state-surface-solid: #211035;
+  --app-state-border: rgba(255, 102, 0, .28);
+  --app-state-text: #F5F0FF;
+  --app-state-muted: #C8BBD7;
+  --app-state-accent: #5AFF00;
+  --app-state-accent-soft: rgba(90, 255, 0, .09);
+  --app-state-track: #301742;
+  --app-state-shadow: 0 22px 55px rgba(0, 0, 0, .32);
+}
+
+/* ==========================================
+   GENERAL LOADERS
+   ========================================== */
+
+html[data-season="halloween"] .app-loader {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"] .app-loader--fullscreen {
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      rgba(77, 13, 111, .32),
+      transparent 42%
+    ),
+    #100D2B;
+}
+
+html[data-season="halloween"]
+.app-loader__spinner span {
+  background: #5AFF00;
+}
+
+html[data-season="halloween"]
+.app-loader__message {
+  color: #C8BBD7;
+}
+
+/* ==========================================
+   SKELETON LOADERS
+   ========================================== */
+
+html[data-season="halloween"] .app-skeleton {
+  background: #211035;
+  border-color: rgba(255, 102, 0, .22);
+}
+
+html[data-season="halloween"]
+.app-skeleton :is(
+  .app-skeleton__icon,
+  .app-skeleton__avatar,
+  .app-skeleton__title,
+  .app-skeleton__line,
+  .app-skeleton__label,
+  .app-skeleton__value
+) {
+  background: linear-gradient(
+    90deg,
+    #301742 0%,
+    #4D2860 50%,
+    #301742 100%
+  );
+  background-size: 220% 100%;
+}
+
+/* COMMUNITY POST & COMMENT SKELETONS */
+
+html[data-season="halloween"]
+:is(.community-post-skeleton, .comment-skeleton) {
+  background: #211035;
+  border-color: rgba(255, 102, 0, .23);
+}
+
+html[data-season="halloween"]
+:is(
+  .community-post-skeleton__header,
+  .community-post-skeleton__text,
+  .community-post-skeleton__media,
+  .community-post-skeleton__actions,
+  .comment-skeleton__avatar,
+  .comment-skeleton__body
+) {
+  border-color: rgba(255, 102, 0, .16);
+}
+
+/* TRACKER SKELETONS */
+
+html[data-season="halloween"] .tracker-skeleton {
+  background: linear-gradient(135deg, #301742, #211035);
+  border-color: rgba(255, 102, 0, .25);
+}
+
+/* ==========================================
+   EMPTY STATES
+   ========================================== */
+
+html[data-season="halloween"] .app-empty-state {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.app-empty-state__icon {
+  color: #5AFF00;
+  background: #0F2C20;
+  border: 1px solid rgba(90, 255, 0, .25);
+}
+
+html[data-season="halloween"]
+.app-empty-state h3 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.app-empty-state p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.app-empty-state__action {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.app-empty-state__action:hover:not(:disabled) {
+  background: #FF8533;
+}
+
+/* ==========================================
+   ERROR STATES — PRESERVE ERROR MEANING
+   ========================================== */
+
+html[data-season="halloween"] .app-error-state {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.app-error-state h3 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.app-error-state p {
+  color: #C8BBD7;
+}
+
+/* Different error types retain their own colors */
+
+html[data-season="halloween"]
+.app-error-state {
+  --error-color: #FFB7B7;
+  --error-background: rgba(184, 75, 75, .16);
+}
+
+html[data-season="halloween"]
+.app-error-state:is(
+  .app-error-state--network,
+  .app-error-state--timeout
+) {
+  --error-color: #A9D9FF;
+  --error-background: rgba(70, 150, 240, .13);
+}
+
+html[data-season="halloween"]
+.app-error-state:is(
+  .app-error-state--unauthorized,
+  .app-error-state--forbidden,
+  .app-error-state--safety,
+  .app-error-state--rateLimit,
+  .app-error-state--maintenance,
+  .app-error-state--validation
+) {
+  --error-color: #FFE09A;
+  --error-background: rgba(235, 180, 66, .13);
+}
+
+html[data-season="halloween"]
+.app-error-state--notFound {
+  --error-color: #D6C1EA;
+  --error-background: rgba(122, 80, 160, .18);
+}
+
+html[data-season="halloween"]
+.app-error-state__icon {
+  color: var(--error-color);
+  background: var(--error-background);
+}
+
+html[data-season="halloween"]
+.app-error-state button {
+  background: var(--error-color);
+  color: #100D2B;
+}
+
+/* ==========================================
+   SUCCESS STATES
+   ========================================== */
+
+html[data-season="halloween"] .app-success-state {
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(90, 255, 0, .09),
+      transparent 48%
+    ),
+    #211035;
+
+  color: #C8BBD7;
+  border-color: rgba(90, 255, 0, .3);
+}
+
+html[data-season="halloween"]
+.app-success-state h3 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.app-success-state p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.app-success-state__icon > span {
+  background: rgba(90, 255, 0, .1);
+  border-color: rgba(90, 255, 0, .3);
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.app-success-state__icon > i {
+  background: #5AFF00;
+  color: #100D2B;
+  border-color: #211035;
+}
+
+html[data-season="halloween"]
+.app-success-state__action {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.app-success-state__celebration span {
+  background: #5AFF00;
+}
+
+html[data-season="halloween"]
+.app-success-state__celebration span:nth-child(even) {
+  background: #FF6600;
+}
+
+/* ==========================================
+   PROGRESS BARS
+   ========================================== */
+
+html[data-season="halloween"]
+.app-progress__header {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.app-progress__header strong {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.app-progress__track {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.app-progress__bar {
+  background: linear-gradient(
+    90deg,
+    #FF6600,
+    #5AFF00
+  );
+  box-shadow: none;
+}
+
+/* ==========================================
+   SMALL BUTTON LOADERS
+   ========================================== */
+
+html[data-season="halloween"]
+.button-loader {
+  color: inherit;
+}
+
+html[data-season="halloween"]
+.button-loader__spinner {
+  border-color: currentColor;
+  border-top-color: transparent;
+}
+
+/* ==========================================
+   AUTHENTICATION / REFRESH LOADER
+   ========================================== */
+
+html[data-season="halloween"]
+:is(.unwind-refresh-loader, .unwind-refresh-screen) {
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(77, 13, 111, .4),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #100D2B,
+      #211035,
+      #100D2B
+    );
+}
+
+html[data-season="halloween"]
+.unwind-refresh-loader__path {
+  stroke: #FF6600;
+}
+
+html[data-season="halloween"]
+.unwind-refresh-loader__final-line {
+  stroke: #5AFF00;
+}
+
+html[data-season="halloween"]
+.unwind-refresh-loader__pulse {
+  stroke: #FF953A;
+}
+
+html[data-season="halloween"]
+.unwind-refresh-loader__brand,
+html[data-season="halloween"]
+:is(.unwind-refresh-wordmark, .unwind-refresh-message) {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.unwind-logo-orbit {
+  border-color: rgba(255, 102, 0, .3);
+  box-shadow: 0 0 22px rgba(77, 13, 111, .3);
+}
+
+html[data-season="halloween"]
+.unwind-glow--1 {
+  background: rgba(77, 13, 111, .23);
+}
+
+html[data-season="halloween"]
+.unwind-glow--2 {
+  background: rgba(255, 102, 0, .12);
+}
+
+html[data-season="halloween"]
+.unwind-glow--3 {
+  background: rgba(90, 255, 0, .08);
+}
+
+/* ==========================================
+   ACCESSIBILITY AND PERFORMANCE
+   ========================================== */
+
+html[data-season="halloween"]
+:is(
+  .app-empty-state__action,
+  .app-error-state button,
+  .app-success-state__action
+):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"]
+  :is(
+    .app-loader__spinner span,
+    .app-skeleton__icon,
+    .app-skeleton__avatar,
+    .app-skeleton__title,
+    .app-skeleton__line,
+    .app-skeleton__label,
+    .app-skeleton__value,
+    .app-progress__bar,
+    .button-loader__spinner,
+    .app-success-state__celebration span
+  ) {
+    animation: none !important;
+  }
+}

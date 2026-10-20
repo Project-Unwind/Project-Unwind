@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
+import hauntedMansion from "../../pages/Landing/Halloween/assets/Haunted-mansionconti.webp";
 import {
   ArrowRight,
   CircleCheckBig,
@@ -30,7 +32,7 @@ const benefits = [
 
 function ExperienceSection() {
   const shouldReduceMotion = useReducedMotion();
-
+  const { halloweenMode } = useTheme();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2
@@ -62,18 +64,33 @@ function ExperienceSection() {
             ease: [0.22, 1, 0.36, 1]
           }}
         >
-          <div className="experience-visual__video">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/images/wellness-nature.jpg"
-            >
-              <source src="/videos/calming-nature.mp4" type="video/mp4" />
-            </video>
+          
+<div className="experience-visual__video">
+  {halloweenMode ? (
+    <img
+      src={hauntedMansion}
+      alt="Moonlit haunted mansion surrounded by a mystical Halloween landscape"
+      className="experience-visual__halloween-image"
+      loading="lazy"
+      decoding="async"
+    />
+  ) : (
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      poster="/images/wellness-nature.jpg"
+    >
+      <source
+        src="/videos/calming-nature.mp4"
+        type="video/mp4"
+      />
+    </video>
+  )}
 
-            <div className="experience-visual__overlay" />
+  <div className="experience-visual__overlay" />
+
 
             <div className="experience-visual__caption">
               <button type="button" aria-label="Play calming experience">

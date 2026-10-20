@@ -1,0 +1,390 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN WELLNESS TOOLKIT
+   Venomous Pumpkin Pop
+   ========================================== */
+
+html[data-season="halloween"] .toolkit-page {
+  --toolkit-hw-bg: #100D2B;
+  --toolkit-hw-card: #211035;
+  --toolkit-hw-plum: #4D0D6F;
+  --toolkit-hw-green: #5AFF00;
+  --toolkit-hw-orange: #FF6600;
+  --toolkit-hw-text: #F5F0FF;
+  --toolkit-hw-muted: #C8BBD7;
+  --toolkit-hw-border: rgba(255, 102, 0, 0.28);
+
+  color: var(--toolkit-hw-text);
+}
+
+/* HERO */
+
+[data-season="halloween"] .toolkit-hero {
+  background:
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(255, 102, 0, 0.12),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #4D0D6F,
+      #251039 55%,
+      #100D2B
+    );
+
+  border-color: rgba(255, 102, 0, 0.4);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+}
+
+[data-season="halloween"] .toolkit-eyebrow {
+  color: #5AFF00;
+}
+
+[data-season="halloween"] .toolkit-hero h1 {
+  color: #F5F0FF;
+  font-family: "Cinzel", Georgia, serif;
+}
+
+[data-season="halloween"]
+.toolkit-hero__content > p {
+  color: #E6D9EF;
+}
+
+/* HERO BUTTONS */
+
+[data-season="halloween"] .toolkit-primary-action {
+  background: #FF6600;
+  color: #100D2B;
+  box-shadow: 0 8px 24px rgba(255, 102, 0, 0.2);
+}
+
+[data-season="halloween"]
+.toolkit-primary-action:hover {
+  background: #FF8533;
+}
+
+[data-season="halloween"] .toolkit-secondary-action {
+  background: #211035;
+  border-color: rgba(90, 255, 0, 0.35);
+  color: #F5F0FF;
+}
+
+/* HERO BREATHING ORB */
+
+[data-season="halloween"] .toolkit-hero-orb {
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #301742,
+      #100D2B
+    );
+
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.35);
+
+  box-shadow:
+    inset 0 0 30px rgba(77, 13, 111, 0.35),
+    0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+[data-season="halloween"]
+.toolkit-hero-orb > span {
+  background: linear-gradient(135deg, #4D0D6F, #FF6600);
+  color: #FFFFFF;
+}
+
+[data-season="halloween"] .toolkit-orbit {
+  border-color: rgba(90, 255, 0, 0.18);
+}
+
+/* ALL TOOLKIT SECTIONS */
+
+[data-season="halloween"] .toolkit-home-section {
+  background: linear-gradient(
+    145deg,
+    #241337,
+    #1B102E
+  );
+
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.26);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.14);
+}
+
+/* FEELING SELECTOR CONTAINER */
+
+[data-season="halloween"]
+.toolkit-feeling-section {
+  background: linear-gradient(135deg, #301742, #1B102E);
+}
+
+/* SECTION HEADINGS */
+
+[data-season="halloween"]
+.toolkit-section-header > div > span {
+  color: #5AFF00;
+}
+
+[data-season="halloween"]
+.toolkit-section-header h2 {
+  color: #F5F0FF;
+  font-family: "Cinzel", Georgia, serif;
+}
+
+[data-season="halloween"]
+.toolkit-section-header > p {
+  color: #C8BBD7;
+}
+
+[data-season="halloween"]
+.toolkit-section-header > svg {
+  color: #FF953A;
+}
+
+/* COMMON CARD AREAS */
+
+[data-season="halloween"]
+.toolkit-category-results {
+  border-top-color: rgba(255, 102, 0, 0.25);
+}
+
+[data-season="halloween"]
+.toolkit-category-results__heading strong {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"]
+.toolkit-category-results__heading button {
+  color: #5AFF00;
+}
+
+[data-season="halloween"] .toolkit-empty-inline {
+  background: #211035;
+  color: #C8BBD7;
+  border-color: rgba(255, 102, 0, 0.28);
+}
+
+/* RECENTLY USED */
+
+[data-season="halloween"] .toolkit-recent-item {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+[data-season="halloween"]
+.toolkit-recent-item:hover {
+  background: #301742;
+  border-color: #FF6600;
+}
+
+[data-season="halloween"]
+.toolkit-recent-item__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+[data-season="halloween"]
+.toolkit-recent-item div span {
+  color: #C8BBD7;
+}
+
+/* DIFFICULT MOMENT SUPPORT CARD */
+
+[data-season="halloween"] .toolkit-help-card {
+  background: linear-gradient(
+    135deg,
+    #0F2C20,
+    #211035 65%,
+    #100D2B
+  );
+}
+
+[data-season="halloween"]
+.toolkit-help-card__icon {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+[data-season="halloween"]
+.toolkit-help-card__copy > span {
+  color: #5AFF00;
+}
+
+[data-season="halloween"]
+.toolkit-help-card__copy h2 {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"]
+.toolkit-help-card__copy p {
+  color: #C8BBD7;
+}
+
+[data-season="halloween"]
+.toolkit-help-card__actions button {
+  background: #211035;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+[data-season="halloween"]
+.toolkit-help-card__actions button:hover {
+  background: #301742;
+  border-color: #FF6600;
+}
+
+/* KEYBOARD ACCESSIBILITY */
+
+[data-season="halloween"]
+.toolkit-page :is(button, a):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-season="halloween"]
+  .toolkit-recent-item {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — RECOMMENDATION & TOOL CARDS
+   ========================================== */
+
+/* Both card types */
+
+html[data-season="halloween"] .toolkit-page
+:is(.wellness-recommendation-card, .wellness-tool-card) {
+  background: linear-gradient(
+    145deg,
+    #27143D,
+    #1B102E
+  ) !important;
+
+  border: 1px solid rgba(255, 102, 0, 0.32) !important;
+  color: #F5F0FF;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Hover styling */
+
+html[data-season="halloween"] .toolkit-page
+:is(.wellness-recommendation-card, .wellness-tool-card):hover {
+  border-color: #FF6600 !important;
+  box-shadow: 0 15px 35px rgba(255, 102, 0, 0.12);
+}
+
+/* Headings */
+
+html[data-season="halloween"] .toolkit-page
+:is(.wellness-recommendation-card, .wellness-tool-card)
+:is(h3, h4, strong) {
+  color: #F5F0FF;
+}
+
+/* Descriptions */
+
+html[data-season="halloween"] .toolkit-page
+:is(.wellness-recommendation-card, .wellness-tool-card) p {
+  color: #C8BBD7;
+}
+
+/* Time labels, icons and links */
+
+html[data-season="halloween"] .toolkit-page
+:is(.wellness-recommendation-card, .wellness-tool-card)
+:is(small, svg) {
+  color: #5AFF00;
+}
+
+/* Card icon containers */
+
+html[data-season="halloween"] .toolkit-page
+.wellness-tool-card__icon {
+  background: rgba(90, 255, 0, 0.09);
+  color: #5AFF00;
+}
+
+/* Favorite buttons */
+
+html[data-season="halloween"] .toolkit-page
+:is(.wellness-tool-card, .wellness-recommendation-card)
+button {
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+/* Category cards */
+
+html[data-season="halloween"] .toolkit-page
+.wellness-category-card {
+  background: #211035 !important;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.25) !important;
+}
+
+html[data-season="halloween"] .toolkit-page
+.wellness-category-card:hover {
+  background: #301742 !important;
+  border-color: #5AFF00 !important;
+}
+
+html[data-season="halloween"] .toolkit-page
+.wellness-category-card__icon {
+  color: #5AFF00;
+  background: #0F2C20;
+}
+
+/* ==========================================
+   HALLOWEEN — MOOD SELECTOR
+   ========================================== */
+
+/* All mood buttons */
+html[data-season="halloween"] .toolkit-page
+.toolkit-feeling-section button {
+  background: #211035;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Hover */
+html[data-season="halloween"] .toolkit-page
+.toolkit-feeling-section button:hover {
+  background: #301742;
+  border-color: #5AFF00;
+  box-shadow: 0 0 12px rgba(90, 255, 0, 0.12);
+}
+
+/* Selected mood */
+html[data-season="halloween"] .toolkit-page
+.toolkit-feeling-section button[aria-pressed="true"] {
+  background: #4D0D6F;
+  color: #5AFF00;
+  border-color: #FF6600;
+
+  box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
+}
+
+/* Focus */
+html[data-season="halloween"] .toolkit-page
+.toolkit-feeling-section button:focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"] .toolkit-page
+  .toolkit-feeling-section button {
+    transition: none;
+  }
+}
