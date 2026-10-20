@@ -7,12 +7,20 @@ import HowItWorksSection from "../../components/landing/HowItWorksSection";
 import TestimonialsSection from "../../components/landing/TestimonialsSection";
 import CtaSection from "../../components/landing/CtaSection";
 import Footer from "../../components/landing/Footer";
+import { useTheme } from "../../context/ThemeContext";
 
 import "./LandingPage.css";
+import "./Halloween/HalloweenTheme.css";
 
 function LandingPage() {
+  const { halloweenMode } = useTheme();
+
   return (
-    <div className="landing-page">
+    <div
+  className={`landing-page ${
+    halloweenMode ? "landing-halloween" : ""
+  }`}
+>
       <Navbar />
 
       <main>
