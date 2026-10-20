@@ -380,3 +380,145 @@ html[data-season="halloween"] .trackers-page
 }
 
 /* No additional continuous animations */
+
+/* ==========================================
+   HALLOWEEN — REMAINING TRACKER FIXES
+   ========================================== */
+
+/* HABIT TRACKER OUTER CONTAINER */
+
+html[data-season="halloween"]
+.trackers-page .habit-tracker-container,
+html[data-season="halloween"]
+.trackers-page .habit-tracker-panel {
+  background: linear-gradient(
+    145deg,
+    #27143D,
+    #1B102E
+  );
+
+  border-color: rgba(255, 102, 0, 0.3);
+  color: #F5F0FF;
+}
+
+/* Habit heading and details */
+
+html[data-season="halloween"]
+.habit-tracker-container__header :is(h2, h3, strong),
+html[data-season="halloween"]
+.habit-tracker-panel__header :is(h2, h3, strong) {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.habit-tracker-container__header p,
+html[data-season="halloween"]
+.habit-tracker-panel__header p {
+  color: #C8BBD7;
+}
+
+/* HABIT ACTIONS */
+
+html[data-season="halloween"]
+.habit-card__complete {
+  background: #5AFF00;
+  color: #100D2B;
+  border-color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.habit-card__complete:hover:not(:disabled) {
+  background: #78FF35;
+}
+
+html[data-season="halloween"]
+.habit-card__skip {
+  background: #301742;
+  color: #C8BBD7;
+  border-color: rgba(255, 102, 0, 0.28);
+}
+
+html[data-season="halloween"]
+.habit-card__skip:hover:not(:disabled) {
+  background: #4D0D6F;
+  color: #F5F0FF;
+}
+
+/* SLEEP INPUTS */
+
+html[data-season="halloween"]
+.trackers-page .sleep-time-grid input,
+html[data-season="halloween"]
+.trackers-page .sleep-number-grid input {
+  background: #160D29;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.35);
+  color-scheme: dark;
+}
+
+html[data-season="halloween"]
+.trackers-page .sleep-time-grid input:focus,
+html[data-season="halloween"]
+.trackers-page .sleep-number-grid input:focus {
+  border-color: #5AFF00;
+}
+
+/* MOOD INTENSITY / STRESS / ENERGY PANELS */
+
+html[data-season="halloween"]
+.trackers-page .tracker-range-grid label {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+html[data-season="halloween"]
+.trackers-page .tracker-range-grid label > span {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.trackers-page .tracker-range-grid strong {
+  color: #5AFF00;
+}
+
+/* Range slider accents */
+
+html[data-season="halloween"]
+.trackers-page .tracker-range-grid input[type="range"] {
+  accent-color: #5AFF00;
+}
+
+/* ENERGY LEVEL PROGRESS */
+
+html[data-season="halloween"]
+.trackers-page .energy-level-display > div {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.trackers-page .energy-level-display > div span {
+  background: linear-gradient(
+    90deg,
+    #FF6600,
+    #5AFF00
+  );
+}
+
+/* HABIT PROGRESS BARS */
+
+html[data-season="halloween"]
+.trackers-page .habit-tracker-summary__bar,
+html[data-season="halloween"]
+.trackers-page .habit-tracker-summary__bar > div {
+  border-color: rgba(255, 102, 0, 0.2);
+}
+
+/* Keyboard navigation */
+
+html[data-season="halloween"]
+.trackers-page input:focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 2px;
+}
+
