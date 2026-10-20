@@ -1,0 +1,533 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN NOTIFICATIONS
+   Venomous Pumpkin Pop
+   ========================================== */
+
+/* PAGE */
+
+html[data-season="halloween"] .notifications-page {
+  --notification-hw-bg: #100D2B;
+  --notification-hw-surface: #211035;
+  --notification-hw-plum: #4D0D6F;
+  --notification-hw-orange: #FF6600;
+  --notification-hw-green: #5AFF00;
+  --notification-hw-text: #F5F0FF;
+  --notification-hw-muted: #C8BBD7;
+  --notification-hw-border: rgba(255, 102, 0, 0.28);
+
+  color: var(--notification-hw-text);
+}
+
+/* HERO */
+
+html[data-season="halloween"]
+.notifications-page__hero {
+  background:
+    radial-gradient(
+      ellipse at 85% 15%,
+      rgba(255, 102, 0, 0.14),
+      transparent 48%
+    ),
+    linear-gradient(
+      135deg,
+      #4D0D6F,
+      #251039 60%,
+      #100D2B
+    );
+
+  border-color: rgba(255, 102, 0, 0.38);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+}
+
+html[data-season="halloween"]
+.notifications-page__eyebrow {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.notifications-page__hero h2 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notifications-page__hero p {
+  color: #E6D9EF;
+}
+
+html[data-season="halloween"]
+.notifications-page__hero-summary strong {
+  background: rgba(90, 255, 0, 0.1);
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.notifications-page__hero-summary span {
+  color: #C8BBD7;
+}
+
+/* TOOLBAR */
+
+html[data-season="halloween"]
+.notifications-page__toolbar {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.28);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* TABS */
+
+html[data-season="halloween"]
+.notifications-page__tabs button {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.notifications-page__tabs button:hover {
+  background: #301742;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notifications-page__tabs button.is-active {
+  background: rgba(90, 255, 0, 0.1);
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.notifications-page__tabs button span {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* ACTION BUTTONS */
+
+html[data-season="halloween"]
+.notifications-page
+:is(
+  .notifications-page__text-button,
+  .notifications-page__icon-button,
+  .notifications-page__clear-filters,
+  .notifications-page__pagination button,
+  .notifications-page__empty button
+) {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.26);
+}
+
+html[data-season="halloween"]
+.notifications-page
+:is(
+  .notifications-page__text-button,
+  .notifications-page__icon-button,
+  .notifications-page__clear-filters,
+  .notifications-page__pagination button,
+  .notifications-page__empty button
+):hover:not(:disabled) {
+  background: #4D0D6F;
+  border-color: #5AFF00;
+  color: #5AFF00;
+}
+
+/* Preserve deletion styling */
+
+html[data-season="halloween"]
+.notifications-page .is-danger,
+html[data-season="halloween"]
+.notifications-page__delete-all {
+  color: #FF9FA9;
+}
+
+html[data-season="halloween"]
+.notifications-page .is-danger:hover:not(:disabled),
+html[data-season="halloween"]
+.notifications-page__delete-all:hover:not(:disabled) {
+  background: rgba(184, 75, 75, 0.16);
+  color: #FFB7B7;
+  border-color: rgba(255, 120, 120, 0.4);
+}
+
+/* SEARCH AND FILTERS */
+
+html[data-season="halloween"]
+.notifications-page__search,
+html[data-season="halloween"]
+.notifications-page__select,
+html[data-season="halloween"]
+.notifications-filter-dropdown__trigger {
+  background: #160D29;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.notifications-page__search input,
+html[data-season="halloween"]
+.notifications-page__select select {
+  background: transparent;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notifications-page__search input::placeholder {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.notifications-page__select select {
+  color-scheme: dark;
+}
+
+html[data-season="halloween"]
+.notifications-page__search:focus-within,
+html[data-season="halloween"]
+.notifications-page__select:focus-within,
+html[data-season="halloween"]
+.notifications-filter-dropdown__trigger:focus-visible {
+  border-color: #5AFF00;
+  box-shadow: 0 0 0 3px rgba(90, 255, 0, 0.09);
+}
+
+/* CUSTOM DROPDOWN */
+
+html[data-season="halloween"]
+.notifications-filter-dropdown__menu {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.35);
+  color: #F5F0FF;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+html[data-season="halloween"]
+.notifications-filter-dropdown__title {
+  color: #FF953A;
+}
+
+html[data-season="halloween"]
+.notifications-filter-dropdown__menu > button {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.notifications-filter-dropdown__menu > button:hover {
+  background: #301742;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notifications-filter-dropdown__menu > button.is-selected {
+  background: rgba(90, 255, 0, 0.09);
+  color: #5AFF00;
+}
+
+/* NOTIFICATION LIST */
+
+html[data-season="halloween"]
+.notifications-page__content {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.28);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.2);
+}
+
+html[data-season="halloween"]
+.notification-card {
+  background: #211035;
+  color: #F5F0FF;
+  border-bottom-color: rgba(255, 102, 0, 0.16);
+}
+
+html[data-season="halloween"]
+.notification-card:hover {
+  background: #301742;
+}
+
+/* Unread notification */
+
+html[data-season="halloween"]
+.notification-card--unread {
+  background: linear-gradient(
+    90deg,
+    rgba(77, 13, 111, 0.42),
+    #211035 75%
+  );
+}
+
+html[data-season="halloween"]
+.notification-card--unread::before {
+  background: #5AFF00;
+}
+
+/* Preserve urgent marker */
+
+html[data-season="halloween"]
+.notification-card--priority-urgent::before {
+  background: #FF707B;
+}
+
+/* Notification icon */
+
+html[data-season="halloween"]
+.notification-card__icon {
+  background: #301742;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.2);
+}
+
+/* Notification content */
+
+html[data-season="halloween"]
+.notification-card__body {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notification-card__body :is(h3, h4, strong) {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notification-card__meta {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.notification-card__meta time {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.notification-card__unread-dot {
+  background: #5AFF00;
+  box-shadow: 0 0 8px rgba(90, 255, 0, 0.25);
+}
+
+/* PRIORITY BADGES */
+
+html[data-season="halloween"]
+.notification-card__priority--low {
+  background: rgba(90, 255, 0, 0.08);
+  color: #B9FF8A;
+}
+
+html[data-season="halloween"]
+.notification-card__priority--high {
+  background: rgba(255, 149, 58, 0.13);
+  color: #FFCF94;
+}
+
+html[data-season="halloween"]
+.notification-card__priority--urgent {
+  background: rgba(215, 74, 93, 0.18);
+  color: #FFACB5;
+}
+
+/* CARD ACTIONS */
+
+html[data-season="halloween"]
+.notification-card__actions button {
+  background: #301742;
+  color: #C8BBD7;
+  border-color: rgba(255, 102, 0, 0.23);
+}
+
+html[data-season="halloween"]
+.notification-card__actions button:hover:not(:disabled) {
+  background: #4D0D6F;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.35);
+}
+
+html[data-season="halloween"]
+.notification-card__actions button.is-danger {
+  color: #FF9FA9;
+}
+
+html[data-season="halloween"]
+.notification-card__actions button.is-danger:hover:not(:disabled) {
+  background: rgba(184, 75, 75, 0.15);
+  color: #FFB7B7;
+  border-color: rgba(255, 120, 120, 0.4);
+}
+
+/* EMPTY / LOADING / ERROR */
+
+html[data-season="halloween"]
+.notifications-page__empty {
+  background: #211035;
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.notifications-page__empty h3 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notifications-page__skeleton {
+  background: #29163D;
+  border-bottom-color: rgba(255, 102, 0, 0.18);
+}
+
+html[data-season="halloween"]
+.notifications-page__error {
+  background: rgba(184, 75, 75, 0.13);
+  border-color: rgba(255, 120, 120, 0.35);
+  color: #FFB7B7;
+}
+
+/* PAGINATION */
+
+html[data-season="halloween"]
+.notifications-page__pagination {
+  color: #C8BBD7;
+}
+
+/* ==========================================
+   NOTIFICATION REDIRECT PAGE
+   ========================================== */
+
+html[data-season="halloween"]
+.notification-redirect-page {
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(77, 13, 111, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 75%,
+      rgba(255, 102, 0, 0.13),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #100D2B,
+      #251039 55%,
+      #100D2B
+    );
+
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notification-redirect-shell {
+  background: linear-gradient(
+    145deg,
+    rgba(77, 13, 111, 0.35),
+    rgba(33, 16, 53, 0.7)
+  );
+
+  border-color: rgba(255, 102, 0, 0.28);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+}
+
+html[data-season="halloween"]
+.notification-redirect-ring {
+  border-color: rgba(90, 255, 0, 0.2);
+}
+
+html[data-season="halloween"]
+.notification-redirect-ring--middle {
+  border-color: rgba(255, 102, 0, 0.35);
+}
+
+html[data-season="halloween"]
+.notification-redirect-bell {
+  background: linear-gradient(135deg, #4D0D6F, #FF6600);
+  color: #FFFFFF;
+}
+
+html[data-season="halloween"]
+.notification-redirect-bell__badge {
+  background: #5AFF00;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.notification-redirect-eyebrow {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.notification-redirect-copy h1 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notification-redirect-copy p,
+html[data-season="halloween"]
+.notification-redirect-note {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.notification-redirect-status {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.3);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.notification-redirect-status__top strong {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.notification-redirect-progress {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.notification-redirect-progress span {
+  background: linear-gradient(90deg, #FF6600, #5AFF00);
+}
+
+html[data-season="halloween"]
+.notification-redirect-button {
+  background: #FF6600;
+  color: #100D2B;
+  border-color: #FF6600;
+}
+
+html[data-season="halloween"]
+.notification-redirect-button:hover {
+  background: #FF8533;
+}
+
+html[data-season="halloween"]
+.notification-redirect-sparkle {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.notification-redirect-orb--one {
+  background: rgba(77, 13, 111, 0.3);
+}
+
+html[data-season="halloween"]
+.notification-redirect-orb--two {
+  background: rgba(255, 102, 0, 0.12);
+}
+
+html[data-season="halloween"]
+.notification-redirect-orb--three {
+  background: rgba(90, 255, 0, 0.08);
+}
+
+/* ACCESSIBILITY */
+
+html[data-season="halloween"]
+.notifications-page :is(button, a, input, select):focus-visible,
+html[data-season="halloween"]
+.notification-redirect-page :is(button, a):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"]
+  .notifications-page button {
+    transition: none;
+  }
+}
