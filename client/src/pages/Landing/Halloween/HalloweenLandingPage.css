@@ -1,0 +1,334 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN EDITION
+   Separate seasonal landing-page design
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+.halloween-page {
+  --halloween-bg: #10091c;
+  --halloween-orange: #ffad53;
+  --halloween-purple: #a579d5;
+  --halloween-white: #fff2e4;
+
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--halloween-bg);
+  color: var(--halloween-white);
+  font-family: "DM Sans", sans-serif;
+}
+
+/* NAVIGATION */
+
+.halloween-page .halloween-navbar {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 86px;
+  padding: 20px clamp(20px, 6vw, 100px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(12, 6, 24, 0.9),
+    transparent
+  );
+}
+
+.halloween-page .halloween-logo {
+  font-family: "Cinzel", serif;
+  font-size: 27px;
+  font-weight: 800;
+  color: #ffbc6b;
+  text-decoration: none;
+}
+
+.halloween-navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.halloween-navbar nav a {
+  color: #f6e6ff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.halloween-navbar nav a:hover {
+  color: #ffb65e;
+}
+
+.halloween-login {
+  padding: 12px 22px;
+  border: 1px solid #f3a956;
+  border-radius: 8px;
+  color: #ffd69a;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.halloween-login:hover {
+  background: #ffad53;
+  color: #1b0e28;
+  box-shadow: 0 0 25px #ffad5366;
+}
+
+/* HERO */
+
+.halloween-page .halloween-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  min-height: 780px;
+  min-height: 100svh;
+  padding: 140px 24px 55px;
+
+  overflow: hidden;
+  text-align: center;
+  background: #170b27;
+}
+
+/* SVG artwork background */
+
+.halloween-scene {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+
+  background-image:
+    url("./assets/haunted-mansion.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  animation: mansionBreath 22s ease-in-out infinite alternate;
+}
+
+/* Cinematic shading for readable text */
+
+.halloween-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12, 5, 25, 0.42) 0%,
+      transparent 27%,
+      rgba(13, 5, 25, 0.10) 48%,
+      rgba(12, 5, 24, 0.62) 72%,
+      #10091c 100%
+    );
+}
+
+/* HERO CONTENT */
+
+.halloween-hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1000px);
+  animation: halloweenReveal 1.3s ease both;
+}
+
+.halloween-eyebrow {
+  margin-bottom: 18px;
+  color: #ffc27b;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+
+.halloween-hero h1 {
+  margin: 0 auto 24px;
+  font-family: "Cinzel", serif;
+  font-size: clamp(34px, 4.3vw, 62px);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -1.5px;
+  color: #fff2e4;
+  text-shadow: 0 5px 30px rgba(0, 0, 0, 0.85);
+}
+
+.halloween-hero h1 span {
+  display: block;
+  color: #ffba6d;
+  text-shadow:
+    0 0 28px rgba(255, 147, 52, 0.35),
+    0 5px 25px #09020e;
+}
+
+.halloween-hero-content > p:not(.halloween-eyebrow) {
+  margin: 0 auto 30px;
+  max-width: 650px;
+  color: #f0dff3;
+  font-size: clamp(15px, 1.4vw, 19px);
+  line-height: 1.8;
+}
+
+.halloween-hero-content > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 17px 36px;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    #ffc172,
+    #e77c2b
+  );
+
+  color: #220e20;
+  font-family: "Cinzel", serif;
+  font-weight: 800;
+  text-decoration: none;
+
+  box-shadow:
+    0 0 28px rgba(255, 136, 49, 0.35),
+    0 8px 30px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.halloween-hero-content > a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 45px rgba(255, 136, 49, 0.6);
+}
+
+/* PLACEHOLDER SECTIONS */
+
+.halloween-features,
+.halloween-about {
+  min-height: 400px;
+  padding: 100px 6%;
+  text-align: center;
+}
+
+.halloween-features h2,
+.halloween-about h2 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(27px, 4vw, 48px);
+  color: #ffbf78;
+}
+
+.halloween-features {
+  background: #10091c;
+}
+
+.halloween-about {
+  background: #1c102b;
+}
+
+.halloween-footer {
+  padding: 45px 20px;
+  background: #090611;
+  color: #c7afd6;
+  text-align: center;
+}
+
+/* ANIMATIONS */
+
+@keyframes mansionBreath {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.045);
+  }
+}
+
+@keyframes halloweenReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .halloween-page .halloween-navbar {
+    padding: 16px 20px;
+  }
+
+  .halloween-navbar nav {
+    display: none;
+  }
+
+  .halloween-page .halloween-logo {
+    font-size: 21px;
+  }
+
+  .halloween-login {
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+
+  .halloween-page .halloween-hero {
+    min-height: 100svh;
+    padding: 130px 20px 80px;
+  }
+
+  .halloween-scene {
+    background-position: 58% center;
+  }
+
+  .halloween-hero h1 {
+    font-size: clamp(34px, 9vw, 51px);
+    letter-spacing: -0.5px;
+  }
+
+  .halloween-eyebrow {
+    letter-spacing: 3px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-page *,
+  .halloween-page *::before,
+  .halloween-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+.halloween-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.halloween-navbar-actions .landing-settings__trigger {
+  color: #ffbf78;
+  border-color: rgba(255, 191, 120, 0.4);
+}
+
+.halloween-navbar-actions .landing-settings__trigger:hover {
+  color: #ffffff;
+  border-color: #ffbf78;
+}

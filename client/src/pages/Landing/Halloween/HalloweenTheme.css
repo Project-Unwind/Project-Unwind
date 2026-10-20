@@ -1,0 +1,1844 @@
+
+/* =========================================
+   UNWIND — HALLOWEEN MODE
+   Venomous Pumpkin Pop
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@400;600;700&display=swap');
+
+.landing-page.landing-halloween {
+  --halloween-bg: #100D2B;
+  --halloween-green: #5AFF00;
+  --halloween-orange: #FF6600;
+  --halloween-purple: #4D0D6F;
+  --halloween-slime: #0F2C20;
+  --halloween-white: #F5F0FF;
+
+  background: var(--halloween-bg);
+  color: var(--halloween-white);
+}
+
+/* ========== HERO BACKGROUND ========== */
+
+.landing-halloween .premium-hero {
+  background: #100D2B;
+  color: #F5F0FF;
+}
+
+/* Original mansion artwork */
+
+.landing-halloween .premium-hero__media {
+  background-image:
+   url("./assets/haunted-mansion.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Dark gradient ensures text stays readable */
+
+.landing-halloween .premium-hero__overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(16, 13, 43, 0.96) 0%,
+      rgba(16, 13, 43, 0.85) 28%,
+      rgba(16, 13, 43, 0.62) 52%,
+      rgba(16, 13, 43, 0.25) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(16, 13, 43, 0.85),
+      transparent 45%
+    );
+}
+
+/* ========== HALLOWEEN LIGHTING ========== */
+
+.landing-halloween .premium-hero__orb--one {
+  background: rgba(90, 255, 0, 0.20);
+}
+
+.landing-halloween .premium-hero__orb--two {
+  background: rgba(255, 102, 0, 0.23);
+}
+
+/* ========== TYPOGRAPHY ========== */
+
+.landing-halloween .premium-hero__content h1 {
+  font-family: "Cinzel", serif;
+  font-size: clamp(48px, 5.2vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  color: #F5F0FF;
+
+  text-shadow: 0 4px 22px rgba(0, 0, 0, 0.7);
+}
+
+.landing-halloween .premium-hero__content h1 span {
+  color: #5AFF00;
+  font-style: normal;
+
+  text-shadow:
+    0 0 20px rgba(90, 255, 0, 0.35);
+}
+
+.landing-halloween .premium-hero__description {
+  color: #E6D9EF;
+}
+
+/* ========== EYEBROW ========== */
+
+.landing-halloween .premium-hero .landing-eyebrow {
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.35);
+  background: rgba(16, 13, 43, 0.72);
+}
+
+.landing-halloween .premium-hero .landing-eyebrow svg {
+  color: #5AFF00;
+}
+
+/* ========== BUTTONS ========== */
+
+/* Primary CTA */
+
+.landing-halloween .premium-hero .landing-button--light {
+  background: #FF6600;
+  color: #100D2B;
+  border: 1px solid #FF6600;
+
+  box-shadow:
+    0 0 25px rgba(255, 102, 0, 0.35);
+}
+
+.landing-halloween .premium-hero .landing-button--light:hover {
+  background: #FF8533;
+  box-shadow:
+    0 0 35px rgba(255, 102, 0, 0.6);
+}
+
+/* Secondary CTA */
+
+.landing-halloween .premium-hero .landing-button--glass {
+  background: rgba(77, 13, 111, 0.60);
+  color: #F5F0FF;
+  border: 1px solid rgba(90, 255, 0, 0.55);
+
+  backdrop-filter: blur(12px);
+}
+
+.landing-halloween .premium-hero .landing-button--glass:hover {
+  background: rgba(77, 13, 111, 0.90);
+  border-color: #5AFF00;
+}
+
+.landing-halloween .premium-hero__play {
+  background: #5AFF00;
+  color: #100D2B;
+}
+
+/* ========== TRUST INDICATORS ========== */
+
+.landing-halloween .premium-hero__assurance span {
+  color: #DFD1E9;
+}
+
+.landing-halloween .premium-hero__assurance svg {
+  color: #5AFF00;
+}
+
+/* ========== MOBILE ========== */
+
+@media (max-width: 768px) {
+  .landing-halloween .premium-hero__media {
+    background-position: 58% center;
+  }
+
+  .landing-halloween .premium-hero__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(16, 13, 43, 0.80),
+        rgba(16, 13, 43, 0.90)
+      );
+  }
+
+  .landing-halloween .premium-hero__content h1 {
+    font-size: clamp(37px, 9vw, 52px);
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — STATS SECTION
+   ========================================== */
+
+.landing-halloween .stats-section {
+  position: relative;
+  background: #100D2B;
+  border-bottom: 1px solid rgba(90, 255, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Very subtle haunted atmosphere */
+.landing-halloween .stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(77, 13, 111, 0.4),
+      transparent 75%
+    );
+}
+
+/* Preserve existing four-column layout */
+.landing-halloween .stats-section__grid {
+  position: relative;
+  z-index: 1;
+  min-height: 155px;
+}
+
+/* Individual statistic */
+.landing-halloween .stat-card {
+  padding: 28px 12px;
+  transition:
+    background 0.3s ease,
+    filter 0.3s ease;
+}
+
+.landing-halloween .stat-card:hover {
+  background: rgba(77, 13, 111, 0.3);
+}
+
+/* Glowing numbers */
+.landing-halloween .stat-card strong {
+  color: #5AFF00;
+  font-family: "Cinzel", serif;
+  font-size: clamp(28px, 3vw, 39px);
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba(90, 255, 0, 0.3);
+}
+
+/* Labels */
+.landing-halloween .stat-card span {
+  color: #F5F0FF;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+/* Pumpkin orange separators */
+.landing-halloween .stat-card:not(:last-child)::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #FF6600,
+    transparent
+  );
+  height: 65px;
+  opacity: 0.7;
+}
+
+/* Decorative spiderwebs */
+.landing-halloween .stats-section::after {
+  content: "🕸";
+  position: absolute;
+  top: -16px;
+  right: 12px;
+  font-size: 55px;
+  opacity: 0.25;
+  pointer-events: none;
+  transform: rotate(-15deg);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .landing-halloween .stats-section__grid {
+    min-height: auto;
+  }
+
+  .landing-halloween .stat-card {
+    padding: 22px 10px;
+  }
+
+  .landing-halloween .stat-card strong {
+    font-size: 27px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-halloween .stat-card {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — FEATURES SECTION
+   ========================================== */
+
+.landing-halloween .features-section {
+  position: relative;
+  background:
+    radial-gradient(
+      ellipse at 10% 25%,
+      rgba(77, 13, 111, 0.5),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 90% 75%,
+      rgba(15, 44, 32, 0.7),
+      transparent 45%
+    ),
+    #100D2B;
+}
+
+/* Main heading */
+
+.landing-halloween .features-section
+.landing-section-heading h2 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+}
+
+.landing-halloween .features-section
+.landing-section-heading h2 span {
+  color: #5AFF00;
+  font-style: normal;
+  text-shadow: 0 0 20px rgba(90, 255, 0, 0.2);
+}
+
+.landing-halloween .features-section
+.landing-section-heading > p {
+  color: #C8BBD7;
+}
+
+/* Eyebrow */
+
+.landing-halloween .features-section
+.landing-eyebrow {
+  color: #5AFF00;
+  background: rgba(16, 13, 43, 0.85);
+  border-color: rgba(90, 255, 0, 0.35);
+}
+
+.landing-halloween .features-section
+.landing-eyebrow svg {
+  color: #5AFF00;
+}
+
+/* Feature cards */
+
+.landing-halloween .premium-feature-card {
+  position: relative;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(77, 13, 111, 0.55),
+      rgba(16, 13, 43, 0.96)
+    );
+
+  border: 1px solid rgba(255, 102, 0, 0.35);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25),
+    inset 0 0 25px rgba(77, 13, 111, 0.18);
+}
+
+/* Remove original light highlight */
+
+.landing-halloween .premium-feature-card::before {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 102, 0, 0.09),
+      transparent 45%
+    );
+}
+
+/* Spiderweb decoration */
+
+.landing-halloween .premium-feature-card::after {
+  content: "🕸";
+  position: absolute;
+  top: -8px;
+  right: 8px;
+  font-size: 43px;
+  opacity: 0.35;
+  pointer-events: none;
+  transform: rotate(-15deg);
+  transition: opacity 0.3s ease;
+}
+
+.landing-halloween .premium-feature-card:hover::after {
+  opacity: 0.8;
+}
+
+/* Icons */
+
+.landing-halloween .premium-feature-card__icon {
+  color: #5AFF00;
+  background: rgba(15, 44, 32, 0.7);
+  border: 1px solid rgba(90, 255, 0, 0.25);
+
+  box-shadow:
+    0 0 20px rgba(90, 255, 0, 0.08);
+}
+
+/* Feature numbers */
+
+.landing-halloween .premium-feature-card__number {
+  color: rgba(255, 102, 0, 0.65);
+  font-family: "Cinzel", serif;
+}
+
+/* Titles */
+
+.landing-halloween .premium-feature-card h3 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+  font-size: 20px;
+}
+
+/* Descriptions */
+
+.landing-halloween .premium-feature-card p {
+  color: #C8BBD7;
+}
+
+/* Hover effects */
+
+.landing-halloween .premium-feature-card:hover {
+  border-color: #FF6600;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(77, 13, 111, 0.8),
+      rgba(16, 13, 43, 0.98)
+    );
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(255, 102, 0, 0.15);
+}
+
+.landing-halloween .premium-feature-card__glow {
+  background: rgba(255, 102, 0, 0.28);
+}
+
+/* Responsive */
+
+@media (max-width: 650px) {
+  .landing-halloween .features-section
+  .landing-section-heading h2 {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+
+  .landing-halloween .premium-feature-card::after {
+    font-size: 35px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-halloween .premium-feature-card::after {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — EXPERIENCE SECTION
+   ========================================== */
+
+.landing-halloween .experience-section {
+  background:
+    radial-gradient(
+      ellipse at 15% 45%,
+      rgba(77, 13, 111, 0.4),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 90% 70%,
+      rgba(15, 44, 32, 0.5),
+      transparent 50%
+    ),
+    #100D2B;
+}
+
+/* ========== HEADINGS ========== */
+
+.landing-halloween .experience-content h2 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+}
+
+.landing-halloween .experience-content h2 span {
+  color: #5AFF00;
+  font-style: normal;
+  text-shadow: 0 0 22px rgba(90, 255, 0, 0.25);
+}
+
+.landing-halloween .experience-content__description {
+  color: #C8BBD7;
+}
+
+/* ========== EYEBROW ========== */
+
+.landing-halloween .experience-content .landing-eyebrow {
+  color: #5AFF00;
+  background: rgba(77, 13, 111, 0.35);
+  border: 1px solid rgba(90, 255, 0, 0.3);
+}
+
+.landing-halloween .experience-content .landing-eyebrow svg {
+  color: #5AFF00;
+}
+
+/* ========== VIDEO FRAME ========== */
+
+.landing-halloween .experience-visual__video {
+  border: 1px solid rgba(255, 102, 0, 0.65);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(255, 102, 0, 0.12);
+}
+
+/* Slightly eerie nature-video treatment */
+
+.landing-halloween .experience-visual__video video {
+  filter:
+    brightness(0.75)
+    saturate(0.8)
+    hue-rotate(12deg);
+}
+
+.landing-halloween .experience-visual__overlay {
+  background:
+    linear-gradient(
+      to top,
+      rgba(16, 13, 43, 0.92),
+      rgba(77, 13, 111, 0.2) 55%,
+      transparent
+    );
+}
+
+/* Video play button */
+
+.landing-halloween .experience-visual__caption button {
+  background: #FF6600;
+  color: #100D2B;
+  border-color: #FF6600;
+  box-shadow: 0 0 22px rgba(255, 102, 0, 0.3);
+}
+
+/* ========== FLOATING CARDS ========== */
+
+.landing-halloween .experience-audio,
+.landing-halloween .experience-reflection {
+  background: rgba(24, 12, 48, 0.94);
+  border: 1px solid rgba(255, 102, 0, 0.4);
+
+  color: #F5F0FF;
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.4);
+
+  backdrop-filter: blur(18px);
+}
+
+.landing-halloween .experience-audio strong,
+.landing-halloween .experience-reflection strong {
+  color: #F5F0FF;
+}
+
+.landing-halloween .experience-audio small,
+.landing-halloween .experience-reflection small {
+  color: #C8BBD7;
+}
+
+.landing-halloween .experience-reflection > svg {
+  color: #5AFF00;
+}
+
+.landing-halloween .experience-audio__icon {
+  background: #4D0D6F;
+  color: #5AFF00;
+}
+
+.landing-halloween .experience-audio > button {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+.landing-halloween .experience-audio__bars span {
+  background: #5AFF00;
+}
+
+/* ========== BENEFITS ========== */
+
+.landing-halloween .experience-content__benefits h3 {
+  color: #F5F0FF;
+}
+
+.landing-halloween .experience-content__benefits p {
+  color: #C8BBD7;
+}
+
+.landing-halloween
+.experience-content__benefits article > span {
+  background: rgba(77, 13, 111, 0.65);
+  color: #5AFF00;
+  border: 1px solid rgba(90, 255, 0, 0.22);
+}
+
+.landing-halloween
+.experience-content__benefits article:hover {
+  background: rgba(77, 13, 111, 0.3);
+  border-color: rgba(255, 102, 0, 0.4);
+}
+
+/* ========== TEXT LINK ========== */
+
+.landing-halloween .experience-content .landing-text-link {
+  color: #5AFF00;
+}
+
+.landing-halloween .experience-content .landing-text-link:hover {
+  color: #FF6600;
+}
+
+/* ==========================================
+   HALLOWEEN — HOW IT WORKS
+   ========================================== */
+
+.landing-halloween .how-it-works {
+  background:
+    radial-gradient(
+      ellipse at 15% 70%,
+      rgba(77, 13, 111, 0.48),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 85% 15%,
+      rgba(15, 44, 32, 0.45),
+      transparent 45%
+    ),
+    #100D2B;
+
+  color: #F5F0FF;
+}
+
+/* Heading */
+
+.landing-halloween
+.how-it-works .landing-section-heading h2 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+}
+
+.landing-halloween
+.how-it-works .landing-section-heading h2 span {
+  color: #5AFF00;
+  font-style: normal;
+  text-shadow: 0 0 18px rgba(90, 255, 0, 0.25);
+}
+
+.landing-halloween
+.how-it-works .landing-section-heading > p {
+  color: #C8BBD7;
+}
+
+/* Eyebrow */
+
+.landing-halloween
+.how-it-works .landing-eyebrow {
+  background: rgba(77, 13, 111, 0.35);
+  color: #5AFF00;
+  border: 1px solid rgba(90, 255, 0, 0.35);
+}
+
+/* Orange connecting timeline */
+
+.landing-halloween .how-it-works__progress {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #FF6600,
+    #5AFF00,
+    #FF6600,
+    transparent
+  );
+
+  box-shadow: 0 0 14px rgba(255, 102, 0, 0.4);
+}
+
+/* Gothic step cards */
+
+.landing-halloween .how-it-works__step {
+  position: relative;
+
+  background: linear-gradient(
+    145deg,
+    rgba(77, 13, 111, 0.72),
+    rgba(16, 13, 43, 0.98)
+  );
+
+  border: 1px solid rgba(255, 102, 0, 0.4);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.3),
+    inset 0 0 22px rgba(77, 13, 111, 0.18);
+}
+
+/* Existing card glow */
+
+.landing-halloween .how-it-works__step::after {
+  background: rgba(255, 102, 0, 0.25);
+}
+
+/* Small web on card corners */
+
+.landing-halloween .how-it-works__step::before {
+  content: "🕸";
+  position: absolute;
+  right: 8px;
+  top: 3px;
+  font-size: 30px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Hover */
+
+.landing-halloween .how-it-works__step:hover {
+  border-color: #FF6600;
+
+  background: linear-gradient(
+    145deg,
+    rgba(77, 13, 111, 0.88),
+    rgba(16, 13, 43, 1)
+  );
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(255, 102, 0, 0.18);
+}
+
+/* Icons */
+
+.landing-halloween .how-it-works__icon {
+  background: rgba(15, 44, 32, 0.85);
+  border-color: rgba(90, 255, 0, 0.4);
+  color: #5AFF00;
+
+  box-shadow: 0 0 20px rgba(90, 255, 0, 0.1);
+}
+
+/* Step numbers */
+
+.landing-halloween .how-it-works__number {
+  color: #FF6600;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+}
+
+/* Titles */
+
+.landing-halloween .how-it-works__step h3 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+  font-size: 16px;
+}
+
+/* Descriptions */
+
+.landing-halloween .how-it-works__step p {
+  color: #C8BBD7;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-halloween .how-it-works__step {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — TESTIMONIALS / STORIES
+   ========================================== */
+
+.landing-halloween .landing-testimonials-placeholder {
+  position: relative;
+  overflow: hidden;
+  color: #F5F0FF;
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(77, 13, 111, 0.38),
+      transparent 65%
+    ),
+    #100D2B;
+}
+
+/* Section headline */
+
+.landing-halloween
+.landing-testimonials-placeholder h2 {
+  font-family: "Cinzel", serif;
+  color: #F5F0FF;
+  text-shadow: 0 4px 22px rgba(0,0,0,0.35);
+}
+
+.landing-halloween
+.landing-testimonials-placeholder
+.landing-section-heading > p {
+  color: #C8BBD7;
+}
+
+/* Section badge */
+
+.landing-halloween .landing-section-badge {
+  color: #5AFF00;
+  background: rgba(77, 13, 111, 0.35);
+  border: 1px solid rgba(90, 255, 0, 0.35);
+}
+
+/* Share experience button */
+
+.landing-halloween .testimonial-open-button {
+  color: #100D2B;
+  background: #FF6600;
+  border-radius: 12px;
+  box-shadow: 0 0 22px rgba(255, 102, 0, 0.2);
+}
+
+.landing-halloween .testimonial-open-button:hover {
+  background: #FF8533;
+  box-shadow: 0 0 32px rgba(255, 102, 0, 0.4);
+}
+
+.landing-halloween .testimonial-share-cta > span {
+  color: #C8BBD7;
+}
+
+/* Community voices heading */
+
+.landing-halloween .testimonials-placeholder-eyebrow {
+  color: #5AFF00;
+}
+
+.landing-halloween
+.testimonials-display-heading h3 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+}
+
+/* Both empty and populated testimonial cards */
+
+.landing-halloween .testimonials-placeholder-card,
+.landing-halloween .testimonial-live-card {
+  position: relative;
+  color: #F5F0FF;
+  background: linear-gradient(
+    145deg,
+    #4D0D6F,
+    #211037 65%,
+    #100D2B
+  );
+
+  border: 1px solid rgba(255, 102, 0, 0.4);
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(255, 102, 0, 0.08);
+}
+
+/* Small decorative glow */
+
+.landing-halloween
+.testimonials-placeholder-card::before,
+.landing-halloween
+.testimonial-live-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(90, 255, 0, 0.08),
+      transparent 45%
+    );
+}
+
+/* Testimonial icons */
+
+.landing-halloween .testimonials-placeholder-icon,
+.landing-halloween .testimonial-quote-icon {
+  color: #5AFF00;
+  background: rgba(15, 44, 32, 0.85);
+  border: 1px solid rgba(90, 255, 0, 0.3);
+}
+
+/* Card text */
+
+.landing-halloween
+.testimonials-placeholder-card h3 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+}
+
+.landing-halloween
+.testimonials-placeholder-card p,
+.landing-halloween
+.testimonial-live-card blockquote {
+  color: #E8DDF0;
+}
+
+.landing-halloween .testimonial-author-name {
+  color: #F5F0FF;
+}
+
+.landing-halloween .testimonial-author-label {
+  color: #C8BBD7;
+}
+
+/* Ratings and indicators */
+
+.landing-halloween .testimonial-live-rating {
+  color: #FF6600;
+}
+
+.landing-halloween .testimonial-indicator {
+  background: #4D0D6F;
+}
+
+.landing-halloween .testimonial-indicator.active {
+  background: #5AFF00;
+}
+
+/* Halloween modal styling */
+
+.landing-halloween .testimonial-modal {
+  background: linear-gradient(160deg, #28113F, #100D2B);
+  border: 1px solid rgba(255, 102, 0, 0.45);
+}
+
+.landing-halloween .testimonial-submit-button {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+.landing-halloween .testimonial-submit-header h3,
+.landing-halloween .testimonial-form-label {
+  color: #F5F0FF;
+}
+
+.landing-halloween .testimonial-submit-description {
+  color: #C8BBD7;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .landing-halloween
+  .landing-testimonials-placeholder h2 {
+    font-size: clamp(32px, 8vw, 46px);
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — CTA SECTION (CORRECTED)
+   ========================================== */
+
+.landing-halloween .cta-section {
+  background: #100D2B;
+}
+
+/* Main CTA panel */
+
+.landing-halloween .cta-card {
+  background:
+    radial-gradient(
+      ellipse at 15% 20%,
+      rgba(90, 255, 0, 0.08),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #4D0D6F 0%,
+      #251039 55%,
+      #100D2B 100%
+    );
+
+  border: 1px solid rgba(255, 102, 0, 0.5);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(255, 102, 0, 0.12);
+}
+
+/* Animated background orbs */
+
+.landing-halloween .cta-card__orb--one {
+  background: rgba(90, 255, 0, 0.15);
+}
+
+.landing-halloween .cta-card__orb--two {
+  background: rgba(255, 102, 0, 0.2);
+}
+
+/* Decorative icon */
+
+.landing-halloween .cta-card__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+  border: 1px solid rgba(90, 255, 0, 0.4);
+
+  box-shadow: 0 0 22px rgba(90, 255, 0, 0.15);
+}
+
+/* Eyebrow */
+
+.landing-halloween .cta-card__content > small {
+  color: #5AFF00;
+  letter-spacing: 0.12em;
+}
+
+/* Main heading */
+
+.landing-halloween .cta-card h2 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+}
+
+.landing-halloween .cta-card h2 span {
+  color: #5AFF00;
+  font-style: normal;
+  text-shadow: 0 0 22px rgba(90, 255, 0, 0.25);
+}
+
+/* Description */
+
+.landing-halloween .cta-card__content > p {
+  color: #E6D9EF;
+}
+
+/* Primary button */
+
+.landing-halloween .cta-card
+.landing-button--light {
+  background: #FF6600;
+  color: #100D2B;
+  border: 1px solid #FF6600;
+
+  box-shadow: 0 0 25px rgba(255, 102, 0, 0.3);
+}
+
+.landing-halloween .cta-card
+.landing-button--light:hover {
+  background: #FF8533;
+  box-shadow: 0 0 36px rgba(255, 102, 0, 0.5);
+}
+
+/* Secondary button */
+
+.landing-halloween .cta-card
+.landing-button--outline-light {
+  background: rgba(16, 13, 43, 0.45);
+  color: #F5F0FF;
+
+  border: 1px solid rgba(90, 255, 0, 0.5);
+}
+
+.landing-halloween .cta-card
+.landing-button--outline-light:hover {
+  background: rgba(77, 13, 111, 0.7);
+  border-color: #5AFF00;
+}
+
+/* Bottom assurances */
+
+.landing-halloween .cta-card__assurance {
+  color: #E6D9EF;
+}
+
+.landing-halloween .cta-card__assurance svg {
+  color: #5AFF00;
+}
+
+/* ==========================================
+   HALLOWEEN — FOOTER
+   ========================================== */
+
+.landing-halloween .landing-footer {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 85% 0%,
+      rgba(77, 13, 111, 0.45),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      #100D2B 0%,
+      #160A29 55%,
+      #090616 100%
+    );
+
+  color: #C8BBD7;
+  border-top: 1px solid rgba(255, 102, 0, 0.25);
+}
+
+/* Subtle orange glow near the top */
+
+.landing-halloween .landing-footer::before {
+  content: "";
+  position: absolute;
+  top: -130px;
+  left: 20%;
+  width: 60%;
+  height: 200px;
+
+  background: radial-gradient(
+    ellipse,
+    rgba(255, 102, 0, 0.11),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+/* Brand */
+
+.landing-halloween .landing-footer__brand-text {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+}
+
+.landing-halloween .landing-footer__brand-column > p {
+  color: #C8BBD7;
+}
+
+/* Navigation headings */
+
+.landing-halloween .landing-footer__links h3 {
+  color: #5AFF00;
+  font-family: "Cinzel", serif;
+  font-size: 13px;
+}
+
+/* Navigation links */
+
+.landing-halloween .landing-footer__links a {
+  color: #C8BBD7;
+  transition: color 0.25s ease;
+}
+
+.landing-halloween .landing-footer__links a:hover {
+  color: #FF6600;
+}
+
+/* Social media buttons */
+
+.landing-halloween .landing-footer__socials a {
+  background: rgba(77, 13, 111, 0.4);
+  color: #F5F0FF;
+
+  border: 1px solid rgba(255, 102, 0, 0.3);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.landing-halloween .landing-footer__socials a:hover {
+  background: #4D0D6F;
+  border-color: #5AFF00;
+  color: #5AFF00;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 0 18px rgba(90, 255, 0, 0.18);
+}
+
+/* Bottom section */
+
+.landing-halloween .landing-footer__bottom {
+  border-top: 1px solid rgba(255, 102, 0, 0.22);
+}
+
+.landing-halloween .landing-footer__bottom p {
+  color: #AB9BBE;
+}
+
+/* Keyboard accessibility */
+
+.landing-halloween .landing-footer a:focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 4px;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-halloween .landing-footer__socials a,
+  .landing-halloween .landing-footer__links a {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — NAVBAR
+   Venomous Pumpkin Pop
+   ========================================== */
+
+/* Main navbar */
+
+/* HALLOWEEN NAVBAR — CINEMATIC BLENDING */
+
+.landing-halloween .landing-navbar {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 13, 43, 0.82) 0%,
+    rgba(16, 13, 43, 0.38) 65%,
+    transparent 100%
+  );
+
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Navbar becomes readable while scrolling */
+
+.landing-halloween .landing-navbar--scrolled {
+  background: rgba(16, 13, 43, 0.88);
+
+  border-bottom: 1px solid
+    rgba(255, 102, 0, 0.12);
+
+  box-shadow: 0 8px 30px
+    rgba(0, 0, 0, 0.18);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Logo text */
+.landing-halloween .landing-navbar__brand-text {
+  color: #F5F0FF;
+  text-shadow: 0 0 15px rgba(90, 255, 0, 0.2);
+}
+
+.landing-halloween .landing-navbar__brand:hover
+.landing-navbar__brand-text {
+  color: #5AFF00;
+}
+
+/* Desktop navigation links */
+.landing-halloween
+.landing-navbar__desktop-navigation a {
+  color: #E6D9EF;
+}
+
+.landing-halloween
+.landing-navbar__desktop-navigation a:hover {
+  color: #5AFF00;
+}
+
+/* Link underline */
+.landing-halloween
+.landing-navbar__desktop-navigation a::after {
+  background: #FF6600;
+}
+
+/* Sign in */
+.landing-halloween .landing-navbar__login {
+  color: #F5F0FF;
+}
+
+.landing-halloween .landing-navbar__login:hover {
+  color: #5AFF00;
+}
+
+/* Join UNWIND button */
+.landing-halloween .landing-navbar__actions
+.landing-button--primary {
+  background: #FF6600;
+  color: #100D2B;
+  border: 1px solid #FF6600;
+
+  box-shadow: 0 0 22px rgba(255, 102, 0, 0.25);
+}
+
+.landing-halloween .landing-navbar__actions
+.landing-button--primary:hover {
+  background: #FF8533;
+  box-shadow: 0 0 32px rgba(255, 102, 0, 0.45);
+}
+
+/* Notification and settings buttons */
+.landing-halloween .landing-navbar__actions button {
+  color: #F5F0FF;
+  border-color: rgba(90, 255, 0, 0.25);
+}
+
+/* Mobile menu toggle */
+.landing-halloween .landing-navbar__menu-button {
+  background: #4D0D6F;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.4);
+}
+
+/* Mobile navigation */
+.landing-halloween .mobile-navigation {
+  background: #100D2B;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+.landing-halloween .mobile-navigation a {
+  color: #F5F0FF;
+}
+
+.landing-halloween .mobile-navigation a:hover {
+  color: #5AFF00;
+}
+
+.landing-halloween .mobile-navigation
+.landing-button--primary {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+.landing-halloween .mobile-navigation
+.landing-button--secondary {
+  background: #4D0D6F;
+  color: #F5F0FF;
+  border-color: rgba(90, 255, 0, 0.4);
+}
+
+/* Keyboard focus */
+.landing-halloween .landing-navbar a:focus-visible,
+.landing-halloween .landing-navbar button:focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+/* Mobile backdrop */
+.landing-halloween .mobile-navigation__backdrop {
+  background: rgba(8, 4, 20, 0.75);
+}
+
+/* Halloween webs directly on Unwind text */
+
+.landing-halloween .landing-navbar__brand-text {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+/* Cobweb on the U */
+
+/* Cobweb over the U */
+
+.landing-halloween .landing-navbar__brand-text::before {
+  content: "";
+  position: absolute;
+
+  width: 75px;
+  height: 60px;
+
+  top: -20px;
+  left: -12px;
+
+  background:
+    url("./assets/spiderweb-corner.svg")
+    center / contain no-repeat;
+
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 5;
+
+  filter:none;
+}
+
+/* Cobweb over the final letters */
+
+.landing-halloween .landing-navbar__brand-text::after {
+  content: "";
+  position: absolute;
+
+  width: 65px;
+  height: 55px;
+
+  top: -18px;
+  right: -14px;
+
+  background:
+    url("./assets/spiderweb-corner.svg")
+    center / contain no-repeat;
+
+  transform: scaleX(-1);
+
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 5;
+
+  filter:none;
+}
+
+/* ==========================================
+   HALLOWEEN — HERO DASHBOARD PREVIEW
+   ========================================== */
+
+/* Main dashboard panel */
+
+.landing-halloween .wellness-dashboard {
+  background: rgba(24, 12, 46, 0.94);
+  color: #F5F0FF;
+
+  border: 1px solid rgba(255, 102, 0, 0.4);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(77, 13, 111, 0.25);
+}
+
+/* Profile */
+
+.landing-halloween .wellness-dashboard__avatar {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+.landing-halloween .wellness-dashboard__profile small,
+.landing-halloween .wellness-dashboard__check-in small,
+.landing-halloween .dashboard-card small {
+  color: #C8BBD7;
+}
+
+.landing-halloween .wellness-dashboard__profile strong {
+  color: #F5F0FF;
+}
+
+.landing-halloween .wellness-dashboard__header > button {
+  background: #4D0D6F;
+  color: #5AFF00;
+}
+
+/* Daily mood check-in */
+
+.landing-halloween .wellness-dashboard__check-in {
+  background: linear-gradient(
+    135deg,
+    #4D0D6F,
+    #241039
+  );
+
+  border: 1px solid rgba(90, 255, 0, 0.22);
+}
+
+.landing-halloween .wellness-dashboard__check-in h2 {
+  color: #F5F0FF;
+}
+
+.landing-halloween .wellness-dashboard__moods button {
+  background: rgba(90, 255, 0, 0.07);
+  border-color: rgba(90, 255, 0, 0.2);
+  color: #F5F0FF;
+}
+
+.landing-halloween
+.wellness-dashboard__moods
+.wellness-dashboard__mood--active {
+  background: #FF6600;
+  border-color: #FF6600;
+}
+
+/* Two dashboard feature cards */
+
+.landing-halloween .dashboard-card {
+  background: #211035;
+  border: 1px solid rgba(255, 102, 0, 0.25);
+  color: #F5F0FF;
+}
+
+.landing-halloween .dashboard-card strong {
+  color: #F5F0FF;
+}
+
+.landing-halloween .dashboard-card__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+.landing-halloween .dashboard-card__breathing {
+  background: rgba(90, 255, 0, 0.08);
+}
+
+.landing-halloween .dashboard-card__breathing span {
+  background: rgba(90, 255, 0, 0.18);
+}
+
+.landing-halloween .dashboard-card__avatars span {
+  border-color: #211035;
+}
+
+.landing-halloween
+.dashboard-card__avatars span:last-child {
+  background: #4D0D6F;
+  color: #5AFF00;
+}
+
+/* Privacy card */
+
+.landing-halloween .wellness-dashboard__privacy {
+  background: rgba(77, 13, 111, 0.45);
+  border: 1px solid rgba(90, 255, 0, 0.18);
+}
+
+.landing-halloween .wellness-dashboard__privacy > span {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+.landing-halloween .wellness-dashboard__privacy strong {
+  color: #F5F0FF;
+}
+
+.landing-halloween .wellness-dashboard__privacy p {
+  color: #C8BBD7;
+}
+
+/* Floating hero cards */
+
+.landing-halloween .hero-floating-card {
+  background: rgba(30, 13, 51, 0.95);
+  color: #F5F0FF;
+
+  border: 1px solid rgba(255, 102, 0, 0.4);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.38);
+}
+
+.landing-halloween .hero-floating-card strong {
+  color: #F5F0FF;
+}
+
+.landing-halloween .hero-floating-card small {
+  color: #C8BBD7;
+}
+
+.landing-halloween .hero-floating-card--privacy > svg {
+  color: #5AFF00;
+}
+
+.landing-halloween .hero-floating-card__status {
+  background: #5AFF00;
+  box-shadow: 0 0 12px rgba(90, 255, 0, 0.4);
+}
+
+/* ==========================================
+   HALLOWEEN — FLYING BAT ON HERO CTA
+   ========================================== */
+
+.landing-halloween .halloween-bat-button {
+  position: relative;
+  overflow: visible;
+  isolation: isolate;
+}
+
+/* Bat resting over the button */
+
+.landing-halloween .halloween-bat {
+  position: absolute;
+  width: 68px;
+  height: 58px;
+  top: -48px;
+  right: 4px;
+  z-index: 5;
+
+  /* the bat itself can now be hovered */
+  pointer-events: auto;
+  cursor: pointer;
+  transform-origin: 50% 25%;
+  transition: transform .2s ease;
+  filter: drop-shadow(0 4px 5px rgba(0,0,0,.7));
+}
+
+.landing-halloween .halloween-bat svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.halloween-bat__left-wing,
+.halloween-bat__right-wing {
+  transform-box: view-box;
+  transform-origin: 50% 35%;
+}
+
+/* ------------------------------------------
+   Hover the BAT: it snarls and shows its fangs
+   ------------------------------------------ */
+
+.halloween-bat__mouth-open,
+.halloween-bat__halo {
+  transition: opacity .15s ease;
+}
+
+.halloween-bat__mouth-open {
+  opacity: 0;
+}
+
+.halloween-bat__halo {
+  opacity: .6;
+}
+
+.halloween-bat__fang {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  transform: scaleY(.6);
+  transition: transform .18s ease-out;
+}
+
+.landing-halloween .halloween-bat:hover {
+  transform: scale(1.12);
+}
+
+.landing-halloween .halloween-bat:hover .halloween-bat__mouth-closed {
+  opacity: 0;
+}
+
+.landing-halloween .halloween-bat:hover .halloween-bat__mouth-open {
+  opacity: 1;
+}
+
+.landing-halloween .halloween-bat:hover .halloween-bat__fang {
+  transform: scaleY(1);
+}
+
+.landing-halloween .halloween-bat:hover .halloween-bat__halo {
+  opacity: 1;
+}
+
+/* ------------------------------------------
+   Hover the BUTTON (but not the bat): bat takes flight
+   ------------------------------------------ */
+
+.landing-halloween .halloween-bat-button:hover:not(:has(.halloween-bat:hover)) .halloween-bat,
+.landing-halloween .halloween-bat-button:focus-visible .halloween-bat {
+  animation: halloweenBatFly 1.35s ease-in forwards;
+  pointer-events: none; /* prevents flicker while it flies away */
+}
+
+.landing-halloween .halloween-bat-button:hover:not(:has(.halloween-bat:hover)) .halloween-bat__left-wing,
+.landing-halloween .halloween-bat-button:focus-visible .halloween-bat__left-wing {
+  animation: halloweenBatFlapLeft .18s ease-in-out infinite alternate;
+}
+
+.landing-halloween .halloween-bat-button:hover:not(:has(.halloween-bat:hover)) .halloween-bat__right-wing,
+.landing-halloween .halloween-bat-button:focus-visible .halloween-bat__right-wing {
+  animation: halloweenBatFlapRight .18s ease-in-out infinite alternate;
+}
+
+/* Flying trajectory */
+
+@keyframes halloweenBatFly {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  20% {
+    transform: translate(3px, -17px) rotate(-15deg) scale(1.1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(45px, -75px) rotate(12deg) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(180px, -190px) rotate(20deg) scale(.25);
+    opacity: 0;
+  }
+}
+
+/* Wing flapping */
+
+@keyframes halloweenBatFlapLeft {
+  from { transform: rotate(-25deg) scaleY(.75); }
+  to   { transform: rotate(15deg) scaleY(1.15); }
+}
+
+@keyframes halloweenBatFlapRight {
+  from { transform: rotate(25deg) scaleY(.75); }
+  to   { transform: rotate(-15deg) scaleY(1.15); }
+}
+
+/* Smaller mobile decoration */
+
+@media (max-width: 768px) {
+  .landing-halloween .halloween-bat {
+    width: 48px;
+    height: 42px;
+    top: -33px;
+    right: 8px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-halloween .halloween-bat-button .halloween-bat,
+  .landing-halloween .halloween-bat-button .halloween-bat__left-wing,
+  .landing-halloween .halloween-bat-button .halloween-bat__right-wing {
+    animation: none !important;
+  }
+
+  .landing-halloween .halloween-bat,
+  .halloween-bat__fang {
+    transition: none;
+  }
+}
+
+
+/* ==========================================
+   HALLOWEEN — HIDDEN HANGING SPIDER
+   ========================================== */
+
+.landing-halloween .premium-feature-card {
+  position: relative;
+  overflow: visible;
+}
+
+/* Initially hidden above the card */
+
+.landing-halloween .halloween-spider {
+  position: absolute;
+  top: 0;
+  right: 35px;
+
+  width: 44px;
+  height: 45px;
+
+  z-index: 10;
+  pointer-events: none;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-65px);
+
+  transition:
+    transform 1.2s ease-in-out,
+    opacity 0.25s ease,
+    visibility 0s linear 1.2s;
+}
+
+/* Silk thread */
+
+.landing-halloween .halloween-spider__thread {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+
+  width: 1px;
+  height: 100px;
+
+  background: rgba(230, 225, 240, 0.8);
+  transform-origin: bottom center;
+}
+
+/* Spider body */
+
+.landing-halloween .halloween-spider__body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 44px;
+  height: 44px;
+
+  overflow: visible;
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.7));
+
+  transform-origin: top center;
+}
+
+/* Hover — spider descends */
+
+.landing-halloween .premium-feature-card:hover
+.halloween-spider {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(85px);
+
+  transition:
+    transform 1.2s ease-in-out,
+    opacity 0.2s ease,
+    visibility 0s;
+}
+
+/* Gentle swaying while hanging */
+
+.landing-halloween .premium-feature-card:hover
+.halloween-spider__body {
+  animation: spiderSway 2s ease-in-out infinite;
+}
+
+@keyframes spiderSway {
+  0%, 100% {
+    transform: rotate(-7deg);
+  }
+
+  50% {
+    transform: rotate(7deg);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .landing-halloween .halloween-spider {
+    right: 18px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .landing-halloween .halloween-spider__body {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-halloween .halloween-spider {
+    transition: none;
+  }
+
+  .landing-halloween .premium-feature-card:hover
+  .halloween-spider__body {
+    animation: none;
+  }
+}
