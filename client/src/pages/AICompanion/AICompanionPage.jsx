@@ -15,6 +15,7 @@ import {
 import ChatComposer from "../../components/chatbot/ChatComposer";
 import ChatConversationSidebar from "../../components/chatbot/ChatConversationSidebar";
 import ChatMessageList from "../../components/chatbot/ChatMessageList";
+import "../../styles/themes/HalloweenAICompanion.css";
 
 import {
   useChatbot
