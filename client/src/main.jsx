@@ -9,6 +9,9 @@ import {
 import "./styles/themes/halloween.css";
 import "./styles/themes/HalloweenDashboard.css";
 import "./styles/themes/HalloweenMessages.css";
+import "./styles/themes/HalloweenNotifications.css";
+import "./styles/themes/HalloweenAccountSafety.css";
+import "./styles/themes/HalloweenUIStates.css";
 import App from "./App";
 
 import {
