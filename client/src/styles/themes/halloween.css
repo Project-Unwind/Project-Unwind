@@ -1,0 +1,99 @@
+
+/* ==========================================
+   UNWIND — GLOBAL HALLOWEEN THEME
+   Venomous Pumpkin Pop
+   ========================================== */
+
+:root[data-season="halloween"] {
+  /* Primary palette */
+  --hw-bg: #100D2B;
+  --hw-surface: #211035;
+  --hw-surface-alt: #4D0D6F;
+  --hw-surface-green: #0F2C20;
+
+  /* Accent colors */
+  --hw-primary: #FF6600;
+  --hw-primary-hover: #FF8533;
+  --hw-accent: #5AFF00;
+
+  /* Typography */
+  --hw-text: #F5F0FF;
+  --hw-text-muted: #C8BBD7;
+  --hw-text-subtle: #A99BB9;
+
+  /* Borders */
+  --hw-border: rgba(255, 102, 0, 0.3);
+  --hw-border-hover: rgba(90, 255, 0, 0.5);
+
+  /* Effects */
+  --hw-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  --hw-glow-orange: 0 0 20px rgba(255, 102, 0, 0.2);
+  --hw-glow-green: 0 0 20px rgba(90, 255, 0, 0.15);
+
+  color-scheme: dark;
+}
+
+/* ==========================================
+   OPT-IN HALLOWEEN COMPONENT STYLES
+   ========================================== */
+
+/* Page surfaces */
+
+[data-season="halloween"] .hw-page {
+  background: var(--hw-bg);
+  color: var(--hw-text);
+}
+
+/* Cards */
+
+[data-season="halloween"] .hw-card {
+  background: linear-gradient(
+    145deg,
+    var(--hw-surface),
+    var(--hw-bg)
+  );
+
+  color: var(--hw-text);
+  border: 1px solid var(--hw-border);
+  box-shadow: var(--hw-shadow);
+}
+
+/* Primary buttons */
+
+[data-season="halloween"] .hw-button-primary {
+  background: var(--hw-primary);
+  color: var(--hw-bg);
+  border-color: var(--hw-primary);
+}
+
+[data-season="halloween"] .hw-button-primary:hover {
+  background: var(--hw-primary-hover);
+  box-shadow: var(--hw-glow-orange);
+}
+
+/* Form fields */
+
+[data-season="halloween"] .hw-input {
+  background: var(--hw-surface);
+  border: 1px solid var(--hw-border);
+  color: var(--hw-text);
+}
+
+[data-season="halloween"] .hw-input::placeholder {
+  color: var(--hw-text-subtle);
+}
+
+[data-season="halloween"] .hw-input:focus-visible,
+[data-season="halloween"] .hw-button-primary:focus-visible {
+  outline: 2px solid var(--hw-accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-season="halloween"] .hw-button-primary {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,245 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN COMMUNITY
+   Scoped seasonal theme
+   ========================================== */
+
+/* Community page */
+
+[data-season="halloween"] .community-page {
+  color: var(--hw-text);
+}
+
+/* Community header */
+
+[data-season="halloween"] .community-header {
+  background:
+    radial-gradient(
+      circle at 92% 10%,
+      rgba(255, 102, 0, 0.12),
+      transparent 40%
+    ),
+    linear-gradient(135deg, #4D0D6F, #211035 65%, #100D2B);
+
+  border: 1px solid rgba(255, 102, 0, 0.35);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+[data-season="halloween"] .community-header h2 {
+  color: #F5F0FF;
+  font-family: "Cinzel", serif;
+}
+
+[data-season="halloween"] .community-header h2 span {
+  color: #5AFF00;
+  font-style: normal;
+}
+
+[data-season="halloween"] .community-header__eyebrow {
+  color: #FF953A;
+}
+
+[data-season="halloween"] .community-header__identity {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+[data-season="halloween"] .community-header__identity > span {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+[data-season="halloween"] .community-header__safety {
+  background: rgba(90, 255, 0, 0.07);
+  color: #5AFF00;
+}
+
+/* Filters */
+
+[data-season="halloween"] .community-feed-filter {
+  color: #C8BBD7;
+}
+
+[data-season="halloween"] .community-feed-filter:hover {
+  color: #FF953A;
+  background: rgba(255, 102, 0, 0.08);
+}
+
+[data-season="halloween"] .community-feed-filter--active {
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.4);
+  background: rgba(90, 255, 0, 0.1);
+}
+
+/* Primary actions */
+
+[data-season="halloween"] .community-primary-button {
+  background: #FF6600;
+  color: #100D2B;
+  box-shadow: 0 8px 25px rgba(255, 102, 0, 0.17);
+}
+
+[data-season="halloween"]
+.community-primary-button:hover:not(:disabled) {
+  background: #FF8533;
+  box-shadow: 0 12px 30px rgba(255, 102, 0, 0.3);
+}
+
+[data-season="halloween"] .community-secondary-button,
+[data-season="halloween"] .community-refresh-button {
+  background: #211035;
+  border-color: rgba(90, 255, 0, 0.25);
+  color: #F5F0FF;
+}
+
+/* Post cards */
+
+[data-season="halloween"] .community-post-card {
+  background: linear-gradient(
+    145deg,
+    #27143D,
+    #1B102E
+  );
+
+  border: 1px solid rgba(255, 102, 0, 0.25);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+[data-season="halloween"] .community-post-card:hover {
+  border-color: rgba(255, 102, 0, 0.48);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+[data-season="halloween"] .community-post-card__avatar {
+  background: linear-gradient(135deg, #4D0D6F, #FF6600);
+}
+
+[data-season="halloween"] .community-post-card__identity strong,
+[data-season="halloween"] .community-post-card__caption {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"] .community-post-card__identity small {
+  color: #A99BB9;
+}
+
+[data-season="halloween"]
+.community-post-card__identity > div span {
+  color: #5AFF00;
+}
+
+[data-season="halloween"] .community-post-card__footer {
+  border-top-color: rgba(255, 102, 0, 0.17);
+}
+
+/* Post actions */
+
+[data-season="halloween"] .community-post-action {
+  color: #C8BBD7;
+}
+
+[data-season="halloween"] .community-post-action:hover {
+  color: #5AFF00;
+  background: rgba(90, 255, 0, 0.08);
+}
+
+[data-season="halloween"] .community-post-action--liked {
+  color: #FF8194;
+}
+
+/* Guidelines */
+
+[data-season="halloween"] .community-guidelines-card {
+  background: linear-gradient(150deg, #301742, #1B102E);
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+[data-season="halloween"] .community-guidelines-card > span {
+  color: #5AFF00;
+  background: #0F2C20;
+}
+
+[data-season="halloween"] .community-guidelines-card h3 {
+  color: #FF953A;
+  font-family: "Cinzel", serif;
+}
+
+[data-season="halloween"] .community-guidelines-card p,
+[data-season="halloween"] .community-guidelines-card li {
+  color: #C8BBD7;
+}
+
+/* Identity setup */
+
+[data-season="halloween"] .community-identity-card,
+[data-season="halloween"] .community-identity-option {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.28);
+  color: #F5F0FF;
+}
+
+[data-season="halloween"] .community-identity-card__icon {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+[data-season="halloween"] .community-identity-option--selected {
+  background: rgba(90, 255, 0, 0.08);
+  border-color: #5AFF00;
+}
+
+[data-season="halloween"]
+.community-identity-option--selected > i {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* Community dialogs, including portalled modals */
+
+[data-season="halloween"] .community-modal {
+  background: #211035;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.38);
+}
+
+[data-season="halloween"] .community-modal-backdrop {
+  background: rgba(8, 4, 20, 0.76);
+}
+
+[data-season="halloween"] .community-modal__header h2 {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"] .community-modal__header p {
+  color: #C8BBD7;
+}
+
+[data-season="halloween"]
+.community-create-form__caption {
+  background: #160D29;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+/* Consistent keyboard navigation */
+
+[data-season="halloween"]
+.community-page :is(button, a, input, textarea):focus-visible,
+[data-season="halloween"]
+.community-modal-layer :is(button, a, input, textarea):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-season="halloween"] .community-post-card {
+    transition: none;
+  }
+}

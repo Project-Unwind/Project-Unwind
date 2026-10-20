@@ -1,0 +1,349 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN DASHBOARD
+   Venomous Pumpkin Pop
+   Applies only when Halloween is enabled
+   ========================================== */
+
+/* GLOBAL DASHBOARD VARIABLES */
+
+:root[data-season="halloween"] {
+  --dashboard-background: #100D2B;
+
+  --dashboard-surface: rgba(33, 16, 53, 0.94);
+  --dashboard-surface-solid: #211035;
+  --dashboard-surface-muted: #301742;
+
+  --dashboard-text: #F5F0FF;
+  --dashboard-muted: #C8BBD7;
+  --dashboard-subtle: #A99BB9;
+
+  --dashboard-primary: #5AFF00;
+  --dashboard-primary-dark: #FF6600;
+  --dashboard-primary-soft: rgba(90, 255, 0, 0.09);
+
+  --dashboard-gold: #FF953A;
+
+  --dashboard-border: rgba(255, 102, 0, 0.22);
+
+  --dashboard-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.28);
+}
+
+/* MAIN DASHBOARD BACKGROUND */
+
+[data-season="halloween"] .dashboard-shell {
+  background:
+    radial-gradient(
+      circle at 85% 5%,
+      rgba(77, 13, 111, 0.32),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 5% 90%,
+      rgba(15, 44, 32, 0.30),
+      transparent 35%
+    ),
+    #100D2B;
+}
+
+/* SIDEBAR */
+
+[data-season="halloween"] .dashboard-sidebar {
+  background: linear-gradient(
+    180deg,
+    #211035 0%,
+    #160C29 100%
+  );
+
+  border-right: 1px solid
+    rgba(255, 102, 0, 0.22);
+
+  box-shadow: 10px 0 35px rgba(0, 0, 0, 0.15);
+}
+
+[data-season="halloween"]
+.dashboard-sidebar__brand-copy strong {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"]
+.dashboard-sidebar__section-title {
+  color: #FF953A;
+}
+
+[data-season="halloween"]
+.dashboard-sidebar__link--active {
+  background: rgba(90, 255, 0, 0.10);
+  color: #5AFF00;
+}
+
+[data-season="halloween"]
+.dashboard-sidebar__link:hover {
+  background: rgba(77, 13, 111, 0.42);
+  color: #5AFF00;
+}
+
+/* TOPBAR */
+
+[data-season="halloween"] .dashboard-topbar {
+  background: rgba(16, 13, 43, 0.88);
+
+  border-bottom: 1px solid
+    rgba(255, 102, 0, 0.20);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+[data-season="halloween"]
+.dashboard-topbar__page-heading h1 {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"]
+.dashboard-topbar__page-heading p {
+  color: #C8BBD7;
+}
+
+/* DASHBOARD WELCOME CARD */
+
+[data-season="halloween"] .dashboard-welcome-card {
+  background:
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(255, 102, 0, 0.12),
+      transparent 50%
+    ),
+    linear-gradient(
+      135deg,
+      #4D0D6F 0%,
+      #251039 55%,
+      #100D2B 100%
+    );
+
+  border: 1px solid
+    rgba(255, 102, 0, 0.42);
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.32);
+}
+
+[data-season="halloween"]
+.dashboard-welcome-card__greeting {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"]
+.dashboard-welcome-card__name,
+[data-season="halloween"]
+.dashboard-welcome-card h2 span.dashboard-welcome-card__name {
+  color: #FF953A;
+}
+
+[data-season="halloween"]
+.dashboard-welcome-card__eyebrow {
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.25);
+  background: rgba(16, 13, 43, 0.38);
+}
+
+[data-season="halloween"]
+.dashboard-welcome-card__content > p {
+  color: #E6D9EF;
+}
+
+/* WELCOME CARD BUTTONS */
+
+[data-season="halloween"]
+.dashboard-welcome-card .dashboard-primary-button {
+  background: #FF6600;
+  color: #100D2B;
+
+  box-shadow:
+    0 0 20px rgba(255, 102, 0, 0.25);
+}
+
+[data-season="halloween"]
+.dashboard-welcome-card .dashboard-primary-button:hover {
+  background: #FF8533;
+}
+
+[data-season="halloween"]
+.dashboard-welcome-card .dashboard-secondary-button {
+  background: rgba(16, 13, 43, 0.5);
+  border-color: rgba(90, 255, 0, 0.45);
+  color: #F5F0FF;
+}
+
+/* BREATHING VISUAL */
+
+[data-season="halloween"]
+.dashboard-breathing-visual__outer {
+  border-color: rgba(90, 255, 0, 0.3);
+  background: rgba(90, 255, 0, 0.03);
+}
+
+[data-season="halloween"]
+.dashboard-breathing-visual__middle {
+  background: rgba(77, 13, 111, 0.6);
+}
+
+[data-season="halloween"]
+.dashboard-breathing-visual__inner {
+  background: #211035;
+  color: #5AFF00;
+
+  border: 1px solid
+    rgba(90, 255, 0, 0.3);
+}
+
+/* STATISTICS AND SHARED WIDGETS */
+
+[data-season="halloween"] .dashboard-stat-card,
+[data-season="halloween"] .dashboard-widget {
+  background: linear-gradient(
+    145deg,
+    #27143D,
+    #1B102E
+  );
+
+  border: 1px solid
+    rgba(255, 102, 0, 0.25);
+
+  color: #F5F0FF;
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.22);
+}
+
+[data-season="halloween"]
+.dashboard-stat-card__top > span,
+[data-season="halloween"]
+.dashboard-widget__header-icon {
+  color: #5AFF00;
+  background: rgba(90, 255, 0, 0.10);
+}
+
+[data-season="halloween"]
+.dashboard-stat-card > strong {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"]
+.dashboard-widget__eyebrow {
+  color: #5AFF00;
+}
+
+/* DAILY QUOTE */
+
+[data-season="halloween"] .daily-quote {
+  background: linear-gradient(
+    145deg,
+    #4D0D6F,
+    #251039 70%,
+    #100D2B
+  );
+
+  border-color: rgba(255, 102, 0, 0.35);
+}
+
+[data-season="halloween"]
+.daily-quote__content > svg {
+  color: #FF953A;
+}
+
+[data-season="halloween"] .daily-quote blockquote {
+  color: #F5F0FF;
+}
+
+/* AI COMPANION PREVIEW */
+
+[data-season="halloween"] .companion-preview {
+  background: linear-gradient(
+    145deg,
+    #30134A,
+    #17102C
+  );
+
+  border-color: rgba(90, 255, 0, 0.25);
+}
+
+[data-season="halloween"]
+.companion-preview__icon {
+  color: #5AFF00;
+  background: rgba(90, 255, 0, 0.09);
+}
+
+[data-season="halloween"]
+.companion-preview__button {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+[data-season="halloween"] .companion-preview p {
+  color: #C8BBD7;
+}
+
+/* WELLNESS TASKS */
+
+[data-season="halloween"] .wellness-task {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.18);
+  color: #F5F0FF;
+}
+
+[data-season="halloween"] .wellness-task__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+[data-season="halloween"] .wellness-task--completed {
+  background: rgba(90, 255, 0, 0.08);
+}
+
+/* COMMUNITY PREVIEW */
+
+[data-season="halloween"]
+.community-preview__avatar {
+  background: linear-gradient(
+    135deg,
+    #4D0D6F,
+    #FF6600
+  );
+}
+
+/* RECENT ACTIVITY */
+
+[data-season="halloween"]
+.recent-activity__marker > span {
+  background: rgba(90, 255, 0, 0.10);
+  color: #5AFF00;
+}
+
+/* FORM AND SEARCH LEGIBILITY */
+
+[data-season="halloween"]
+.dashboard-search input,
+[data-season="halloween"]
+.dashboard-search-results {
+  color: var(--dashboard-text);
+}
+
+/* OPTIONAL SMALL HOVER EFFECTS */
+
+[data-season="halloween"]
+.dashboard-stat-card:hover,
+[data-season="halloween"]
+.dashboard-quick-action-card:hover {
+  border-color: rgba(255, 102, 0, 0.55);
+}
+
+/* RESPECT REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-season="halloween"]
+  .dashboard-breathing-visual > span {
+    animation: none !important;
+  }
+}

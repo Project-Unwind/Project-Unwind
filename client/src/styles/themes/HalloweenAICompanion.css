@@ -1,0 +1,362 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN AI COMPANION
+   Venomous Pumpkin Pop
+   ========================================== */
+
+/* Main container */
+
+html[data-season="halloween"] .ai-companion-layout {
+  background: #100D2B;
+  border-color: rgba(255, 102, 0, 0.3);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+}
+
+/* CONVERSATION SIDEBAR */
+
+html[data-season="halloween"] .ai-conversation-sidebar {
+  background: linear-gradient(180deg, #211035, #160C29);
+  border-right-color: rgba(255, 102, 0, 0.25);
+}
+
+html[data-season="halloween"]
+.ai-conversation-sidebar > header {
+  border-bottom-color: rgba(255, 102, 0, 0.22);
+}
+
+html[data-season="halloween"]
+.ai-conversation-sidebar > header span {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.ai-conversation-sidebar > header strong {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.ai-conversation-sidebar > header button {
+  background: #301742;
+  border-color: rgba(255, 102, 0, 0.3);
+  color: #5AFF00;
+}
+
+/* Conversation list */
+
+html[data-season="halloween"] .ai-conversation-item {
+  border-color: transparent;
+}
+
+html[data-season="halloween"] .ai-conversation-item:hover {
+  background: rgba(77, 13, 111, 0.4);
+}
+
+html[data-season="halloween"]
+.ai-conversation-item--active {
+  background: rgba(90, 255, 0, 0.09);
+  border-color: rgba(90, 255, 0, 0.38);
+}
+
+html[data-season="halloween"]
+.ai-conversation-item__open {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.ai-conversation-item__open svg {
+  color: #5AFF00;
+}
+
+/* CHAT PANEL */
+
+html[data-season="halloween"] .ai-chat-panel {
+  background: #100D2B;
+  color: #F5F0FF;
+}
+
+/* Chat header */
+
+html[data-season="halloween"] .ai-chat-header {
+  background: #211035;
+  border-bottom-color: rgba(255, 102, 0, 0.23);
+}
+
+html[data-season="halloween"]
+.ai-chat-header__icon {
+  background: linear-gradient(135deg, #4D0D6F, #FF6600);
+  color: #FFFFFF;
+}
+
+html[data-season="halloween"] .ai-chat-header h1 {
+  color: #F5F0FF;
+  font-family: "Cinzel", Georgia, serif;
+}
+
+html[data-season="halloween"] .ai-chat-header p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"] .ai-chat-private {
+  color: #5AFF00;
+  background: rgba(90, 255, 0, 0.08);
+  border: 1px solid rgba(90, 255, 0, 0.25);
+}
+
+/* New chat */
+
+html[data-season="halloween"] .ai-new-chat-button {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.ai-new-chat-button:hover {
+  background: #FF8533;
+}
+
+/* MESSAGE SCROLLING AREA */
+
+html[data-season="halloween"] .ai-chat-body {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(77, 13, 111, 0.22),
+      transparent 60%
+    ),
+    #100D2B;
+}
+
+/* AI message bubble */
+
+html[data-season="halloween"]
+.ai-message--assistant .ai-message__bubble {
+  background: #29163D;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.2);
+}
+
+/* User message bubble */
+
+html[data-season="halloween"]
+.ai-message--user .ai-message__bubble {
+  background: linear-gradient(135deg, #4D0D6F, #71308D);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 102, 0, 0.48);
+}
+
+/* Avatars */
+
+html[data-season="halloween"]
+.ai-message--assistant .ai-message__avatar {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.ai-message--user .ai-message__avatar {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* Reply source badges */
+
+html[data-season="halloween"] .ai-message__source {
+  background: #301742;
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.ai-message__source--predefined {
+  background: rgba(90, 255, 0, 0.1);
+  color: #5AFF00;
+}
+
+/* Markdown inside messages */
+
+html[data-season="halloween"]
+.ai-message__markdown :is(h1, h2, h3, h4) {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.ai-message__markdown blockquote {
+  background: rgba(77, 13, 111, 0.35);
+  border-left-color: #FF6600;
+  color: #E6D9EF;
+}
+
+html[data-season="halloween"]
+.ai-message__markdown :is(code, pre) {
+  background: #160D29;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.ai-message__markdown pre code {
+  background: transparent;
+}
+
+/* EMPTY CHAT / STARTER PROMPTS */
+
+html[data-season="halloween"]
+.ai-chat-empty__icon {
+  background: linear-gradient(135deg, #4D0D6F, #FF6600);
+  color: #FFFFFF;
+}
+
+html[data-season="halloween"]
+.ai-chat-empty__eyebrow {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"] .ai-chat-empty h2 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.ai-chat-empty > p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.ai-starter-prompts button {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.3);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.ai-starter-prompts button:hover {
+  background: #301742;
+  border-color: #FF6600;
+  box-shadow: 0 10px 25px rgba(255, 102, 0, 0.1);
+}
+
+html[data-season="halloween"]
+.ai-starter-prompts button > span {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.ai-starter-prompts small {
+  color: #C8BBD7;
+}
+
+/* COMPOSER FOOTER */
+
+html[data-season="halloween"] .ai-chat-footer {
+  background: #211035;
+  border-top-color: rgba(255, 102, 0, 0.25);
+}
+
+html[data-season="halloween"] .ai-guided-badge {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.ai-guided-badge svg {
+  color: #5AFF00;
+}
+
+/* Message input */
+
+html[data-season="halloween"] .chat-composer {
+  background: #160D29;
+  border-color: rgba(255, 102, 0, 0.35);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+html[data-season="halloween"]
+.chat-composer--focused,
+html[data-season="halloween"]
+.chat-composer:focus-within {
+  border-color: #5AFF00;
+  box-shadow: 0 0 0 3px rgba(90, 255, 0, 0.09);
+}
+
+html[data-season="halloween"]
+.chat-composer textarea {
+  color: #F5F0FF;
+  background: transparent;
+}
+
+html[data-season="halloween"]
+.chat-composer textarea::placeholder {
+  color: #A99BB9;
+}
+
+/* Send button */
+
+html[data-season="halloween"]
+.chat-composer__send:not(.chat-composer__send--stop) {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.chat-composer__send:not(.chat-composer__send--stop):hover:not(:disabled) {
+  background: #FF8533;
+}
+
+/* Preserve stop action visually */
+
+html[data-season="halloween"]
+.chat-composer__send--stop {
+  background: #A84355;
+  color: #FFFFFF;
+}
+
+/* AUTOCOMPLETE SUGGESTIONS */
+
+html[data-season="halloween"] .chat-suggestions {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.3);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.chat-suggestions__label {
+  color: #5AFF00;
+  background: rgba(90, 255, 0, 0.08);
+}
+
+html[data-season="halloween"]
+.chat-suggestion {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.chat-suggestion:hover {
+  background: #301742;
+}
+
+/* ERROR MESSAGE — preserve warning identity */
+
+html[data-season="halloween"] .ai-chat-alert {
+  background: rgba(184, 75, 75, 0.13);
+  color: #FFB7B7;
+  border-color: rgba(255, 120, 120, 0.35);
+}
+
+/* Mobile history backdrop */
+
+html[data-season="halloween"] .ai-history-backdrop--open {
+  background: rgba(8, 4, 20, 0.78);
+}
+
+/* Keyboard navigation */
+
+html[data-season="halloween"]
+.ai-companion-page :is(button, textarea):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"] .ai-typing span {
+    animation: none !important;
+  }
+}

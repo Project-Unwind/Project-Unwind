@@ -1,0 +1,346 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN MESSAGING
+   Community Chat / Private Rooms / DMs
+   ========================================== */
+
+/* Main layout */
+
+[data-season="halloween"] .messages-layout {
+  background: #100D2B;
+  border-color: rgba(255, 102, 0, 0.28);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+[data-season="halloween"] .messages-page,
+[data-season="halloween"] .community-chat-page {
+  color: #F5F0FF;
+}
+
+/* Conversation sidebar */
+
+[data-season="halloween"] .messages-sidebar-shell,
+[data-season="halloween"] .messages-details-panel {
+  background: #1B102E;
+  border-color: rgba(255, 102, 0, 0.2);
+}
+
+[data-season="halloween"]
+.messages-conversation-panel__header {
+  background: #211035;
+  border-bottom-color: rgba(255, 102, 0, 0.2);
+}
+
+[data-season="halloween"]
+.messages-conversation-item:hover {
+  background: rgba(77, 13, 111, 0.38);
+}
+
+[data-season="halloween"]
+.messages-conversation-item--active {
+  background: rgba(90, 255, 0, 0.09);
+  border-color: rgba(90, 255, 0, 0.4);
+}
+
+[data-season="halloween"] .messages-unread-badge {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* Chat area */
+
+[data-season="halloween"] .messages-chat-area {
+  background: #100D2B;
+}
+
+[data-season="halloween"] .messages-chat-header {
+  background: #211035;
+  border-bottom-color: rgba(255, 102, 0, 0.25);
+}
+
+[data-season="halloween"]
+.messages-chat-header__title {
+  color: #F5F0FF;
+}
+
+[data-season="halloween"] .messages-chat-scroll {
+  background:
+    radial-gradient(
+      ellipse at 80% 10%,
+      rgba(77, 13, 111, 0.18),
+      transparent 55%
+    ),
+    #100D2B;
+}
+
+/* Incoming messages */
+
+[data-season="halloween"]
+.message-bubble-row:not(.message-bubble-row--own)
+.message-bubble {
+  background: #29163D;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.19);
+}
+
+/* Outgoing messages */
+
+[data-season="halloween"]
+.message-bubble-row--own .message-bubble {
+  background: linear-gradient(
+    135deg,
+    #4D0D6F,
+    #71308D
+  );
+  border-color: rgba(255, 102, 0, 0.4);
+  color: #FFFFFF;
+}
+
+/* Message details */
+
+[data-season="halloween"] .message-bubble-meta,
+[data-season="halloween"] .message-bubble-sender {
+  color: #C8BBD7;
+}
+
+[data-season="halloween"]
+.message-bubble-reply {
+  border-left-color: #FF953A;
+  background: rgba(16, 13, 43, 0.25);
+}
+
+/* Composer */
+
+[data-season="halloween"] .message-composer {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+[data-season="halloween"]
+.message-composer:focus-within {
+  border-color: #5AFF00;
+}
+
+[data-season="halloween"]
+.message-composer textarea {
+  color: #F5F0FF;
+  background: transparent;
+}
+
+[data-season="halloween"]
+.message-composer textarea::placeholder {
+  color: #A99BB9;
+}
+
+/* Send and primary actions */
+
+[data-season="halloween"]
+.message-composer__send,
+[data-season="halloween"]
+.messages-primary-button {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+[data-season="halloween"]
+.message-composer__send:hover:not(:disabled),
+[data-season="halloween"]
+.messages-primary-button:hover:not(:disabled) {
+  background: #FF8533;
+}
+
+/* Secondary actions */
+
+[data-season="halloween"]
+.messages-secondary-button {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+/* Room information and management */
+
+[data-season="halloween"]
+.messages-room-summary,
+[data-season="halloween"]
+.messages-details-section {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.22);
+}
+
+[data-season="halloween"]
+.messages-room-summary__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+[data-season="halloween"]
+.messages-details-section__heading {
+  color: #FF953A;
+}
+
+[data-season="halloween"] .messages-invite-token {
+  background: #100D2B;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+/* Modals */
+
+[data-season="halloween"] .messages-modal {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.35);
+}
+
+[data-season="halloween"]
+.messages-modal-backdrop {
+  background: rgba(8, 4, 20, 0.78);
+}
+
+[data-season="halloween"]
+.messages-modal-submit {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* ==========================================
+   COMMUNITY CHAT
+   ========================================== */
+
+[data-season="halloween"]
+.community-chat-entry__card,
+[data-season="halloween"]
+.community-chat-hero {
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(255, 102, 0, 0.11),
+      transparent 42%
+    ),
+    linear-gradient(135deg, #301742, #100D2B);
+
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+[data-season="halloween"]
+.community-chat-entry__icon,
+[data-season="halloween"]
+.community-chat-entry-choice__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+[data-season="halloween"]
+.community-chat-entry__eyebrow,
+[data-season="halloween"]
+.community-chat-eyebrow {
+  color: #5AFF00;
+}
+
+[data-season="halloween"]
+.community-chat-entry-choice {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.23);
+}
+
+[data-season="halloween"]
+.community-chat-entry-choice:hover:not(:disabled) {
+  background: #301742;
+  border-color: #5AFF00;
+}
+
+[data-season="halloween"]
+.community-chat-members {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+[data-season="halloween"]
+.community-chat-toolbar {
+  background: #211035;
+  border-bottom-color: rgba(255, 102, 0, 0.2);
+}
+
+[data-season="halloween"]
+.community-chat-live-pill {
+  background: rgba(90, 255, 0, 0.09);
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+/* Focus accessibility */
+
+[data-season="halloween"]
+.messages-page :is(button, a, input, textarea):focus-visible,
+[data-season="halloween"]
+.community-chat-page :is(button, a, input, textarea):focus-visible,
+[data-season="halloween"]
+.messages-modal :is(button, a, input, textarea):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 2px;
+}
+
+/* No unnecessary animations */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-season="halloween"]
+  .messages-conversation-item,
+  [data-season="halloween"]
+  .community-chat-entry-choice {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN — CHAT BACKGROUND FIX
+   Community Chat / Private Rooms / DMs
+   ========================================== */
+
+/* Chat containers */
+html[data-season="halloween"] .messages-chat-area,
+html[data-season="halloween"] .community-chat-panel {
+  background: #100D2B !important;
+  color: #F5F0FF;
+}
+
+/* Actual message scrolling area */
+html[data-season="halloween"] .messages-chat-scroll,
+html[data-season="halloween"] .community-chat-messages {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(77, 13, 111, 0.23),
+      transparent 60%
+    ),
+    #100D2B !important;
+
+  color: #F5F0FF;
+}
+
+/* Privacy notice above messages */
+html[data-season="halloween"] .community-chat-privacy-note {
+  background: #211035;
+  color: #C8BBD7;
+  border-bottom: 1px solid rgba(255, 102, 0, 0.15);
+}
+
+/* Chat composer area */
+html[data-season="halloween"] .messages-composer-footer,
+html[data-season="halloween"] .community-chat-composer {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+/* Load older messages button */
+html[data-season="halloween"]
+.community-chat-messages button {
+  border-color: rgba(90, 255, 0, 0.25);
+  color: #C8BBD7;
+}
+
+/* Keep message text readable */
+html[data-season="halloween"] .message-bubble {
+  color: #F5F0FF;
+}
