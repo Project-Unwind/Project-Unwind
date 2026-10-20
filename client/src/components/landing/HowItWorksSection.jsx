@@ -6,6 +6,8 @@ import {
   UserRoundPlus,
   UsersRound
 } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
+import hauntedScenario from "../../pages/Landing/Halloween/assets/Haunted-scenario.webp";
 
 const steps = [
   {
@@ -39,17 +41,30 @@ const steps = [
 ];
 
 function HowItWorksSection() {
+  const { halloweenMode } = useTheme();
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.18
   });
 
   return (
-    <section
-      className="landing-section how-it-works"
-      id="how-it-works"
-      ref={ref}
-    >
+    
+<section
+  className={`landing-section how-it-works ${
+    halloweenMode ? "how-it-works--halloween" : ""
+  }`}
+  id="how-it-works"
+  ref={ref}
+  style={
+    halloweenMode
+      ? {
+          "--how-it-works-bg": `url("${hauntedScenario}")`
+        }
+      : undefined
+  }
+>
+
       <div className="landing-container">
         <motion.div
           className="landing-section-heading landing-section-heading--center"
