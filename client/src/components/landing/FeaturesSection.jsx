@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import HalloweenSpider from "../halloween/HalloweenSpider";
+import { useTheme } from "../../context/ThemeContext";
 import {
   BookHeart,
   HeartHandshake,
@@ -55,6 +57,8 @@ const features = [
 ];
 
 function FeaturesSection() {
+  const { halloweenMode } = useTheme();
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.12
@@ -129,8 +133,16 @@ function FeaturesSection() {
                   rotateX: 2,
                   rotateY: index % 2 === 0 ? 2 : -2
                 }}
+                
+              
               >
+                {/* Spider on first card, Halloween only */}
+                {halloweenMode && index === 0 && (
+                  <HalloweenSpider />
+                )}
+
                 <div className="premium-feature-card__top">
+
                   <span className="premium-feature-card__icon">
                     <Icon size={22} />
                   </span>
