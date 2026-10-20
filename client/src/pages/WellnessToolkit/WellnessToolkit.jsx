@@ -54,6 +54,7 @@ import RecommendationCard
   from "../../components/wellness/RecommendationCard";
 
 import "./WellnessToolkit.css";
+import "../../styles/themes/HalloweenWellness.css";
 
 gsap.registerPlugin(
   useGSAP
