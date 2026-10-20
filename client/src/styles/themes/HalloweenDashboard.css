@@ -347,3 +347,226 @@
     animation: none !important;
   }
 }
+
+/* ==========================================
+   HALLOWEEN — DASHBOARD TOPBAR POLISH
+   ========================================== */
+
+/* Topbar background */
+
+html[data-season="halloween"] .dashboard-topbar {
+  background: rgba(16, 13, 43, 0.94);
+  border-bottom: 1px solid rgba(255, 102, 0, 0.28);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Shared search, icon and profile surfaces */
+
+html[data-season="halloween"]
+.dashboard-topbar :is(
+  .dashboard-search,
+  .dashboard-icon-button,
+  .theme-toggle,
+  .dashboard-user-menu__trigger,
+  .dashboard-topbar__date
+) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.3);
+  box-shadow: none;
+}
+
+/* Search */
+
+html[data-season="halloween"]
+.dashboard-topbar .dashboard-search input {
+  background: transparent;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dashboard-topbar .dashboard-search input::placeholder {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.dashboard-topbar .dashboard-search svg {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.dashboard-topbar .dashboard-search:focus-within,
+html[data-season="halloween"]
+.dashboard-topbar .dashboard-search--open {
+  border-color: #5AFF00;
+  box-shadow: 0 0 0 3px rgba(90, 255, 0, 0.08);
+}
+
+/* Date pill */
+
+html[data-season="halloween"]
+.dashboard-topbar__date {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dashboard-topbar__date svg {
+  color: #5AFF00;
+}
+
+/* Streak pill */
+
+html[data-season="halloween"]
+.dashboard-topbar__streak {
+  background: rgba(255, 102, 0, 0.1);
+  color: #FFB16B;
+  border: 1px solid rgba(255, 102, 0, 0.35);
+}
+
+html[data-season="halloween"]
+.dashboard-topbar__streak svg {
+  color: #FF6600;
+}
+
+/* Theme and notification controls */
+
+html[data-season="halloween"]
+.dashboard-topbar :is(
+  .dashboard-icon-button,
+  .theme-toggle
+):hover {
+  background: #301742;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.45);
+}
+
+/* Keep unread badge red */
+
+html[data-season="halloween"]
+.dashboard-notification-button__badge {
+  background: #D95E65;
+  color: #FFFFFF;
+  border-color: #100D2B;
+}
+
+/* User profile trigger */
+
+html[data-season="halloween"]
+.dashboard-user-menu__trigger {
+  background: #211035;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__trigger:hover {
+  background: #301742;
+  border-color: #FF6600;
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__identity strong {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__identity small {
+  color: #C8BBD7;
+}
+
+/* Profile avatar */
+
+html[data-season="halloween"]
+.dashboard-user-menu__avatar {
+  background: #4D0D6F;
+  color: #5AFF00;
+}
+
+/* Profile dropdown */
+
+html[data-season="halloween"]
+.dashboard-user-menu__dropdown {
+  background: #211035;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__summary {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__summary small {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__dropdown > button {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__dropdown > button:hover {
+  background: #301742;
+  color: #5AFF00;
+}
+
+/* Preserve logout styling */
+
+html[data-season="halloween"]
+.dashboard-user-menu__dropdown
+.dashboard-user-menu__logout {
+  color: #FF9FA9;
+}
+
+html[data-season="halloween"]
+.dashboard-user-menu__dropdown
+.dashboard-user-menu__logout:hover {
+  background: rgba(184, 75, 75, 0.14);
+  color: #FFB7B7;
+}
+
+/* Search dropdown */
+
+html[data-season="halloween"]
+.dashboard-search-results {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.dashboard-search-result {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.dashboard-search-result:hover,
+html[data-season="halloween"]
+.dashboard-search-result.is-active {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.dashboard-search-result__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.dashboard-search-result__content small {
+  color: #C8BBD7;
+}
+
+/* Keyboard accessibility */
+
+html[data-season="halloween"]
+.dashboard-topbar :is(button, input):focus-visible,
+html[data-season="halloween"]
+.dashboard-user-menu__dropdown button:focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
