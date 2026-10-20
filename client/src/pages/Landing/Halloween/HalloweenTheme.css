@@ -1842,3 +1842,526 @@
     animation: none;
   }
 }
+
+/* ==========================================
+   HALLOWEEN — EXPERIENCE CONTINUATION
+   ========================================== */
+
+.landing-halloween .experience-visual__video {
+  position: relative;
+  overflow: hidden;
+  background: #100D2B;
+  border: 1px solid rgba(255, 102, 0, 0.35);
+}
+
+.landing-halloween .experience-visual__halloween-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.8) saturate(1.08);
+}
+
+/* Subtle shading behind overlay elements */
+
+.landing-halloween .experience-visual__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 13, 43, 0.02) 10%,
+    rgba(16, 13, 43, 0.16) 45%,
+    rgba(16, 13, 43, 0.76) 100%
+  );
+}
+
+/* Caption stays readable */
+
+.landing-halloween .experience-visual__caption {
+  position: relative;
+  z-index: 2;
+}
+
+/* Existing floating reflection and audio cards */
+
+.landing-halloween .experience-audio,
+.landing-halloween .experience-reflection {
+  background: rgba(33, 16, 53, 0.93);
+  border: 1px solid rgba(255, 102, 0, 0.32);
+  color: #F5F0FF;
+}
+
+/* ==========================================
+   HALLOWEEN — HOW IT WORKS BACKGROUND
+   ========================================== */
+
+.landing-halloween .how-it-works--halloween {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #100D2B;
+}
+
+/* Mansion continuation background */
+
+.landing-halloween .how-it-works--halloween::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(16, 13, 43, 0.75) 0%,
+      rgba(16, 13, 43, 0.55) 45%,
+      rgba(16, 13, 43, 0.82) 100%
+    ),
+    var(--how-it-works-bg);
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Keep heading and cards above the image */
+
+.landing-halloween .how-it-works--halloween
+.landing-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make the cards readable */
+
+.landing-halloween .how-it-works--halloween
+.how-it-works__step {
+  background: rgba(33, 16, 53, 0.89);
+  border: 1px solid rgba(255, 102, 0, 0.35);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+/* Hover state */
+
+.landing-halloween .how-it-works--halloween
+.how-it-works__step:hover {
+  background: rgba(48, 23, 66, 0.95);
+  border-color: #FF6600;
+}
+
+/* Maintain text contrast */
+
+.landing-halloween .how-it-works--halloween
+.landing-section-heading h2,
+.landing-halloween .how-it-works--halloween
+.how-it-works__step h3 {
+  color: #F5F0FF;
+}
+
+.landing-halloween .how-it-works--halloween
+.landing-section-heading p,
+.landing-halloween .how-it-works--halloween
+.how-it-works__step p {
+  color: #E6D9EF;
+}
+
+/* Halloween accent icons */
+
+.landing-halloween .how-it-works--halloween
+.how-it-works__icon {
+  background: rgba(77, 13, 111, 0.75);
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.22);
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 768px) {
+  .landing-halloween .how-it-works--halloween::before {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(16, 13, 43, 0.83),
+        rgba(16, 13, 43, 0.76)
+      ),
+      var(--how-it-works-bg);
+
+    background-position: 65% center;
+  }
+
+  .landing-halloween .how-it-works--halloween
+  .how-it-works__step {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(33, 16, 53, 0.95);
+  }
+}
+
+
+/* ==========================================
+   HALLOWEEN — EXPERIENCE BACKGROUND FIX
+   ========================================== */
+
+/* Override original green section background */
+.landing-halloween .landing-section.experience-section {
+  background:
+    radial-gradient(
+      ellipse at 10% 35%,
+      rgba(77, 13, 111, 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 90% 75%,
+      rgba(255, 102, 0, 0.07),
+      transparent 50%
+    ),
+    #100D2B !important;
+
+  color: #F5F0FF;
+}
+
+/* Prevent a green background overlay */
+.landing-halloween .experience-section::before,
+.landing-halloween .experience-section::after {
+  background: transparent !important;
+}
+
+/* Purple visual container */
+.landing-halloween .experience-visual {
+  background: transparent;
+}
+
+/* Purple floating cards */
+.landing-halloween .experience-audio,
+.landing-halloween .experience-reflection {
+  background: rgba(33, 16, 53, 0.94) !important;
+  border: 1px solid rgba(255, 102, 0, 0.32);
+  color: #F5F0FF;
+}
+
+/* Text and accent consistency */
+.landing-halloween .experience-content {
+  color: #F5F0FF;
+}
+
+.landing-halloween .experience-content__description,
+.landing-halloween .experience-content__benefits p {
+  color: #C8BBD7;
+}
+
+/* ==========================================
+   HALLOWEEN — LANDING NAVBAR SETTINGS
+   AND NOTIFICATIONS
+   ========================================== */
+
+/* SETTINGS AND NOTIFICATION BUTTONS */
+
+html[data-season="halloween"]
+.landing-navbar .landing-settings__trigger,
+html[data-season="halloween"]
+.landing-navbar .landing-notifications__trigger {
+  background: #211035;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.4);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+html[data-season="halloween"]
+.landing-navbar .landing-settings__trigger:hover,
+html[data-season="halloween"]
+.landing-navbar .landing-notifications__trigger:hover {
+  background: #301742;
+  color: #5AFF00;
+  border-color: #5AFF00;
+  box-shadow: 0 0 14px rgba(90, 255, 0, 0.1);
+}
+
+/* SETTINGS MODAL BACKDROP */
+
+html[data-season="halloween"]
+.landing-settings__backdrop {
+  background: rgba(7, 4, 19, 0.78);
+  backdrop-filter: blur(7px);
+}
+
+/* MAIN APPEARANCE SETTINGS MODAL */
+
+html[data-season="halloween"]
+.landing-settings__panel {
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(77, 13, 111, 0.35),
+      transparent 55%
+    ),
+    #211035;
+
+  border: 1px solid rgba(255, 102, 0, 0.45);
+  color: #F5F0FF;
+
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(77, 13, 111, 0.2);
+}
+
+/* APPEARANCE LABEL */
+
+html[data-season="halloween"]
+.landing-settings__header span {
+  color: #5AFF00;
+}
+
+/* SETTINGS HEADING */
+
+html[data-season="halloween"]
+.landing-settings__header h2 {
+  color: #F5F0FF;
+  font-family: "Cinzel", Georgia, serif;
+}
+
+/* CLOSE BUTTON */
+
+html[data-season="halloween"]
+.landing-settings__header > button {
+  background: #301742;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.landing-settings__header > button:hover {
+  background: #4D0D6F;
+  border-color: #FF6600;
+  color: #FF953A;
+}
+
+/* DESCRIPTION */
+
+html[data-season="halloween"]
+.landing-settings__description {
+  color: #C8BBD7;
+}
+
+/* ALL THEME OPTION CARDS */
+
+html[data-season="halloween"]
+.landing-theme-option {
+  background: #301742;
+  color: #F5F0FF;
+  border: 1px solid rgba(255, 102, 0, 0.28);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+html[data-season="halloween"]
+.landing-theme-option:hover {
+  background: #3D2053;
+  border-color: #FF6600;
+}
+
+/* SELECTED THEME — HALLOWEEN */
+
+html[data-season="halloween"]
+.landing-theme-option--active {
+  background: rgba(90, 255, 0, 0.09);
+  border: 1px solid #5AFF00;
+  color: #F5F0FF;
+}
+
+/* ICON CONTAINERS */
+
+html[data-season="halloween"]
+.landing-theme-option__icon {
+  background: #211035;
+  color: #FF953A;
+  border: 1px solid rgba(255, 102, 0, 0.2);
+}
+
+/* ACTIVE ICON */
+
+html[data-season="halloween"]
+.landing-theme-option--active
+.landing-theme-option__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+/* OPTION TEXT */
+
+html[data-season="halloween"]
+.landing-theme-option strong {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.landing-theme-option small {
+  color: #C8BBD7;
+}
+
+/* ACTIVE CHECKMARK */
+
+html[data-season="halloween"]
+.landing-theme-option--active > svg {
+  color: #5AFF00;
+}
+
+/* ==========================================
+   LANDING NOTIFICATIONS
+   ========================================== */
+
+/* Override original light/dark notification tokens */
+
+html[data-season="halloween"]
+.landing-notifications {
+  --notification-bg: #211035;
+  --notification-bg-solid: #211035;
+  --notification-surface: #29163D;
+  --notification-surface-hover: #301742;
+
+  --notification-border: rgba(255, 102, 0, 0.28);
+
+  --notification-text: #F5F0FF;
+  --notification-text-soft: #C8BBD7;
+  --notification-text-muted: #A99BB9;
+
+  --notification-green: #5AFF00;
+  --notification-green-dark: #5AFF00;
+  --notification-green-soft: rgba(90, 255, 0, 0.09);
+
+  --notification-trigger-bg: #211035;
+  --notification-trigger-hover: #301742;
+
+  --notification-danger: #FFB7B7;
+  --notification-danger-soft: rgba(184, 75, 75, 0.14);
+
+  --notification-warning: #FFD08A;
+  --notification-warning-soft: rgba(255, 149, 58, 0.12);
+
+  --notification-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.48);
+}
+
+/* NOTIFICATION DROPDOWN */
+
+html[data-season="halloween"]
+.landing-notifications__panel {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.4);
+  color: #F5F0FF;
+}
+
+/* HEADER */
+
+html[data-season="halloween"]
+.landing-notifications__header {
+  background: #27143D;
+  border-bottom-color: rgba(255, 102, 0, 0.25);
+}
+
+html[data-season="halloween"]
+.landing-notifications__heading-icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+/* NOTIFICATION LIST */
+
+html[data-season="halloween"]
+.landing-notifications__content {
+  background: #211035;
+}
+
+html[data-season="halloween"]
+.landing-notification {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.landing-notification:hover {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.landing-notification__icon {
+  background: #301742;
+  color: #5AFF00;
+}
+
+/* NOTIFICATION BADGE */
+
+html[data-season="halloween"]
+.landing-notifications__badge {
+  background: #FF6600;
+  color: #100D2B;
+  border-color: #211035;
+}
+
+/* FOOTER */
+
+html[data-season="halloween"]
+.landing-notifications__footer {
+  background: #27143D;
+  border-top-color: rgba(255, 102, 0, 0.25);
+}
+
+/* EMPTY AND LOADING STATES */
+
+html[data-season="halloween"]
+.landing-notifications__state,
+html[data-season="halloween"]
+.landing-notifications__loader {
+  color: #C8BBD7;
+}
+
+/* NOTIFICATION BUTTONS */
+
+html[data-season="halloween"]
+.landing-notification__action,
+html[data-season="halloween"]
+.landing-notifications__clear {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.landing-notifications__close {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.landing-notifications__close:hover {
+  color: #FF953A;
+  background: #301742;
+}
+
+/* PRESERVE HIGH / URGENT PRIORITIES */
+
+html[data-season="halloween"]
+.landing-notification--high
+.landing-notification__priority {
+  color: #FFD08A;
+}
+
+html[data-season="halloween"]
+.landing-notification--urgent
+.landing-notification__priority {
+  color: #FFB7B7;
+}
+
+/* ==========================================
+   KEYBOARD ACCESSIBILITY
+   ========================================== */
+
+html[data-season="halloween"]
+:is(
+  .landing-settings__trigger,
+  .landing-theme-option,
+  .landing-notifications__trigger,
+  .landing-notification__action
+):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
