@@ -1,0 +1,836 @@
+
+/* ==========================================
+   UNWIND — COMPLETE HALLOWEEN JOURNAL
+   Venomous Pumpkin Pop
+   ========================================== */
+
+/* Shared Journal palette */
+
+html[data-season="halloween"] {
+  --journal-hw-bg: #100D2B;
+  --journal-hw-surface: #211035;
+  --journal-hw-surface-alt: #301742;
+  --journal-hw-plum: #4D0D6F;
+  --journal-hw-green: #5AFF00;
+  --journal-hw-orange: #FF6600;
+  --journal-hw-text: #F5F0FF;
+  --journal-hw-muted: #C8BBD7;
+  --journal-hw-border: rgba(255,102,0,.28);
+}
+
+/* PAGE & HERO */
+
+html[data-season="halloween"] .journal-page {
+  color: var(--journal-hw-text);
+}
+
+html[data-season="halloween"] .journal-hero {
+  background:
+    radial-gradient(
+      circle at 88% 15%,
+      rgba(255,102,0,.13),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #4D0D6F,
+      #251039 60%,
+      #100D2B
+    );
+
+  border: 1px solid var(--journal-hw-border);
+  box-shadow: 0 24px 60px rgba(0,0,0,.3);
+}
+
+html[data-season="halloween"] .journal-eyebrow {
+  color: var(--journal-hw-green);
+}
+
+html[data-season="halloween"] .journal-hero h1 {
+  color: var(--journal-hw-text);
+}
+
+html[data-season="halloween"]
+.journal-hero__copy > p {
+  color: #E6D9EF;
+}
+
+html[data-season="halloween"] .journal-orbit {
+  border-color: rgba(90,255,0,.25);
+}
+
+/* PRIMARY / SECONDARY ACTIONS */
+
+html[data-season="halloween"] .journal-primary-button {
+  background: var(--journal-hw-orange);
+  color: #100D2B;
+  border-color: var(--journal-hw-orange);
+}
+
+html[data-season="halloween"]
+.journal-primary-button:hover:not(:disabled) {
+  background: #FF8533;
+}
+
+html[data-season="halloween"] .journal-secondary-button {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(90,255,0,.3);
+}
+
+/* STATS, PROMPTS, LIBRARY */
+
+html[data-season="halloween"] .journal-summary,
+html[data-season="halloween"] .journal-prompt,
+html[data-season="halloween"] .journal-library,
+html[data-season="halloween"] .journal-state {
+  background: linear-gradient(145deg, #27143D, #1B102E);
+  border-color: var(--journal-hw-border);
+  color: var(--journal-hw-text);
+}
+
+html[data-season="halloween"] .journal-section-label {
+  color: var(--journal-hw-green);
+}
+
+html[data-season="halloween"] .journal-prompt__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+:is(.journal-prompt__browse, .journal-prompt__write) {
+  color: #5AFF00;
+}
+
+/* SEARCH / FILTER / EXPORT */
+
+html[data-season="halloween"] .journal-search,
+html[data-season="halloween"] .journal-filters,
+html[data-season="halloween"] .journal-export__button,
+html[data-season="halloween"] .journal-export__menu {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+.journal-search input {
+  background: transparent;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.journal-search input::placeholder {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.journal-filters .is-active {
+  background: rgba(90,255,0,.11);
+  color: #5AFF00;
+  border-color: rgba(90,255,0,.4);
+}
+
+html[data-season="halloween"]
+.journal-export__privacy {
+  color: #C8BBD7;
+}
+
+/* JOURNAL ENTRY CARDS */
+
+html[data-season="halloween"] .journal-entry-card {
+  background: linear-gradient(145deg, #29163D, #1B102E);
+  border-color: rgba(255,102,0,.3);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.journal-entry-card:hover {
+  border-color: #FF6600;
+  box-shadow: 0 16px 36px rgba(0,0,0,.28);
+}
+
+html[data-season="halloween"]
+.journal-entry-card__cover {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.journal-entry-card__tags {
+  color: #C8BBD7;
+}
+
+/* EDITOR MODAL AND OVERLAY */
+
+html[data-season="halloween"] .journal-modal {
+  background: rgba(7,4,19,.82);
+}
+
+html[data-season="halloween"] .journal-editor {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.35);
+  box-shadow: 0 30px 75px rgba(0,0,0,.45);
+}
+
+/* IMMERSIVE EDITOR */
+
+html[data-season="halloween"]
+.journal-editor__topbar,
+html[data-season="halloween"]
+.journal-editor__footer--immersive {
+  background: #211035;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+.journal-writing-space {
+  background: #1B102E;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+:is(.journal-editor__title--immersive,
+    .journal-editor__content--immersive) {
+  color: #F5F0FF;
+  background: transparent;
+}
+
+html[data-season="halloween"]
+:is(.journal-editor__title--immersive,
+    .journal-editor__content--immersive)::placeholder {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.journal-editor__icon-button,
+html[data-season="halloween"]
+.journal-tool-button {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+.journal-tool-button--active {
+  color: #5AFF00;
+  border-color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.journal-tool-panel,
+html[data-season="halloween"]
+.journal-editor__entry-menu {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: var(--journal-hw-border);
+}
+
+/* SAVE / FINISH ACTIONS */
+
+html[data-season="halloween"]
+:is(.journal-finish-button,
+    .journal-diary-finish-button) {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+:is(.journal-save-draft-button,
+    .journal-diary-draft-button) {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(90,255,0,.3);
+}
+
+/* MOODS / EMOTIONS / TAGS / ACTIVITIES */
+
+html[data-season="halloween"]
+:is(.journal-emotions__panel,
+    .journal-tags__panel,
+    .journal-emotions__search,
+    .journal-tags__search,
+    .journal-emotions__group,
+    .journal-tags__manager) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+:is(.journal-emotion-chip,
+    .journal-tag-chip) {
+  background: #301742;
+  color: #E6D9EF;
+  border-color: rgba(255,102,0,.25);
+}
+
+html[data-season="halloween"]
+:is(.journal-emotion-chip,
+    .journal-tag-chip).is-selected {
+  background: rgba(90,255,0,.11);
+  border-color: #5AFF00;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+:is(.journal-emotions__category,
+    .journal-tags__heading) {
+  color: #5AFF00;
+}
+
+/* PROMPT LIBRARY & PROMPT FORM */
+
+html[data-season="halloween"]
+:is(.journal-prompt-library-backdrop,
+    .journal-prompt-form-backdrop) {
+  background: rgba(7,4,19,.82);
+}
+
+html[data-season="halloween"]
+:is(.journal-prompt-library,
+    .journal-prompt-form) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.35);
+}
+
+html[data-season="halloween"]
+:is(.journal-prompt-card,
+    .journal-prompt-history__item) {
+  background: #29163D;
+  border-color: var(--journal-hw-border);
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.journal-prompt-card:hover {
+  border-color: #FF6600;
+}
+
+html[data-season="halloween"]
+:is(.journal-prompt-card__write,
+    .journal-prompt-library__create) {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* ATTACHMENTS */
+
+html[data-season="halloween"]
+:is(.journal-attachment-card,
+    .journal-attachment-picker,
+    .journal-page-attachment-missing) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+.journal-attachment-picker.is-dragging {
+  background: rgba(90,255,0,.08);
+  border-color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.journal-attachment-picker__icon {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+:is(.journal-attachment-card__audio,
+    .journal-attachment-card__document) {
+  background: #301742;
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.journal-attachment-card__save {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* VOICE RECORDING / TRANSCRIPTS */
+
+html[data-season="halloween"]
+:is(.journal-voice-recorder,
+    .journal-voice-transcript,
+    .voice-recorder) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+:is(.journal-voice-recorder__preview,
+    .journal-voice-transcript__text,
+    .voice-recorder__preview,
+    .voice-recorder__player) {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: var(--journal-hw-border);
+}
+
+html[data-season="halloween"]
+:is(.journal-voice-recorder__start,
+    .voice-recorder__start,
+    .voice-recorder__transcribe) {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* Keep recording and danger states red.
+   Do not recolor them green. */
+
+/* LOADING AND ERROR STATES */
+
+html[data-season="halloween"]
+.journal-state--empty {
+  background: #211035;
+  border-color: rgba(255,102,0,.25);
+}
+
+html[data-season="halloween"]
+.journal-alert {
+  border-color: rgba(255,149,58,.4);
+}
+
+/* KEYBOARD NAVIGATION */
+
+html[data-season="halloween"]
+:is(.journal-page,
+    .journal-modal,
+    .journal-prompt-library,
+    .journal-prompt-form)
+:is(button, a, input, textarea, select):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   HALLOWEEN — JOURNAL BOOK EXPERIENCE
+   ========================================== */
+
+/* Book environment */
+
+html[data-season="halloween"]
+.journal-book-stage {
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(77,13,111,.22),
+      transparent 65%
+    ),
+    #100D2B;
+}
+
+html[data-season="halloween"]
+.journal-book-prompt-ribbon,
+html[data-season="halloween"]
+.journal-book-navigation,
+html[data-season="halloween"]
+.journal-book-toolbar-shell {
+  color: #F5F0FF;
+}
+
+/* Gothic book cover */
+
+html[data-season="halloween"]
+.journal-real-cover {
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      rgba(77,13,111,.7),
+      transparent 75%
+    ),
+    linear-gradient(
+      135deg,
+      #301742,
+      #100D2B
+    );
+
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.55);
+
+  box-shadow:
+    0 25px 65px rgba(0,0,0,.45),
+    inset 0 0 35px rgba(77,13,111,.3);
+}
+
+html[data-season="halloween"]
+.journal-real-cover__spine {
+  border-color: rgba(255,102,0,.35);
+}
+
+html[data-season="halloween"]
+.journal-real-cover__inner-line {
+  border-color: rgba(255,149,58,.45);
+}
+
+html[data-season="halloween"]
+:is(.journal-real-cover__open,
+    .journal-real-cover__new,
+    .journal-book-blank__button) {
+  background: #FF6600;
+  color: #100D2B;
+  border-color: #FF6600;
+}
+
+
+
+/* Diary editor surrounding chrome */
+
+html[data-season="halloween"]
+.journal-diary-header,
+html[data-season="halloween"]
+.journal-diary-savebar {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+}
+
+html[data-season="halloween"]
+.journal-diary-icon-button {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.25);
+}
+
+/* Page attachment viewer */
+
+html[data-season="halloween"]
+.journal-attachment-viewer {
+  background: rgba(7,4,19,.83);
+}
+
+html[data-season="halloween"]
+.journal-attachment-viewer__dialog {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.32);
+}
+
+/* ==========================================
+   HALLOWEEN — JOURNAL SECURITY
+   ========================================== */
+
+html[data-season="halloween"]
+.journal-security-screen {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+:is(.journal-security-card,
+    .journal-security-modal,
+    .journal-security-settings) {
+  background: linear-gradient(
+    145deg,
+    #301742,
+    #1B102E
+  );
+
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.35);
+  box-shadow: 0 22px 60px rgba(0,0,0,.3);
+}
+
+html[data-season="halloween"]
+.journal-security-card__mark {
+  color: #5AFF00;
+  background: rgba(90,255,0,.09);
+}
+
+html[data-season="halloween"]
+.journal-security-eyebrow {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.journal-security-card__description {
+  color: #C8BBD7;
+}
+
+/* PIN input */
+
+html[data-season="halloween"]
+.journal-pin-field__control,
+html[data-season="halloween"]
+.journal-otp-field {
+  background: #160D29;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+}
+
+html[data-season="halloween"]
+.journal-pin-field__control:focus-within {
+  border-color: #5AFF00;
+  box-shadow: 0 0 0 3px rgba(90,255,0,.1);
+}
+
+html[data-season="halloween"]
+.journal-pin-field__control input {
+  background: transparent;
+  color: #F5F0FF;
+}
+
+/* Security buttons */
+
+html[data-season="halloween"]
+.journal-security-button--primary {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.journal-security-button--secondary {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(90,255,0,.3);
+}
+
+html[data-season="halloween"]
+.journal-security-button--danger {
+  background: #A84355;
+  color: white;
+}
+
+/* Security status and settings */
+
+html[data-season="halloween"]
+:is(.journal-security-status-card,
+    .journal-security-overview,
+    .journal-security-details,
+    .journal-security-bar) {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.25);
+}
+
+html[data-season="halloween"]
+.journal-security-bar__lock {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.journal-security-link {
+  color: #5AFF00;
+}
+
+/* Preserve distinct alert states */
+
+html[data-season="halloween"]
+:is(.journal-attempt-warning,
+    .journal-lockout,
+    .journal-security-warning,
+    .journal-security-feedback--error) {
+  background: rgba(184,75,75,.12);
+  color: #FFB7B7;
+  border-color: rgba(255,120,120,.35);
+}
+
+html[data-season="halloween"]
+.journal-security-feedback--success {
+  background: rgba(90,255,0,.08);
+  color: #B9FF8A;
+  border-color: rgba(90,255,0,.3);
+}
+
+/* No added continuous seasonal animations */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"]
+  .journal-entry-card {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN JOURNAL — DARK PURPLE FIX
+   ========================================== */
+
+/* BOOK PAGES AND DIARY PAGES */
+
+html[data-season="halloween"]
+:is(.journal-book-page, .journal-diary-page) {
+  --dashboard-text: #F5F0FF;
+  --dashboard-muted: #C8BBD7;
+  --dashboard-subtle: #A99BB9;
+  --dashboard-surface: #29163D;
+  --dashboard-surface-solid: #211035;
+  --dashboard-surface-muted: #301742;
+  --dashboard-primary: #5AFF00;
+  --dashboard-primary-dark: #FF6600;
+  --dashboard-primary-soft: rgba(90,255,0,.09);
+  --dashboard-border: rgba(255,102,0,.28);
+
+  background: linear-gradient(
+    90deg,
+    #1B102E,
+    #29163D 55%,
+    #211035
+  ) !important;
+
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+}
+
+/* Keep all written text readable */
+
+html[data-season="halloween"]
+:is(.journal-book-page, .journal-diary-page)
+:is(h1, h2, h3, p, strong, input, textarea) {
+  color: #F5F0FF;
+}
+
+/* Writing placeholders */
+
+html[data-season="halloween"]
+:is(.journal-book-page, .journal-diary-page)
+:is(input, textarea)::placeholder {
+  color: #A99BB9;
+}
+
+/* Preserve page lines, but make them subtle */
+
+html[data-season="halloween"]
+.journal-diary-page::before,
+html[data-season="halloween"]
+.journal-book-page::before {
+  opacity: .18;
+}
+
+/* BOOK NAVIGATION AND TOOLBAR */
+
+html[data-season="halloween"]
+:is(
+  .journal-book-navigation,
+  .journal-book-toolbar-shell
+) {
+  background: #211035 !important;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+}
+
+/* Search, export and filters */
+
+html[data-season="halloween"]
+.journal-book-toolbar-shell .journal-search,
+html[data-season="halloween"]
+.journal-book-toolbar-shell .journal-export__button {
+  background: #160D29;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+}
+
+html[data-season="halloween"]
+.journal-filters button {
+  background: #211035;
+  color: #C8BBD7;
+  border-color: rgba(255,102,0,.25);
+}
+
+html[data-season="halloween"]
+.journal-filters button.is-active {
+  background: rgba(90,255,0,.1);
+  color: #5AFF00;
+  border-color: #5AFF00;
+}
+
+/* TODAY'S REFLECTION */
+
+html[data-season="halloween"] .journal-prompt {
+  background: linear-gradient(
+    135deg,
+    #301742,
+    #211035
+  ) !important;
+
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.35);
+}
+
+html[data-season="halloween"]
+.journal-prompt__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.journal-prompt :is(h3, strong) {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.journal-prompt small {
+  color: #FF953A;
+}
+
+html[data-season="halloween"]
+.journal-prompt__write {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+/* PROMPT LIBRARY SEARCH */
+
+html[data-season="halloween"]
+.journal-prompt-library :is(input, select),
+html[data-season="halloween"]
+.journal-prompt-form :is(input, textarea, select) {
+  background: #160D29;
+  color: #F5F0FF;
+  border: 1px solid rgba(255,102,0,.3);
+}
+
+/* EDITOR DATE INPUTS */
+
+html[data-season="halloween"]
+.journal-editor :is(
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="time"]
+) {
+  background: #160D29;
+  color: #F5F0FF;
+  border-color: rgba(255,102,0,.3);
+  color-scheme: dark;
+}
+
+/* Editor page titles and writing areas */
+
+html[data-season="halloween"]
+.journal-diary-page :is(
+  input,
+  textarea,
+  [contenteditable="true"]
+) {
+  color: #F5F0FF;
+  caret-color: #5AFF00;
+}
+
+/* Journal page metadata */
+
+html[data-season="halloween"]
+.journal-book-page__date,
+html[data-season="halloween"]
+.journal-book-page__meta {
+  color: #C8BBD7;
+}
+
+/* Text headings */
+
+html[data-season="halloween"]
+.journal-book-page h2,
+html[data-season="halloween"]
+.journal-diary-page h2 {
+  color: #F5F0FF;
+}
+
+/* Keyboard focus */
+
+html[data-season="halloween"]
+.journal-editor :is(input, textarea):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 2px;
+}
