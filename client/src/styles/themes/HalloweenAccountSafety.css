@@ -1,0 +1,715 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN PROFILE, SETTINGS,
+   SAFETY REPORTS & REPORT MODAL
+   ========================================== */
+
+html[data-season="halloween"] {
+  --has-bg: #100D2B;
+  --has-card: #211035;
+  --has-card-alt: #301742;
+  --has-plum: #4D0D6F;
+  --has-green: #5AFF00;
+  --has-orange: #FF6600;
+  --has-text: #F5F0FF;
+  --has-muted: #C8BBD7;
+  --has-border: rgba(255, 102, 0, .28);
+}
+
+/* ==========================================
+   PROFILE
+   ========================================== */
+
+html[data-season="halloween"] .profile-page {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.profile-page__eyebrow {
+  color: var(--has-green);
+}
+
+html[data-season="halloween"]
+.profile-page__heading h1 {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.profile-page__heading p {
+  color: var(--has-muted);
+}
+
+/* Main profile cards and sidebar */
+
+html[data-season="halloween"]
+:is(.profile-card, .profile-sidebar-card) {
+  background: linear-gradient(145deg, #29163D, #1B102E);
+  color: var(--has-text);
+  border-color: var(--has-border);
+  box-shadow: 0 14px 38px rgba(0, 0, 0, .2);
+}
+
+html[data-season="halloween"]
+.profile-card__title,
+html[data-season="halloween"]
+.profile-sidebar-card h2 {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.profile-handle,
+html[data-season="halloween"]
+.profile-field__hint {
+  color: var(--has-muted);
+}
+
+/* Avatar and profile status */
+
+html[data-season="halloween"]
+.profile-avatar {
+  background: var(--has-plum);
+  color: var(--has-text);
+  border-color: var(--has-orange);
+}
+
+html[data-season="halloween"]
+.profile-avatar__camera {
+  background: var(--has-orange);
+  color: var(--has-bg);
+}
+
+html[data-season="halloween"]
+.profile-status-pill,
+html[data-season="halloween"]
+.profile-editing-badge {
+  background: rgba(90, 255, 0, .09);
+  color: var(--has-green);
+  border-color: rgba(90, 255, 0, .3);
+}
+
+/* Profile completion */
+
+html[data-season="halloween"]
+.profile-completion__track {
+  background: var(--has-card-alt);
+}
+
+html[data-season="halloween"]
+.profile-completion__track > span {
+  background: linear-gradient(90deg, #FF6600, #5AFF00);
+}
+
+/* Profile information */
+
+html[data-season="halloween"]
+:is(.profile-detail, .profile-account-item, .profile-admin-access) {
+  background: var(--has-card-alt);
+  border-color: var(--has-border);
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.profile-detail__icon,
+html[data-season="halloween"]
+.profile-admin-access__icon {
+  background: #0F2C20;
+  color: var(--has-green);
+}
+
+/* Profile editing fields */
+
+html[data-season="halloween"]
+.profile-page :is(input, textarea, select) {
+  background: #160D29;
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.profile-page :is(input, textarea)::placeholder {
+  color: #A99BB9;
+}
+
+/* Profile buttons */
+
+html[data-season="halloween"]
+.profile-button--primary {
+  background: var(--has-orange);
+  color: var(--has-bg);
+  border-color: var(--has-orange);
+}
+
+html[data-season="halloween"]
+.profile-button--secondary,
+html[data-season="halloween"]
+.profile-photo-action:not(.profile-photo-action--danger) {
+  background: var(--has-card-alt);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+/* Preserve profile success/error alerts */
+
+html[data-season="halloween"]
+.profile-alert--success {
+  background: rgba(90, 255, 0, .09);
+  color: #B9FF8A;
+  border-color: rgba(90, 255, 0, .3);
+}
+
+html[data-season="halloween"]
+.profile-alert--error {
+  background: rgba(184, 75, 75, .14);
+  color: #FFB7B7;
+  border-color: rgba(255, 120, 120, .35);
+}
+
+/* ==========================================
+   ACCOUNT SETTINGS
+   ========================================== */
+
+html[data-season="halloween"] .account-settings {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__hero {
+  background:
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(255, 102, 0, .13),
+      transparent 48%
+    ),
+    linear-gradient(135deg, #4D0D6F, #251039 60%, #100D2B);
+
+  border-color: rgba(255, 102, 0, .38);
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__hero h1,
+html[data-season="halloween"]
+.account-settings__section-heading h2,
+html[data-season="halloween"]
+.account-settings__aside-card h3 {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__eyebrow {
+  color: var(--has-green);
+}
+
+html[data-season="halloween"]
+.account-settings__hero p,
+html[data-season="halloween"]
+.account-settings__section-heading p,
+html[data-season="halloween"]
+.account-settings__danger-row p,
+html[data-season="halloween"]
+.account-settings__session-panel p,
+html[data-season="halloween"]
+.account-settings__verification-row p,
+html[data-season="halloween"]
+.account-settings__profile-link-row p {
+  color: var(--has-muted);
+}
+
+/* Settings cards and quick navigation */
+
+html[data-season="halloween"]
+:is(
+  .account-settings__card,
+  .account-settings__aside-card,
+  .account-settings__quick-nav
+) {
+  background: linear-gradient(145deg, #27143D, #1B102E);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.account-settings__quick-nav a {
+  color: var(--has-muted);
+}
+
+html[data-season="halloween"]
+.account-settings__quick-nav a:hover,
+html[data-season="halloween"]
+.account-settings__quick-nav a.is-active {
+  background: rgba(90, 255, 0, .09);
+  color: var(--has-green);
+}
+
+/* Setting details, verification, sessions */
+
+html[data-season="halloween"]
+:is(
+  .account-settings__details > div,
+  .account-settings__verification-row,
+  .account-settings__session-panel,
+  .account-settings__profile-link-row,
+  .account-settings__delete-verification,
+  .account-settings__requirements
+) {
+  background: var(--has-card-alt);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.account-settings__details span,
+html[data-season="halloween"]
+.account-settings__aside-card > div span {
+  color: var(--has-muted);
+}
+
+html[data-season="halloween"]
+.account-settings__details strong,
+html[data-season="halloween"]
+.account-settings__aside-card > div strong {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__icon-box {
+  background: #0F2C20;
+  color: var(--has-green);
+}
+
+/* Password, OTP and other inputs */
+
+html[data-season="halloween"]
+.account-settings__field :is(input, select, textarea),
+html[data-season="halloween"]
+.account-settings__password-control {
+  background: #160D29;
+  border-color: var(--has-border);
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__password-control input {
+  background: transparent;
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__field :is(input, textarea)::placeholder,
+html[data-season="halloween"]
+.account-settings__password-control input::placeholder {
+  color: #A99BB9;
+}
+
+/* Settings actions */
+
+html[data-season="halloween"]
+.account-settings__button--primary {
+  background: var(--has-orange);
+  border-color: var(--has-orange);
+  color: var(--has-bg);
+}
+
+html[data-season="halloween"]
+.account-settings__button--primary:hover:not(:disabled) {
+  background: #FF8533;
+}
+
+html[data-season="halloween"]
+:is(
+  .account-settings__button--soft,
+  .account-settings__button--outline
+) {
+  background: var(--has-card-alt);
+  border-color: var(--has-border);
+  color: var(--has-text);
+}
+
+/* Decorative settings choices */
+
+html[data-season="halloween"]
+.account-settings__entrance-option {
+  background: var(--has-card);
+  border-color: var(--has-border);
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__entrance-option.is-selected {
+  background: rgba(90, 255, 0, .09);
+  border-color: var(--has-green);
+}
+
+html[data-season="halloween"]
+.account-settings__entrance-copy strong {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__entrance-copy > span,
+html[data-season="halloween"]
+.account-settings__entrance-note {
+  color: var(--has-muted);
+}
+
+/* Account settings modal */
+
+html[data-season="halloween"]
+.account-settings__modal-backdrop {
+  background: rgba(7, 4, 19, .82);
+}
+
+html[data-season="halloween"]
+.account-settings__modal {
+  background: var(--has-card);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.account-settings__modal h2 {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.account-settings__modal > p {
+  color: var(--has-muted);
+}
+
+/* Destructive account actions remain red */
+
+html[data-season="halloween"]
+.account-settings__card--danger {
+  border-color: rgba(255, 120, 120, .35);
+}
+
+html[data-season="halloween"]
+.account-settings__button--danger {
+  background: #A84355;
+  color: #FFFFFF;
+}
+
+html[data-season="halloween"]
+.account-settings__message--error {
+  background: rgba(184, 75, 75, .14);
+  color: #FFB7B7;
+  border-color: rgba(255, 120, 120, .35);
+}
+
+html[data-season="halloween"]
+.account-settings__message--success {
+  background: rgba(90, 255, 0, .09);
+  color: #B9FF8A;
+  border-color: rgba(90, 255, 0, .3);
+}
+
+/* ==========================================
+   SAFETY REPORTS
+   ========================================== */
+
+html[data-season="halloween"] .safety-reports {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.safety-reports__hero {
+  background: linear-gradient(
+    135deg,
+    #4D0D6F,
+    #251039 60%,
+    #100D2B
+  );
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.safety-reports__hero h1 {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.safety-reports__eyebrow {
+  color: var(--has-green);
+}
+
+html[data-season="halloween"]
+.safety-reports__hero-copy > p {
+  color: var(--has-muted);
+}
+
+html[data-season="halloween"]
+.safety-reports__hero-visual > div {
+  background: var(--has-plum);
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.safety-reports__hero-orbit {
+  background: var(--has-card-alt);
+  color: var(--has-green);
+  border-color: var(--has-border);
+}
+
+/* Main sections, cards and quick tools */
+
+html[data-season="halloween"]
+:is(
+  .safety-reports__workspace,
+  .safety-reports__principles,
+  .safety-reports__quick-tools > button,
+  .safety-report-card,
+  .safety-reports__state
+) {
+  background: linear-gradient(145deg, #29163D, #1B102E);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.safety-reports__quick-tools > button:hover,
+html[data-season="halloween"]
+.safety-report-card:hover {
+  border-color: var(--has-orange);
+}
+
+html[data-season="halloween"]
+.safety-reports__quick-tools > button > span,
+html[data-season="halloween"]
+.safety-report-card__icon {
+  background: #0F2C20;
+  color: var(--has-green);
+}
+
+html[data-season="halloween"]
+:is(
+  .safety-reports__quick-tools strong,
+  .safety-reports__workspace-header h2,
+  .safety-report-card__top h3,
+  .safety-reports__principle-grid h3
+) {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+:is(
+  .safety-reports__quick-tools p,
+  .safety-report-card__description,
+  .safety-reports__principle-grid p,
+  .safety-report-card__footer > span
+) {
+  color: var(--has-muted);
+}
+
+html[data-season="halloween"]
+.safety-reports__principle-grid article {
+  background: var(--has-card-alt);
+  border-color: var(--has-border);
+  color: var(--has-text);
+}
+
+/* Filters */
+
+html[data-season="halloween"]
+.safety-reports__filters :is(button, select, input) {
+  background: #160D29;
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+/* Report actions */
+
+html[data-season="halloween"]
+.safety-reports__primary-button {
+  background: var(--has-orange);
+  color: var(--has-bg);
+}
+
+html[data-season="halloween"]
+.safety-reports__secondary-button,
+html[data-season="halloween"]
+.safety-report-card__footer button {
+  background: var(--has-card-alt);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+/* Status colors: preserve distinct meanings */
+
+html[data-season="halloween"]
+.safety-report-status--pending,
+html[data-season="halloween"]
+.safety-report-progress--pending {
+  color: #FFE09A;
+  background: rgba(235, 180, 66, .12);
+}
+
+html[data-season="halloween"]
+.safety-report-status--reviewing,
+html[data-season="halloween"]
+.safety-report-progress--reviewing {
+  color: #A9D9FF;
+  background: rgba(70, 150, 240, .12);
+}
+
+html[data-season="halloween"]
+.safety-report-status--resolved,
+html[data-season="halloween"]
+.safety-report-progress--resolved {
+  color: #B9FF8A;
+  background: rgba(90, 255, 0, .09);
+}
+
+html[data-season="halloween"]
+.safety-report-status--rejected,
+html[data-season="halloween"]
+.safety-report-progress--rejected {
+  color: #FFB7B7;
+  background: rgba(184, 75, 75, .14);
+}
+
+/* Report details modal */
+
+html[data-season="halloween"]
+.safety-report-modal-backdrop {
+  background: rgba(7, 4, 19, .82);
+}
+
+html[data-season="halloween"]
+.safety-report-modal {
+  background: var(--has-card);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.safety-report-modal__header,
+html[data-season="halloween"]
+.safety-report-detail-grid > div,
+html[data-season="halloween"]
+.safety-report-modal__outcome,
+html[data-season="halloween"]
+.safety-report-modal__privacy {
+  background: var(--has-card-alt);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.safety-report-modal__header h2,
+html[data-season="halloween"]
+.safety-report-detail-grid strong {
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+:is(
+  .safety-report-modal__section p,
+  .safety-report-modal__privacy p,
+  .safety-report-progress p
+) {
+  color: var(--has-muted);
+}
+
+/* ==========================================
+   SHARED REPORT SUBMISSION MODAL
+   ========================================== */
+
+html[data-season="halloween"]
+.unwind-report-backdrop {
+  background: rgba(7, 4, 19, .82);
+}
+
+html[data-season="halloween"]
+.unwind-report-modal {
+  background: var(--has-card);
+  color: var(--has-text);
+  border-color: var(--has-border);
+  box-shadow: 0 30px 75px rgba(0, 0, 0, .45);
+}
+
+html[data-season="halloween"]
+.unwind-report-modal__header {
+  border-bottom-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.unwind-report-modal__icon {
+  background: #0F2C20;
+  color: var(--has-green);
+}
+
+html[data-season="halloween"]
+.unwind-report-target {
+  background: var(--has-card-alt);
+  border-color: var(--has-border);
+  color: var(--has-text);
+}
+
+html[data-season="halloween"]
+.unwind-report-field :is(input, select, textarea) {
+  background: #160D29;
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.unwind-report-field :is(input, textarea)::placeholder {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.unwind-report-cancel {
+  background: var(--has-card-alt);
+  color: var(--has-text);
+  border-color: var(--has-border);
+}
+
+html[data-season="halloween"]
+.unwind-report-submit {
+  background: var(--has-orange);
+  color: var(--has-bg);
+}
+
+/* The submit button is an ordinary action.
+   Error and success messages retain semantic colors. */
+
+html[data-season="halloween"]
+.unwind-report-error,
+html[data-season="halloween"]
+.safety-report-modal__state--error,
+html[data-season="halloween"]
+.safety-reports__state--error {
+  background: rgba(184, 75, 75, .14);
+  color: #FFB7B7;
+  border-color: rgba(255, 120, 120, .35);
+}
+
+html[data-season="halloween"]
+.unwind-report-success {
+  background: var(--has-card);
+  color: var(--has-text);
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+html[data-season="halloween"]
+:is(
+  .profile-page,
+  .account-settings,
+  .safety-reports,
+  .safety-report-modal,
+  .unwind-report-modal
+) :is(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--has-green);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"]
+  :is(.profile-page, .account-settings, .safety-reports)
+  * {
+    transition: none !important;
+  }
+}
