@@ -26,7 +26,7 @@ import CreateHabitModal from "../../components/trackers/CreateHabitModal";
 import TrackerSkeleton from "../../components/trackers/TrackerSkeleton";
 import AppErrorState
   from "../../components/common/AppStates/AppErrorState";
-
+import "../../styles/themes/HalloweenTrackers.css";
 import ButtonLoader
   from "../../components/common/AppStates/ButtonLoader";
 
