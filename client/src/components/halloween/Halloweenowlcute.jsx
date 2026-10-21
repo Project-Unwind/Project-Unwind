@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import "./HalloweenOwlCute.css";
+import "./Halloweenowlcute.css";
 
 const HOP_MS = 1300;
 
