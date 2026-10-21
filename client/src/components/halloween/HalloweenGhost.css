@@ -1,0 +1,351 @@
+/* ==========================================
+   UNWIND — FLOATING HALLOWEEN GHOST
+   ========================================== */
+
+.halloween-ghost {
+  --boo-duration: 2.6s; /* keep in sync with BOO_DURATION_MS in the JSX */
+
+  display: block;
+  width: var(--ghost-size, 72px);
+  height: auto;
+  aspect-ratio: 120 / 145;
+
+  /* Interactive: hover on desktop, tap on mobile */
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  flex-shrink: 0;
+
+  position: relative;
+  z-index: 2;
+
+  filter: drop-shadow(
+    0 0 12px rgba(165, 139, 217, 0.35)
+  );
+}
+
+/* Floating movement */
+
+.halloween-ghost__float {
+  width: 100%;
+  height: 100%;
+
+  transform-origin: center;
+
+  animation:
+    ghostHover 5.5s ease-in-out infinite,
+    ghostDrift 9s ease-in-out infinite;
+}
+
+.halloween-ghost__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+
+  transform-origin: 50% 100%;
+}
+
+/* Gentle hovering */
+
+@keyframes ghostHover {
+  0%, 100% {
+    translate: 0 0;
+  }
+
+  25% {
+    translate: 0 -5px;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+
+  75% {
+    translate: 0 -6px;
+  }
+}
+
+/* Small side-to-side drift */
+
+@keyframes ghostDrift {
+  0%, 100% {
+    rotate: -3deg;
+  }
+
+  50% {
+    rotate: 3deg;
+  }
+}
+
+/* Blinking eyes */
+
+.halloween-ghost__eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation: ghostBlink 6.8s infinite;
+}
+
+@keyframes ghostBlink {
+  0%, 43%, 47%, 72%, 76%, 100% {
+    transform: scaleY(1);
+  }
+
+  45%, 74% {
+    transform: scaleY(0.12);
+  }
+}
+
+/* Sparkling */
+
+.halloween-ghost__sparkle {
+  animation: ghostSparkle 3.5s ease-in-out infinite;
+}
+
+@keyframes ghostSparkle {
+  0%, 100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Optional interactive hover */
+
+.halloween-ghost:hover .halloween-ghost__svg {
+  filter: brightness(1.1);
+}
+
+/* ==========================================
+   BOO! — smile, wave, then shout
+   Triggered by hover / tap (class --boo)
+   Timeline (2.6s):
+     0–38%   big smile + arms pop out and wave
+     40–95%  "O" mouth + BOO! bubble
+   ========================================== */
+
+/* Hidden by default */
+
+.halloween-ghost__big-smile,
+.halloween-ghost__boo-mouth,
+.halloween-ghost__bubble,
+.halloween-ghost__arm {
+  opacity: 0;
+}
+
+.halloween-ghost__boo-mouth,
+.halloween-ghost__bubble {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Pop out from the tail, which points at the ghost */
+
+.halloween-ghost__bubble--right {
+  transform-origin: 0% 50%;
+}
+
+.halloween-ghost__bubble--left {
+  transform-origin: 100% 50%;
+}
+
+/* Waving pivots (in SVG viewBox units) */
+
+.halloween-ghost__arm-wave {
+  transform-box: view-box;
+}
+
+.halloween-ghost__arm--left .halloween-ghost__arm-wave {
+  transform-origin: 24px 90px;
+}
+
+.halloween-ghost__arm--right .halloween-ghost__arm-wave {
+  transform-origin: 95px 90px;
+}
+
+/* Playing */
+
+.halloween-ghost--boo .halloween-ghost__svg {
+  animation: ghostBooPop var(--boo-duration) ease-out 1;
+}
+
+.halloween-ghost--boo .halloween-ghost__smile {
+  animation: ghostSmileHide var(--boo-duration) linear 1;
+}
+
+.halloween-ghost--boo .halloween-ghost__big-smile {
+  animation: ghostBigSmile var(--boo-duration) linear 1;
+}
+
+.halloween-ghost--boo .halloween-ghost__boo-mouth {
+  animation: ghostBooMouth var(--boo-duration) ease-out 1;
+}
+
+.halloween-ghost--boo .halloween-ghost__bubble {
+  animation: ghostBubble var(--boo-duration) ease-out 1;
+}
+
+.halloween-ghost--boo .halloween-ghost__arm {
+  animation: ghostArmShow var(--boo-duration) ease-in-out 1;
+}
+
+.halloween-ghost--boo .halloween-ghost__arm--left .halloween-ghost__arm-wave {
+  animation: ghostWaveLeft 0.5s ease-in-out infinite;
+}
+
+.halloween-ghost--boo .halloween-ghost__arm--right .halloween-ghost__arm-wave {
+  animation: ghostWaveRight 0.5s ease-in-out infinite;
+}
+
+/* Normal smile steps aside while the boo plays */
+
+@keyframes ghostSmileHide {
+  0%      { opacity: 1; }
+  1%, 92% { opacity: 0; }
+  98%, 100% { opacity: 1; }
+}
+
+@keyframes ghostBigSmile {
+  0%        { opacity: 0; }
+  1%, 38%   { opacity: 1; }
+  39%, 100% { opacity: 0; }
+}
+
+/* "O" mouth pops open */
+
+@keyframes ghostBooMouth {
+  0%, 38% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  42% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+
+  48%, 90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  98%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+/* Speech bubble pops in and fades */
+
+@keyframes ghostBubble {
+  0%, 38% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  44% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  50%, 88% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  96%, 100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* Arms appear, then disappear at the end */
+
+@keyframes ghostArmShow {
+  0%        { opacity: 0; }
+  6%, 88%   { opacity: 1; }
+  98%, 100% { opacity: 0; }
+}
+
+@keyframes ghostWaveLeft {
+  0%, 100% { transform: rotate(-16deg); }
+  50%      { transform: rotate(16deg); }
+}
+
+@keyframes ghostWaveRight {
+  0%, 100% { transform: rotate(16deg); }
+  50%      { transform: rotate(-16deg); }
+}
+
+/* Squash-and-stretch jump scare when he shouts */
+
+@keyframes ghostBooPop {
+  0%, 38% {
+    transform: scale(1);
+  }
+
+  41% {
+    transform: scale(1.14, 0.93);
+  }
+
+  45% {
+    transform: scale(0.96, 1.07);
+  }
+
+  50%, 100% {
+    transform: scale(1);
+  }
+}
+
+/* ==========================================
+   Reduced motion: no movement, but still show
+   the smile / BOO bubble as a static state
+   ========================================== */
+
+.halloween-ghost--static .halloween-ghost__float,
+.halloween-ghost--static .halloween-ghost__eyes,
+.halloween-ghost--static .halloween-ghost__sparkle,
+.halloween-ghost--static .halloween-ghost__svg,
+.halloween-ghost--static .halloween-ghost__smile,
+.halloween-ghost--static .halloween-ghost__big-smile,
+.halloween-ghost--static .halloween-ghost__boo-mouth,
+.halloween-ghost--static .halloween-ghost__bubble,
+.halloween-ghost--static .halloween-ghost__arm,
+.halloween-ghost--static .halloween-ghost__arm-wave {
+  animation: none !important;
+  translate: none;
+  rotate: none;
+}
+
+.halloween-ghost--static.halloween-ghost--boo .halloween-ghost__smile {
+  opacity: 0;
+}
+
+.halloween-ghost--static.halloween-ghost--boo .halloween-ghost__boo-mouth,
+.halloween-ghost--static.halloween-ghost--boo .halloween-ghost__bubble,
+.halloween-ghost--static.halloween-ghost--boo .halloween-ghost__arm {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-ghost,
+  .halloween-ghost * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .halloween-ghost--boo .halloween-ghost__smile {
+    opacity: 0;
+  }
+
+  .halloween-ghost--boo .halloween-ghost__boo-mouth,
+  .halloween-ghost--boo .halloween-ghost__bubble,
+  .halloween-ghost--boo .halloween-ghost__arm {
+    opacity: 1;
+  }
+}
