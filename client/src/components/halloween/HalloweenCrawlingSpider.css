@@ -1,0 +1,225 @@
+/* ==========================================
+   UNWIND — CRAWLING HALLOWEEN SPIDER (black silhouette)
+   ========================================== */
+
+.halloween-crawling-spider {
+  /* Change these to restyle without touching the SVG */
+  --spider-color: #000;
+  --spider-rim: transparent; /* e.g. rgba(255,255,255,0.35) for dark backgrounds */
+
+  position: relative;
+  display: block;
+  width: var(--spider-size, 48px);
+  aspect-ratio: 6 / 5;
+  flex-shrink: 0;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+
+  filter: drop-shadow(0 0 1px var(--spider-rim));
+}
+
+/* Whole-spider travel: crawl, pause, return */
+.halloween-crawling-spider__motion {
+  width: 100%;
+  height: 100%;
+  animation: spiderCrawl 7s ease-in-out infinite;
+}
+
+.halloween-crawling-spider__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.halloween-crawling-spider--left {
+  --crawl-distance: -17px;
+}
+
+.halloween-crawling-spider--right {
+  --crawl-distance: 17px;
+}
+
+@keyframes spiderCrawl {
+  0%,
+  12% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+  35%,
+  50% {
+    transform: translate3d(var(--crawl-distance), -3px, 0) rotate(4deg);
+  }
+  72%,
+  85% {
+    transform: translate3d(4px, 0, 0) rotate(-2deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+}
+
+/* ---------- Solid black shapes ---------- */
+
+.hcs__fill {
+  fill: var(--spider-color);
+}
+
+.hcs__femur,
+.hcs__tibia,
+.hcs__palp,
+.hcs__fang {
+  fill: none;
+  stroke: var(--spider-color);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hcs__femur {
+  stroke-width: 4.2;
+}
+
+.hcs__tibia {
+  stroke-width: 2.6;
+}
+
+.hcs__palp {
+  stroke-width: 2.4;
+}
+
+.hcs__fang {
+  stroke-width: 1.6;
+}
+
+/* ---------- Legs: alternating gait ---------- */
+
+.hcs__leg {
+  transform-box: view-box;
+}
+
+.hcs__leg--a {
+  animation: legStepA 0.55s ease-in-out infinite alternate;
+}
+
+.hcs__leg--b {
+  animation: legStepB 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes legStepA {
+  from {
+    transform: rotate(-7deg);
+  }
+  to {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes legStepB {
+  from {
+    transform: rotate(6deg);
+  }
+  to {
+    transform: rotate(-7deg);
+  }
+}
+
+/* ---------- Body ---------- */
+
+.hcs__body {
+  transform-box: view-box;
+  transform-origin: 60px 55px;
+  animation: spiderBob 0.55s ease-in-out infinite alternate;
+}
+
+@keyframes spiderBob {
+  from {
+    transform: translateY(0.6px) scale(1, 1);
+  }
+  to {
+    transform: translateY(-0.6px) scale(1.01, 0.995);
+  }
+}
+
+.hcs__palps {
+  transform-box: view-box;
+  transform-origin: 60px 30px;
+  animation: palpTwitch 1.4s ease-in-out infinite;
+}
+
+@keyframes palpTwitch {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-3deg);
+  }
+  60% {
+    transform: rotate(3deg);
+  }
+}
+
+.hcs__jaws {
+  transform-box: view-box;
+  transform-origin: 60px 30px;
+  animation: jawFlex 2.6s ease-in-out infinite;
+}
+
+@keyframes jawFlex {
+  0%,
+  80%,
+  100% {
+    transform: scaleX(1);
+  }
+  90% {
+    transform: scaleX(1.06);
+  }
+}
+
+/* Hover: scurry faster */
+.halloween-crawling-spider:hover .halloween-crawling-spider__motion {
+  animation-duration: 3s;
+}
+
+.halloween-crawling-spider:hover .hcs__leg--a,
+.halloween-crawling-spider:hover .hcs__leg--b,
+.halloween-crawling-spider:hover .hcs__body {
+  animation-duration: 0.25s;
+}
+
+/* ---------- Reduced motion ---------- */
+
+.halloween-crawling-spider--static *,
+.halloween-crawling-spider--static {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-crawling-spider,
+  .halloween-crawling-spider * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Placement (unchanged) ---------- */
+
+html[data-season="halloween"] .community-hero {
+  position: relative;
+}
+
+html[data-season="halloween"] .community-halloween-spider {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  z-index: 3;
+}
+
+@media (max-width: 600px) {
+  html[data-season="halloween"] .community-halloween-spider {
+    top: 10px;
+    right: 10px;
+    width: 32px;
+  }
+}
