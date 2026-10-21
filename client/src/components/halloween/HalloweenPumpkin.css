@@ -1,0 +1,177 @@
+
+/* ==========================================
+   UNWIND — ANIMATED HALLOWEEN PUMPKIN
+   ========================================== */
+
+.halloween-pumpkin {
+  position: relative;
+  display: block;
+  width: var(--pumpkin-size, 75px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+
+  pointer-events: auto;
+  user-select: none;
+  z-index: 2;
+
+  filter: drop-shadow(
+    0 6px 12px rgba(255, 102, 0, 0.3)
+  );
+}
+
+.halloween-pumpkin__float {
+  width: 100%;
+  height: 100%;
+  transform-origin: center bottom;
+
+  animation: pumpkinFloat 5s ease-in-out infinite;
+}
+
+.halloween-pumpkin__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Warm pumpkin lighting */
+
+.halloween-pumpkin__face {
+  animation: pumpkinGlow 3.2s ease-in-out infinite;
+}
+
+@keyframes pumpkinGlow {
+  0%, 100% {
+    filter: drop-shadow(
+      0 0 2px rgba(255, 220, 70, 0.45)
+    );
+  }
+
+  50% {
+    filter: drop-shadow(
+      0 0 9px rgba(255, 230, 80, 0.9)
+    );
+  }
+}
+
+/* Gentle floating */
+
+@keyframes pumpkinFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+/* Occasional eye blinking */
+
+.halloween-pumpkin__eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation: pumpkinBlink 6.5s infinite;
+}
+
+@keyframes pumpkinBlink {
+  0%, 38%, 42%, 76%, 80%, 100% {
+    transform: scaleY(1);
+  }
+
+  40%, 78% {
+    transform: scaleY(0.08);
+  }
+}
+
+/* Dynamic grin */
+
+.halloween-pumpkin__grin {
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation: pumpkinGrin 4.4s ease-in-out infinite;
+}
+
+@keyframes pumpkinGrin {
+  0%, 100% {
+    transform: scaleX(1) scaleY(1);
+    opacity: 1;
+  }
+
+  45% {
+    transform: scaleX(1.08) scaleY(1.15);
+    opacity: 0.95;
+  }
+
+  70% {
+    transform: scaleX(0.94) scaleY(0.9);
+    opacity: 0.85;
+  }
+}
+
+/* Reduced motion */
+
+.halloween-pumpkin--static *,
+.halloween-pumpkin--static {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-pumpkin,
+  .halloween-pumpkin * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==========================================
+   PUMPKIN — BLOOD RED HOVER EFFECT
+   ========================================== */
+
+/* Smooth transition for glowing face */
+
+.halloween-pumpkin__eyes path,
+.halloween-pumpkin__grin {
+  transition:
+    fill 250ms ease,
+    filter 250ms ease;
+}
+
+/* Eyes turn blood red */
+
+@media (hover: hover) and (pointer: fine) {
+  .halloween-pumpkin:hover
+  .halloween-pumpkin__eyes path {
+    fill: #B00020;
+    filter:
+      drop-shadow(0 0 5px #FF0000)
+      drop-shadow(0 0 10px rgba(255, 0, 0, 0.7));
+  }
+
+  /* Grin turns blood red */
+
+  .halloween-pumpkin:hover
+  .halloween-pumpkin__grin {
+    fill: #B00020;
+    filter:
+      drop-shadow(0 0 5px #FF0000)
+      drop-shadow(0 0 12px rgba(255, 0, 0, 0.8));
+  }
+
+  /* Entire pumpkin gets a subtle sinister glow */
+
+  .halloween-pumpkin:hover {
+    filter:
+      drop-shadow(0 0 12px rgba(190, 0, 20, 0.4))
+      drop-shadow(0 6px 15px rgba(255, 102, 0, 0.25));
+  }
+
+  /* Stop blinking and grin animation during hover */
+
+  .halloween-pumpkin:hover .halloween-pumpkin__eyes,
+  .halloween-pumpkin:hover .halloween-pumpkin__grin {
+    animation-play-state: paused;
+  }
+}
