@@ -18,11 +18,15 @@ import {
   getPublicTestimonials,
   submitTestimonial,
 } from "../../services/testimonialService.js";
+import { useTheme } from "../../context/ThemeContext";
+import HalloweenPumpkin from "../halloween/HalloweenPumpkin";
 
 import "../../pages/Landing/LandingPage.css";
 
 
 function TestimonialsSection() {
+  const { halloweenMode } = useTheme();
+
   const [testimonials, setTestimonials] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -197,11 +201,19 @@ function TestimonialsSection() {
       : null;
 
 
-  return (
-    <section
-      id="stories"
-      className="landing-testimonials-placeholder"
-    >
+ 
+return (
+  <section
+    id="stories"
+    className="landing-testimonials-placeholder"
+  >
+    {halloweenMode && (
+      <HalloweenPumpkin
+        className="testimonials-halloween-pumpkin"
+        size={90}
+      />
+    )}
+
 
       <div className="landing-section-heading">
         <span className="landing-section-badge">
