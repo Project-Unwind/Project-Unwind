@@ -3,12 +3,16 @@ import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
+import HalloweenGhost from "../halloween/HalloweenGhost";
 
 function CtaSection() {
   const {
-  isAuthenticated,
-  initializing
-} = useAuth();
+    isAuthenticated,
+    initializing
+  } = useAuth();
+
+  const { halloweenMode } = useTheme();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3
@@ -38,6 +42,12 @@ function CtaSection() {
             ease: [0.22, 1, 0.36, 1]
           }}
         >
+          {halloweenMode && (
+  <HalloweenGhost
+    className="cta-card__halloween-ghost"
+    size={85}
+  />
+)}
           <motion.div
             className="cta-card__orb cta-card__orb--one"
             animate={{
