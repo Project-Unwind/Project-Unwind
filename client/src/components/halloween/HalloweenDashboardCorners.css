@@ -1,0 +1,241 @@
+
+/* ==========================================
+   UNWIND — DASHBOARD HALLOWEEN CORNERS
+   ========================================== */
+
+/* Overlay is scoped to dashboard content */
+
+html[data-season="halloween"]
+.dashboard-shell__content {
+  position: relative;
+}
+
+/* Non-blocking decoration layer */
+
+.halloween-dashboard-corners {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Common positioning */
+
+.hw-corner {
+  position: absolute;
+  width: max-content;
+  height: max-content;
+  pointer-events: none;
+}
+
+/* TOP LEFT — WEB */
+
+.hw-corner--top-left {
+  top: 0;
+  left: 0;
+}
+
+.hw-corner__web {
+  display: block;
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+
+  filter: grayscale(1) brightness(1.6);
+  opacity: 0.62;
+}
+
+/* TOP RIGHT — GHOST */
+
+.hw-corner--top-right {
+  top: 16px;
+  right: 24px;
+}
+
+.hw-corner__ghost {
+  filter:
+    drop-shadow(0 0 11px rgba(225, 208, 255, 0.4));
+}
+
+/* BOTTOM LEFT — PUMPKIN */
+
+.hw-corner--bottom-left {
+  bottom: 16px;
+  left: 22px;
+}
+
+/* Allow pumpkin's existing hover interaction */
+
+@media (hover: none) and (pointer: coarse) {
+  .hw-corner__pumpkin {
+    pointer-events: none;
+  
+  cursor: default;
+}
+}
+/* BOTTOM RIGHT — BAT */
+
+.hw-corner--bottom-right {
+  bottom: 16px;
+  right: 24px;
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hw-corner__bat,
+  .hw-corner__bat-wings,
+  .hw-corner__bat-eyes {
+    animation: none !important;
+  }
+}
+
+/* ==========================================
+   HALLOWEEN CORNERS — RESPONSIVE FIX
+   ========================================== */
+
+/* Tablets */
+
+@media (max-width: 1024px) {
+
+  .halloween-dashboard-corners {
+    display: block;
+    pointer-events: none;
+  }
+
+  .hw-corner__web {
+    width: 85px;
+    height: 85px;
+  }
+
+  .hw-corner--top-right {
+    top: 12px;
+    right: 15px;
+  }
+
+  .hw-corner__ghost {
+    width: 58px;
+  }
+
+  .hw-corner--bottom-left {
+    bottom: 12px;
+    left: 14px;
+  }
+
+  .hw-corner__pumpkin {
+    width: 58px;
+  }
+
+  .hw-corner--bottom-right {
+    bottom: 12px;
+    right: 14px;
+  }
+
+  .hw-corner__bat {
+    width: 65px;
+  }
+}
+
+/* Mobile phones */
+
+@media (max-width: 768px) {
+
+  html[data-season="halloween"]
+  .dashboard-shell__content {
+    position: relative;
+  }
+
+  .halloween-dashboard-corners {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hw-corner--top-left {
+    top: 0;
+    left: 0;
+  }
+
+  .hw-corner__web {
+    width: 56px;
+    height: 56px;
+    opacity: 0.55;
+  }
+
+  .hw-corner--top-right {
+    top: 10px;
+    right: 10px;
+  }
+
+  .hw-corner__ghost {
+    width: 43px;
+    height: auto;
+  }
+
+  .hw-corner--bottom-left {
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .hw-corner__pumpkin {
+    width: 43px;
+    height: auto;
+  }
+
+  .hw-corner--bottom-right {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .hw-corner__bat {
+    width: 50px;
+    height: auto;
+  }
+}
+
+/* Extra-small phones */
+
+@media (max-width: 380px) {
+
+  /* Keep decorations visible */
+  .halloween-dashboard-corners {
+    display: block !important;
+  }
+
+  .hw-corner__web {
+    width: 42px;
+    height: 42px;
+    opacity: 0.45;
+  }
+
+  .hw-corner--top-right {
+    top: 8px;
+    right: 6px;
+  }
+
+  .hw-corner__ghost {
+    width: 33px;
+  }
+
+  .hw-corner--bottom-left {
+    bottom: 8px;
+    left: 6px;
+  }
+
+  .hw-corner__pumpkin {
+    width: 34px;
+  }
+
+  .hw-corner--bottom-right {
+    bottom: 8px;
+    right: 6px;
+  }
+
+  .hw-corner__bat {
+    width: 37px;
+  }
+}
