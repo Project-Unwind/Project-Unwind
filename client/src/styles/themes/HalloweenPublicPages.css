@@ -1,0 +1,508 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN PUBLIC PAGES
+   404 / Public Info / Privacy / Terms
+   ========================================== */
+
+html[data-season="halloween"] {
+  --public-hw-bg: #100D2B;
+  --public-hw-card: #211035;
+  --public-hw-alt: #301742;
+  --public-hw-green: #5AFF00;
+  --public-hw-orange: #FF6600;
+  --public-hw-text: #F5F0FF;
+  --public-hw-muted: #C8BBD7;
+  --public-hw-border: rgba(255, 102, 0, 0.28);
+}
+
+/* ==========================================
+   404 NOT FOUND
+   ========================================== */
+
+html[data-season="halloween"] .not-found-page {
+  color: #F5F0FF;
+  background:
+    radial-gradient(
+      circle at 78% 40%,
+      rgba(77, 13, 111, 0.38),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 14% 82%,
+      rgba(255, 102, 0, 0.1),
+      transparent 35%
+    ),
+    #100D2B;
+}
+
+html[data-season="halloween"]
+.not-found-page::before {
+  opacity: 0.35;
+  background-image:
+    linear-gradient(
+      rgba(150, 100, 190, 0.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(150, 100, 190, 0.07) 1px,
+      transparent 1px
+    );
+}
+
+html[data-season="halloween"]
+.not-found-page__glow--one {
+  background: rgba(77, 13, 111, 0.24);
+}
+
+html[data-season="halloween"]
+.not-found-page__glow--two {
+  background: rgba(255, 102, 0, 0.1);
+}
+
+/* Header and text */
+
+html[data-season="halloween"]
+.not-found-page__eyebrow {
+  background: #301742;
+  color: #5AFF00;
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.not-found-page__content h1 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.not-found-page__content h1 span {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.not-found-page__content > p,
+html[data-season="halloween"]
+.not-found-page__support {
+  color: #C8BBD7;
+}
+
+/* Navigation buttons */
+
+html[data-season="halloween"]
+.not-found-page__primary {
+  background: #FF6600;
+  color: #100D2B;
+  border-color: #FF6600;
+  box-shadow: 0 12px 30px rgba(255, 102, 0, 0.2);
+}
+
+html[data-season="halloween"]
+.not-found-page__secondary {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.not-found-page__secondary:hover {
+  border-color: #5AFF00;
+}
+
+/* Animated 404 scene */
+
+html[data-season="halloween"]
+.not-found-scene__world::before {
+  background: linear-gradient(
+    145deg,
+    rgba(77, 13, 111, 0.65),
+    rgba(33, 16, 53, 0.45)
+  );
+  border-color: rgba(255, 102, 0, 0.25);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.not-found-scene__digit {
+  color: #FF6600;
+  text-shadow:
+    1px 1px 0 #FF953A,
+    3px 3px 0 #C14F18,
+    6px 7px 0 #7C2A35,
+    12px 18px 28px rgba(0, 0, 0, 0.35);
+}
+
+html[data-season="halloween"]
+.not-found-scene__zero-ring {
+  border-color: #5AFF00;
+  box-shadow:
+    inset 8px 7px 0 rgba(255, 255, 255, 0.12),
+    inset -10px -9px 0 rgba(16, 13, 43, 0.35),
+    9px 12px 0 #276A13,
+    20px 28px 38px rgba(0, 0, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.not-found-scene__zero-center {
+  background: #211035;
+  color: #FF953A;
+}
+
+html[data-season="halloween"]
+.not-found-scene__orbit {
+  border-color: rgba(255, 102, 0, 0.38);
+}
+
+html[data-season="halloween"]
+.not-found-scene__orbit::after {
+  background: #5AFF00;
+}
+
+html[data-season="halloween"]
+.not-found-scene__floating-card {
+  background: rgba(48, 23, 66, 0.85);
+  border-color: rgba(255, 102, 0, 0.35);
+}
+
+/* ==========================================
+   PUBLIC INFORMATION
+   ========================================== */
+
+html[data-season="halloween"] .public-info-page {
+  --background: #100D2B;
+  --surface: #211035;
+  --primary: #5AFF00;
+  --primary-soft: rgba(90, 255, 0, 0.09);
+  --text: #F5F0FF;
+  --muted: #C8BBD7;
+  --border: rgba(255, 102, 0, 0.28);
+
+  color: #F5F0FF;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(77, 13, 111, 0.28),
+      transparent 40%
+    ),
+    #100D2B;
+}
+
+/* Navigation */
+
+html[data-season="halloween"]
+.public-info-nav > button {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.public-info-brand {
+  color: #F5F0FF;
+}
+
+/* Hero */
+
+html[data-season="halloween"]
+.public-info-hero > span {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.public-info-hero h1 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.public-info-hero > p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.public-info-hero__icon {
+  background: linear-gradient(
+    135deg,
+    #4D0D6F,
+    #FF6600
+  );
+  color: #FFFFFF;
+}
+
+/* Information cards */
+
+html[data-season="halloween"]
+.public-info-section {
+  background: linear-gradient(
+    145deg,
+    #29163D,
+    #1B102E
+  );
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.28);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+html[data-season="halloween"]
+.public-info-section > span {
+  background: #301742;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.public-info-section h2 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.public-info-section p {
+  color: #C8BBD7;
+}
+
+/* Contact card */
+
+html[data-season="halloween"]
+.public-info-contact {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.public-info-contact > svg {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.public-info-contact span {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.public-info-contact strong {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.public-info-footer {
+  color: #C8BBD7;
+}
+
+/* ==========================================
+   PRIVACY POLICY AND TERMS
+   Both share .terms-* selectors.
+   ========================================== */
+
+html[data-season="halloween"] .terms-page {
+  color: #F5F0FF;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(77, 13, 111, 0.3),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #100D2B,
+      #19102D
+    );
+}
+
+/* Navigation */
+
+html[data-season="halloween"]
+.terms-back-button {
+  background: #301742;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.terms-brand {
+  color: #5AFF00;
+}
+
+/* Hero */
+
+html[data-season="halloween"]
+.terms-hero__icon {
+  background: linear-gradient(
+    135deg,
+    #4D0D6F,
+    #FF6600
+  );
+  color: #FFFFFF;
+}
+
+html[data-season="halloween"]
+.terms-eyebrow {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.terms-hero h1 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.terms-hero__lead,
+html[data-season="halloween"]
+.terms-dates {
+  color: #C8BBD7;
+}
+
+/* Important notices */
+
+html[data-season="halloween"]
+.terms-important {
+  background: rgba(255, 149, 58, 0.09);
+  color: #F5F0FF;
+  border-color: rgba(255, 149, 58, 0.4);
+}
+
+html[data-season="halloween"]
+.terms-important > svg {
+  color: #FF953A;
+}
+
+html[data-season="halloween"]
+.terms-important p {
+  color: #E6D9EF;
+}
+
+/* Introduction */
+
+html[data-season="halloween"]
+.terms-intro {
+  background: #211035;
+  border-color: rgba(255, 102, 0, 0.28);
+}
+
+html[data-season="halloween"]
+.terms-intro p {
+  color: #C8BBD7;
+}
+
+/* Document sections */
+
+html[data-season="halloween"]
+.terms-section {
+  background: #211035;
+  color: #F5F0FF;
+  border-color: rgba(255, 102, 0, 0.25);
+}
+
+html[data-season="halloween"]
+.terms-section:hover {
+  border-color: #FF6600;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+html[data-season="halloween"]
+.terms-section__icon {
+  background: #301742;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.terms-section__number {
+  color: #FF953A;
+}
+
+html[data-season="halloween"]
+.terms-section h2 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.terms-section__copy {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.terms-contact-box {
+  background: #301742;
+}
+
+html[data-season="halloween"]
+.terms-contact-box strong {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.terms-placeholder-note {
+  color: #FFD08A;
+}
+
+/* Acceptance and important legal information */
+
+html[data-season="halloween"]
+.terms-acceptance {
+  background: linear-gradient(
+    135deg,
+    #301742,
+    #211035
+  );
+  border-color: rgba(90, 255, 0, 0.3);
+}
+
+html[data-season="halloween"]
+.terms-acceptance__icon {
+  background: #0F2C20;
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.terms-acceptance span {
+  color: #5AFF00;
+}
+
+html[data-season="halloween"]
+.terms-acceptance h2 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.terms-acceptance p {
+  color: #C8BBD7;
+}
+
+html[data-season="halloween"]
+.terms-acceptance blockquote {
+  background: #160D29;
+  color: #F5F0FF;
+  border-left-color: #FF6600;
+}
+
+/* Footer */
+
+html[data-season="halloween"]
+.terms-footer {
+  color: #C8BBD7;
+  border-top-color: rgba(255, 102, 0, 0.25);
+}
+
+html[data-season="halloween"]
+.terms-footer strong {
+  color: #5AFF00;
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+html[data-season="halloween"]
+:is(.not-found-page, .public-info-page, .terms-page)
+:is(a, button):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+/* Keep original mobile layouts */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"]
+  .not-found-page * {
+    animation: none !important;
+  }
+}
