@@ -12,6 +12,8 @@ import "./styles/themes/HalloweenMessages.css";
 import "./styles/themes/HalloweenNotifications.css";
 import "./styles/themes/HalloweenAccountSafety.css";
 import "./styles/themes/HalloweenUIStates.css";
+import "./styles/themes/HalloweenAuth.css";
+import "./styles/themes/HalloweenPublicPages.css";
 import App from "./App";
 
 import {

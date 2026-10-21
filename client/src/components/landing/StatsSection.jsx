@@ -5,6 +5,8 @@ import {
 } from "react";
 
 import { motion } from "framer-motion";
+import { useTheme } from "../../context/ThemeContext";
+import HalloweenCrawlingSpider from "../halloween/HalloweenCrawlingSpider";
 import { useInView } from "react-intersection-observer";
 
 const API_URL =
@@ -90,6 +92,8 @@ function AnimatedNumber({
 }
 
 function StatsSection() {
+  const { halloweenMode } = useTheme();
+
   const [
     stats,
     setStats
@@ -240,12 +244,22 @@ function StatsSection() {
       [stats]
     );
 
-  return (
-    <section
-      className="stats-section"
-      ref={ref}
-    >
-      <div className="landing-container stats-section__grid">
+
+return (
+  <section
+    className="stats-section"
+    ref={ref}
+  >
+    {halloweenMode && (
+      <HalloweenCrawlingSpider
+        className="stats-halloween-spider"
+        size={55}
+        direction="left"
+      />
+    )}
+
+    <div className="landing-container stats-section__grid">
+
         {statistics.map(
           (
             statistic,

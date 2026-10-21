@@ -1,0 +1,474 @@
+
+/* ==========================================
+   UNWIND — HALLOWEEN AUTHENTICATION
+   Venomous Pumpkin Pop
+   ========================================== */
+
+html[data-season="halloween"] {
+  --auth-hw-bg: #100D2B;
+  --auth-hw-panel: #211035;
+  --auth-hw-input: #160D29;
+  --auth-hw-surface: #301742;
+  --auth-hw-text: #F5F0FF;
+  --auth-hw-muted: #C8BBD7;
+  --auth-hw-green: #5AFF00;
+  --auth-hw-orange: #FF6600;
+  --auth-hw-border: rgba(255, 102, 0, 0.3);
+}
+
+/* ==========================================
+   LOGIN / REGISTER / PASSWORD / OTP
+   ========================================== */
+
+html[data-season="halloween"] .auth-page {
+  background: var(--auth-hw-bg);
+  color: var(--auth-hw-text);
+}
+
+/* Left visual area */
+
+html[data-season="halloween"] .auth-page__visual {
+  background: #100D2B;
+}
+
+html[data-season="halloween"] .auth-page__visual-image {
+  background-image:
+    url("../../pages/Landing/Halloween/assets/haunted-mansion.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+html[data-season="halloween"] .auth-page__visual-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 13, 43, 0.22),
+    rgba(16, 13, 43, 0.7) 65%,
+    rgba(16, 13, 43, 0.97)
+  );
+}
+
+html[data-season="halloween"] .auth-page__back {
+  background: rgba(33, 16, 53, 0.9);
+  border-color: var(--auth-hw-border);
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"]
+.auth-page__visual-content small {
+  color: var(--auth-hw-green);
+}
+
+html[data-season="halloween"]
+.auth-page__visual-content h1 {
+  color: #F5F0FF;
+}
+
+html[data-season="halloween"]
+.auth-page__visual-content h1 em {
+  color: #FF953A;
+}
+
+html[data-season="halloween"]
+.auth-page__visual-content p,
+html[data-season="halloween"]
+.auth-page__trust span {
+  color: #E6D9EF;
+}
+
+html[data-season="halloween"]
+.auth-page__trust svg {
+  color: var(--auth-hw-green);
+}
+
+/* Right form area */
+
+html[data-season="halloween"] .auth-page__form-section {
+  background:
+    radial-gradient(
+      ellipse at 90% 10%,
+      rgba(77, 13, 111, 0.24),
+      transparent 55%
+    ),
+    #100D2B;
+}
+
+html[data-season="halloween"] .auth-form-heading h2 {
+  color: var(--auth-hw-text);
+  font-family: "Cinzel", Georgia, serif;
+}
+
+html[data-season="halloween"] .auth-form-heading p,
+html[data-season="halloween"] .auth-field-hint {
+  color: var(--auth-hw-muted);
+}
+
+html[data-season="halloween"] .auth-field__label {
+  color: #E6D9EF;
+}
+
+/* Input containers */
+
+html[data-season="halloween"] .auth-field__control {
+  background: var(--auth-hw-input);
+  border-color: var(--auth-hw-border);
+}
+
+html[data-season="halloween"]
+.auth-field__control:focus-within {
+  border-color: var(--auth-hw-green);
+  box-shadow: 0 0 0 3px rgba(90, 255, 0, 0.1);
+}
+
+html[data-season="halloween"]
+.auth-field__control :is(input, select) {
+  color: var(--auth-hw-text);
+  background: transparent;
+  color-scheme: dark;
+}
+
+html[data-season="halloween"]
+.auth-field__control input::placeholder {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.auth-field__icon,
+html[data-season="halloween"]
+.auth-field__password-button {
+  color: #C8BBD7;
+}
+
+/* Preserve validation errors */
+
+html[data-season="halloween"]
+.auth-field__control--error {
+  border-color: #FF818D;
+}
+
+html[data-season="halloween"]
+.auth-field__error {
+  color: #FFB7B7;
+}
+
+/* Checkboxes / links */
+
+html[data-season="halloween"]
+.auth-checkbox {
+  color: var(--auth-hw-muted);
+}
+
+html[data-season="halloween"]
+.auth-checkbox input {
+  accent-color: var(--auth-hw-green);
+}
+
+html[data-season="halloween"]
+.auth-page :is(
+  .auth-checkbox a,
+  .auth-form__options > a,
+  .auth-switch-page a,
+  .auth-text-button
+) {
+  color: var(--auth-hw-green);
+}
+
+html[data-season="halloween"] .auth-switch-page {
+  color: var(--auth-hw-muted);
+}
+
+/* Main auth buttons */
+
+html[data-season="halloween"] .auth-submit-button {
+  background: #FF6600;
+  color: #100D2B;
+  box-shadow: 0 10px 30px rgba(255, 102, 0, 0.17);
+}
+
+html[data-season="halloween"]
+.auth-submit-button:hover:not(:disabled) {
+  background: #FF8533;
+  box-shadow: 0 14px 34px rgba(255, 102, 0, 0.24);
+}
+
+html[data-season="halloween"] .auth-secondary-button {
+  background: var(--auth-hw-surface);
+  border: 1px solid var(--auth-hw-border);
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"]
+.auth-secondary-button:hover:not(:disabled) {
+  background: #4D0D6F;
+}
+
+/* Password strength */
+
+html[data-season="halloween"]
+.password-strength__bars span {
+  background: #301742;
+}
+
+/* Keep original strength colors for 1–5 levels */
+
+html[data-season="halloween"]
+.password-strength p {
+  color: var(--auth-hw-muted);
+}
+
+html[data-season="halloween"]
+.password-strength strong {
+  color: var(--auth-hw-text);
+}
+
+/* OTP verification */
+
+html[data-season="halloween"] .auth-centred-icon {
+  background: rgba(90, 255, 0, 0.09);
+  color: var(--auth-hw-green);
+}
+
+html[data-season="halloween"] .auth-otp-section > span {
+  color: var(--auth-hw-muted);
+}
+
+html[data-season="halloween"] .otp-input input {
+  background: var(--auth-hw-input);
+  color: var(--auth-hw-text);
+  border-color: var(--auth-hw-border);
+  caret-color: var(--auth-hw-green);
+}
+
+html[data-season="halloween"]
+.otp-input input:focus {
+  border-color: var(--auth-hw-green);
+  box-shadow: 0 0 0 3px rgba(90, 255, 0, 0.1);
+}
+
+/* Feedback */
+
+html[data-season="halloween"] .auth-alert--error {
+  background: rgba(184, 75, 75, 0.14);
+  border-color: rgba(255, 120, 120, 0.35);
+  color: #FFB7B7;
+}
+
+html[data-season="halloween"] .auth-alert--success {
+  background: rgba(90, 255, 0, 0.09);
+  border-color: rgba(90, 255, 0, 0.3);
+  color: #B9FF8A;
+}
+
+html[data-season="halloween"] .auth-result {
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"] .auth-result p {
+  color: var(--auth-hw-muted);
+}
+
+html[data-season="halloween"]
+.auth-result__success {
+  color: #B9FF8A;
+}
+
+html[data-season="halloween"]
+.auth-result__error {
+  color: #FFB7B7;
+}
+
+/* Full-screen authentication loading */
+
+html[data-season="halloween"] .auth-loading-page,
+html[data-season="halloween"] .auth-loading-screen {
+  background: #100D2B;
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"] .auth-loading-spinner {
+  border-color: rgba(90, 255, 0, 0.18);
+  border-top-color: var(--auth-hw-green);
+}
+
+html[data-season="halloween"]
+.auth-loading-page p {
+  color: var(--auth-hw-muted);
+}
+
+/* ==========================================
+   GOOGLE AUTH SUCCESS / ERROR
+   ========================================== */
+
+html[data-season="halloween"]
+:is(.google-auth-result-page, .google-auth-error-page) {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(77, 13, 111, 0.35),
+      transparent 55%
+    ),
+    #100D2B;
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"]
+:is(.google-auth-result-card, .google-auth-error-card) {
+  background: #211035;
+  color: var(--auth-hw-text);
+  border: 1px solid var(--auth-hw-border);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.35);
+}
+
+html[data-season="halloween"]
+.google-auth-result-card h1 {
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"]
+.google-auth-result-card p {
+  color: var(--auth-hw-muted);
+  opacity: 1;
+}
+
+html[data-season="halloween"] .google-auth-loader {
+  border-color: rgba(90, 255, 0, 0.16);
+  border-top-color: var(--auth-hw-green);
+}
+
+html[data-season="halloween"]
+.google-auth-result-button,
+html[data-season="halloween"]
+.google-auth-retry-button {
+  background: var(--auth-hw-orange);
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.google-auth-back-button {
+  background: #301742;
+  color: var(--auth-hw-text);
+  border-color: var(--auth-hw-border);
+}
+
+html[data-season="halloween"]
+.google-auth-result-icon--error {
+  background: rgba(184, 75, 75, 0.18);
+  color: #FFB7B7;
+}
+
+/* ==========================================
+   GOOGLE COMPLETE PROFILE
+   ========================================== */
+
+html[data-season="halloween"] .google-profile-page {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(77, 13, 111, 0.33),
+      transparent 55%
+    ),
+    #100D2B;
+}
+
+html[data-season="halloween"] .google-profile-card {
+  background: #211035;
+  color: var(--auth-hw-text);
+  border: 1px solid var(--auth-hw-border);
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.35);
+}
+
+html[data-season="halloween"]
+.google-profile-heading h1 {
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"]
+.google-profile-heading p,
+html[data-season="halloween"]
+.google-profile-hint,
+html[data-season="halloween"]
+.google-complete-profile__photo-text {
+  color: var(--auth-hw-muted);
+}
+
+html[data-season="halloween"]
+.google-profile-field label {
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"]
+.google-profile-field :is(input, select) {
+  background: var(--auth-hw-input);
+  color: var(--auth-hw-text);
+  border-color: var(--auth-hw-border);
+  color-scheme: dark;
+}
+
+html[data-season="halloween"]
+.google-profile-field :is(input, select):focus {
+  border-color: var(--auth-hw-green);
+  box-shadow: 0 0 0 3px rgba(90, 255, 0, 0.1);
+}
+
+html[data-season="halloween"]
+.google-profile-field input::placeholder {
+  color: #A99BB9;
+}
+
+html[data-season="halloween"]
+.google-profile-field :is(input, select):disabled {
+  background: #251A33;
+}
+
+html[data-season="halloween"]
+.google-account-notice {
+  background: rgba(90, 255, 0, 0.06);
+  color: #DDEBCC;
+  border-color: rgba(90, 255, 0, 0.2);
+}
+
+html[data-season="halloween"]
+.google-profile-submit {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+html[data-season="halloween"]
+.google-profile-cancel {
+  color: var(--auth-hw-muted);
+}
+
+html[data-season="halloween"]
+.google-profile-cancel:hover {
+  background: #301742;
+  color: var(--auth-hw-text);
+}
+
+html[data-season="halloween"]
+.google-profile-error {
+  background: rgba(184, 75, 75, 0.14);
+  color: #FFB7B7;
+  border-color: rgba(255, 120, 120, 0.35);
+}
+
+/* ==========================================
+   FOCUS AND REDUCED MOTION
+   ========================================== */
+
+html[data-season="halloween"]
+:is(
+  .auth-page,
+  .google-profile-page,
+  .google-auth-result-page,
+  .google-auth-error-page
+) :is(button, a, input, select):focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="halloween"]
+  :is(.auth-page, .google-profile-page)
+  * {
+    transition: none !important;
+  }
+}
