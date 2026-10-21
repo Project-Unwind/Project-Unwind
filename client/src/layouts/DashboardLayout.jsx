@@ -9,6 +9,8 @@ import {
 
 import DashboardSidebar
   from "../components/dashboard/DashboardSidebar";
+  import HalloweenDashboardCorners
+  from "../components/halloween/HalloweenDashboardCorners";
 
 import DashboardTopbar
   from "../components/dashboard/DashboardTopbar";
@@ -74,7 +76,9 @@ function DashboardLayout() {
           />
 
           <main className="dashboard-shell__content">
-            <Suspense
+  <HalloweenDashboardCorners />
+
+  <Suspense
               fallback={
                 <AppLoader
                   message="Opening your space…"
