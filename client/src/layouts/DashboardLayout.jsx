@@ -76,6 +76,7 @@ function DashboardLayout() {
           />
 
           <main className="dashboard-shell__content">
+            
   <HalloweenDashboardCorners />
 
   <Suspense

@@ -163,7 +163,7 @@ const {
             <motion.button
               type="button"
               className="landing-button landing-button--glass landing-button--large"
-              onClick={scrollToExperience}
+              onClick={() => window.location.assign("https://www.youtube.com/watch?v=vqoi-2FsYSU")}
               whileHover={{
                 scale: 1.03
               }}

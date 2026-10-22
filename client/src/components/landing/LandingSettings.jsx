@@ -8,8 +8,13 @@ import {
 import HauntedMansionIcon from "../halloween/HauntedMansionIcon";
 
 import {
+  useEffect,
   useState
 } from "react";
+
+import {
+  useSearchParams
+} from "react-router-dom";
 
 import {
   AnimatePresence,
@@ -25,6 +30,44 @@ function LandingSettings() {
     open,
     setOpen
   ] = useState(false);
+
+  useEffect(() => {
+  const openAppearanceSettings = () => {
+    setOpen(true);
+  };
+
+  window.addEventListener(
+    "unwind:open-appearance",
+    openAppearanceSettings
+  );
+
+  return () => {
+    window.removeEventListener(
+      "unwind:open-appearance",
+      openAppearanceSettings
+    );
+  };
+}, []);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+useEffect(() => {
+  if (searchParams.get("appearance") !== "open") {
+    return;
+  }
+
+  // Open Appearance Settings automatically
+  setOpen(true);
+
+  // Remove parameter without refreshing page
+  setSearchParams(
+    (previous) => {
+      const next = new URLSearchParams(previous);
+      next.delete("appearance");
+      return next;
+    },
+    { replace: true }
+  );
+}, [searchParams, setSearchParams]);
 
   const {
   theme,

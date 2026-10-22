@@ -1,0 +1,144 @@
+
+/* Small Halloween announcement */
+
+.halloween-announcement {
+  position: fixed;
+
+  top: 105px;
+  right: max(22px, calc((100vw - 1500px) / 2));
+
+  bottom: auto;
+  left: auto;
+
+  z-index: 1000;
+
+  width: min(350px, calc(100vw - 32px));
+  padding: 15px 16px;
+
+  background: #211035;
+  border: 1px solid rgba(255, 102, 0, 0.45);
+  border-radius: 16px;
+
+  color: #F5F0FF;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+
+  animation: halloweenToastIn 350ms ease-out;
+}
+
+.halloween-announcement__header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.halloween-announcement__header > svg {
+  color: #FF953A;
+  flex-shrink: 0;
+}
+
+.halloween-announcement__header strong {
+  flex: 1;
+  font-size: 14px;
+}
+
+.halloween-announcement__close {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #C8BBD7;
+  cursor: pointer;
+}
+
+.halloween-announcement__close:hover {
+  background: #301742;
+}
+
+.halloween-announcement p {
+  margin: 9px 0 13px;
+  color: #C8BBD7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.halloween-announcement__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.halloween-announcement__actions button {
+  padding: 8px 13px;
+  border: 0;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.halloween-announcement__dismiss {
+  background: #301742;
+  color: #F5F0FF;
+}
+
+.halloween-announcement__try {
+  background: #FF6600;
+  color: #100D2B;
+}
+
+.halloween-announcement__try:hover {
+  background: #FF8533;
+}
+
+.halloween-announcement button:focus-visible {
+  outline: 2px solid #5AFF00;
+  outline-offset: 2px;
+}
+
+@keyframes halloweenToastIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .halloween-announcement {
+    top: 85px;
+    right: 12px;
+    left: 12px;
+    bottom: auto;
+
+    width: auto;
+    padding: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween-announcement {
+    animation: none;
+  }
+}
+/* Keep the announcement above landing decorations */
+.landing-page .halloween-announcement {
+  z-index: 1100;
+}
+
+/* Avoid covering too much of the screen */
+@media (max-width: 900px) and (min-width: 601px) {
+  .halloween-announcement {
+    top: 95px;
+    right: 16px;
+  }
+}
