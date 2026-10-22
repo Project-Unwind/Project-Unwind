@@ -8,6 +8,7 @@ import TestimonialsSection from "../../components/landing/TestimonialsSection";
 import CtaSection from "../../components/landing/CtaSection";
 import Footer from "../../components/landing/Footer";
 import { useTheme } from "../../context/ThemeContext";
+import HalloweenAnnouncement from "../../components/halloween/HalloweenAnnouncement";
 
 import "./LandingPage.css";
 import "./Halloween/HalloweenTheme.css";
@@ -21,9 +22,17 @@ function LandingPage() {
     halloweenMode ? "landing-halloween" : ""
   }`}
 >
-      <Navbar />
+     <Navbar />
 
-      <main>
+<HalloweenAnnouncement
+  onTryNow={() => {
+    window.dispatchEvent(
+      new Event("unwind:open-appearance")
+    );
+  }}
+/>
+
+<main>
         <HeroSection />
         <StatsSection />
         <FeaturesSection />
