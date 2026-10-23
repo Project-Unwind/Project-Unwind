@@ -16,6 +16,9 @@ import "./styles/themes/HalloweenAuth.css";
 import "./styles/themes/HalloweenPublicPages.css";
 import App from "./App";
 
+import SEOManager from "./components/SEOManager";
+
+
 import {
   ConfirmDialogProvider
 } from "./context/ConfirmDialogContext";
@@ -86,15 +89,18 @@ ReactDOM.createRoot(
         posthogOptions
       }
     >
-      <BrowserRouter>
-        <ThemeProvider>
-          <AuthProvider>
-            <ConfirmDialogProvider>
-              <App />
-            </ConfirmDialogProvider>
-          </AuthProvider>
-        </ThemeProvider>
-      </BrowserRouter>
+      
+<BrowserRouter>
+  <SEOManager />
+  <ThemeProvider>
+    <AuthProvider>
+      <ConfirmDialogProvider>
+        <App />
+      </ConfirmDialogProvider>
+    </AuthProvider>
+  </ThemeProvider>
+</BrowserRouter>
+
     </PostHogProvider>
   </React.StrictMode>
 );
