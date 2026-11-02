@@ -1,7 +1,7 @@
+
 import {
   ArrowLeft,
-  Mail,
-  ShieldCheck
+  Mail
 } from "lucide-react";
 
 import {
@@ -10,34 +10,32 @@ import {
   useNavigate,
   useParams
 } from "react-router-dom";
-import UnwindLogo
-  from "../../components/common/UnwindLogo";
+
+import UnwindLogo from "../../components/common/UnwindLogo";
+
 import {
   publicInfoContent
 } from "./publicInfoContent";
 
+import AboutPage from "./AboutPage";
+
 import "./PublicInfoPage.css";
 
 function PublicInfoPage() {
-  const navigate =
-    useNavigate();
+  const navigate = useNavigate();
 
-  const {
-    pageKey
-  } = useParams();
+  const { pageKey } = useParams();
 
-  const page =
-    publicInfoContent[
-      pageKey
-    ];
+  const page = publicInfoContent[pageKey];
 
+  // Dedicated About Us experience
+  if (pageKey === "about") {
+    return <AboutPage />;
+  }
+
+  // Invalid public information route
   if (!page) {
-    return (
-      <Navigate
-        to="/"
-        replace
-      />
-    );
+    return <Navigate to="/" replace />;
   }
 
   return (
@@ -45,122 +43,76 @@ function PublicInfoPage() {
       <nav className="public-info-nav">
         <button
           type="button"
-          onClick={() =>
-            navigate(-1)
-          }
+          onClick={() => navigate(-1)}
         >
-          <ArrowLeft
-            size={17}
-          />
-
+          <ArrowLeft size={17} />
           Back
         </button>
 
         <Link
-  to="/"
-  className="public-info-brand"
->
-  <UnwindLogo
-    variant="symbol"
-    theme="dark"
-    className="public-info-brand__logo"
-  />
+          to="/"
+          className="public-info-brand"
+        >
+          <UnwindLogo
+            variant="symbol"
+            theme="dark"
+            className="public-info-brand__logo"
+          />
 
-  <span>
-    Unwind
-  </span>
-</Link>
+          <span>Unwind</span>
+        </Link>
       </nav>
 
       <header className="public-info-hero">
+        <UnwindLogo
+          variant="symbol"
+          theme="dark"
+          className="public-info-hero__logo"
+        />
 
-  <UnwindLogo
-    variant="symbol"
-    theme="dark"
-    className="public-info-hero__logo"
-  />
+        <span>{page.eyebrow}</span>
 
-  <span>
-    {page.eyebrow}
-  </span>
+        <h1>{page.title}</h1>
 
-  <h1>
-    {page.title}
-  </h1>
-
-  <p>
-    {page.intro}
-  </p>
-
-</header>
+        <p>{page.intro}</p>
+      </header>
 
       <section className="public-info-content">
-        {page.sections.map(
-          (
-            section,
-            index
-          ) => (
-            <article
-              key={
-                section.title
-              }
-              className="public-info-section"
-            >
-              <span>
-                {String(
-                  index + 1
-                ).padStart(
-                  2,
-                  "0"
-                )}
-              </span>
+        {page.sections.map((section, index) => (
+          <article
+            key={section.title}
+            className="public-info-section"
+          >
+            <span>
+              {String(index + 1).padStart(2, "0")}
+            </span>
 
-              <div>
-                <h2>
-                  {
-                    section.title
-                  }
-                </h2>
+            <div>
+              <h2>{section.title}</h2>
 
-                {section.paragraphs.map(
-                  (
-                    paragraph,
-                    paragraphIndex
-                  ) => (
-                    <p
-                      key={
-                        paragraphIndex
-                      }
-                    >
-                      {
-                        paragraph
-                      }
-                    </p>
-                  )
-                )}
-              </div>
-            </article>
-          )
-        )}
+              {section.paragraphs.map(
+                (paragraph, paragraphIndex) => (
+                  <p key={paragraphIndex}>
+                    {paragraph}
+                  </p>
+                )
+              )}
+            </div>
+          </article>
+        ))}
 
         {page.contactEmail && (
           <a
             className="public-info-contact"
             href={`mailto:${page.contactEmail}`}
           >
-            <Mail
-              size={18}
-            />
+            <Mail size={18} />
 
             <div>
-              <span>
-                Email UNWIND
-              </span>
+              <span>Email UNWIND</span>
 
               <strong>
-                {
-                  page.contactEmail
-                }
+                {page.contactEmail}
               </strong>
             </div>
           </a>

@@ -36,3 +36,7 @@ coverage/
 .idea/
 .DS_Store
 Thumbs.db
+# Local project archives
+/Unwind-backend-docs.zip
+/Unwind-backend.zip
+/Unwind-frontend.zip

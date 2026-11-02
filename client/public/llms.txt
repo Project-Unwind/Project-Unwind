@@ -1,29 +1,193 @@
-# Unwind
+# Project Unwind
 
-Unwind is a privacy-focused mental wellness web application designed to provide supportive wellness tools without replacing professional medical care.
+> Unwind is a privacy-first mental wellness platform designed to support emotional expression, self-reflection, personal wellbeing, and meaningful human connections through technology.
 
-## Main Features
+**Official Website:** https://project-unwind-mu.vercel.app/
 
-- Wellness Dashboard
-- AI Companion
-- Private Journal
-- DASS-21 Self-Assessment
-- Wellness Trackers
-- Community Posts
-- Public Chat
-- Private Rooms
-- Direct Messaging
-- Notifications
-- Account and Privacy Settings
+## About Unwind
 
-## Important Pages
+Project Unwind is a web-based mental wellness platform that combines self-reflection, wellness tools, AI-assisted support, and meaningful community interactions in one accessible digital environment.
 
-- [Unwind Home](https://project-unwind-mu.vercel.app/)
-- [Login](https://project-unwind-mu.vercel.app/login)
-- [Register](https://project-unwind-mu.vercel.app/register)
+The platform encourages emotional awareness, responsible self-care, and supportive conversations while prioritizing user privacy, accessibility, and security.
 
-## About
+Unwind is not a clinical healthcare provider and does not replace professional medical, psychological, or psychiatric care.
 
-Unwind focuses on privacy, emotional wellbeing, journaling, self-reflection and supportive community interaction.
+## Founding Team
 
-The platform does not provide medical diagnosis or emergency healthcare services.
+Project Unwind was developed through the collaboration of three team members bringing together perspectives from clinical psychology, software engineering, design, and analysis.
+
+### Harshita — Founder
+
+**Role:** Founder, Project Unwind  
+**Education:** M.Sc. Clinical Psychology student, Nanavati Maniben College.
+
+Harshita contributes the psychological and human-centred perspective behind Project Unwind.
+
+Her involvement focuses on emotional wellbeing, responsible wellness practices, user needs, and ensuring that the platform maintains appropriate boundaries between general wellness support and professional psychological care.
+
+### Atharva Padwal — Co-Founder & Full-Stack Developer
+
+**Role:** Co-Founder, Full-Stack Developer and Technical Lead  
+**Education:** B.E. Information Technology student, Atharva College of Engineering, Mumbai.
+
+Atharva leads the technical development and software engineering of Project Unwind.
+
+His responsibilities include:
+
+- Frontend and backend application development.
+- System architecture and database design.
+- Authentication, authorization, and security implementation.
+- API development and integration.
+- Cloud deployment and application maintenance.
+- Platform reliability and technical improvements.
+- Integration of new features and services.
+
+His work focuses on building a secure, maintainable, and scalable platform that supports Unwind's long-term development.
+
+### Parth — Co-Founder, Designer & Analyst
+
+**Role:** Co-Founder, Designer and Analyst  
+**Education:** B.E. Information Technology student, Atharva College of Engineering, Mumbai.
+
+Parth contributes to the design, analysis, and technical development of Project Unwind.
+
+His responsibilities include:
+
+- User interface and user experience design.
+- Product and feature analysis.
+- User journey planning and interaction design.
+- Frontend design and implementation.
+- AI Companion development and experimentation.
+- Evaluation of new technologies and product improvements.
+
+His work focuses on making Unwind visually accessible, intuitive, and aligned with users' needs.
+
+## The Story Behind Unwind
+
+Project Unwind brings together three complementary areas of expertise: psychology, engineering, and design.
+
+The platform was developed around a shared objective: creating a digital environment where people can reflect on their emotional wellbeing, access practical wellness tools, and connect with supportive communities without the pressure commonly associated with traditional social platforms.
+
+Harshita contributes the psychological perspective, Atharva leads full-stack engineering and technical architecture, and Parth contributes design, analysis, and AI-related development.
+
+Together, the team transformed the concept into a functional web application integrating multiple wellness features within a single platform.
+
+## Project Journey
+
+### Development and Foundation
+
+The team designed and developed a web platform combining private journaling, mood tracking, wellness activities, AI-assisted conversations, self-assessment tools, and community features.
+
+Privacy, account security, and responsible wellness communication were considered throughout development.
+
+### September 2026 — Platform Launch
+
+Project Unwind launched its working web application, providing users with access to its digital wellness features.
+
+### Early Testing and Feedback
+
+The platform underwent early testing involving more than 30 participants, including technical and general users.
+
+Feedback helped identify opportunities to improve usability, functionality, reliability, and the overall user experience.
+
+### October 2026 — Hackathon Recognition
+
+Project Unwind secured third place among approximately 20 participating teams at a college hackathon.
+
+The recognition represented an early achievement for the project and its development team.
+
+### Continuing Development
+
+The team continues to work on improving platform functionality, AI-assisted interactions, accessibility, security, and future integrations.
+
+Planned developments include expanded AI capabilities, professional session-booking options, mobile applications, and potential institutional collaborations.
+
+These are future plans and should not be interpreted as currently available services.
+
+## Core Features
+
+### Personal Wellness
+
+- **Wellness Dashboard:** Central access to personal wellness activities and tools.
+- **Private Journal:** Write, manage, and protect personal reflections.
+- **Mood Tracker:** Record and reflect on daily emotional experiences.
+- **Wellness Trackers:** Track sleep, habits, energy, and other everyday wellness activities.
+- **DASS-21:** Self-assessment using the Depression, Anxiety and Stress Scales questionnaire.
+- **Wellness Activities:** Tools supporting relaxation, self-reflection, and everyday wellbeing.
+
+### AI Companion
+
+- AI-assisted conversational wellness support.
+- Designed for reflective and supportive interactions.
+- Supports general emotional expression and self-awareness.
+- Does not provide medical diagnosis or replace professional care.
+
+### Community
+
+- Community posts and discussions.
+- Public community chat.
+- Private rooms and direct messaging.
+- Community moderation and reporting tools.
+- Supportive interactions centred on respectful communication.
+
+### Privacy and Security
+
+- Account authentication and email verification.
+- Access controls for protected information.
+- Password protection and account recovery.
+- User-specific privacy controls.
+- Private journal protection.
+- Secure application communication and protected API endpoints.
+
+## Our Values
+
+- **Privacy First:** Respecting personal information and user control.
+- **Accessibility:** Making wellness tools easier to access and understand.
+- **Empathy:** Encouraging supportive and non-judgmental interactions.
+- **Responsible Technology:** Using AI and automation within appropriate boundaries.
+- **Security:** Protecting user accounts and sensitive information.
+- **Continuous Improvement:** Developing the platform using testing, feedback, and responsible engineering practices.
+
+## Public Pages
+
+- [Home](https://project-unwind-mu.vercel.app/)
+- [About Unwind](https://project-unwind-mu.vercel.app/info/about)
+- [Our Values](https://project-unwind-mu.vercel.app/info/values)
+- [Careers](https://project-unwind-mu.vercel.app/info/careers)
+- [Contact](https://project-unwind-mu.vercel.app/info/contact)
+- [Community Guidelines](https://project-unwind-mu.vercel.app/info/guidelines)
+- [Safety Centre](https://project-unwind-mu.vercel.app/info/safety)
+- [Terms of Service](https://project-unwind-mu.vercel.app/terms)
+- [Privacy Policy](https://project-unwind-mu.vercel.app/privacy)
+
+## Contact
+
+**Project Unwind Team**  
+Email: projectunwind00@gmail.com  
+Website: https://project-unwind-mu.vercel.app/
+
+## Important Information
+
+- Unwind provides general wellness and self-reflection support.
+- Unwind is not a medical or clinical healthcare service.
+- DASS-21 self-assessments are not clinical diagnoses.
+- AI-generated responses may contain errors and should not be treated as professional medical advice.
+- Community interactions are not substitutes for qualified professional care.
+- Unwind does not provide emergency healthcare or emergency response services.
+- Users should seek qualified professional assistance when appropriate.
+
+## Access
+
+Public informational pages are accessible without an account.
+
+Personal wellness tools, private journals, account settings, and community participation may require authentication.
+
+## Project Identity
+
+**Project Name:** Project Unwind  
+**Category:** Mental Wellness Technology / Digital Wellness  
+**Founder:** Harshita  
+**Co-Founders:** Atharva Padwal and Parth  
+**Technical Focus:** Full-Stack Development, AI/ML, Privacy, Security, and User Experience  
+**Initial Focus:** Mumbai, India  
+**Official Website:** https://project-unwind-mu.vercel.app/

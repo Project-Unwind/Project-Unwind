@@ -32,6 +32,9 @@ import {
 import "./styles/responsive.css";
 import "./index.css";
 
+// Seasonal themes
+import "./styles/themes/diwali.css";
+
 
 const posthogOptions = {
   api_host:

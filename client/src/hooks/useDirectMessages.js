@@ -624,11 +624,27 @@ export function useDirectMessages() {
               result
             );
 
-          setConversations(
-            normalized
-          );
+          setConversations(normalized);
 
-          return normalized;
+// Initialize unread counts from the existing API response.
+const counts = {};
+
+for (const conversation of normalized) {
+  const conversationId =
+    getDirectConversationId(conversation);
+
+  if (!conversationId) continue;
+
+  counts[conversationId] = Number(
+    conversation.unread_count ??
+    conversation.unreadCount ??
+    0
+  );
+}
+
+setUnreadCounts(counts);
+
+return normalized;
         } catch (
           requestError
         ) {
@@ -754,19 +770,7 @@ export function useDirectMessages() {
       [conversations]
     );
 
-  useEffect(() => {
-    if (
-      conversations.length >
-      0
-    ) {
-      loadUnreadCounts(
-        conversations
-      );
-    }
-  }, [
-    conversations,
-    loadUnreadCounts
-  ]);
+  
 
   /*
   |--------------------------------------------------------------------------

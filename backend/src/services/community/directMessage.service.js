@@ -465,14 +465,10 @@ export async function getUnreadDirectMessageCount({
     userId,
   });
 
-  const unreadCount =
-    await countUnreadDirectMessages(
-      conversationId,
-      userId
-    );
+  const unreadCount = await countUnreadDirectMessages(
+    conversationId,
+    userId
+  );
 
-  return {
-    conversation_id: conversationId,
-    unread_count: unreadCount,
-  };
+  return unreadCount;
 }

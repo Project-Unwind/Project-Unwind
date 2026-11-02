@@ -1,14 +1,24 @@
+
 User-agent: *
 Allow: /
 
+# Authenticated application
 Disallow: /dashboard/
 Disallow: /admin/
+
+# Authentication and account routes
 Disallow: /login
 Disallow: /register
 Disallow: /verify-email
 Disallow: /forgot-password
 Disallow: /reset-password
 Disallow: /auth/
+
+# Private notifications
 Disallow: /notifications
 
+# API endpoints, if served under this domain
+Disallow: /api/
+
+# Public sitemap
 Sitemap: https://project-unwind-mu.vercel.app/sitemap.xml
