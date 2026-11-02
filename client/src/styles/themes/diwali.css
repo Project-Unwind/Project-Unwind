@@ -1053,3 +1053,169 @@ html[data-season="diwali"] ::selection {
     border-radius: 25px;
   }
 }
+
+/* ==========================================
+   UNWIND DIWALI — PREMIUM FOOTER
+   ========================================== */
+
+.landing-diwali .landing-footer {
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 10% 0%,
+      rgba(134, 80, 100, 0.17),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #261525 0%,
+      #211321 60%,
+      #352033 100%
+    );
+
+  color: #DCC4CB;
+  border-top: 1px solid rgba(240, 187, 115, 0.25);
+}
+
+/* Decorative ambient gold glow */
+
+.landing-diwali .landing-footer::before {
+  content: "";
+  position: absolute;
+  top: -180px;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(240, 187, 115, 0.07),
+    transparent 70%
+  );
+}
+
+/* Keep content above decoration */
+
+.landing-diwali .landing-footer
+.landing-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Brand title */
+
+.landing-diwali .landing-footer__brand-text {
+  color: #FFF4E6;
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Brand description */
+
+.landing-diwali
+.landing-footer__brand-column > p {
+  color: #DCC4CB;
+}
+
+/* Footer headings */
+
+.landing-diwali .landing-footer__links h3 {
+  color: #F0BB73;
+  font-weight: 700;
+}
+
+/* Links */
+
+.landing-diwali .landing-footer__links a {
+  color: #DCC4CB;
+  transition:
+    color 200ms ease,
+    transform 200ms ease;
+}
+
+.landing-diwali
+.landing-footer__links a:hover {
+  color: #F0BB73;
+  transform: translateX(3px);
+}
+
+/* Social icons */
+
+.landing-diwali .landing-footer__socials a {
+  background: rgba(240, 187, 115, 0.07);
+  color: #F0BB73;
+
+  border: 1px solid rgba(240, 187, 115, 0.24);
+  border-radius: 12px;
+}
+
+.landing-diwali .landing-footer__socials a:hover {
+  background: rgba(240, 187, 115, 0.17);
+  color: #FFF4E6;
+
+  border-color: rgba(240, 187, 115, 0.65);
+
+  box-shadow: 0 0 20px rgba(240, 187, 115, 0.12);
+}
+
+/* Footer bottom */
+
+.landing-diwali .landing-footer__bottom {
+  border-top: 1px solid rgba(240, 187, 115, 0.22);
+}
+
+.landing-diwali .landing-footer__bottom p {
+  color: #BDA1AF;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .landing-diwali .landing-footer {
+    padding-top: 60px;
+  }
+
+  .landing-diwali .landing-footer__brand-text {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-diwali .landing-footer__links a,
+  .landing-diwali .landing-footer__socials a {
+    transition: none;
+  }
+}
+/* ==========================================
+   DIWALI — EXPERIENCE SECTION IMAGE
+   ========================================== */
+
+.landing-diwali .experience-visual__diwali-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  filter: brightness(0.88) saturate(0.92) contrast(1.02);
+}
+
+/* Slightly warmer overlay for Diwali */
+.landing-diwali .experience-visual__overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(38, 21, 37, 0.08) 0%,
+      rgba(38, 21, 37, 0.18) 40%,
+      rgba(38, 21, 37, 0.55) 100%
+    );
+}
