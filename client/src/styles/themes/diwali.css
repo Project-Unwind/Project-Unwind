@@ -1219,3 +1219,21 @@ html[data-season="diwali"] ::selection {
       rgba(38, 21, 37, 0.55) 100%
     );
 }
+/* DIWALI — APPEARANCE SETTINGS */
+
+[data-season="diwali"]
+.landing-theme-option--active {
+  background: rgba(240, 187, 115, 0.12);
+  border-color: rgba(240, 187, 115, 0.6);
+}
+
+[data-season="diwali"]
+.landing-theme-option--active
+.landing-theme-option__icon {
+  color: #F0BB73;
+}
+
+[data-season="diwali"]
+.landing-theme-option--active strong {
+  color: #F0BB73;
+}
