@@ -1237,3 +1237,33 @@ html[data-season="diwali"] ::selection {
 .landing-theme-option--active strong {
   color: #F0BB73;
 }
+/* ==========================================
+   DIWALI — HERO DECORATIVE DIYA
+   ========================================== */
+
+.landing-diwali .diwali-hero-diya {
+  position: absolute;
+  z-index: 3;
+
+  right: 2%;
+  bottom: 2%;
+
+  pointer-events: none;
+  opacity: .94;
+
+  filter:
+    drop-shadow(0 0 18px rgba(240,187,115,.2));
+}
+
+@media (max-width: 1100px) {
+  .landing-diwali .diwali-hero-diya {
+    transform: scale(.75);
+    transform-origin: bottom right;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-diwali .diwali-hero-diya {
+    display: none;
+  }
+}
