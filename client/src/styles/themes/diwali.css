@@ -606,3 +606,41 @@ html[data-season="diwali"] ::selection {
 .landing-diwali .dashboard-card:hover {
   border-color: rgba(240, 187, 115, 0.7) !important;
 }
+/* =========================================
+   DIWALI — SUBTLE PATTERN FOR FEATURES
+   ========================================= */
+
+.landing-diwali .features-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 244, 230, 0.96) 0%,
+      rgba(248, 240, 232, 0.98) 100%
+    );
+}
+
+/* Pattern layer */
+.landing-diwali .features-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image: url("/seasonal/diwali/diwali-pattern.webp");
+  background-repeat: repeat;
+  background-size: 420px auto;
+  background-position: center top;
+
+  opacity: 0.06;
+}
+
+/* Keep actual content above the pattern */
+.landing-diwali .features-section .landing-container {
+  position: relative;
+  z-index: 1;
+}
