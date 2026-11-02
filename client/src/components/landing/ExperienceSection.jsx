@@ -32,7 +32,7 @@ const benefits = [
 
 function ExperienceSection() {
   const shouldReduceMotion = useReducedMotion();
-  const { halloweenMode } = useTheme();
+  const { halloweenMode, diwaliMode } = useTheme();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2
@@ -71,6 +71,14 @@ function ExperienceSection() {
       src={hauntedMansion}
       alt="Moonlit haunted mansion surrounded by a mystical Halloween landscape"
       className="experience-visual__halloween-image"
+      loading="lazy"
+      decoding="async"
+    />
+  ) : diwaliMode ? (
+    <img
+      src="/seasonal/diwali/experience-serenity.webp"
+      alt="A calm and elegant wellness-inspired Diwali scene"
+      className="experience-visual__diwali-image"
       loading="lazy"
       decoding="async"
     />
