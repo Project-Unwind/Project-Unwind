@@ -1,0 +1,2423 @@
+
+/* ============================================
+   PROJECT UNWIND — DIWALI DASHBOARD THEME
+   Centralized seasonal styling
+   ============================================ */
+
+/* Apply only when Diwali mode is selected */
+
+html[data-season="diwali"] {
+  --primary: #F0BB73;
+  --primary-dark: #DCA05B;
+  --primary-darker: #C58A45;
+  --primary-soft: #54283E;
+
+  --background: #211321;
+  --surface: #352033;
+  --surface-soft: #45283D;
+
+  --text: #FFF4E6;
+  --muted: #DCC4CB;
+
+  --border: rgba(240, 187, 115, 0.22);
+
+  --shadow:
+    0 15px 40px rgba(12, 5, 15, 0.28);
+
+  --gold: #F0BB73;
+  --gold-light: #F8D9B6;
+
+  color-scheme: dark;
+}
+
+/* ============================================
+   DASHBOARD FOUNDATION
+   ============================================ */
+
+html[data-season="diwali"] .dashboard-shell {
+  background: #211321;
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"] .dashboard-shell__main,
+html[data-season="diwali"] .dashboard-shell__body,
+html[data-season="diwali"] .dashboard-shell__content,
+html[data-season="diwali"] .dashboard-content {
+  background-color: transparent;
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"] .dashboard-shell__main {
+  background:
+    radial-gradient(
+      ellipse at 90% 8%,
+      rgba(134, 80, 100, 0.17),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 10% 90%,
+      rgba(240, 187, 115, 0.05),
+      transparent 45%
+    ),
+    #211321;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+
+html[data-season="diwali"] .dashboard-sidebar {
+  background: linear-gradient(
+    180deg,
+    #261525,
+    #352033
+  );
+
+  color: #FFF4E6;
+  border-right: 1px solid rgba(240, 187, 115, 0.2);
+}
+
+html[data-season="diwali"]
+.dashboard-sidebar__brand-copy {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.dashboard-sidebar__section-title {
+  color: #CFA7B5;
+}
+
+html[data-season="diwali"]
+.dashboard-sidebar__link {
+  color: #E6C8CB;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+html[data-season="diwali"]
+.dashboard-sidebar__link:hover {
+  background: rgba(240, 187, 115, 0.09);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.dashboard-sidebar__link--active {
+  background: rgba(240, 187, 115, 0.16);
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.dashboard-sidebar__link--active
+.dashboard-sidebar__link-icon {
+  color: #F0BB73;
+}
+
+/* ============================================
+   TOPBAR
+   ============================================ */
+
+html[data-season="diwali"] .dashboard-topbar {
+  background: rgba(38, 21, 37, 0.93);
+  border-bottom: 1px solid rgba(240, 187, 115, 0.18);
+  color: #FFF4E6;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+html[data-season="diwali"]
+.dashboard-topbar__page-heading {
+  color: #FFF4E6;
+}
+
+/* ============================================
+   WELCOME BANNER
+   ============================================ */
+
+html[data-season="diwali"]
+.dashboard-welcome-card {
+  background:
+    radial-gradient(
+      ellipse at 88% 30%,
+      rgba(240, 187, 115, 0.14),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #352033,
+      #54283E
+    );
+
+  border: 1px solid rgba(240, 187, 115, 0.35);
+  color: #FFF4E6;
+
+  box-shadow:
+    0 20px 55px rgba(10, 4, 15, 0.25);
+}
+
+html[data-season="diwali"]
+.dashboard-welcome-card__greeting,
+html[data-season="diwali"]
+.dashboard-welcome-card__eyebrow {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.dashboard-welcome-card__name {
+  color: #FFF4E6;
+}
+
+/* ============================================
+   DASHBOARD CARDS
+   ============================================ */
+
+html[data-season="diwali"]
+.dashboard-widget,
+html[data-season="diwali"]
+.dashboard-stat-card {
+  background: linear-gradient(
+    145deg,
+    #352033,
+    #45283D
+  );
+
+  color: #FFF4E6;
+  border: 1px solid rgba(240, 187, 115, 0.23);
+
+  box-shadow:
+    0 12px 35px rgba(10, 4, 15, 0.17);
+}
+
+html[data-season="diwali"]
+.dashboard-widget__eyebrow {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.dashboard-widget__header-icon,
+html[data-season="diwali"]
+.dashboard-stat-card__top {
+  color: #F0BB73;
+}
+
+/* ============================================
+   COMMON ACCOUNT / PROFILE CARDS
+   ============================================ */
+
+html[data-season="diwali"]
+:is(
+  .profile-card,
+  .profile-sidebar-card,
+  .account-settings__card,
+  .account-settings__aside-card
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240, 187, 115, 0.24);
+}
+
+/* ============================================
+   COMMON FORM CONTROLS
+   Scoped to dashboard only
+   ============================================ */
+
+html[data-season="diwali"]
+.dashboard-shell
+:is(
+  input:not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select
+) {
+  background-color: #2D1A2C;
+  border-color: rgba(240, 187, 115, 0.25);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.dashboard-shell
+:is(input, textarea)::placeholder {
+  color: #BDA1AF;
+}
+
+html[data-season="diwali"]
+.dashboard-shell
+:is(input, textarea, select):focus-visible {
+  outline: 2px solid #F0BB73;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   REUSABLE DIWALI CLASSES
+   ============================================ */
+
+html[data-season="diwali"]
+.dashboard-shell .diwali-surface {
+  background: #352033;
+  color: #FFF4E6;
+  border: 1px solid rgba(240, 187, 115, 0.25);
+  border-radius: 18px;
+}
+
+html[data-season="diwali"]
+.dashboard-shell .diwali-muted {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.dashboard-shell .diwali-accent {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.dashboard-shell .diwali-primary-button {
+  background: #F0BB73;
+  color: #261525;
+  border: 1px solid #F0BB73;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+html[data-season="diwali"]
+.dashboard-shell .diwali-primary-button:hover {
+  background: #F8D9B6;
+}
+
+/* ============================================
+   SCROLLBARS
+   ============================================ */
+
+html[data-season="diwali"]
+.dashboard-shell {
+  scrollbar-color:
+    rgba(240,187,115,.35)
+    transparent;
+}
+
+html[data-season="diwali"]
+.dashboard-shell ::-webkit-scrollbar-thumb {
+  background: rgba(240,187,115,.35);
+  border-radius: 999px;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="diwali"]
+  .dashboard-shell * {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==========================================
+   DIWALI — DASHBOARD INTERNAL COMPONENTS
+   ========================================== */
+
+:root[data-season="diwali"] {
+  --dashboard-background: #211321;
+  --dashboard-surface: #352033;
+  --dashboard-surface-solid: #352033;
+  --dashboard-surface-muted: #45283D;
+
+  --dashboard-text: #FFF4E6;
+  --dashboard-muted: #E6C8CB;
+  --dashboard-subtle: #BDA1AF;
+
+  --dashboard-primary: #F0BB73;
+  --dashboard-primary-dark: #DCA05B;
+  --dashboard-primary-soft: rgba(240, 187, 115, .12);
+
+  --dashboard-gold: #F0BB73;
+  --dashboard-border: rgba(240, 187, 115, .25);
+  --dashboard-shadow: 0 18px 45px rgba(10, 4, 15, .24);
+}
+
+/* Topbar typography */
+
+html[data-season="diwali"]
+.dashboard-topbar__page-heading h1 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.dashboard-topbar__page-heading p {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.dashboard-sidebar__brand-copy strong {
+  color: #FFF4E6;
+}
+
+/* Dashboard internal text */
+
+html[data-season="diwali"]
+.dashboard-home
+:is(
+  .dashboard-widget h2,
+  .dashboard-widget h3,
+  .dashboard-stat-card strong,
+  .dashboard-stat-card__value,
+  .dashboard-widget__title
+) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.dashboard-home
+:is(
+  .dashboard-widget__eyebrow,
+  .dashboard-stat-card__top
+) {
+  color: #F0BB73;
+}
+
+/* Daily wellness task rows */
+
+html[data-season="diwali"]
+.wellness-task {
+  background: #45283D;
+  border: 1px solid rgba(240, 187, 115, .20);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.wellness-task h3,
+html[data-season="diwali"]
+.wellness-task strong {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.wellness-task p {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.wellness-task__icon {
+  background: rgba(240, 187, 115, .14);
+  color: #F0BB73;
+}
+
+/* Stats, accents and progress */
+
+html[data-season="diwali"]
+.dashboard-stat-card__value,
+html[data-season="diwali"]
+.dashboard-widget__header-icon {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.dashboard-home
+:is(
+  .daily-quote,
+  .companion-preview,
+  .dashboard-quick-action-card
+) {
+  background: linear-gradient(145deg, #45283D, #352033);
+  border-color: rgba(240, 187, 115, .25);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.dashboard-home
+:is(
+  .daily-quote,
+  .companion-preview,
+  .dashboard-quick-action-card
+) :is(h2, h3, strong) {
+  color: #FFF4E6;
+}
+
+/* Topbar neutral controls */
+
+html[data-season="diwali"]
+:is(
+  .dashboard-search,
+  .dashboard-icon-button,
+  .theme-toggle,
+  .dashboard-user-menu__trigger
+) {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240, 187, 115, .24);
+}
+
+/* Keep account controls readable */
+
+html[data-season="diwali"]
+.dashboard-user-menu__trigger
+:is(span, strong) {
+  color: #FFF4E6;
+}
+
+/* ==========================================
+   DIWALI — NOTIFICATIONS PAGE
+   ========================================== */
+
+html[data-season="diwali"] .notifications-page {
+  color: #FFF4E6;
+}
+
+/* Header */
+
+html[data-season="diwali"]
+.notifications-page__hero {
+  background:
+    radial-gradient(
+      ellipse at 85% 15%,
+      rgba(240, 187, 115, .13),
+      transparent 50%
+    ),
+    linear-gradient(135deg, #54283E, #352033);
+
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.35);
+}
+
+html[data-season="diwali"]
+.notifications-page__hero h2 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.notifications-page__hero p {
+  color: #E6C8CB;
+}
+
+html[data-season="diwali"]
+.notifications-page__eyebrow {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.notifications-page__hero-summary strong {
+  background: rgba(240,187,115,.14);
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.notifications-page__hero-summary span {
+  color: #E6C8CB;
+}
+
+/* Toolbar and tabs */
+
+html[data-season="diwali"]
+.notifications-page__toolbar,
+html[data-season="diwali"]
+.notifications-page__content {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.25);
+}
+
+html[data-season="diwali"]
+.notifications-page__tabs button {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.notifications-page__tabs button.is-active {
+  background: rgba(240,187,115,.15);
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.notifications-page__tabs button:hover {
+  background: #45283D;
+  color: #FFF4E6;
+}
+
+/* Notification cards */
+
+html[data-season="diwali"]
+.notification-card {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.19);
+}
+
+html[data-season="diwali"]
+.notification-card--unread {
+  background: #45283D;
+  border-left-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.notification-card__body
+:is(h3, h4, strong) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.notification-card__body p,
+html[data-season="diwali"]
+.notification-card__meta {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.notification-card__icon {
+  background: rgba(240,187,115,.12);
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.notification-card__unread-dot {
+  background: #F0BB73;
+}
+
+/* Filters and search */
+
+html[data-season="diwali"]
+:is(
+  .notifications-page__search,
+  .notifications-page__select,
+  .notifications-filter-dropdown__trigger,
+  .notifications-filter-dropdown__menu
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.27);
+}
+
+html[data-season="diwali"]
+.notifications-page__search input,
+html[data-season="diwali"]
+.notifications-page__select select {
+  background: transparent;
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.notifications-page__search input::placeholder {
+  color: #BDA1AF;
+}
+
+html[data-season="diwali"]
+.notifications-page__select select {
+  color-scheme: dark;
+}
+
+/* Action buttons */
+
+html[data-season="diwali"]
+.notifications-page
+:is(
+  .notifications-page__text-button,
+  .notifications-page__icon-button,
+  .notifications-page__clear-filters
+) {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.25);
+}
+
+html[data-season="diwali"]
+.notifications-page
+:is(
+  .notifications-page__text-button,
+  .notifications-page__icon-button,
+  .notifications-page__clear-filters
+):hover:not(:disabled) {
+  background: #54283E;
+  color: #F0BB73;
+}
+
+/* Preserve destructive action meaning */
+
+html[data-season="diwali"]
+.notifications-page .is-danger {
+  color: #FFB2B2;
+}
+
+/* ==========================================
+   DIWALI — AI COMPANION
+   ========================================== */
+
+html[data-season="diwali"]
+.ai-companion-layout {
+  background: #261525;
+  color: #FFF4E6;
+  border: 1px solid rgba(240,187,115,.28);
+}
+
+/* Conversation sidebar */
+
+html[data-season="diwali"]
+.ai-conversation-sidebar {
+  background: #352033;
+  border-right-color: rgba(240,187,115,.22);
+}
+
+html[data-season="diwali"]
+.ai-conversation-sidebar > header {
+  border-bottom-color: rgba(240,187,115,.2);
+}
+
+html[data-season="diwali"]
+.ai-conversation-sidebar > header span {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.ai-conversation-sidebar > header strong {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.ai-conversation-sidebar > header button {
+  background: #54283E;
+  color: #F0BB73;
+  border-color: rgba(240,187,115,.3);
+}
+
+html[data-season="diwali"]
+.ai-conversation-item {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.ai-conversation-item:hover {
+  background: #45283D;
+}
+
+html[data-season="diwali"]
+.ai-conversation-item--active {
+  background: rgba(240,187,115,.12);
+  border-color: rgba(240,187,115,.4);
+}
+
+html[data-season="diwali"]
+.ai-conversation-item__open {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.ai-conversation-item__open svg {
+  color: #F0BB73;
+}
+
+/* Chat panel */
+
+html[data-season="diwali"]
+.ai-chat-panel {
+  background: #261525;
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.ai-chat-header {
+  background: #352033;
+  border-bottom-color: rgba(240,187,115,.23);
+}
+
+html[data-season="diwali"]
+.ai-chat-header h1,
+html[data-season="diwali"]
+.ai-chat-empty h1,
+html[data-season="diwali"]
+.ai-chat-empty h2 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.ai-chat-header p,
+html[data-season="diwali"]
+.ai-chat-empty p {
+  color: #E6C8CB;
+}
+
+html[data-season="diwali"]
+.ai-chat-header__icon,
+html[data-season="diwali"]
+.ai-chat-empty__icon {
+  background: linear-gradient(135deg, #865064, #F0BB73);
+  color: #261525;
+}
+
+/* Chat body */
+
+html[data-season="diwali"]
+.ai-chat-body {
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(134,80,100,.16),
+      transparent 55%
+    ),
+    #261525;
+}
+
+html[data-season="diwali"]
+.ai-chat-empty__eyebrow {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.ai-chat-private {
+  background: rgba(240,187,115,.12);
+  color: #F0BB73;
+  border-color: rgba(240,187,115,.28);
+}
+
+html[data-season="diwali"]
+.ai-new-chat-button {
+  background: #F0BB73;
+  color: #261525;
+}
+
+/* Starter prompts */
+
+html[data-season="diwali"]
+.ai-starter-prompts button {
+  background: #352033;
+  border: 1px solid rgba(240,187,115,.25);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.ai-starter-prompts button:hover {
+  background: #45283D;
+  border-color: #F0BB73;
+}
+
+/* Conversation bubbles */
+
+html[data-season="diwali"]
+.ai-message--assistant .ai-message__bubble {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.23);
+}
+
+html[data-season="diwali"]
+.ai-message--user .ai-message__bubble {
+  background: #54283E;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.35);
+}
+
+html[data-season="diwali"]
+.ai-message__markdown
+:is(h1, h2, h3, h4) {
+  color: #FFF4E6;
+}
+
+/* Composer */
+
+html[data-season="diwali"]
+.chat-composer-shell,
+html[data-season="diwali"]
+.chat-composer {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.3);
+}
+
+html[data-season="diwali"]
+.chat-composer textarea {
+  color: #FFF4E6;
+  background: transparent;
+}
+
+html[data-season="diwali"]
+.chat-composer textarea::placeholder {
+  color: #BDA1AF;
+}
+
+/* ==========================================
+   DIWALI — DAILY TRACKERS
+   ========================================== */
+
+/* Main page */
+
+html[data-season="diwali"]
+.trackers-page {
+  color: #FFF4E6;
+}
+
+/* Large hero banner */
+
+html[data-season="diwali"]
+.tracker-hero {
+  background:
+    radial-gradient(
+      ellipse at 85% 15%,
+      rgba(240,187,115,.13),
+      transparent 50%
+    ),
+    linear-gradient(
+      125deg,
+      #352033,
+      #54283E 60%,
+      #261525
+    );
+
+  border: 1px solid rgba(240,187,115,.35);
+  color: #FFF4E6;
+}
+
+/* Hero text */
+
+html[data-season="diwali"]
+.tracker-hero :is(h1,h2) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.tracker-hero h1 :is(span,em) {
+  color: #F0BB73;
+  -webkit-text-fill-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.tracker-hero__eyebrow {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.tracker-hero__content > p {
+  color: #E6C8CB;
+}
+
+html[data-season="diwali"]
+.tracker-date-picker {
+  background: rgba(38,21,37,.7);
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.35);
+}
+
+/* Breathing rings */
+
+html[data-season="diwali"]
+.tracker-hero__ring--outer,
+html[data-season="diwali"]
+.tracker-hero__ring--middle,
+html[data-season="diwali"]
+.tracker-hero__ring--inner {
+  border-color: rgba(240,187,115,.25);
+}
+
+/* Wellness summary */
+
+html[data-season="diwali"]
+.wellness-score-card,
+html[data-season="diwali"]
+.trackers-encouragement-card,
+html[data-season="diwali"]
+.tracker-card {
+  background: linear-gradient(145deg,#45283D,#352033);
+  border: 1px solid rgba(240,187,115,.25);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(
+  .wellness-score-card,
+  .trackers-encouragement-card,
+  .tracker-card
+) :is(h2,h3,strong) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(
+  .wellness-score-card,
+  .trackers-encouragement-card,
+  .tracker-card
+) p {
+  color: #DCC4CB;
+}
+
+/* Card eyebrows */
+
+html[data-season="diwali"]
+.tracker-card__eyebrow,
+html[data-season="diwali"]
+.trackers-section__header > div > span {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.trackers-section__header h2 {
+  color: #FFF4E6;
+}
+
+/* Metric indicators */
+
+html[data-season="diwali"]
+.wellness-metric__icon {
+  background: rgba(240,187,115,.12);
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.wellness-metric__track {
+  background: rgba(255,244,230,.12);
+}
+
+/* Preserve separate metric colours where
+   they communicate actual wellness data */
+
+/* Mood and energy controls */
+
+html[data-season="diwali"]
+.trackers-page
+:is(
+  .mood-selector__option,
+  .energy-selector__option,
+  .sleep-wake-mood__option
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.24);
+}
+
+html[data-season="diwali"]
+.trackers-page
+:is(
+  .mood-selector__option--active,
+  .energy-selector__option--active,
+  .sleep-wake-mood__option--active
+) {
+  background: rgba(240,187,115,.16);
+  color: #FFF4E6;
+  border-color: #F0BB73;
+}
+
+/* Tags */
+
+html[data-season="diwali"]
+.tracker-tag {
+  background: #352033;
+  color: #E6C8CB;
+  border-color: rgba(240,187,115,.25);
+}
+
+html[data-season="diwali"]
+.tracker-tag--active {
+  background: rgba(240,187,115,.15);
+  color: #F0BB73;
+  border-color: #F0BB73;
+}
+
+/* Text inputs */
+
+html[data-season="diwali"]
+.tracker-textarea {
+  background: #261525;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.28);
+}
+
+/* Save buttons */
+
+html[data-season="diwali"]
+.tracker-save-button {
+  background: #F0BB73;
+  color: #261525;
+  border-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.tracker-save-button:hover:not(:disabled) {
+  background: #F8D9B6;
+}
+
+/* Habit cards */
+
+html[data-season="diwali"]
+.habit-card {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.22);
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="diwali"]
+  .tracker-card {
+    transition: none;
+  }
+}
+
+/* ==========================================
+   DIWALI — JOURNAL
+   ========================================== */
+
+html[data-season="diwali"] .journal-page,
+html[data-season="diwali"] .journal-book-page,
+html[data-season="diwali"] .journal-diary-page {
+  --journal-bg: #261525;
+  --journal-surface: #352033;
+  --journal-accent: #F0BB73;
+  --journal-text: #FFF4E6;
+
+  background-color: #211321;
+  color: #FFF4E6;
+}
+
+/* Journal banner */
+
+html[data-season="diwali"] .journal-hero {
+  background:
+    radial-gradient(
+      ellipse at 85% 20%,
+      rgba(240,187,115,.16),
+      transparent 50%
+    ),
+    linear-gradient(125deg,#352033,#54283E);
+
+  border: 1px solid rgba(240,187,115,.3);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"] .journal-hero h1,
+html[data-season="diwali"] .journal-hero__copy > p {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"] .journal-hero h1 em,
+html[data-season="diwali"] .journal-eyebrow,
+html[data-season="diwali"] .journal-section-label {
+  color: #F0BB73;
+  -webkit-text-fill-color: #F0BB73;
+}
+
+/* Journal overview and prompt */
+
+html[data-season="diwali"]
+:is(
+  .journal-summary,
+  .journal-prompt,
+  .journal-library,
+  .journal-entry-card,
+  .journal-state,
+  .journal-book-toolbar-shell
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.24);
+}
+
+html[data-season="diwali"]
+:is(
+  .journal-summary,
+  .journal-prompt,
+  .journal-library,
+  .journal-entry-card
+) :is(h2,h3,strong) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(
+  .journal-summary,
+  .journal-prompt,
+  .journal-entry-card
+) p {
+  color: #DCC4CB;
+}
+
+/* Editor, prompt library and dialogs */
+
+html[data-season="diwali"]
+:is(
+  .journal-editor,
+  .journal-prompt-library,
+  .journal-prompt-form,
+  .journal-emotions__panel,
+  .journal-tags__panel,
+  .journal-security-card,
+  .journal-security-settings
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.28);
+}
+
+html[data-season="diwali"]
+:is(
+  .journal-editor,
+  .journal-prompt-library,
+  .journal-prompt-form,
+  .journal-security-card
+) :is(h2,h3,h4,strong) {
+  color: #FFF4E6;
+}
+
+/* Journal inputs */
+
+html[data-season="diwali"]
+:is(
+  .journal-search,
+  .journal-filters,
+  .journal-editor__title,
+  .journal-editor textarea,
+  .journal-tags__search,
+  .journal-emotions__search,
+  .journal-pin-field__control
+) {
+  background-color: #261525;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.26);
+}
+
+/* Journal cards and prompts */
+
+html[data-season="diwali"]
+:is(
+  .journal-prompt-card,
+  .journal-prompt-history__item,
+  .journal-attachment-card,
+  .journal-voice-transcript
+) {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.22);
+}
+
+/* Action buttons */
+
+html[data-season="diwali"]
+:is(
+  .journal-primary-button,
+  .journal-prompt-library__create,
+  .journal-attachment-card__save
+) {
+  background: #F0BB73;
+  color: #261525;
+  border-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.journal-secondary-button {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.3);
+}
+
+/* Preserve sensitive editor focus */
+
+html[data-season="diwali"]
+.journal-editor :is(input,textarea):focus-visible {
+  outline: 2px solid #F0BB73;
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   DIWALI — DASS-21
+   ========================================== */
+
+html[data-season="diwali"] .dass-page {
+  background-color: #211321;
+  color: #FFF4E6;
+}
+
+/* Main cards */
+
+html[data-season="diwali"]
+:is(
+  .dass-instructions__card,
+  .dass-question-card,
+  .dass-result-card,
+  .dass-response-guide,
+  .dass-history,
+  .dass-dialog__card
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.26);
+}
+
+/* Titles */
+
+html[data-season="diwali"]
+.dass-page :is(h1,h2,h3,h4) {
+  color: #FFF4E6;
+}
+
+/* Supporting copy */
+
+html[data-season="diwali"]
+.dass-page :is(
+  .dass-question-card__footer,
+  .dass-response-guide,
+  .dass-instructions__card p
+) {
+  color: #DCC4CB;
+}
+
+/* Choices */
+
+html[data-season="diwali"]
+.dass-answer-option {
+  background: #45283D;
+  border-color: rgba(240,187,115,.24);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.dass-answer-option:hover {
+  border-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.dass-answer-option--active {
+  background: rgba(240,187,115,.17);
+  border-color: #F0BB73;
+  color: #FFF4E6;
+}
+
+/* Primary actions */
+
+html[data-season="diwali"]
+.dass-primary-button {
+  background: #F0BB73;
+  color: #261525;
+  border-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.dass-secondary-button {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.3);
+}
+
+/* Result regions */
+
+html[data-season="diwali"]
+:is(
+  .dass-results__hero,
+  .dass-results__guidance,
+  .dass-domain-list
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.23);
+}
+
+/* Leave severity/alert colours untouched.
+   They communicate actual assessment results. */
+
+/* ==========================================
+   DIWALI — WELLNESS TOOLKIT
+   ========================================== */
+
+html[data-season="diwali"]
+:is(
+  .toolkit-page,
+  .breathing-page,
+  .grounding-page,
+  .focus-page,
+  .gratitude-page,
+  .movement-page,
+  .emotional-page,
+  .thought-dump-page,
+  .calm-sounds-page,
+  .body-scan-page,
+  .saved-tools-page,
+  .recent-tools-page,
+  .wellness-history-page
+) {
+  color: #FFF4E6;
+}
+
+/* Toolkit hero */
+
+html[data-season="diwali"] .toolkit-hero,
+html[data-season="diwali"] .wellness-history-hero,
+html[data-season="diwali"] .saved-tools-hero,
+html[data-season="diwali"] .calm-sounds-hero {
+  background:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(240,187,115,.13),
+      transparent 55%
+    ),
+    linear-gradient(135deg,#352033,#54283E);
+
+  border-color: rgba(240,187,115,.3);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.toolkit-hero h1,
+html[data-season="diwali"]
+.toolkit-section-header h2 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(
+  .toolkit-eyebrow,
+  .toolkit-section-header > div > span
+) {
+  color: #F0BB73;
+}
+
+/* Shared activity surfaces */
+
+html[data-season="diwali"]
+:is(
+  .toolkit-recent-item,
+  .toolkit-help-card,
+  .breathing-intro-card,
+  .breathing-complete,
+  .grounding-card,
+  .grounding-progress-card,
+  .grounding-complete-card,
+  .focus-session-card,
+  .focus-settings-card,
+  .focus-complete,
+  .gratitude-card,
+  .gratitude-entry,
+  .gratitude-complete,
+  .movement-card,
+  .movement-progress-card,
+  .movement-complete,
+  .emotional-card,
+  .emotional-result,
+  .emotional-recommendations,
+  .thought-dump-card,
+  .thought-dump-complete,
+  .calm-sound-card,
+  .calm-sounds-mixer,
+  .body-scan-figure-card,
+  .body-scan-session-card,
+  .body-scan-complete,
+  .wellness-history-item,
+  .recent-tool-item
+) {
+  background-color: #352033;
+  background-image: none;
+  border-color: rgba(240,187,115,.25);
+  color: #FFF4E6;
+}
+
+/* Headings inside cards */
+
+html[data-season="diwali"]
+:is(
+  .toolkit-page,
+  .breathing-page,
+  .grounding-page,
+  .focus-page,
+  .gratitude-page,
+  .movement-page,
+  .emotional-page,
+  .thought-dump-page,
+  .calm-sounds-page,
+  .body-scan-page,
+  .wellness-history-page
+) :is(h1,h2,h3) {
+  color: #FFF4E6;
+}
+
+/* Descriptions */
+
+html[data-season="diwali"]
+:is(
+  .toolkit-section-header > p,
+  .toolkit-hero__content > p,
+  .toolkit-recent-item div span,
+  .toolkit-help-card__copy p
+) {
+  color: #DCC4CB;
+}
+
+/* Activity selectors */
+
+html[data-season="diwali"]
+:is(
+  .breathing-round-selector,
+  .focus-preset,
+  .emotional-option,
+  .thought-dump-category,
+  .community-chat-entry-choice
+) {
+  background: #45283D;
+  border-color: rgba(240,187,115,.27);
+  color: #FFF4E6;
+}
+
+/* Inputs */
+
+html[data-season="diwali"]
+:is(
+  .grounding-input,
+  .emotional-note,
+  .thought-dump-input
+) {
+  background: #261525;
+  border-color: rgba(240,187,115,.3);
+  color: #FFF4E6;
+}
+
+/* Primary actions */
+
+html[data-season="diwali"]
+:is(
+  .toolkit-primary-action,
+  .breathing-primary-control,
+  .grounding-primary-button,
+  .focus-primary,
+  .gratitude-primary,
+  .movement-primary,
+  .emotional-primary,
+  .thought-dump-primary
+) {
+  background: #F0BB73;
+  border-color: #F0BB73;
+  color: #261525;
+}
+
+/* Secondary actions */
+
+html[data-season="diwali"]
+:is(
+  .toolkit-secondary-action,
+  .breathing-secondary-control,
+  .grounding-secondary-button,
+  .focus-secondary,
+  .gratitude-secondary,
+  .movement-secondary,
+  .emotional-secondary,
+  .thought-dump-secondary
+) {
+  background: #45283D;
+  border-color: rgba(240,187,115,.3);
+  color: #FFF4E6;
+}
+
+/* Progress indicators should remain readable */
+
+html[data-season="diwali"]
+:is(
+  .grounding-progress-track,
+  .movement-progress-track,
+  .gratitude-progress
+) {
+  background-color: rgba(255,244,230,.12);
+}
+
+/* ==========================================
+   DIWALI — COMMUNITY AND MESSAGES
+   ========================================== */
+
+/* Page backgrounds */
+
+html[data-season="diwali"]
+:is(
+  .community-page,
+  .community-chat-page,
+  .messages-page,
+  .community-profile-main
+) {
+  color: #FFF4E6;
+}
+
+/* Community containers */
+
+html[data-season="diwali"]
+:is(
+  .community-header,
+  .community-post-card,
+  .community-guidelines-card,
+  .community-feed-filter,
+  .community-modal__header,
+  .community-profile-info-card
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.25);
+}
+
+html[data-season="diwali"]
+.community-page :is(h1,h2,h3,strong) {
+  color: #FFF4E6;
+}
+
+/* Feed controls */
+
+html[data-season="diwali"]
+:is(
+  .community-post-action,
+  .community-identity-option,
+  .community-header__identity,
+  .community-create-preview
+) {
+  background-color: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.22);
+}
+
+/* Comments */
+
+html[data-season="diwali"]
+:is(
+  .comments-drawer__header,
+  .comment-item__bubble
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.24);
+}
+
+/* Community chat */
+
+html[data-season="diwali"]
+.community-chat-hero {
+  background: linear-gradient(125deg,#352033,#54283E);
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.3);
+}
+
+html[data-season="diwali"]
+:is(
+  .community-chat-entry__card,
+  .community-chat-panel,
+  .community-chat-members,
+  .community-chat-toolbar,
+  .community-chat-member,
+  .community-chat-identity
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.23);
+}
+
+html[data-season="diwali"]
+.community-chat-page :is(h1,h2,h3) {
+  color: #FFF4E6;
+}
+
+/* Direct Messages */
+
+html[data-season="diwali"]
+:is(
+  .messages-layout,
+  .messages-conversation-panel,
+  .messages-chat-area,
+  .messages-details-panel,
+  .messages-modal,
+  .messages-empty-chat
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.25);
+}
+
+html[data-season="diwali"]
+:is(
+  .messages-conversation-panel__header,
+  .messages-chat-header,
+  .messages-details-panel__header
+) {
+  background: #45283D;
+  color: #FFF4E6;
+  border-bottom-color: rgba(240,187,115,.22);
+}
+
+html[data-season="diwali"]
+.messages-chat-scroll {
+  background: #261525;
+}
+
+/* Message bubbles */
+
+html[data-season="diwali"]
+.message-bubble {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.2);
+}
+
+html[data-season="diwali"]
+.message-bubble-row--own .message-bubble {
+  background: #624052;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.35);
+}
+
+/* Conversation choices */
+
+html[data-season="diwali"]
+:is(
+  .messages-conversation-item,
+  .community-chat-entry-choice,
+  .direct-message-participant
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.22);
+}
+
+/* Message composer */
+
+html[data-season="diwali"]
+:is(
+  .message-composer,
+  .message-composer-context,
+  .direct-messages-search
+) {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.28);
+}
+
+html[data-season="diwali"]
+.message-composer :is(input,textarea),
+html[data-season="diwali"]
+.direct-messages-search input {
+  background: transparent;
+  color: #FFF4E6;
+}
+
+/* Actions */
+
+html[data-season="diwali"]
+:is(
+  .messages-primary-button,
+  .message-composer__send,
+  .community-primary-button
+) {
+  background: #F0BB73;
+  color: #261525;
+  border-color: #F0BB73;
+}
+
+/* Retain warning/error states and
+   moderation indicators as separate colours. */
+
+/* ==========================================
+   DIWALI — PROFILE AND SETTINGS
+   ========================================== */
+
+html[data-season="diwali"]
+:is(.profile-page, .account-settings) {
+  color: #FFF4E6;
+}
+
+/* Profile surfaces */
+
+html[data-season="diwali"]
+:is(
+  .profile-sidebar-card,
+  .profile-card,
+  .profile-account-item,
+  .profile-completion,
+  .profile-admin-access,
+  .account-settings__card,
+  .account-settings__aside-card,
+  .account-settings__modal
+) {
+  background: #352033;
+  border-color: rgba(240,187,115,.24);
+  color: #FFF4E6;
+}
+
+/* Headings */
+
+html[data-season="diwali"]
+:is(.profile-page, .account-settings)
+:is(h1,h2,h3,strong) {
+  color: #FFF4E6;
+}
+
+/* Account settings hero */
+
+html[data-season="diwali"]
+.account-settings__hero {
+  background:
+    radial-gradient(
+      ellipse at 80% 15%,
+      rgba(240,187,115,.12),
+      transparent 50%
+    ),
+    linear-gradient(135deg,#352033,#54283E);
+
+  border-color: rgba(240,187,115,.3);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.account-settings__eyebrow {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.account-settings__hero p {
+  color: #DCC4CB;
+}
+
+/* Settings sections */
+
+html[data-season="diwali"]
+:is(
+  .account-settings__section-heading p,
+  .account-settings__details span,
+  .account-settings__aside-card p
+) {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+:is(
+  .account-settings__details > div,
+  .account-settings__session-panel,
+  .account-settings__verification-row,
+  .account-settings__profile-link-row,
+  .account-settings__entrance-option
+) {
+  background: #45283D;
+  border-color: rgba(240,187,115,.23);
+  color: #FFF4E6;
+}
+
+/* Navigation */
+
+html[data-season="diwali"]
+.account-settings__quick-nav {
+  background: #352033;
+  border-color: rgba(240,187,115,.23);
+}
+
+html[data-season="diwali"]
+.account-settings__quick-nav a {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.account-settings__quick-nav a.is-active {
+  background: rgba(240,187,115,.15);
+  color: #F0BB73;
+}
+
+/* Form controls */
+
+html[data-season="diwali"]
+:is(
+  .account-settings__field input,
+  .account-settings__password-control,
+  .profile-input-wrap input
+) {
+  background: #261525;
+  border-color: rgba(240,187,115,.26);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.account-settings__button--primary {
+  background: #F0BB73;
+  color: #261525;
+  border-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.account-settings__button--soft,
+html[data-season="diwali"]
+.account-settings__button--outline {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.3);
+}
+
+/* Do not override danger actions,
+   validation feedback, or security warnings. */
+
+/* ==========================================
+   DIWALI — SHARED FINISHING STYLES
+   ========================================== */
+
+/* Improve form readability */
+
+html[data-season="diwali"]
+.dashboard-shell
+:is(input,textarea,select) {
+  color-scheme: dark;
+}
+
+html[data-season="diwali"]
+.dashboard-shell
+:is(input,textarea)::placeholder {
+  color: #BDA1AF;
+}
+
+/* Focus rings */
+
+html[data-season="diwali"]
+.dashboard-shell
+:is(button,a,input,textarea,select):focus-visible {
+  outline: 2px solid #F0BB73;
+  outline-offset: 3px;
+}
+
+/* Scrollbars */
+
+html[data-season="diwali"]
+.dashboard-shell ::-webkit-scrollbar-thumb {
+  background: rgba(240,187,115,.35);
+  border-radius: 999px;
+}
+
+/* Accessible animations */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="diwali"]
+  .dashboard-shell *,
+  html[data-season="diwali"]
+  .dashboard-shell *::before,
+  html[data-season="diwali"]
+  .dashboard-shell *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================
+   DIWALI — SAFETY & REPORTS
+   ========================================== */
+
+html[data-season="diwali"] .safety-reports {
+  --safety-gold: #F0BB73;
+  --safety-border: rgba(240,187,115,.25);
+  --safety-muted: #DCC4CB;
+
+  color: #FFF4E6;
+}
+
+/* Hero */
+
+html[data-season="diwali"] .safety-reports__hero {
+  background:
+    radial-gradient(
+      ellipse at 85% 25%,
+      rgba(240,187,115,.12),
+      transparent 52%
+    ),
+    linear-gradient(125deg,#352033,#54283E);
+
+  border: 1px solid var(--safety-border);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.safety-reports__hero h1 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.safety-reports__hero-copy p {
+  color: #E6C8CB;
+}
+
+html[data-season="diwali"]
+.safety-reports__eyebrow {
+  color: #F0BB73;
+}
+
+/* Decorative safety illustration */
+
+html[data-season="diwali"]
+.safety-reports__hero-orbit {
+  border-color: rgba(240,187,115,.22);
+}
+
+html[data-season="diwali"]
+.safety-reports__hero-visual {
+  color: #F0BB73;
+}
+
+/* Primary actions */
+
+html[data-season="diwali"]
+.safety-reports__primary-button {
+  background: #F0BB73;
+  color: #261525;
+  border-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.safety-reports__primary-button:hover {
+  background: #F8D9B6;
+}
+
+html[data-season="diwali"]
+.safety-reports__secondary-button {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.34);
+}
+
+/* Quick tools */
+
+html[data-season="diwali"]
+.safety-reports__quick-tools > * {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: var(--safety-border);
+}
+
+html[data-season="diwali"]
+.safety-reports__quick-tools :is(h3,strong) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.safety-reports__quick-tools p {
+  color: #DCC4CB;
+}
+
+/* Report history workspace */
+
+html[data-season="diwali"]
+.safety-reports__workspace,
+html[data-season="diwali"]
+.safety-reports__principles {
+  background: #352033;
+  color: #FFF4E6;
+  border-color: var(--safety-border);
+}
+
+html[data-season="diwali"]
+.safety-reports__workspace-header :is(h2,h3),
+html[data-season="diwali"]
+.safety-reports__principles-heading {
+  color: #FFF4E6;
+}
+
+/* Filters */
+
+html[data-season="diwali"]
+.safety-reports__filters button {
+  background: #45283D;
+  color: #E6C8CB;
+  border-color: var(--safety-border);
+}
+
+html[data-season="diwali"]
+.safety-reports__filters button.is-active {
+  background: rgba(240,187,115,.17);
+  color: #F0BB73;
+  border-color: #F0BB73;
+}
+
+/* Report cards */
+
+html[data-season="diwali"]
+.safety-report-card {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: var(--safety-border);
+}
+
+html[data-season="diwali"]
+.safety-report-card__content :is(h3,h4,strong) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.safety-report-card__description,
+html[data-season="diwali"]
+.safety-report-card__footer {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.safety-report-card__icon {
+  background: rgba(240,187,115,.13);
+  color: #F0BB73;
+}
+
+/* Empty state and principles */
+
+html[data-season="diwali"]
+.safety-reports__state,
+html[data-season="diwali"]
+.safety-reports__principle-grid > * {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: var(--safety-border);
+}
+
+/* Report details modal */
+
+html[data-season="diwali"]
+.safety-report-modal {
+  background: #352033;
+  color: #FFF4E6;
+  border: 1px solid var(--safety-border);
+}
+
+html[data-season="diwali"]
+.safety-report-modal__header,
+html[data-season="diwali"]
+.safety-report-modal__section,
+html[data-season="diwali"]
+.safety-report-modal__privacy {
+  background: #45283D;
+  border-color: var(--safety-border);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.safety-report-modal :is(h2,h3,strong) {
+  color: #FFF4E6;
+}
+
+/* Preserve pending, reviewing, resolved
+   and rejected status colours. */
+
+/* ==========================================
+   DIWALI — ADMIN PANEL
+   ========================================== */
+
+html[data-season="diwali"] .admin-layout {
+  --admin-diwali-bg: #211321;
+  --admin-diwali-card: #352033;
+  --admin-diwali-raised: #45283D;
+  --admin-diwali-gold: #F0BB73;
+  --admin-diwali-text: #FFF4E6;
+  --admin-diwali-muted: #DCC4CB;
+  --admin-diwali-border: rgba(240,187,115,.25);
+
+  background: var(--admin-diwali-bg);
+  color: var(--admin-diwali-text);
+}
+
+/* ADMIN SIDEBAR */
+
+html[data-season="diwali"]
+.admin-layout-sidebar {
+  background: linear-gradient(180deg,#261525,#352033);
+  color: #FFF4E6;
+  border-right: 1px solid rgba(240,187,115,.22);
+}
+
+html[data-season="diwali"]
+.admin-layout-brand,
+html[data-season="diwali"]
+.admin-layout-brand-copy {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.admin-layout-nav-label {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.admin-layout-nav-item {
+  color: #E6C8CB;
+}
+
+html[data-season="diwali"]
+.admin-layout-nav-item:hover {
+  background: rgba(240,187,115,.1);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.admin-layout-nav-item-active {
+  background: rgba(240,187,115,.17);
+  color: #F0BB73;
+  border-color: rgba(240,187,115,.3);
+}
+
+html[data-season="diwali"]
+.admin-layout-sidebar-footer {
+  border-top-color: rgba(240,187,115,.2);
+}
+
+/* ADMIN PAGE BACKGROUND */
+
+html[data-season="diwali"]
+.admin-layout-content,
+html[data-season="diwali"]
+.admin-layout-page {
+  background:
+    radial-gradient(
+      ellipse at 85% 5%,
+      rgba(134,80,100,.18),
+      transparent 45%
+    ),
+    #211321;
+
+  color: #FFF4E6;
+}
+
+/* ADMIN MOBILE HEADER */
+
+html[data-season="diwali"]
+.admin-layout-mobile-header {
+  background: #261525;
+  border-bottom: 1px solid rgba(240,187,115,.2);
+  color: #FFF4E6;
+}
+
+/* ADMIN SECTION HEADINGS */
+
+html[data-season="diwali"]
+:is(
+  .admin-dashboard-page,
+  .admin-users-page,
+  .admin-user-details-page,
+  .admin-reports-page,
+  .admin-report-details-page,
+  .admin-decision-page,
+  .admin-testimonials-page,
+  .admin-audit-page,
+  .admin-analytics-page,
+  .admin-monitoring-page
+) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.admin-layout-page
+:is(h1,h2,h3,h4) {
+  color: #FFF4E6;
+}
+
+/* COMMON ADMIN CARDS */
+
+html[data-season="diwali"]
+:is(
+  .admin-dashboard-card,
+  .admin-analytics-card,
+  .admin-analytics-panel,
+  .admin-users-summary-card,
+  .admin-users-panel,
+  .admin-user-details-profile,
+  .admin-user-details-stat,
+  .admin-user-details-section,
+  .admin-user-details-moderation-card,
+  .admin-reports-stat,
+  .admin-reports-content,
+  .admin-report-card,
+  .admin-report-details-header,
+  .admin-report-details-sidebar,
+  .admin-report-details-moderation,
+  .admin-decision-stat,
+  .admin-decision-panel,
+  .admin-decision-card,
+  .admin-testimonials-stat,
+  .admin-testimonial-card,
+  .admin-audit-summary-card,
+  .admin-audit-panel,
+  .admin-audit-card,
+  .monitoring-metric-card,
+  .monitoring-section
+) {
+  background: #352033;
+  border-color: rgba(240,187,115,.24);
+  color: #FFF4E6;
+}
+
+/* Raised panels */
+
+html[data-season="diwali"]
+:is(
+  .admin-dashboard-activity,
+  .admin-users-toolbar,
+  .admin-reports-toolbar,
+  .admin-decision-toolbar,
+  .admin-audit-toolbar,
+  .admin-testimonials-toolbar,
+  .admin-user-details-info-item,
+  .admin-report-details-target,
+  .admin-decision-expanded
+) {
+  background: #45283D;
+  border-color: rgba(240,187,115,.23);
+  color: #FFF4E6;
+}
+
+/* ADMIN ACCENTS */
+
+html[data-season="diwali"]
+:is(
+  .admin-dashboard-eyebrow,
+  .admin-users-eyebrow,
+  .admin-analytics-eyebrow,
+  .admin-audit-eyebrow,
+  .admin-decision-eyebrow,
+  .admin-testimonials-eyebrow,
+  .admin-dashboard-card-value,
+  .monitoring-metric-value
+) {
+  color: #F0BB73;
+}
+
+/* SUPPORTING TEXT */
+
+html[data-season="diwali"]
+.admin-layout-page
+:is(
+  .admin-dashboard-card-top,
+  .admin-analytics-card-meta,
+  .admin-user-details-email,
+  .admin-report-description,
+  .admin-audit-meta,
+  .monitoring-metric-description
+) {
+  color: #DCC4CB;
+}
+
+/* ADMIN TABLES */
+
+html[data-season="diwali"]
+:is(
+  .admin-users-table-wrapper,
+  .admin-analytics-table-wrap,
+  .monitoring-table-wrapper,
+  .pulse-diagnostics-table-wrapper
+) {
+  background: #352033;
+  border-color: rgba(240,187,115,.22);
+}
+
+html[data-season="diwali"]
+:is(
+  .admin-users-table,
+  .admin-analytics-table,
+  .monitoring-table,
+  .pulse-diagnostics-table
+) {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(
+  .admin-users-table,
+  .admin-analytics-table,
+  .monitoring-table,
+  .pulse-diagnostics-table
+) thead {
+  background: #45283D;
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+:is(
+  .admin-users-table,
+  .admin-analytics-table,
+  .monitoring-table,
+  .pulse-diagnostics-table
+) th,
+html[data-season="diwali"]
+:is(
+  .admin-users-table,
+  .admin-analytics-table,
+  .monitoring-table,
+  .pulse-diagnostics-table
+) td {
+  border-color: rgba(240,187,115,.16);
+}
+
+html[data-season="diwali"]
+.admin-users-row:hover {
+  background: rgba(240,187,115,.06);
+}
+
+/* FILTERS AND INPUTS */
+
+html[data-season="diwali"]
+:is(
+  .admin-users-search,
+  .admin-users-filters,
+  .admin-reports-search,
+  .admin-reports-filters,
+  .admin-decision-search,
+  .admin-decision-filters,
+  .admin-audit-search,
+  .admin-audit-filters,
+  .admin-testimonials-search,
+  .admin-analytics-refresh,
+  .monitoring-refresh-button
+) {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: rgba(240,187,115,.26);
+}
+
+/* MONITORING PANELS */
+
+html[data-season="diwali"]
+:is(
+  .pulse-anomaly-panel,
+  .pulse-diagnostics-panel,
+  .pulse-status-panel,
+  .pulse-network-panel,
+  .pulse-traffic-panel
+) {
+  background: #352033;
+  border-color: rgba(240,187,115,.25);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(
+  .pulse-anomaly-header,
+  .pulse-diagnostics-header,
+  .pulse-status-header,
+  .pulse-network-header,
+  .pulse-traffic-header
+) {
+  border-color: rgba(240,187,115,.2);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(
+  .pulse-diagnostics-search,
+  .pulse-diagnostics-filter,
+  .pulse-network-node-button
+) {
+  background: #45283D;
+  border-color: rgba(240,187,115,.23);
+  color: #FFF4E6;
+}
+
+/* BUTTONS */
+
+html[data-season="diwali"]
+:is(
+  .admin-dashboard-refresh,
+  .admin-users-refresh,
+  .admin-reports-refresh,
+  .admin-decision-refresh,
+  .admin-testimonials-refresh,
+  .admin-audit-refresh,
+  .admin-user-details-refresh
+) {
+  background: #45283D;
+  color: #F0BB73;
+  border-color: rgba(240,187,115,.3);
+}
+
+/* FOCUS */
+
+html[data-season="diwali"]
+.admin-layout
+:is(button,a,input,select,textarea):focus-visible {
+  outline: 2px solid #F0BB73;
+  outline-offset: 3px;
+}
+
+/* IMPORTANT:
+   Do not recolour these semantic status classes:
+   active / suspended / banned
+   pending / approved / rejected
+   critical / warning / healthy
+   error / success / danger
+
+   They must remain visually distinguishable.
+*/
