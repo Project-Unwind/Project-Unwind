@@ -14,13 +14,15 @@ import "./LandingPage.css";
 import "./Halloween/HalloweenTheme.css";
 
 function LandingPage() {
-  const { halloweenMode } = useTheme();
+  const { halloweenMode, diwaliMode } = useTheme();
 
   return (
-    <div
-  className={`landing-page ${
-    halloweenMode ? "landing-halloween" : ""
-  }`}
+   <div
+  className={[
+    "landing-page",
+    halloweenMode ? "landing-halloween" : "",
+    diwaliMode ? "landing-diwali" : ""
+  ].filter(Boolean).join(" ")}
 >
      <Navbar />
 
