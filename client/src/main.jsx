@@ -34,6 +34,7 @@ import "./index.css";
 
 // Seasonal themes
 import "./styles/themes/diwali.css";
+import "./styles/themes/DiwaliDashboard.css";
 
 
 const posthogOptions = {

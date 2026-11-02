@@ -30,7 +30,7 @@ import "./AboutPage.css";
 const founders = [
   {
     id: "harshita",
-    name: "Harshita",
+    name: "Harshita Arava",
     role: "Founder",
     education: "M.Sc. Clinical Psychology",
     institution: "Nanavati Maniben College",
@@ -66,7 +66,7 @@ const founders = [
   },
   {
     id: "parth",
-    name: "Parth",
+    name: "Parth Nikam",
     role: "Co-Founder, Designer & Analyst",
     education: "B.E. Information Technology",
     institution: "Atharva College of Engineering, Mumbai",
