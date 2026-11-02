@@ -1,0 +1,608 @@
+
+/* ==========================================
+   PROJECT UNWIND — DIWALI THEME
+   Premium Plum & Champagne Gold
+   ========================================== */
+
+/* Core colour system */
+
+:root[data-season="diwali"] {
+  color-scheme: dark;
+
+  /* Brand colours */
+  --dw-plum: #261525;
+  --dw-burgundy: #54283E;
+  --dw-rosewood: #865064;
+  --dw-gold: #F0BB73;
+  --dw-peach: #F8D9B6;
+  --dw-ivory: #FFF4E6;
+
+  /* Backgrounds */
+  --dw-bg: #211321;
+  --dw-surface: #352033;
+  --dw-surface-alt: #45283D;
+  --dw-surface-soft: #3B2639;
+
+  /* Typography */
+  --dw-text: #FFF4E6;
+  --dw-muted: #DCC4CB;
+  --dw-subtle: #BDA1AF;
+
+  /* Borders and effects */
+  --dw-border: rgba(240,187,115,.22);
+  --dw-border-hover: rgba(240,187,115,.55);
+
+  --dw-shadow:
+    0 16px 40px rgba(9,5,12,.28);
+
+  --dw-glow:
+    0 0 24px rgba(240,187,115,.16);
+
+  --dw-gradient: linear-gradient(
+    135deg,
+    #261525 0%,
+    #54283E 55%,
+    #865064 100%
+  );
+
+  /* Map existing Unwind variables */
+  --primary: #F0BB73;
+  --primary-dark: #E4A75C;
+  --primary-darker: #D99344;
+  --primary-soft: #45283D;
+
+  --gold: #F0BB73;
+  --gold-light: #F8D9B6;
+
+  --background: #211321;
+  --surface: #352033;
+  --surface-soft: #3B2639;
+
+  --text: #FFF4E6;
+  --muted: #DCC4CB;
+
+  --border: rgba(240,187,115,.22);
+  --shadow:
+    0 16px 40px rgba(9,5,12,.28);
+
+  background: var(--dw-bg);
+  color: var(--dw-text);
+}
+
+/* Global background */
+
+html[data-season="diwali"] body {
+  background:
+    radial-gradient(
+      ellipse at 85% 0%,
+      rgba(134,80,100,.22),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 5% 75%,
+      rgba(84,40,62,.30),
+      transparent 55%
+    ),
+    var(--dw-bg);
+
+  color: var(--dw-text);
+}
+
+/* Text selection */
+
+html[data-season="diwali"] ::selection {
+  background: var(--dw-gold);
+  color: var(--dw-plum);
+}
+
+/* Reusable seasonal components */
+
+[data-season="diwali"] .dw-page {
+  background: var(--dw-bg);
+  color: var(--dw-text);
+}
+
+[data-season="diwali"] .dw-card {
+  background: linear-gradient(
+    145deg,
+    var(--dw-surface),
+    var(--dw-surface-alt)
+  );
+
+  color: var(--dw-text);
+  border: 1px solid var(--dw-border);
+  border-radius: 20px;
+  box-shadow: var(--dw-shadow);
+}
+
+[data-season="diwali"] .dw-glass {
+  background: rgba(84,40,62,.58);
+  border: 1px solid var(--dw-border);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+[data-season="diwali"] .dw-heading {
+  color: var(--dw-ivory);
+  font-family:
+    "DM Serif Display",
+    Georgia,
+    serif;
+}
+
+[data-season="diwali"] .dw-gold-text {
+  color: var(--dw-gold);
+}
+
+/* Buttons */
+
+[data-season="diwali"] .dw-button-primary {
+  background: linear-gradient(
+    135deg,
+    var(--dw-gold),
+    var(--dw-peach)
+  );
+
+  color: var(--dw-plum);
+  border: 1px solid var(--dw-gold);
+  border-radius: 999px;
+  font-weight: 700;
+  transition:
+    background .25s ease,
+    box-shadow .25s ease,
+    transform .25s ease;
+}
+
+[data-season="diwali"]
+.dw-button-primary:hover {
+  background: var(--dw-peach);
+  box-shadow: var(--dw-glow);
+  transform: translateY(-2px);
+}
+
+[data-season="diwali"] .dw-button-secondary {
+  background: rgba(84,40,62,.4);
+  color: var(--dw-ivory);
+  border: 1px solid var(--dw-gold);
+  border-radius: 999px;
+}
+
+/* Forms */
+
+[data-season="diwali"] .dw-input {
+  background: var(--dw-surface);
+  color: var(--dw-text);
+  border: 1px solid var(--dw-border);
+}
+
+[data-season="diwali"]
+.dw-input::placeholder {
+  color: var(--dw-subtle);
+}
+
+[data-season="diwali"]
+:is(
+  .dw-input,
+  .dw-button-primary,
+  .dw-button-secondary
+):focus-visible {
+  outline: 2px solid var(--dw-gold);
+  outline-offset: 3px;
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  [data-season="diwali"] * {
+    scroll-behavior: auto !important;
+  }
+
+  [data-season="diwali"]
+  .dw-button-primary {
+    transition: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  [data-season="diwali"] .dw-card,
+  [data-season="diwali"] .dw-glass {
+    border-radius: 16px;
+  }
+}
+
+/* ========================================
+   DIWALI LANDING — NAVBAR & HERO
+   ======================================== */
+
+.landing-page.landing-diwali {
+  --dw-hero-gold: #F0BB73;
+  --dw-hero-ivory: #FFF4E6;
+  --dw-hero-muted: #E6C8CB;
+}
+
+/* NAVIGATION */
+
+.landing-diwali .landing-navbar,
+.landing-diwali .landing-navbar--scrolled {
+  background: rgba(38, 21, 37, 0.88);
+  border-bottom: 1px solid rgba(240, 187, 115, 0.18);
+  box-shadow: 0 8px 32px rgba(10, 5, 13, 0.2);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.landing-diwali .landing-navbar__brand-text {
+  color: #FFF4E6;
+  text-shadow: 0 0 20px rgba(240, 187, 115, 0.22);
+}
+
+.landing-diwali
+.landing-navbar__desktop-navigation a,
+.landing-diwali .landing-navbar__login {
+  color: #FFF4E6;
+}
+
+.landing-diwali
+.landing-navbar__desktop-navigation a:hover,
+.landing-diwali .landing-navbar__login:hover {
+  color: #F0BB73;
+}
+
+.landing-diwali .landing-navbar__menu-button {
+  background: rgba(84, 40, 62, 0.95);
+  color: #F0BB73;
+  border: 1px solid rgba(240, 187, 115, 0.35);
+  box-shadow: 0 6px 20px rgba(10, 5, 13, 0.2);
+}
+
+/* HERO BACKGROUND */
+
+.landing-diwali .premium-hero {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse at 72% 42%,
+      rgba(166, 83, 78, 0.28),
+      transparent 55%
+    ),
+    linear-gradient(
+      125deg,
+      #261525 0%,
+      #452239 55%,
+      #683B50 100%
+    );
+  color: #FFF4E6;
+}
+
+/* WebP scene with dark left-hand overlay */
+
+.landing-diwali .premium-hero__media {
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(30, 15, 29, 0.96) 0%,
+      rgba(38, 19, 36, 0.84) 40%,
+      rgba(38, 19, 36, 0.2) 100%
+    ),
+    url("/seasonal/diwali/hero-diyas.webp");
+  background-position: center, center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.landing-diwali .premium-hero__overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(28, 12, 26, 0.75),
+    transparent 38%
+  );
+}
+
+/* HERO TYPOGRAPHY */
+
+.landing-diwali .premium-hero h1 {
+  color: #FFF4E6;
+  font-family:
+    "Cormorant Garamond",
+    "Playfair Display",
+    Georgia,
+    serif;
+}
+
+.landing-diwali .premium-hero h1 span {
+  color: #F0BB73;
+  -webkit-text-fill-color: #F0BB73;
+  background: none;
+  text-shadow: 0 0 30px rgba(240,187,115,.15);
+}
+
+.landing-diwali .landing-eyebrow {
+  color: #F0BB73;
+  background: rgba(84, 40, 62, 0.45);
+  border: 1px solid rgba(240, 187, 115, 0.35);
+}
+
+.landing-diwali .landing-eyebrow > span {
+  color: #261525;
+  background: #F0BB73;
+}
+
+.landing-diwali .premium-hero__description {
+  color: #F8E2DF;
+}
+
+/* HERO BUTTONS */
+
+.landing-diwali
+.premium-hero .landing-button--light {
+  background: linear-gradient(
+    135deg,
+    #F8D9B6,
+    #F0BB73
+  );
+  color: #261525;
+  border: 1px solid #F0BB73;
+  box-shadow: 0 12px 32px rgba(12, 5, 12, 0.3);
+}
+
+.landing-diwali
+.premium-hero .landing-button--light:hover {
+  background: #FFE0B8;
+  box-shadow: 0 0 24px rgba(240,187,115,.32);
+}
+
+.landing-diwali
+.premium-hero .landing-button--glass {
+  color: #FFF4E6;
+  background: rgba(84, 40, 62, 0.4);
+  border: 1px solid rgba(240, 187, 115, 0.55);
+}
+
+/* ASSURANCE LABELS */
+
+.landing-diwali .premium-hero__assurance {
+  color: #F8E2DF;
+}
+
+.landing-diwali .premium-hero__assurance svg {
+  color: #F0BB73;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .landing-diwali .premium-hero__media {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(38, 21, 37, 0.88),
+        rgba(38, 21, 37, 0.75)
+      ),
+      url("/seasonal/diwali/hero-diyas.webp");
+
+    background-position: center, 65% center;
+  }
+
+  .landing-diwali .premium-hero h1 {
+    color: #FFF4E6;
+  }
+
+  .landing-diwali .mobile-navigation {
+    background: #352033;
+    color: #FFF4E6;
+    border: 1px solid rgba(240,187,115,.25);
+  }
+
+  .landing-diwali .mobile-navigation a {
+    color: #FFF4E6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-diwali .landing-navbar,
+  .landing-diwali .landing-button {
+    transition: none;
+  }
+}
+
+/* =========================================
+   DIWALI — GLASSMORPHISM DASHBOARD
+   ========================================= */
+
+/* Main transparent dashboard */
+
+.landing-diwali .wellness-dashboard {
+  background: rgba(84, 40, 62, 0.28);
+
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+
+  border: 1px solid rgba(255, 218, 174, 0.38);
+
+  box-shadow:
+    0 25px 75px rgba(15, 5, 20, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+  color: #FFF4E6;
+}
+
+/* Transparent header */
+
+.landing-diwali .wellness-dashboard__header {
+  background: transparent;
+  color: #FFF4E6;
+}
+
+.landing-diwali .wellness-dashboard__profile strong {
+  color: #FFF4E6;
+}
+
+.landing-diwali .wellness-dashboard__profile small {
+  color: #F8D9B6;
+}
+
+/* Mood check-in */
+
+.landing-diwali .wellness-dashboard__check-in {
+  background: rgba(27, 76, 68, 0.64);
+
+  border: 1px solid rgba(168, 199, 165, 0.25);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  color: #FFF4E6;
+}
+
+/* Bottom dashboard cards */
+
+.landing-diwali .dashboard-card {
+  background: rgba(255, 244, 230, 0.10);
+
+  border: 1px solid rgba(255, 218, 174, 0.20);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  color: #FFF4E6;
+}
+
+.landing-diwali .dashboard-card strong {
+  color: #FFF4E6;
+}
+
+.landing-diwali .dashboard-card small {
+  color: #E6C8CB;
+}
+
+/* Feature icons */
+
+.landing-diwali .dashboard-card__icon {
+  background: rgba(240, 187, 115, 0.15);
+  color: #F0BB73;
+}
+
+/* Privacy card */
+
+.landing-diwali .wellness-dashboard__privacy {
+  background: rgba(84, 40, 62, 0.30);
+
+  border: 1px solid rgba(240, 187, 115, 0.18);
+}
+
+.landing-diwali .wellness-dashboard__privacy > span {
+  background: rgba(240, 187, 115, 0.15);
+  color: #F0BB73;
+}
+
+.landing-diwali .wellness-dashboard__privacy strong {
+  color: #FFF4E6;
+}
+
+.landing-diwali .wellness-dashboard__privacy p {
+  color: #DCC4CB;
+}
+
+/* Mood buttons */
+
+.landing-diwali .wellness-dashboard__moods button {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.landing-diwali
+.wellness-dashboard__moods
+.wellness-dashboard__mood--active {
+  background: #FFF4E6;
+  border-color: #F0BB73;
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-transparency: reduce) {
+  .landing-diwali .wellness-dashboard {
+    background: #45283D;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+/* =====================================
+   DIWALI — FULLY TRANSPARENT DASHBOARD
+   ===================================== */
+
+.landing-diwali .wellness-dashboard,
+.landing-diwali .wellness-dashboard__header,
+.landing-diwali .wellness-dashboard__check-in,
+.landing-diwali .dashboard-card,
+.landing-diwali .wellness-dashboard__privacy {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Optional: remove all dashboard borders */
+
+.landing-diwali .wellness-dashboard,
+.landing-diwali .dashboard-card,
+.landing-diwali .wellness-dashboard__check-in {
+  border: none !important;
+}
+
+/* Preserve readable text */
+
+.landing-diwali .wellness-dashboard {
+  color: #FFF4E6;
+}
+
+.landing-diwali .wellness-dashboard__profile strong,
+.landing-diwali .dashboard-card strong {
+  color: #FFF4E6;
+}
+/* =====================================
+   DIWALI — TRANSPARENT OUTLINED DASHBOARD
+   ===================================== */
+
+/* Main dashboard outline */
+.landing-diwali .wellness-dashboard {
+  background: transparent !important;
+  border: 1px solid rgba(240, 187, 115, 0.55) !important;
+  border-radius: 24px;
+  box-shadow: none !important;
+}
+
+/* Mood check-in box */
+.landing-diwali .wellness-dashboard__check-in {
+  background: transparent !important;
+  border: 1px solid rgba(240, 187, 115, 0.35) !important;
+  border-radius: 20px;
+}
+
+/* Bottom feature cards */
+.landing-diwali .dashboard-card {
+  background: transparent !important;
+  border: 1px solid rgba(240, 187, 115, 0.35) !important;
+  border-radius: 18px;
+}
+
+/* Privacy section */
+.landing-diwali .wellness-dashboard__privacy {
+  background: transparent !important;
+  border: 1px solid rgba(240, 187, 115, 0.3) !important;
+  border-radius: 16px;
+}
+
+/* Header separator */
+.landing-diwali .wellness-dashboard__header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(240, 187, 115, 0.25) !important;
+}
+
+/* Slightly brighter borders on hover */
+.landing-diwali .dashboard-card:hover {
+  border-color: rgba(240, 187, 115, 0.7) !important;
+}
