@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { useTheme } from "../../context/ThemeContext";
 import HalloweenBat from "../halloween/HalloweenBat";
 import {
   ArrowRight,
@@ -38,6 +39,7 @@ const itemVariants = {
 };
 
 function HeroSection() {
+  const { diwaliMode } = useTheme();
   const shouldReduceMotion = useReducedMotion();
 const {
   isAuthenticated,
