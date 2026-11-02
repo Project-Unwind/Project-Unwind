@@ -1,5 +1,6 @@
 import {
   Check,
+  Flame,
   Moon,
   Settings,
   Sun,
@@ -73,7 +74,9 @@ useEffect(() => {
   theme,
   setTheme,
   halloweenMode,
-  setHalloweenMode
+  setHalloweenMode,
+  diwaliMode,
+  setDiwaliMode
 } = useTheme();
 
   return (
@@ -169,14 +172,15 @@ useEffect(() => {
               <div className="landing-settings__themes">
                 <button
                   type="button"
-                  className={
-                    theme === "light"
-                      ? "landing-theme-option landing-theme-option--active"
-                      : "landing-theme-option"
-                  }
-                  onClick={() => {
+                 className={
+  theme === "light" && !halloweenMode && !diwaliMode
+    ? "landing-theme-option landing-theme-option--active"
+    : "landing-theme-option"
+}
+onClick={() => {
   setTheme("light");
   setHalloweenMode(false);
+  setDiwaliMode(false);
 }}
                 >
                   <span className="landing-theme-option__icon">
@@ -195,23 +199,22 @@ useEffect(() => {
                     </small>
                   </div>
 
-                  {theme === "light" && !halloweenMode && (
-                    <Check
-                      size={17}
-                    />
-                  )}
+                  {theme === "light" && !halloweenMode && !diwaliMode && (
+  <Check size={17} />
+)}
                 </button>
 
                 <button
                   type="button"
-                  className={
-                    theme === "dark"
-                      ? "landing-theme-option landing-theme-option--active"
-                      : "landing-theme-option"
-                  }
-                  onClick={() => {
+                 className={
+  theme === "dark" && !halloweenMode && !diwaliMode
+    ? "landing-theme-option landing-theme-option--active"
+    : "landing-theme-option"
+}
+onClick={() => {
   setTheme("dark");
   setHalloweenMode(false);
+  setDiwaliMode(false);
 }}
                 >
                   <span className="landing-theme-option__icon">
@@ -230,11 +233,9 @@ useEffect(() => {
                     </small>
                   </div>
 
-                  {theme === "dark" && !halloweenMode && (
-                    <Check
-                      size={17}
-                    />
-                  )}
+                  {theme === "dark" && !halloweenMode && !diwaliMode && (
+  <Check size={17} />
+)}
                 </button>
                 <button
   type="button"
@@ -256,6 +257,39 @@ useEffect(() => {
 
   {halloweenMode && <Check size={17} />}
 </button>
+
+{/* DIWALI THEME OPTION */}
+<button
+  type="button"
+  className={
+    diwaliMode
+      ? "landing-theme-option landing-theme-option--active"
+      : "landing-theme-option"
+  }
+  aria-pressed={diwaliMode}
+  onClick={() => {
+    setDiwaliMode(true);
+  }}
+>
+  <span className="landing-theme-option__icon">
+    <Flame size={23} />
+  </span>
+
+  <div>
+    <strong>
+      Diwali 🪔
+    </strong>
+
+    <small>
+      Celebrate the festival of lights
+    </small>
+  </div>
+
+  {diwaliMode && (
+    <Check size={17} />
+  )}
+</button>
+
               </div>
             </motion.aside>
           </>
