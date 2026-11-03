@@ -32,9 +32,11 @@ import {
 import "./styles/responsive.css";
 import "./index.css";
 
+
 // Seasonal themes
 import "./styles/themes/diwali.css";
 import "./styles/themes/DiwaliDashboard.css";
+import "./styles/themes/DiwaliAuth.css";
 
 
 const posthogOptions = {
