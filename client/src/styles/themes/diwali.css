@@ -1666,3 +1666,101 @@ html[data-season="diwali"]
     animation: none !important;
   }
 }
+
+/* ==========================================
+   DIWALI — TESTIMONIAL DISPLAY CARD
+   ========================================== */
+
+/* Main testimonial card */
+html[data-season="diwali"]
+.landing-diwali .testimonial-live-card {
+  background: linear-gradient(
+    145deg,
+    #45283D 0%,
+    #352033 55%,
+    #54283E 100%
+  ) !important;
+
+  border: 1px solid rgba(240, 187, 115, 0.35) !important;
+
+  border-radius: 30px;
+
+  box-shadow:
+    0 20px 55px rgba(12, 4, 16, 0.28),
+    inset 0 1px 0 rgba(255, 244, 230, 0.06);
+
+  color: #FFF4E6;
+}
+
+/* Quote icon container */
+html[data-season="diwali"]
+.landing-diwali .testimonial-quote-icon {
+  background: rgba(240, 187, 115, 0.14) !important;
+  color: #F0BB73 !important;
+
+  border: 1px solid rgba(240, 187, 115, 0.24);
+  border-radius: 16px;
+}
+
+/* Testimonial text */
+html[data-season="diwali"]
+.landing-diwali .testimonial-live-card blockquote {
+  color: #FFF4E6 !important;
+}
+
+/* Rating stars */
+html[data-season="diwali"]
+.landing-diwali .testimonial-live-rating {
+  color: #F0BB73 !important;
+}
+
+html[data-season="diwali"]
+.landing-diwali .testimonial-live-rating svg {
+  color: #F0BB73 !important;
+  fill: currentColor;
+}
+
+/* Author */
+html[data-season="diwali"]
+.landing-diwali .testimonial-author-name {
+  color: #F8D9B6 !important;
+}
+
+/* Community label */
+html[data-season="diwali"]
+.landing-diwali .testimonial-author-label {
+  color: #DCC4CB !important;
+}
+
+/* Carousel indicators */
+html[data-season="diwali"]
+.landing-diwali .testimonial-indicator {
+  background: rgba(240, 187, 115, 0.26) !important;
+}
+
+html[data-season="diwali"]
+.landing-diwali .testimonial-indicator.active {
+  background: #F0BB73 !important;
+  box-shadow: 0 0 12px rgba(240, 187, 115, 0.25);
+}
+
+/* Empty state, if no testimonials exist */
+html[data-season="diwali"]
+.landing-diwali .testimonials-placeholder-card {
+  background: linear-gradient(
+    145deg,
+    #352033,
+    #45283D
+  ) !important;
+
+  border: 1px solid rgba(240, 187, 115, 0.3) !important;
+  color: #FFF4E6;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  html[data-season="diwali"]
+  .landing-diwali .testimonial-live-card {
+    border-radius: 22px;
+  }
+}
