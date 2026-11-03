@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
 import HalloweenGhost from "../halloween/HalloweenGhost";
+import DiwaliRangoli from "../diwali/DiwaliRangoli";
 
 function CtaSection() {
   const {
@@ -12,7 +13,7 @@ function CtaSection() {
     initializing
   } = useAuth();
 
-  const { halloweenMode } = useTheme();
+  const { halloweenMode, diwaliMode } = useTheme();
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.3
@@ -47,6 +48,12 @@ function CtaSection() {
     className="cta-card__halloween-ghost"
     size={85}
   />
+)}
+
+{diwaliMode && (
+  <div className="cta-card__diwali-rangoli" aria-hidden="true">
+    <DiwaliRangoli size={560} />
+  </div>
 )}
           <motion.div
             className="cta-card__orb cta-card__orb--one"

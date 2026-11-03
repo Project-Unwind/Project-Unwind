@@ -1,8 +1,13 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useTheme } from "../../context/ThemeContext";
 import HalloweenBat from "../halloween/HalloweenBat";
+import DiwaliToran from "../diwali/DiwaliToran";
+import DiwaliRangoli from "../diwali/DiwaliRangoli";
+import DiwaliRocket from "../diwali/DiwaliRocket";
+import DiwaliDiya from "../diwali/DiwaliDiya";
 import {
   ArrowRight,
   Check,
@@ -41,6 +46,9 @@ const itemVariants = {
 function HeroSection() {
   const { diwaliMode } = useTheme();
   const shouldReduceMotion = useReducedMotion();
+  const navigate = useNavigate();
+const [rocketLaunching, setRocketLaunching] = useState(false);
+const rocketTimerRef = useRef(null);
 const {
   isAuthenticated,
   initializing
@@ -50,9 +58,44 @@ const {
       .getElementById("experience")
       ?.scrollIntoView({ behavior: "smooth" });
   };
+  const handleJourneyClick = (event) => {
+  if (initializing) {
+    event.preventDefault();
+    return;
+  }
+
+  if (!diwaliMode || shouldReduceMotion) {
+    return;
+  }
+
+  event.preventDefault();
+
+  if (rocketLaunching) return;
+
+  setRocketLaunching(true);
+
+ rocketTimerRef.current = window.setTimeout(() => {
+  navigate(isAuthenticated ? "/dashboard" : "/register");
+}, 2250);}
+useEffect(() => {
+  return () => {
+    window.clearTimeout(rocketTimerRef.current);
+  };
+}, []);
 
   return (
     <section className="premium-hero">
+      {diwaliMode && (
+  <div className="diwali-hero-diya">
+    <DiwaliDiya size={150} />
+  </div>
+)}
+
+{diwaliMode && (
+  <div className="diwali-hero-rangoli">
+    <DiwaliRangoli size={250} />
+  </div>
+)}
       <div
   className="premium-hero__media"
   aria-hidden="true"
@@ -137,19 +180,12 @@ const {
                 scale: 0.97
               }}
             >
-             <Link
-  to={
-    isAuthenticated
-      ? "/dashboard"
-      : "/register"
-  }
-  className="landing-button landing-button--light landing-button--large halloween-bat-button"
-  aria-disabled={initializing}
-  onClick={(event) => {
-    if (initializing) {
-      event.preventDefault();
-    }
-  }}
+           
+<Link
+  to={isAuthenticated ? "/dashboard" : "/register"}
+  className="landing-button landing-button--light landing-button--large halloween-bat-button diwali-rocket-cta"
+  aria-disabled={initializing || rocketLaunching}
+  onClick={handleJourneyClick}
 >
   {initializing
     ? "Settling things in..."
@@ -158,8 +194,14 @@ const {
       : "Begin your journey"}
 
   <ArrowRight size={18} />
-  <HalloweenBat />
+
+  {diwaliMode ? (
+    <DiwaliRocket launching={rocketLaunching} />
+  ) : (
+    <HalloweenBat />
+  )}
 </Link>
+
             </motion.div>
 
             <motion.button

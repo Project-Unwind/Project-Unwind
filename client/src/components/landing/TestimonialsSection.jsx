@@ -25,7 +25,7 @@ import "../../pages/Landing/LandingPage.css";
 
 
 function TestimonialsSection() {
-  const { halloweenMode } = useTheme();
+ const { halloweenMode, diwaliMode } = useTheme();
 
   const [testimonials, setTestimonials] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -238,16 +238,15 @@ return (
       <div className="testimonial-share-cta">
 
         <button
-          type="button"
-          className="testimonial-open-button"
-          onClick={() =>
-            setIsModalOpen(true)
-          }
-        >
-          <MessageCircleMore size={19} />
-
-          Share your experience
-        </button>
+  type="button"
+  className={`testimonial-open-button ${
+    diwaliMode ? "testimonial-open-button--diwali" : ""
+  }`}
+  onClick={() => setIsModalOpen(true)}
+>
+  <MessageCircleMore size={19} />
+  Share your experience
+</button>
 
         <span>
           Share with your name or anonymously.

@@ -1,3 +1,4 @@
+
 import {
   Suspense,
   useState
@@ -9,11 +10,15 @@ import {
 
 import DashboardSidebar
   from "../components/dashboard/DashboardSidebar";
-  import HalloweenDashboardCorners
-  from "../components/halloween/HalloweenDashboardCorners";
 
 import DashboardTopbar
   from "../components/dashboard/DashboardTopbar";
+
+import HalloweenDashboardCorners
+  from "../components/halloween/HalloweenDashboardCorners";
+
+import DiwaliToran
+  from "../components/diwali/DiwaliToran";
 
 import AppLoader
   from "../components/common/AppStates/AppLoader";
@@ -22,10 +27,15 @@ import {
   NotificationProvider
 } from "../context/NotificationContext";
 
+import {
+  useTheme
+} from "../context/ThemeContext";
+
 import "../pages/Dashboard/Dashboard.css";
 
-
 function DashboardLayout() {
+  const { diwaliMode } = useTheme();
+
   const [
     sidebarCollapsed,
     setSidebarCollapsed
@@ -35,7 +45,6 @@ function DashboardLayout() {
     mobileSidebarOpen,
     setMobileSidebarOpen
   ] = useState(false);
-
 
   return (
     <NotificationProvider>
@@ -47,39 +56,43 @@ function DashboardLayout() {
         }
       >
         <DashboardSidebar
-          collapsed={
-            sidebarCollapsed
-          }
-          mobileOpen={
-            mobileSidebarOpen
-          }
+          collapsed={sidebarCollapsed}
+          mobileOpen={mobileSidebarOpen}
           onToggleCollapse={() =>
             setSidebarCollapsed(
-              (current) =>
-                !current
+              (current) => !current
             )
           }
           onCloseMobile={() =>
-            setMobileSidebarOpen(
-              false
-            )
+            setMobileSidebarOpen(false)
           }
         />
 
         <div className="dashboard-shell__body">
           <DashboardTopbar
             onOpenSidebar={() =>
-              setMobileSidebarOpen(
-                true
-              )
+              setMobileSidebarOpen(true)
             }
           />
 
           <main className="dashboard-shell__content">
-            
-  <HalloweenDashboardCorners />
+            {/* Existing Halloween decorations */}
+            <HalloweenDashboardCorners />
 
-  <Suspense
+                       {/* Diwali-only hanging Toran row */}
+            {diwaliMode && (
+              <div
+                className="dashboard-diwali-toran"
+                aria-hidden="true"
+              >
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <DiwaliToran key={index} />
+                ))}
+              </div>
+            )}
+
+            {/* All dashboard routes */}
+            <Suspense
               fallback={
                 <AppLoader
                   message="Opening your space…"
@@ -95,6 +108,5 @@ function DashboardLayout() {
     </NotificationProvider>
   );
 }
-
 
 export default DashboardLayout;

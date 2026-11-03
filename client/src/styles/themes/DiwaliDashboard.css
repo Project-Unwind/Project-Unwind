@@ -2421,3 +2421,133 @@ html[data-season="diwali"]
 
    They must remain visually distinguishable.
 */
+
+/* ==========================================
+   DIWALI — DASHBOARD TORAN
+   ========================================== */
+
+html[data-season="diwali"]
+.dashboard-shell__content {
+  position: relative;
+}
+
+/* Hanging garland under dashboard topbar */
+
+html[data-season="diwali"]
+.dashboard-diwali-toran {
+  position: relative;
+  z-index: 2;
+
+  width: min(620px, 80%);
+  margin: -4px auto 12px;
+
+  pointer-events: none;
+  user-select: none;
+  opacity: .95;
+}
+
+/* Reuse the original animated component */
+
+html[data-season="diwali"]
+.dashboard-diwali-toran .diwali-toran {
+  width: 100%;
+}
+
+html[data-season="diwali"]
+.dashboard-diwali-toran .diwali-toran svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+  html[data-season="diwali"]
+  .dashboard-diwali-toran {
+    width: min(500px, 82%);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  html[data-season="diwali"]
+  .dashboard-diwali-toran {
+    width: min(330px, 90%);
+    margin-bottom: 8px;
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 480px) {
+  html[data-season="diwali"]
+  .dashboard-diwali-toran {
+    width: 95%;
+    opacity: .88;
+  }
+}
+
+/* Respect reduced-motion preference */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="diwali"]
+  .dashboard-diwali-toran
+  .diwali-toran__strand {
+    animation: none !important;
+  }
+}
+/* ==========================================
+   DIWALI — DASHBOARD TORAN (TILED)
+   ========================================== */
+
+html[data-season="diwali"]
+.dashboard-diwali-toran {
+  position: relative;   /* stays in flow: content is pushed down, never covered */
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+
+  overflow-x: clip;     /* trims the sides only */
+  overflow-y: visible;  /* tassels hang freely */
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Each toran takes an equal share of the width */
+html[data-season="diwali"]
+.dashboard-diwali-toran .diwali-toran {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+/* Scale proportionally, no distortion */
+html[data-season="diwali"]
+.dashboard-diwali-toran .diwali-toran svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Tablet: fewer torans, so each stays a good size */
+@media (max-width: 1100px) {
+  html[data-season="diwali"]
+  .dashboard-diwali-toran .diwali-toran:nth-child(n+4) {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  html[data-season="diwali"]
+  .dashboard-diwali-toran {
+    display: none;
+  }
+}

@@ -1,0 +1,552 @@
+
+/* ==========================================
+   UNWIND — CINEMATIC DIWALI ROCKET
+   ========================================== */
+
+/* CTA retains its original design */
+
+.diwali-rocket-cta {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* ==========================================
+   IDLE ROCKET ATTACHED TO BUTTON
+   ========================================== */
+
+.diwali-cta-rocket-anchor {
+  position: absolute;
+  z-index: 8;
+
+  width: 38px;
+  height: 82px;
+
+  top: -49px;
+  right: -21px;
+
+  pointer-events: none;
+  overflow: visible;
+  transform: rotate(24deg);
+
+  filter: drop-shadow(0 4px 6px rgba(20, 5, 15, .35));
+}
+
+.diwali-cta-rocket-anchor--hidden {
+  visibility: hidden;
+}
+
+.diwali-cta-rocket-anchor__body {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.diwali-rocket-artwork {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Slight anticipation when hovering */
+
+.diwali-rocket-cta:hover
+.diwali-cta-rocket-anchor:not(
+  .diwali-cta-rocket-anchor--hidden
+) {
+  animation: diwaliRocketReady .4s ease-in-out infinite alternate;
+}
+
+@keyframes diwaliRocketReady {
+  from {
+    transform: rotate(24deg) translateY(0);
+  }
+  to {
+    transform: rotate(22deg) translateY(-3px);
+  }
+}
+
+/* ==========================================
+   HOVER — BURNING ROCKET FUSE
+   ========================================== */
+
+.diwali-rocket-flame {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+
+  width: 16px;
+  height: 42px;
+
+  transform: translateX(-50%);
+  transform-origin: top center;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.diwali-rocket-flame__outer,
+.diwali-rocket-flame__inner {
+  position: absolute;
+  left: 50%;
+  top: 0;
+
+  transform: translateX(-50%);
+  border-radius: 50% 50% 65% 65%;
+}
+
+.diwali-rocket-flame__outer {
+  width: 15px;
+  height: 42px;
+
+  background: linear-gradient(
+    to bottom,
+    #FFF7D3,
+    #FFD46A 24%,
+    #FF8B22 55%,
+    rgba(235, 61, 13, .6) 75%,
+    transparent
+  );
+
+  filter: blur(2px);
+}
+
+.diwali-rocket-flame__inner {
+  width: 6px;
+  height: 23px;
+
+  background: linear-gradient(
+    to bottom,
+    #FFFFFF,
+    #FFF1BC,
+    transparent
+  );
+}
+
+/* Flame is lit on hover or keyboard focus */
+
+.diwali-rocket-cta:hover
+.diwali-rocket-flame,
+.diwali-rocket-cta:focus-visible
+.diwali-rocket-flame,
+.diwali-rocket-cta:focus-within
+.diwali-rocket-flame {
+  opacity: 1;
+  animation: diwaliFuseFlicker .13s ease-in-out infinite alternate;
+}
+
+@keyframes diwaliFuseFlicker {
+  from {
+    transform: translateX(-50%) scale(.83, .85) rotate(-4deg);
+    filter: drop-shadow(0 0 4px #FF9B25);
+  }
+
+  to {
+    transform: translateX(-50%) scale(1.12, 1.16) rotate(4deg);
+    filter: drop-shadow(0 0 12px #FFB52C);
+  }
+}
+
+/* Tiny burning sparks */
+
+.diwali-rocket-flame i {
+  position: absolute;
+  left: 50%;
+  top: 19px;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+  background: #FFE2A0;
+  box-shadow: 0 0 6px #FFAE31;
+
+  opacity: 0;
+}
+
+.diwali-rocket-cta:hover
+.diwali-rocket-flame i,
+.diwali-rocket-cta:focus-within
+.diwali-rocket-flame i {
+  animation: diwaliFuseSpark 650ms ease-out infinite;
+  animation-delay: calc(var(--i) * -85ms);
+}
+
+@keyframes diwaliFuseSpark {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift), 27px) scale(.2);
+  }
+}
+
+/* ==========================================
+   FULLSCREEN EFFECT
+   ========================================== */
+
+.diwali-rocket-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+
+  pointer-events: none;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Brief cinematic illumination on burst */
+
+.diwali-rocket-screen__glow {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+
+  background: radial-gradient(
+    circle at 58% 28%,
+    rgba(255, 208, 124, .32) 0%,
+    rgba(255, 147, 48, .10) 28%,
+    transparent 60%
+  );
+
+  animation: diwaliScreenGlow 900ms ease-out 950ms both;
+}
+
+@keyframes diwaliScreenGlow {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ==========================================
+   FULLSCREEN ROCKET FLIGHT
+   ========================================== */
+
+.diwali-rocket-flight {
+  position: absolute;
+
+  left: var(--start-x);
+  top: var(--start-y);
+
+  width: 44px;
+  height: 95px;
+
+  transform: translate(-50%, -50%);
+  animation: diwaliRocketTakeoff 1000ms
+    cubic-bezier(.32,.05,.6,1) both;
+
+  will-change: transform, opacity;
+}
+
+.diwali-rocket-flight__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(14deg);
+  filter:
+    drop-shadow(0 0 12px rgba(255,180,75,.8));
+}
+
+/* During launch the exhaust is always active */
+
+.diwali-rocket-flight .diwali-rocket-flame {
+  opacity: 1;
+  animation: diwaliFuseFlicker .11s ease-in-out infinite alternate;
+}
+
+.diwali-rocket-flight .diwali-rocket-flame i {
+  animation: diwaliFuseSpark 500ms ease-out infinite;
+  animation-delay: calc(var(--i) * -65ms);
+}
+
+/* Golden exhaust streak */
+
+.diwali-rocket-flight__trail {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+
+  width: 8px;
+  height: 170px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    #FFF9E5,
+    #FFE3A0 10%,
+    #FFB444 35%,
+    rgba(255,125,31,.6) 60%,
+    transparent
+  );
+
+  filter: blur(5px);
+  opacity: .9;
+}
+
+@keyframes diwaliRocketTakeoff {
+  0% {
+    transform: translate(-50%, -50%) scale(.85);
+    opacity: 1;
+  }
+
+  12% {
+    transform: translate(-50%, -37%) scale(1.05);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(
+        calc(-50% + var(--dx)),
+        calc(-50% + var(--dy))
+      )
+      scale(.5);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   EXPLOSION AT FLIGHT DESTINATION
+   ========================================== */
+
+.diwali-rocket-explosion {
+  position: absolute;
+
+  left: var(--end-x);
+  top: var(--end-y);
+
+  width: 0;
+  height: 0;
+
+  overflow: visible;
+  pointer-events: none;
+}
+
+.diwali-firework {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+/* Bright center flash */
+
+.diwali-firework__flash {
+  position: absolute;
+
+  left: -34px;
+  top: -34px;
+
+  width: 68px;
+  height: 68px;
+
+  border-radius: 50%;
+  opacity: 0;
+
+  background: radial-gradient(
+    circle,
+    white 0%,
+    #FFF0B8 22%,
+    rgba(255,175,56,.8) 45%,
+    transparent 75%
+  );
+
+  animation: diwaliFireworkFlash 550ms ease-out 990ms both;
+}
+
+@keyframes diwaliFireworkFlash {
+  0% {
+    transform: scale(.1);
+    opacity: 0;
+  }
+
+  20% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+/* Expanding circular shockwaves */
+
+.diwali-firework__ring {
+  position: absolute;
+
+  left: -30px;
+  top: -30px;
+
+  width: 60px;
+  height: 60px;
+
+  border: 2px solid rgba(255,232,162,.95);
+  border-radius: 50%;
+
+  box-shadow: 0 0 20px rgba(255,191,81,.5);
+  opacity: 0;
+
+  animation: diwaliFireworkRing 800ms ease-out 1010ms both;
+}
+
+.diwali-firework__ring--second {
+  border-color: rgba(255,168,75,.65);
+  animation-delay: 1130ms;
+}
+
+@keyframes diwaliFireworkRing {
+  0% {
+    opacity: 0;
+    transform: scale(.1);
+  }
+
+  20% {
+    opacity: .9;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(6);
+  }
+}
+
+/* Main radial fireworks */
+
+.diwali-firework__spark {
+  position: absolute;
+
+  left: -2px;
+  top: -13px;
+
+  width: 4px;
+  height: 26px;
+
+  border-radius: 999px;
+
+  background: var(--color);
+
+  box-shadow:
+    0 0 8px var(--color),
+    0 0 20px var(--color);
+
+  opacity: 0;
+
+  animation: diwaliFireworkSpark 1050ms
+    cubic-bezier(.12,.4,.4,1)
+    calc(1000ms + var(--delay))
+    both;
+}
+
+@keyframes diwaliFireworkSpark {
+  0% {
+    opacity: 0;
+    transform:
+      rotate(var(--angle))
+      translateY(0)
+      scale(.2);
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      rotate(var(--angle))
+      translateY(var(--distance))
+      scale(.25);
+  }
+}
+
+/* Secondary glitter embers */
+
+.diwali-firework__ember {
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  left: -2px;
+  top: -2px;
+
+  border-radius: 50%;
+  background: var(--color);
+
+  box-shadow: 0 0 10px var(--color);
+  opacity: 0;
+
+  animation: diwaliFireworkEmber 950ms ease-out 1120ms both;
+}
+
+@keyframes diwaliFireworkEmber {
+  0% {
+    opacity: 0;
+    transform:
+      rotate(var(--angle))
+      translateY(0)
+      scale(.2);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      rotate(var(--angle))
+      translateY(var(--distance))
+      scale(.1);
+  }
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .diwali-cta-rocket-anchor {
+    width: 30px;
+    height: 68px;
+    right: -10px;
+    top: -36px;
+  }
+
+  .diwali-firework__spark {
+    height: 18px;
+  }
+}
+
+/* ==========================================
+   REDUCED MOTION
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .diwali-cta-rocket-anchor,
+  .diwali-rocket-flame,
+  .diwali-rocket-flame i,
+  .diwali-rocket-flight,
+  .diwali-rocket-screen__glow,
+  .diwali-firework__flash,
+  .diwali-firework__ring,
+  .diwali-firework__spark,
+  .diwali-firework__ember {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,269 @@
+
+/* ==========================================
+   UNWIND — ANIMATED DIWALI RANGOLI
+   ========================================== */
+
+.diwali-rangoli {
+  position: relative;
+
+  width: var(--rangoli-size, 260px);
+  aspect-ratio: 1;
+
+  pointer-events: none;
+  user-select: none;
+  isolation: isolate;
+}
+
+.diwali-rangoli__svg {
+  display: block;
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+
+  filter:
+    drop-shadow(0 12px 18px rgba(15, 4, 18, .3));
+}
+
+/* Warm ambient illumination */
+
+.diwali-rangoli__ambient {
+  position: absolute;
+  inset: 4%;
+  z-index: 0;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(240,187,115,.17) 0%,
+    rgba(240,133,83,.10) 43%,
+    transparent 75%
+  );
+
+  filter: blur(15px);
+
+  animation:
+    diwaliRangoliAmbient 5s ease-in-out infinite;
+}
+
+/* Base reveal */
+
+.diwali-rangoli__base {
+  opacity: 0;
+  animation:
+    diwaliRangoliFade .9s ease-out .1s forwards;
+}
+
+/* Petal-by-petal reveal */
+
+.diwali-rangoli__petal {
+  opacity: 0;
+
+  animation:
+    diwaliRangoliPetal .85s
+    cubic-bezier(.18,.8,.2,1)
+    var(--petal-delay, 0s)
+    forwards;
+}
+
+.diwali-rangoli__inner-petal {
+  opacity: 0;
+
+  animation:
+    diwaliRangoliPetal .8s
+    cubic-bezier(.2,.8,.2,1)
+    var(--petal-delay, 0s)
+    forwards;
+}
+
+/* Decorative detailing */
+
+.diwali-rangoli__petal-detail {
+  opacity: .55;
+}
+
+/* Ornamental rings */
+
+.diwali-rangoli__outline {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+
+  animation:
+    diwaliRangoliDraw 2.5s ease-out .3s forwards;
+}
+
+/* Central golden medallion */
+
+.diwali-rangoli__center {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+
+  animation:
+    diwaliRangoliCenter 1s ease-out 1.6s forwards,
+    diwaliRangoliShimmer 5s ease-in-out 2.6s infinite;
+}
+
+/* Dot work reveal */
+
+.diwali-rangoli__dot {
+  opacity: 0;
+
+  animation:
+    diwaliRangoliFade .6s ease-out
+    var(--petal-delay, 1s)
+    forwards;
+}
+
+/* Petal highlights */
+
+.diwali-rangoli__sparkle {
+  animation:
+    diwaliRangoliSparkle 4.5s ease-in-out
+    var(--sparkle-delay, 0s)
+    infinite;
+}
+
+/* Surrounding dust */
+
+.diwali-rangoli__dust {
+  opacity: 0;
+
+  animation:
+    diwaliRangoliDust 4s ease-in-out
+    var(--dust-delay, 0s)
+    infinite;
+}
+
+/* ==========================================
+   KEYFRAMES
+   ========================================== */
+
+@keyframes diwaliRangoliFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes diwaliRangoliPetal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes diwaliRangoliDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes diwaliRangoliCenter {
+  from {
+    opacity: 0;
+    scale: .65;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes diwaliRangoliShimmer {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 2px rgba(255,205,115,.2));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 8px rgba(255,205,115,.55));
+  }
+}
+
+@keyframes diwaliRangoliAmbient {
+  0%, 100% {
+    opacity: .7;
+    transform: scale(.97);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes diwaliRangoliSparkle {
+  0%, 100% {
+    opacity: .35;
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: .55;
+  }
+}
+
+@keyframes diwaliRangoliDust {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+
+  35% {
+    opacity: .85;
+  }
+
+  70% {
+    opacity: .35;
+    transform: translateY(-5px);
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .diwali-rangoli__ambient,
+  .diwali-rangoli__base,
+  .diwali-rangoli__petal,
+  .diwali-rangoli__inner-petal,
+  .diwali-rangoli__outline,
+  .diwali-rangoli__center,
+  .diwali-rangoli__dot,
+  .diwali-rangoli__sparkle,
+  .diwali-rangoli__dust {
+    animation: none !important;
+  }
+
+  .diwali-rangoli__base,
+  .diwali-rangoli__petal,
+  .diwali-rangoli__inner-petal,
+  .diwali-rangoli__center,
+  .diwali-rangoli__dot {
+    opacity: 1;
+  }
+
+  .diwali-rangoli__outline {
+    stroke-dashoffset: 0;
+  }
+
+  .diwali-rangoli__dust {
+    opacity: .35;
+  }
+}

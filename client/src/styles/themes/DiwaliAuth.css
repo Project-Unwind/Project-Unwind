@@ -1,0 +1,459 @@
+
+/* ==========================================
+   UNWIND — DIWALI AUTH & TESTIMONIAL THEME
+   ========================================== */
+
+html[data-season="diwali"] {
+  --da-bg: #261525;
+  --da-surface: #352033;
+  --da-raised: #45283D;
+  --da-accent: #F0BB73;
+  --da-accent-light: #F8D9B6;
+  --da-text: #FFF4E6;
+  --da-muted: #DCC4CB;
+  --da-border: rgba(240, 187, 115, .28);
+}
+
+/* ==========================================
+   LOGIN + REGISTER — PAGE LAYOUT
+   ========================================== */
+
+html[data-season="diwali"] .auth-page {
+  background: var(--da-bg);
+  color: var(--da-text);
+}
+
+/* Left photographic panel */
+
+html[data-season="diwali"] .auth-page__visual {
+  background: #261525;
+  color: var(--da-text);
+}
+
+html[data-season="diwali"]
+.auth-page__visual-image {
+  background-image:
+    url("/seasonal/diwali/hero-diyas.webp");
+  background-position: center;
+  background-size: cover;
+}
+
+html[data-season="diwali"]
+.auth-page__visual-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(38, 21, 37, .18) 0%,
+      rgba(38, 21, 37, .55) 42%,
+      rgba(38, 21, 37, .96) 100%
+    );
+}
+
+/* Brand and visual text */
+
+html[data-season="diwali"]
+.auth-page__brand-text,
+html[data-season="diwali"]
+.auth-page__visual-content h1 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.auth-page__visual-content h1 em {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.auth-page__visual-content small {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.auth-page__visual-content p,
+html[data-season="diwali"]
+.auth-page__trust span {
+  color: #E6C8CB;
+}
+
+html[data-season="diwali"]
+.auth-page__trust svg {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.auth-page__back {
+  background: rgba(53, 32, 51, .8);
+  border-color: var(--da-border);
+  color: #FFF4E6;
+}
+
+/* ==========================================
+   RIGHT LOGIN / REGISTER FORM
+   ========================================== */
+
+html[data-season="diwali"]
+.auth-page__form-section {
+  background:
+    radial-gradient(
+      ellipse at 85% 5%,
+      rgba(134, 80, 100, .24),
+      transparent 55%
+    ),
+    #261525;
+  color: var(--da-text);
+}
+
+html[data-season="diwali"]
+.auth-form-heading h2 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.auth-form-heading p,
+html[data-season="diwali"]
+.auth-field-hint {
+  color: #DCC4CB;
+}
+
+/* Labels */
+
+html[data-season="diwali"]
+.auth-field__label {
+  color: #F8E9DA;
+}
+
+/* Input wrappers */
+
+html[data-season="diwali"]
+.auth-field__control {
+  background: #352033;
+  border: 1px solid var(--da-border);
+}
+
+html[data-season="diwali"]
+.auth-field__control:focus-within {
+  border-color: #F0BB73;
+  box-shadow:
+    0 0 0 3px rgba(240, 187, 115, .13);
+}
+
+html[data-season="diwali"]
+.auth-field__control :is(input, select) {
+  background: transparent;
+  color: #FFF4E6;
+  color-scheme: dark;
+}
+
+html[data-season="diwali"]
+.auth-field__control input::placeholder {
+  color: #BDA1AF;
+}
+
+html[data-season="diwali"]
+.auth-field__icon,
+html[data-season="diwali"]
+.auth-field__password-button {
+  color: #F0BB73;
+}
+
+/* Preserve field errors */
+
+html[data-season="diwali"]
+.auth-field__control--error {
+  border-color: #FF9393;
+}
+
+html[data-season="diwali"]
+.auth-field__error {
+  color: #FFB7B7;
+}
+
+/* Terms, links, checkboxes */
+
+html[data-season="diwali"]
+:is(
+  .auth-checkbox,
+  .auth-switch-page,
+  .register-terms
+) {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.auth-page a:not(.auth-page__brand):not(.auth-page__back) {
+  color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.auth-checkbox input {
+  accent-color: #F0BB73;
+}
+
+/* Main auth button */
+
+html[data-season="diwali"]
+.auth-submit-button {
+  background:
+    linear-gradient(135deg, #F0BB73, #DCA05B);
+  color: #261525;
+  box-shadow: 0 12px 30px rgba(240,187,115,.16);
+}
+
+html[data-season="diwali"]
+.auth-submit-button:hover:not(:disabled) {
+  background:
+    linear-gradient(135deg, #F8D9B6, #F0BB73);
+  box-shadow: 0 16px 36px rgba(240,187,115,.24);
+}
+
+/* Secondary buttons */
+
+html[data-season="diwali"]
+.auth-secondary-button {
+  background: #45283D;
+  color: #FFF4E6;
+  border-color: var(--da-border);
+}
+
+/* Divider */
+
+html[data-season="diwali"]
+.auth-divider {
+  color: #DCC4CB;
+}
+
+html[data-season="diwali"]
+.auth-divider::before,
+html[data-season="diwali"]
+.auth-divider::after {
+  background: var(--da-border);
+}
+
+/* Profile photo picker */
+
+html[data-season="diwali"]
+.profile-photo-picker {
+  background:
+    linear-gradient(135deg,#45283D,#352033);
+  border-color: var(--da-border);
+  color: var(--da-text);
+}
+
+html[data-season="diwali"]
+.profile-photo-picker__preview {
+  background: #54283E;
+  color: #F0BB73;
+  border-color: rgba(240,187,115,.4);
+}
+
+/* Password strength — preserve strength levels */
+
+html[data-season="diwali"]
+.password-strength__bars span {
+  background: #54283E;
+}
+
+html[data-season="diwali"]
+.password-strength__bars
+[class*="password-strength__active--"] {
+  /* Existing strength colours remain intact */
+  background: revert-layer;
+}
+
+html[data-season="diwali"]
+.password-strength p {
+  color: #DCC4CB;
+}
+
+/* Additional common controls */
+
+html[data-season="diwali"]
+.auth-form :is(textarea, select) {
+  color-scheme: dark;
+}
+
+html[data-season="diwali"]
+.auth-page :is(button,a,input,select,textarea):focus-visible {
+  outline: 2px solid #F0BB73;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   TESTIMONIAL POPUP
+   ========================================== */
+
+/* The modal may be rendered outside landing root,
+   so scope to html[data-season]. */
+
+html[data-season="diwali"]
+.testimonial-modal-overlay {
+  background: rgba(17, 8, 19, .82);
+  backdrop-filter: blur(12px);
+}
+
+html[data-season="diwali"]
+.testimonial-modal {
+  background:
+    radial-gradient(
+      ellipse at 85% 5%,
+      rgba(240,187,115,.09),
+      transparent 40%
+    ),
+    linear-gradient(155deg,#45283D,#261525);
+
+  border: 1px solid rgba(240,187,115,.34);
+  color: #FFF4E6;
+
+  box-shadow:
+    0 30px 90px rgba(10,4,15,.55);
+}
+
+/* Popup close */
+
+html[data-season="diwali"]
+.testimonial-modal-close {
+  background: #352033;
+  border-color: var(--da-border);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.testimonial-modal-close:hover {
+  background: #54283E;
+  color: #F0BB73;
+}
+
+/* Popup title and description */
+
+html[data-season="diwali"]
+.testimonial-submit-header h3 {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.testimonial-submit-description {
+  color: #DCC4CB;
+}
+
+/* Heading icon and label */
+
+html[data-season="diwali"]
+.testimonial-submit-header > span {
+  background: #F0BB73;
+  color: #261525;
+}
+
+html[data-season="diwali"]
+.testimonial-submit-header small {
+  color: #F0BB73;
+}
+
+/* Display name / anonymous */
+
+html[data-season="diwali"]
+.testimonial-form-label {
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+.testimonial-display-option {
+  background: #352033;
+  color: #DCC4CB;
+  border-color: var(--da-border);
+}
+
+html[data-season="diwali"]
+.testimonial-display-option:hover {
+  background: #45283D;
+  border-color: #F0BB73;
+}
+
+html[data-season="diwali"]
+.testimonial-display-option.active {
+  background: rgba(240,187,115,.17);
+  border-color: #F0BB73;
+  color: #F0BB73;
+}
+
+/* Text inputs */
+
+html[data-season="diwali"]
+:is(.testimonial-input,.testimonial-textarea) {
+  background: rgba(38,21,37,.85);
+  border-color: rgba(240,187,115,.28);
+  color: #FFF4E6;
+}
+
+html[data-season="diwali"]
+:is(.testimonial-input,.testimonial-textarea)::placeholder {
+  color: #BDA1AF;
+}
+
+html[data-season="diwali"]
+:is(.testimonial-input,.testimonial-textarea):focus {
+  background: #261525;
+  border-color: #F0BB73;
+  box-shadow: 0 0 0 3px rgba(240,187,115,.12);
+}
+
+/* Rating stars */
+
+html[data-season="diwali"]
+.testimonial-star {
+  color: rgba(240,187,115,.3);
+}
+
+html[data-season="diwali"]
+.testimonial-star.active,
+html[data-season="diwali"]
+.testimonial-star:hover {
+  color: #F0BB73;
+}
+
+/* Submit button */
+
+html[data-season="diwali"]
+.testimonial-submit-button {
+  background: #F0BB73;
+  color: #261525;
+}
+
+html[data-season="diwali"]
+.testimonial-submit-button:hover:not(:disabled) {
+  background: #F8D9B6;
+  box-shadow: 0 10px 26px rgba(240,187,115,.22);
+}
+
+/* Character counter */
+
+html[data-season="diwali"]
+.testimonial-character-count {
+  color: #DCC4CB;
+}
+
+/* Keep error/success colours semantically distinct */
+
+html[data-season="diwali"]
+.testimonial-form-success {
+  background: rgba(61, 150, 103, .14);
+  border-color: rgba(91, 191, 133, .3);
+  color: #AEF0C7;
+}
+
+html[data-season="diwali"]
+.testimonial-form-error {
+  background: rgba(195, 80, 80, .13);
+  border-color: rgba(255, 140, 140, .3);
+  color: #FFBDBD;
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="diwali"]
+  :is(.auth-page,.testimonial-modal) * {
+    transition: none !important;
+  }
+}
