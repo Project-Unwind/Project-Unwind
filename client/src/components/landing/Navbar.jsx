@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import LandingNotifications from "./LandingNotifications";
 import { Menu, X } from "lucide-react";
+import DiwaliToran from "../diwali/DiwaliToran";
+import { useTheme } from "../../context/ThemeContext";
 import LandingSettings
   from "./LandingSettings";
 import UnwindLogo from "../common/UnwindLogo";
@@ -27,6 +29,8 @@ const navigationLinks = [
 ];
 
 function Navbar() {
+  const { diwaliMode } = useTheme();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -67,7 +71,18 @@ function Navbar() {
         duration: 0.7,
         ease: [0.22, 1, 0.36, 1]
       }}
-    >
+        >
+            {diwaliMode && (
+        <div
+          className="landing-navbar__diwali-toran"
+          aria-hidden="true"
+        >
+          {Array.from({ length: 5 }).map((_, index) => (
+            <DiwaliToran key={index} />
+          ))}
+        </div>
+      )}
+
       <div className="landing-container landing-navbar__inner">
        <Link
   to="/"
