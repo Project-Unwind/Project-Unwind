@@ -1,0 +1,66 @@
+/* ==========================================
+   UNWIND — HYPERREALISTIC DIWALI TORAN
+   ========================================== */
+
+.diwali-toran {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.diwali-toran svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Hanging strand: pendulum from its top */
+.diwali-toran__strand {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: diwaliToranSway var(--sway-dur, 5.5s) ease-in-out infinite;
+  animation-delay: var(--sway-delay, 0s);
+  will-change: transform;
+}
+
+/* Bell / tassel lags behind the strand like a second pendulum */
+.diwali-toran__tail {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: diwaliToranTail 3.6s ease-in-out infinite;
+  animation-delay: calc(var(--sway-delay, 0s) - 0.5s);
+}
+
+/* Leaves flutter gently, each on its own rhythm */
+.diwali-toran__leaf {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+  animation: diwaliToranLeaf var(--leaf-dur, 4.6s) ease-in-out infinite;
+  animation-delay: var(--leaf-delay, 0s);
+}
+
+@keyframes diwaliToranSway {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50%      { transform: rotate(1.6deg); }
+}
+
+@keyframes diwaliToranTail {
+  0%, 100% { transform: rotate(-4deg); }
+  50%      { transform: rotate(4deg); }
+}
+
+@keyframes diwaliToranLeaf {
+  0%, 100% { transform: rotate(-2.2deg); }
+  50%      { transform: rotate(2.2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diwali-toran__strand,
+  .diwali-toran__tail,
+  .diwali-toran__leaf {
+    animation: none;
+    transform: none;
+  }
+}
