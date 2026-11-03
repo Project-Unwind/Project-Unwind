@@ -149,7 +149,7 @@ html[data-season="diwali"] ::selection {
   border-radius: 999px;
   font-weight: 700;
   transition:
-    background .25s ease,
+    background-color .25s ease,
     box-shadow .25s ease,
     transform .25s ease;
 }
@@ -1265,5 +1265,404 @@ html[data-season="diwali"] ::selection {
 @media (max-width: 768px) {
   .landing-diwali .diwali-hero-diya {
     display: none;
+  }
+}
+
+
+
+/* ==========================================
+   DIWALI — NAVBAR TORAN (TILED)
+   ========================================== */
+
+html[data-season="diwali"]
+.landing-diwali .landing-navbar {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  z-index: 20;
+}
+
+/* Row of torans: logo's left edge → Join UNWIND's right edge */
+html[data-season="diwali"]
+.landing-navbar__diwali-toran {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1472px, calc(100% - 48px));
+
+  top: 100%;
+  margin-top: -2px;        /* increase to push lower, e.g. 6px, 12px */
+
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+
+  overflow-x: clip;        /* trims any overflow at the sides */
+  overflow-y: visible;     /* lets tassels hang freely */
+
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* Each toran takes an equal share of the width */
+html[data-season="diwali"]
+.landing-navbar__diwali-toran .diwali-toran {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+/* Scale proportionally (no distortion) */
+html[data-season="diwali"]
+.landing-navbar__diwali-toran .diwali-toran svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+html[data-season="diwali"]
+.landing-navbar__inner {
+  position: relative;
+  z-index: 4;
+}
+
+/* Tablet: fewer visible torans */
+@media (max-width: 1100px) {
+  html[data-season="diwali"]
+  .landing-navbar__diwali-toran {
+    width: calc(100% - 48px);
+    margin-top: 0;
+  }
+
+  html[data-season="diwali"]
+  .landing-navbar__diwali-toran .diwali-toran:nth-child(n+4) {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  html[data-season="diwali"]
+  .landing-navbar__diwali-toran {
+    display: none;
+  }
+}
+
+/* ==========================================
+   DIWALI — HERO RANGOLI PLACEMENT
+   ========================================== */
+
+.landing-diwali .diwali-hero-rangoli {
+  position: absolute;
+  z-index: 2;
+
+  left: -35px;
+  bottom: -55px;
+
+  opacity: .93;
+  pointer-events: none;
+
+  transform: rotate(-10deg);
+
+  filter:
+    drop-shadow(0 12px 25px rgba(15, 4, 18, .2));
+}
+
+/* Tablet */
+
+@media (max-width: 1100px) {
+  .landing-diwali .diwali-hero-rangoli {
+    left: -65px;
+    bottom: -70px;
+
+    transform: scale(.8) rotate(-10deg);
+    transform-origin: bottom left;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .landing-diwali .diwali-hero-rangoli {
+    left: -65px;
+    bottom: -65px;
+
+    transform: scale(.58) rotate(-10deg);
+    transform-origin: bottom left;
+
+    opacity: .6;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-diwali .diwali-hero-rangoli {
+    left: -80px;
+    bottom: -80px;
+    opacity: .4;
+  }
+}
+html[data-season="diwali"] #how-it-works {
+  position: relative;
+  isolation: isolate;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(38, 21, 37, 0.08),
+      rgba(38, 21, 37, 0.20) 45%,
+      rgba(38, 21, 37, 0.08)
+    ),
+    url("/seasonal/diwali/how-it-works.webp");
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+html[data-season="diwali"] #how-it-works > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ==========================================
+   DIWALI — FEATURES BACKGROUND
+   ========================================== */
+
+html[data-season="diwali"]
+.landing-diwali #features {
+  position: relative;
+  isolation: isolate;
+  background-color: #35142F;
+
+  background-image:
+    url("/seasonal/diwali/features-bg.webp"),
+    url("/seasonal/diwali/features-extension.webp");
+
+  background-position:
+    center top,
+    center bottom;
+
+  background-size:
+    100% auto,
+    100% auto;
+
+  background-repeat:
+    no-repeat,
+    no-repeat;
+}
+
+/* Preserve the original React content */
+
+html[data-season="diwali"]
+.landing-diwali #features > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Actual feature-card class */
+
+html[data-season="diwali"]
+.landing-diwali #features .premium-feature-card {
+  background: linear-gradient(
+    145deg,
+    rgba(84,40,62,.92),
+    rgba(53,32,51,.96)
+  );
+
+  border: 1px solid rgba(240,187,115,.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  html[data-season="diwali"]
+  .landing-diwali #features {
+    background-size:
+      auto 550px,
+      auto 550px;
+
+    background-position:
+      center top,
+      center bottom;
+  }
+}
+
+
+
+/* ==========================================
+   DIWALI — TESTIMONIAL BUTTON
+   ========================================== */
+
+html[data-season="diwali"]
+#stories .testimonial-open-button {
+  background: linear-gradient(
+    135deg,
+    #F8D9B6 0%,
+    #F0BB73 65%,
+    #DCA05B 100%
+  ) !important;
+
+  color: #261525 !important;
+  border: 1px solid #F0BB73 !important;
+  border-radius: 16px;
+
+  box-shadow:
+    0 12px 30px rgba(240,187,115,.22) !important;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+html[data-season="diwali"]
+#stories .testimonial-open-button:hover {
+  background: #FFE5BE !important;
+  color: #261525 !important;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 36px rgba(240,187,115,.30) !important;
+}
+
+html[data-season="diwali"]
+#stories .testimonial-open-button svg {
+  color: #261525 !important;
+  stroke: currentColor;
+}
+
+html[data-season="diwali"]
+#stories .testimonial-open-button:focus-visible {
+  outline: 2px solid #FFF4E6;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="diwali"]
+  #stories .testimonial-open-button {
+    transition: none;
+  }
+}
+
+
+
+/* ==========================================
+   DIWALI — FINAL CTA WITH ANIMATED RANGOLI
+   Uses existing DiwaliRangoli.jsx
+   ========================================== */
+
+html[data-season="diwali"]
+.landing-diwali .cta-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Remove obsolete image decoration.
+   Keep the subtle existing gold grid instead. */
+
+html[data-season="diwali"]
+.landing-diwali .cta-card::before {
+  background-image:
+    linear-gradient(
+      rgba(240,187,115,.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(240,187,115,.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* Animated rangoli behind CTA content */
+
+html[data-season="diwali"]
+.landing-diwali .cta-card
+.cta-card__diwali-rangoli {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 560px;
+  height: 560px;
+
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  opacity: .30;
+  pointer-events: none;
+  user-select: none;
+
+  filter: drop-shadow(
+    0 0 30px rgba(240,187,115,.12)
+  );
+}
+
+/* Ensure the actual component fills its wrapper */
+
+html[data-season="diwali"]
+.landing-diwali
+.cta-card__diwali-rangoli
+.diwali-rangoli {
+  width: 100%;
+  height: 100%;
+}
+
+/* Preserve central content and button clicks */
+
+html[data-season="diwali"]
+.landing-diwali .cta-card__content {
+  position: relative;
+  z-index: 3;
+}
+
+/* Existing decorative orbs */
+
+html[data-season="diwali"]
+.landing-diwali .cta-card__orb {
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  html[data-season="diwali"]
+  .landing-diwali .cta-card
+  .cta-card__diwali-rangoli {
+    width: 440px;
+    height: 440px;
+    opacity: .24;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  html[data-season="diwali"]
+  .landing-diwali .cta-card
+  .cta-card__diwali-rangoli {
+    width: 320px;
+    height: 320px;
+    opacity: .18;
+  }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-season="diwali"]
+  .cta-card__diwali-rangoli * {
+    animation: none !important;
   }
 }
