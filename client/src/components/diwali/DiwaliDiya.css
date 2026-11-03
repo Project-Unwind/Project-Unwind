@@ -1,0 +1,206 @@
+/* ========================================
+   UNWIND — LOTUS-CRADLED DIWALI DIYA
+   ======================================== */
+
+.diwali-diya {
+  position: relative;
+  display: block;
+  width: var(--diya-size, 160px);
+  aspect-ratio: 260 / 280;
+  pointer-events: none;
+  user-select: none;
+  isolation: isolate;
+}
+
+.diwali-diya__svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Warm light breathing around the whole lamp */
+.diwali-diya__ambient {
+  position: absolute;
+  inset: -24%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 38%,
+    rgba(255, 190, 90, .36) 0%,
+    rgba(255, 130, 35, .14) 34%,
+    transparent 68%
+  );
+  filter: blur(22px);
+  animation: diwaliAmbient 3.7s ease-in-out infinite;
+}
+
+/* Flame: two nested layers on different periods so it never loops visibly */
+.diwali-diya__flame {
+  transform-origin: 130px 138px;
+  animation: diwaliSway 2.9s ease-in-out infinite;
+}
+
+.diwali-diya__flame-inner {
+  transform-origin: 130px 138px;
+  animation: diwaliLick 1.7s ease-in-out infinite;
+}
+
+.diwali-diya__halo {
+  transform-origin: 130px 110px;
+  animation: diwaliHalo 3.1s ease-in-out infinite;
+}
+
+/* Sunburst turns very slowly behind the flame */
+.diwali-diya__rays {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: diwaliTurn 90s linear infinite;
+}
+
+.diwali-diya__cast {
+  animation: diwaliCast 2.3s ease-in-out infinite;
+}
+
+.diwali-diya__pool {
+  animation: diwaliCast 3.3s ease-in-out infinite;
+}
+
+/* Rangoli dots slowly travel around the ground ring */
+.diwali-diya__rangoli {
+  animation: diwaliRangoli 24s linear infinite;
+}
+
+.diwali-diya__reflection {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: diwaliReflection 1.9s ease-in-out infinite;
+}
+
+.diwali-diya__ember {
+  animation: diwaliEmber 2.1s ease-in-out infinite;
+}
+
+/* Ripples on the oil */
+.diwali-diya__ripple {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: diwaliRipple 3.6s ease-out infinite;
+}
+
+.diwali-diya__ripple--late {
+  animation-delay: 1.8s;
+}
+
+/* Embers drifting up */
+.diwali-diya__spark {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: diwaliSpark var(--t, 6s) ease-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+/* Thin smoke curl */
+.diwali-diya__smoke {
+  stroke-dasharray: .35 1;
+  opacity: 0;
+  animation: diwaliSmoke 6s ease-in-out infinite;
+}
+
+@keyframes diwaliSway {
+  0%, 100% { transform: rotate(-1.5deg) skewX(-1deg); }
+  22%      { transform: rotate(2.2deg)  skewX(2deg); }
+  47%      { transform: rotate(-2.6deg) skewX(-2deg); }
+  71%      { transform: rotate(1.2deg)  skewX(1deg); }
+}
+
+@keyframes diwaliLick {
+  0%, 100% { transform: scale(1, 1); }
+  20%      { transform: scale(.95, 1.06); }
+  41%      { transform: scale(1.04, .93); }
+  63%      { transform: scale(.97, 1.08); }
+  84%      { transform: scale(1.02, .97); }
+}
+
+@keyframes diwaliHalo {
+  0%, 100% { opacity: .72; transform: scale(1); }
+  45%      { opacity: 1;   transform: scale(1.07); }
+  75%      { opacity: .84; transform: scale(.97); }
+}
+
+@keyframes diwaliAmbient {
+  0%, 100% { opacity: .75; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.08); }
+}
+
+@keyframes diwaliCast {
+  0%, 100% { opacity: .72; }
+  30%      { opacity: .95; }
+  60%      { opacity: .6; }
+  80%      { opacity: .88; }
+}
+
+@keyframes diwaliReflection {
+  0%, 100% { opacity: .6;  transform: scaleX(1); }
+  50%      { opacity: 1;   transform: scaleX(1.2); }
+}
+
+@keyframes diwaliEmber {
+  0%, 100% { opacity: .75; }
+  50%      { opacity: 1; }
+}
+
+@keyframes diwaliRipple {
+  0%   { opacity: .7; transform: scale(.4); }
+  100% { opacity: 0;  transform: scale(3.6, 3); }
+}
+
+@keyframes diwaliSpark {
+  0%   { opacity: 0; transform: translate(0, 0) scale(1); }
+  12%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx, 0px), -120px) scale(.2); }
+}
+
+@keyframes diwaliSmoke {
+  0%   { opacity: 0;   stroke-dashoffset: .35; }
+  20%  { opacity: .3; }
+  70%  { opacity: .1; }
+  100% { opacity: 0;   stroke-dashoffset: -.65; }
+}
+
+@keyframes diwaliTurn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes diwaliRangoli {
+  to { stroke-dashoffset: -90; }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .diwali-diya__flame,
+  .diwali-diya__flame-inner,
+  .diwali-diya__halo,
+  .diwali-diya__rays,
+  .diwali-diya__ambient,
+  .diwali-diya__reflection,
+  .diwali-diya__cast,
+  .diwali-diya__pool,
+  .diwali-diya__rangoli,
+  .diwali-diya__ember,
+  .diwali-diya__ripple,
+  .diwali-diya__spark,
+  .diwali-diya__smoke {
+    animation: none !important;
+  }
+
+  .diwali-diya__smoke,
+  .diwali-diya__spark,
+  .diwali-diya__ripple {
+    display: none;
+  }
+}
