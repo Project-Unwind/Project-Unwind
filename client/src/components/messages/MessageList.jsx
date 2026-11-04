@@ -41,10 +41,7 @@ function MessageList({
   const bottomRef =
     useRef(null);
 
-  const previousMessageCountRef =
-    useRef(
-      messages.length
-    );
+  const previousMessageCountRef = useRef(0);
 
   const previousNewestMessageIdRef =
     useRef(null);
@@ -164,7 +161,7 @@ function MessageList({
   |--------------------------------------------------------------------------
   */
 
-  if (loading) {
+  if (loading && messages.length === 0) {
     return (
       <div className="message-list-state">
         <LoaderCircle

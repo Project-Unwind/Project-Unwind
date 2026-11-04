@@ -1,11 +1,12 @@
-
 import {
+  Component,
   Suspense,
   useState
 } from "react";
 
 import {
-  Outlet
+  Outlet,
+  useLocation
 } from "react-router-dom";
 
 import DashboardSidebar
@@ -33,8 +34,62 @@ import {
 
 import "../pages/Dashboard/Dashboard.css";
 
+class DashboardPageBoundary extends Component {
+  state = {
+    hasError: false
+  };
+
+  static getDerivedStateFromError() {
+    return {
+      hasError: true
+    };
+  }
+
+  componentDidCatch(error) {
+    // Avoid logging page contents or user data.
+    console.error(
+      "Dashboard page failed to render:",
+      error?.name || "Error"
+    );
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <section
+          role="alert"
+          aria-labelledby="dashboard-page-error-title"
+          style={{
+            padding: "32px 20px",
+            textAlign: "center"
+          }}
+        >
+          <h2 id="dashboard-page-error-title">
+            This page couldn’t load
+          </h2>
+
+          <p>
+            Open another feature from the menu,
+            or reload this page to try again.
+          </p>
+
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+          >
+            Reload page
+          </button>
+        </section>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
 function DashboardLayout() {
   const { diwaliMode } = useTheme();
+  const location = useLocation();
 
   const [
     sidebarCollapsed,
@@ -92,16 +147,20 @@ function DashboardLayout() {
             )}
 
             {/* All dashboard routes */}
-            <Suspense
-              fallback={
-                <AppLoader
-                  message="Opening your space…"
-                  size="medium"
-                />
-              }
-            >
-              <Outlet />
-            </Suspense>
+<DashboardPageBoundary
+  key={location.pathname}
+>
+  <Suspense
+    fallback={
+      <AppLoader
+        message="Opening your space…"
+        size="medium"
+      />
+    }
+  >
+    <Outlet />
+  </Suspense>
+</DashboardPageBoundary>
           </main>
         </div>
       </div>
