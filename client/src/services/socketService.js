@@ -7,26 +7,11 @@ import {
 } from "./api";
 
 const API_URL =
-  import.meta.env
-    .VITE_API_URL ||
+  import.meta.env.VITE_API_URL ||
   "http://localhost:5000/api";
 
-/*
- * VITE_API_URL normally ends in /api.
- *
- * Socket.IO runs at the server root,
- * therefore:
- *
- * http://localhost:5000/api
- * becomes
- * http://localhost:5000
- */
-
 function getSocketServerUrl() {
-  return API_URL.replace(
-    /\/api\/?$/,
-    ""
-  );
+  return API_URL.replace(/\/api\/?$/, "");
 }
 
 let socket = null;
@@ -222,63 +207,72 @@ export function offSocketEvent(
 
 export function emitSocketEvent(
   eventName,
-  payload = {}
+  payload = {},
+  timeoutMs = 10000
 ) {
-  return new Promise(
-    (
-      resolve,
-      reject
-    ) => {
-      const activeSocket =
-        socket ||
-        connectSocket();
+  return new Promise((resolve, reject) => {
+    const activeSocket = connectSocket();
 
-      if (!activeSocket) {
-        reject(
-          new Error(
-            "Socket connection is unavailable."
-          )
-        );
-
-        return;
-      }
-
-      activeSocket.emit(
-        eventName,
-        payload,
-        (response) => {
-          if (
-            response?.success ===
-            false
-          ) {
-            reject(
-              Object.assign(
-                new Error(
-                  response.message ||
-                    "Socket request failed."
-                ),
-                {
-                  code:
-                    response.code,
-
-                  statusCode:
-                    response.status_code,
-
-                  response
-                }
-              )
-            );
-
-            return;
-          }
-
-          resolve(
-            response
-          );
-        }
+    if (!activeSocket) {
+      reject(
+        new Error("Socket connection is unavailable.")
       );
+      return;
     }
-  );
+
+    activeSocket
+      .timeout(timeoutMs)
+      .emit(eventName, payload, (error, response) => {
+        if (error) {
+          reject(
+            Object.assign(
+              new Error(
+                "The server did not confirm the request in time. " +
+                "Check the chat before trying again."
+              ),
+              {
+                code: "SOCKET_ACK_TIMEOUT",
+                eventName
+              }
+            )
+          );
+          return;
+        }
+
+        if (!response || typeof response !== "object") {
+          reject(
+            Object.assign(
+              new Error("Invalid response from the chat server."),
+              {
+                code: "SOCKET_INVALID_RESPONSE",
+                eventName
+              }
+            )
+          );
+          return;
+        }
+
+        if (response.success === false) {
+          reject(
+            Object.assign(
+              new Error(
+                response.message || "Socket request failed."
+              ),
+              {
+                code: response.code,
+                statusCode:
+                  response.status_code ??
+                  response.statusCode,
+                response
+              }
+            )
+          );
+          return;
+        }
+
+        resolve(response);
+      });
+  });
 }
 
 /*
