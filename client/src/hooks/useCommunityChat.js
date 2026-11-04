@@ -440,295 +440,211 @@ return sortedMessages;
   */
 
  useEffect(() => {
-  /*
-  |--------------------------------------------------------------------------
-  | Do NOT enter Community Chat until identity has been selected
-  |--------------------------------------------------------------------------
-  */
-
   if (!enabled) {
     setLoading(false);
-
     return undefined;
   }
 
-  let cancelled =
-    false;
-
+  let cancelled = false;
   const cleanups = [];
 
-  async function initializeChat() {
-      try {
-        setLoading(true);
-        setError("");
+  // Keep live changes that arrive while history is loading.
+  const liveUpdates = new Map();
 
-        /*
-         * Community identity must
-         * already exist.
-         */
-        const profile =
-          await getMyCommunityProfile();
+  setLoading(true);
+  setError("");
+  setRoom(null);
 
-        if (cancelled) {
-          return;
-        }
+  const showError = (requestError, fallback) => {
+    if (cancelled) return;
 
-        setProfileData(
-          profile
-        );
+    setError(
+      requestError?.response?.data?.message ||
+      requestError?.message ||
+      fallback
+    );
+  };
 
-        /*
-         * Connect Socket.IO.
-         */
-        connectSocket();
+  const refreshMembers = async () => {
+    try {
+      const result = await getPublicChatMembers();
 
-        /*
-         * Real-time messages.
-         */
-        cleanups.push(
-          onSocketEvent(
-            EVENTS.NEW,
-            (
-              message
-            ) => {
-              upsertMessage(
-                message
-              );
+      if (cancelled) return;
 
-              /*
-               * The user is actively
-               * viewing the room.
-               */
-              emitSocketEvent(
-                EVENTS.MARK_READ,
-                {}
-              ).catch(
-                () => {}
-              );
-            }
-          )
-        );
-
-        cleanups.push(
-          onSocketEvent(
-            EVENTS.EDITED,
-            upsertMessage
-          )
-        );
-
-        cleanups.push(
-          onSocketEvent(
-            EVENTS.DELETED,
-            upsertMessage
-          )
-        );
-
-        /*
-         * Online users.
-         */
-        cleanups.push(
-          onSocketEvent(
-            EVENTS.ONLINE,
-            (
-              users
-            ) => {
-              setOnlineUsers(
-                Array.isArray(
-                  users
-                )
-                  ? users
-                  : []
-              );
-            }
-          )
-        );
-
-        /*
-         * Typing indicator.
-         */
-        cleanups.push(
-          onSocketEvent(
-            EVENTS.TYPING_UPDATE,
-            (
-              users
-            ) => {
-              setTypingUsers(
-                Array.isArray(
-                  users
-                )
-                  ? users
-                  : []
-              );
-            }
-          )
-        );
-
-        /*
-         * Member list updates.
-         */
-        cleanups.push(
-          onSocketEvent(
-            EVENTS.JOINED_USER,
-            () => {
-              loadMembers().catch(
-                () => {}
-              );
-            }
-          )
-        );
-
-        cleanups.push(
-          onSocketEvent(
-            EVENTS.LEFT_USER,
-            () => {
-              loadMembers().catch(
-                () => {}
-              );
-            }
-          )
-        );
-
-        /*
-         * Join public community room.
-         */
-        const joined =
-          await emitSocketEvent(
-            EVENTS.JOIN,
-            {}
-          );
-
-        if (cancelled) {
-          return;
-        }
-
-        const joinedRoom =
-          joined?.room ??
-          null;
-
-        setRoom(
-          joinedRoom
-        );
-
-        /*
-         * Load history and members.
-         */
-       /*
- * Load history first.
- * This is the only blocking work
- * required before showing chat.
- */
-const history =
-  await getPublicChatHistory({
-    limit:
-      INITIAL_MESSAGE_LIMIT
-  });
-
-if (cancelled) {
-  return;
-}
-
-const freshMessages =
-  sortMessages(
-    Array.isArray(
-      history?.messages
-    )
-      ? history.messages
-      : []
-  );
-
-setMessages(
-  freshMessages
-);
-
-cacheMessages(
-  freshMessages
-);
-setPagination(
-  history?.pagination ?? {
-    has_more: false,
-    next_cursor: null
-  }
-);
-
-/*
- * Chat is usable now.
- * Stop the main loader immediately.
- */
-setLoading(
-  false
-);
-
-/*
- * Non-critical work in background.
- */
-loadMembers().catch(
-  () => {}
-);
-
-if (
-  joinedRoom?.room_id
-) {
-  markPublicChatRead(
-    joinedRoom.room_id
-  ).catch(
-    () => {}
-  );
-}
-      } catch (
-        requestError
-      ) {
-        if (
-          cancelled
-        ) {
-          return;
-        }
-
-        setError(
-          requestError
-            ?.response
-            ?.data
-            ?.message ||
-          requestError
-            ?.message ||
-          "Unable to open Community Chat."
-        );
-      } finally {
-        if (
-          !cancelled
-        ) {
-          setLoading(
-            false
-          );
-        }
-      }
+      setMembers(
+        Array.isArray(result?.members)
+          ? result.members
+          : []
+      );
+    } catch {
+      // Member loading must not block messages.
     }
+  };
 
-    initializeChat();
+  const handleMessageUpdate = (message) => {
+    if (cancelled || !message) return;
 
-    return () => {
-      cancelled =
-        true;
+    liveUpdates.set(
+      String(getCommunityChatMessageId(message)),
+      message
+    );
 
-      cleanups.forEach(
-        (cleanup) =>
-          cleanup?.()
+    upsertMessage(message);
+  };
+
+  async function loadHistory() {
+    try {
+      const history = await getPublicChatHistory({
+        limit: INITIAL_MESSAGE_LIMIT
+      });
+
+      if (cancelled) return;
+
+      const merged = new Map();
+
+      for (const message of history?.messages || []) {
+        merged.set(
+          String(getCommunityChatMessageId(message)),
+          message
+        );
+      }
+
+      // Live edits/deletions take precedence over history.
+      for (const [id, message] of liveUpdates) {
+        merged.set(id, message);
+      }
+
+      const freshMessages = sortMessages(
+        [...merged.values()]
       );
 
-      if (
-        typingTimerRef
-          .current
-      ) {
-        window.clearTimeout(
-          typingTimerRef
-            .current
-        );
+      setMessages(freshMessages);
+      cacheMessages(freshMessages);
+
+      setPagination(
+        history?.pagination ?? {
+          has_more: false,
+          next_cursor: null
+        }
+      );
+    } catch (requestError) {
+      showError(
+        requestError,
+        "Unable to load chat history."
+      );
+    } finally {
+      if (!cancelled) {
+        setLoading(false);
       }
-    };
-  }, [
+    }
+  }
+
+  async function initializeLiveChat() {
+    try {
+      const profile = await getMyCommunityProfile();
+
+      if (cancelled) return;
+
+      setProfileData(profile);
+      connectSocket();
+
+      cleanups.push(
+        onSocketEvent(EVENTS.NEW, (message) => {
+          handleMessageUpdate(message);
+
+          if (!cancelled) {
+            emitSocketEvent(
+              EVENTS.MARK_READ,
+              {}
+            ).catch(() => {});
+          }
+        }),
+
+        onSocketEvent(
+          EVENTS.EDITED,
+          handleMessageUpdate
+        ),
+
+        onSocketEvent(
+          EVENTS.DELETED,
+          handleMessageUpdate
+        ),
+
+        onSocketEvent(EVENTS.ONLINE, (users) => {
+          if (cancelled) return;
+
+          setOnlineUsers(
+            Array.isArray(users) ? users : []
+          );
+        }),
+
+        onSocketEvent(
+          EVENTS.TYPING_UPDATE,
+          (users) => {
+            if (cancelled) return;
+
+            setTypingUsers(
+              Array.isArray(users) ? users : []
+            );
+          }
+        ),
+
+        onSocketEvent(
+          EVENTS.JOINED_USER,
+          refreshMembers
+        ),
+
+        onSocketEvent(
+          EVENTS.LEFT_USER,
+          refreshMembers
+        )
+      );
+
+      const joined = await emitSocketEvent(
+        EVENTS.JOIN,
+        {}
+      );
+
+      if (cancelled) return;
+
+      const joinedRoom = joined?.room ?? null;
+      setRoom(joinedRoom);
+
+      void refreshMembers();
+
+      if (joinedRoom?.room_id) {
+        markPublicChatRead(
+          joinedRoom.room_id
+        ).catch(() => {});
+      }
+    } catch (requestError) {
+      showError(
+        requestError,
+        "Unable to connect to live chat."
+      );
+    }
+  }
+
+  // History starts immediately, independently of Socket.IO.
+  void loadHistory();
+  void initializeLiveChat();
+
+  return () => {
+    cancelled = true;
+
+    cleanups.forEach((cleanup) => cleanup?.());
+
+    if (typingTimerRef.current) {
+      window.clearTimeout(typingTimerRef.current);
+      typingTimerRef.current = null;
+    }
+  };
+}, [
   enabled,
-  loadMembers,
+  currentUserId,
   upsertMessage
 ]);
+
 
   /*
   |--------------------------------------------------------------------------
